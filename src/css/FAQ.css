@@ -1,0 +1,27 @@
+.FAQ{
+    margin-top: 5rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+}
+
+.faq-animation {
+    margin-top: 4em;
+    align-items: center;
+    margin: auto;
+    height: 40rem;
+    width: 40rem;
+    overflow: hidden;
+}
+
+@media only screen and (max-width: 992px) {
+    .faq-animation {
+        height: 19rem;
+        overflow: hidden;
+        width: 17rem;
+    }
+    .FAQ{
+        margin-top: 2rem;
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+}
