@@ -1,0 +1,106 @@
+.title {
+    font-family: "space grotesk", sans-serif;
+
+}
+
+.service {
+    margin-top: 3rem;
+}
+
+.serviceweoffer {
+    margin-left: 6rem;
+    margin-right: 6rem;
+    padding-bottom: 5rem;
+    padding-top: 2rem;
+}
+
+.service-card-icon {
+    height: 5em;
+    width: 5em;
+    align-items: center;
+
+}
+
+.service-title {
+    font-family: "space grotesk", sans-serif;
+    font-size: 1.4rem;
+    margin-top: 1rem;
+
+
+}
+
+.servicerow {
+    justify-content: center;
+}
+
+.service-dash hr {
+    border: 2px solid red;
+    border-radius: 1rem;
+    width: 4rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+
+
+}
+
+.serviceweoffer a {
+    text-decoration: none;
+}
+
+.Service-card {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    /* width: 16rem; */
+    height: 12rem;
+    text-align: center;
+    box-shadow: 2px 5px 24px -7px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 2px 5px 24px -7px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 2px 5px 24px -7px rgba(0, 0, 0, 0.75);
+
+}
+
+.Service-card:hover {
+    background: #0F5978;
+    color: white;
+
+}
+
+@media only screen and (max-width: 992px) {
+    .serviceweoffer {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+
+    .title {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    .service {
+        margin-top: 2rem;
+
+    }
+
+    .Service-card {
+
+        width: 15rem;
+        height: 7.5rem;
+        text-align: center;
+    }
+
+    .service-card-icon {
+        height: 3em;
+        width: 3em;
+        border-radius: 100px;
+        background: white;
+    }
+
+    .service-title {
+        font-family: 'Alata', sans-serif;
+        font-size: 1rem;
+        margin-top: .2rem;
+        margin-bottom: .2rem !important;
+
+    }
+}

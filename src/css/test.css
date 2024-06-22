@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+.distribution {
+  background-image: url('../assets//globe.jpeg');
+  height: max-content;
+  text-align: center;
+  width: max-content;
+  padding: 30px;
+  margin:  0px;
+
+  
+  h1{
+    color: #0F5978;
+    font-family: 'Crimson Pro';
+    font-weight: 700;
+  }
+  p {
+    font-family: 'alata';
+    color: black;
+  }
+
+  .logo {
+    padding: 45px 40px 0px;
+  }
+}
+
+/* @media  screen and (max-width: 600px) {
+  .distribution{
+    width: max-content;
+    height: max-content;
+  }
+}
+
+@media screen and (min-width: 1200px){
+  .distribution{
+    width: max-content;
+    height: max-content;
+
+    .logo {
+      padding:0px 70px 0px 70px;
+    }
+  }
+} */
