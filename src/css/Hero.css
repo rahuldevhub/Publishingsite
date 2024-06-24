@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Crimson+Text&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+.Hero {
+
+    background-color: #87cfeb21;
+/* background: linear-gradient(180deg, rgba(173,216,239,1) 34%, rgba(255,182,193,1) 76%, rgba(255,255,255,1) 94%); */
+
+}
+
+
+.home-both-col {
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+.home-leftcontent {
+    margin-top: 5em;
+    margin-bottom: 4em;
+    justify-content: flex-end;
+    padding-left: 4em;
+    font-family: 'Alata', sans-serif;
+    text-align: left;
+    color: #19759C;
+}
+
+.home-animation {
+    margin-top: 4em;
+    align-items: center;
+    margin: auto;
+    height: 40rem;
+    width: 40rem;
+    overflow: hidden;
+}
+
+
+.home-title {
+    font-weight: 700;
+    /* line-height: 5.5rem; */
+    font-size: 3.5em;
+}
+
+.home-subtitle {
+    padding-top: .5em;
+    padding-bottom: 1rem;
+    /* font-weight: 100; */
+    font-size: 1.2rem;
+    font-family: "space grotesk", sans-serif;
+
+}
+
+.getstart {
+    color: black;
+    text-decoration: none;
+    background-color: transparent;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 100;
+    border: solid 2px #E53766;
+    border-radius: 1rem;
+    width: 14rem;
+    height: 3rem;
+}
+
+.brandlogos {
+    height: 15rem;
+    width: 35rem;
+}
+
+
+@media only screen and (max-width: 992px) {
+
+    .home-title {
+        font-size: 1.8rem;
+        line-height: 2.4rem !important;
+    }
+
+    .home-subtitle {
+        font-size: .8rem;
+        margin-bottom: 4px;
+        line-height: 1.4rem !important;
+        margin-top: 4px;
+    }
+
+    .home-animation {
+        height: 30rem;
+        overflow: hidden;
+        width: 30rem;
+    }
+
+    .home-leftcontent {
+        padding-left: 0 !important;
+        margin-bottom: 0;
+        margin-top: 0;
+        text-align: center;
+    }
+
+    .getstart {
+        width: 100%;
+        height: 2.5rem;
+        font-size: 1em;
+    }
+
+    .gap-3 {
+        gap: 3rem !important;
+    }
+
+    .underbutton p {
+        font-size: 0.5rem;
+        text-align: center;
+        padding-top: 0;
+        margin-top: 1rem;
+    }
+
+    .home-both-col {
+        flex-direction: column-reverse;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .home-animation {
+
+        height: 20rem;
+        width: 20rem;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .home-animation {
+        margin: 0;
+    }
+
+    .home-both-col {
+        align-items: center;
+        width: 100%;
+        /* padding-top: 2rem; */
+        margin: 0;
+
+    }
+
+    .home-landing {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .home-leftcontent-col {
+        width: 100%;
+        padding-right: 1em;
+        padding-left: 1em;
+    }
+
+    .home-rightcontent-col {
+        width: 100%;
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+
+}
