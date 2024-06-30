@@ -1,0 +1,95 @@
+
+.Contactus{
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.contact-left-image img{
+    margin-top: 4em;
+    align-items: center;
+    margin: auto;
+    height: 40rem;
+    width: 40rem;
+    overflow: hidden;
+}
+.Getintouch{
+    margin-left: 6em;
+    margin-right: 6em;
+}
+
+.Getintouch-left-content {
+
+    margin-top: 5em;
+    justify-content: flex-end;
+    
+    font-family: 'Alata', sans-serif;
+    text-align: justify;
+
+}
+
+.contact-rightcontent-col{
+    justify-content: flex-end;
+    font-family: 'Alata', sans-serif;
+    text-align: left;
+}
+
+.Getintouch-title {
+
+    font-weight: 700;
+    line-height: 5rem;
+    font-size: 4em;
+    text-align: left;
+}
+.Contactus a {
+    text-decoration: none !important;
+}
+.Getintouch-subtitle {
+    padding-top: .5em;
+    padding-bottom: 2em;
+
+    font-size: 1.2rem;
+    font-family: "space grotesk", sans-serif;
+}
+.socialmedia-img{
+    height: 9rem;
+    width: 13rem;
+}
+
+
+@media only screen and (max-width: 992px) {
+    .Contactus{
+        margin-left:1rem ;
+        margin-right: 1rem;
+    }
+
+    
+    .Getintouch-right-content{
+        padding-left: 2rem;
+    margin-top: 2rem;
+        padding-right: 2rem;
+    }
+    .Getintouch-left-content{
+        margin-top: .5em;
+    }
+    .Getintouch-title{
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 0 !important;
+
+    }
+    .Getintouch-subtitle{
+        font-size: .8rem;
+        padding-top: 0 !important;
+        padding-bottom: 0;
+    }
+    .socialmedia-img{
+        height: 5rem;
+        width: 7rem;
+    }
+
+    .title{
+        font-size: 2rem !important;
+        margin-top: 1rem;
+       
+    }
+}
