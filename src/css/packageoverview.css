@@ -1,0 +1,99 @@
+/* .overallpackage{
+    background-color: #0F5978;
+
+} */
+.Packageoverview {
+    margin-top: 5rem;
+    margin-left: 6rem;
+    margin-right: 6rem;
+
+
+}
+
+.package-subtitle {
+    margin-left: 6rem;
+    margin-right: 6rem;
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    font-family: "space grotesk", sans-serif;
+
+}
+
+.package-form button {
+    margin: 1rem;
+    border-radius: 2rem;
+}
+
+.package-form button.selected {
+
+    background: #0F5978;
+    color: white;
+
+}
+
+.package-form {
+    text-align: center;
+    margin-bottom: 2.5rem;
+
+}
+
+.package-form button {
+    text-align: left;
+    align-self: baseline;
+    font-size: 1.5rem;
+    color: rgb(165, 165, 165);
+    border: 1px solid black;
+    padding-left: 3em;
+    padding-right: 3em;
+    background: none;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    border-radius: .6rem;
+}
+
+.Packageoverview-title{
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+  }
+
+@media only screen and (max-width: 992px) {
+.Packageoverview-title{
+    margin-top: 3rem;
+    font-size: 1.94rem;
+    margin-bottom: 0 !important;
+}
+    .Packageoverview {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        margin-top: 1rem;
+    }
+
+    .package-subtitle {
+        font-size: .8rem;
+        margin-left: 0rem;
+        margin-top: .5rem;
+        margin-right: 0rem;
+        margin-bottom: .5rem;
+        text-align: justify;
+        font-weight: 500
+    }
+
+    .package-form button {
+        font-size: 1rem;
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+        justify-content: space-around;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        border-radius: .6rem;
+
+    }
+
+    .package-form {
+        text-align: center;
+        margin-bottom: 1.5rem;
+
+    }
+}
