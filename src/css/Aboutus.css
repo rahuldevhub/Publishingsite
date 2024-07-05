@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Crimson+Text&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+/* .About{
+
+    background-color: #FBF8FB; 
+} */
+.about-both-col {
+    
+    margin-left: 6em;
+    margin-right: 6em;
+    padding-bottom: 6rem;
+    padding-top: -1rem !important;
+    /* align-items: center; */
+}
+.about-left-animation{
+    margin-top: 4em;
+    align-items: center;
+    margin: auto;
+    height: 30rem;
+    width: 30rem;
+    overflow: hidden;
+}
+.about-right-content {
+
+    margin-top: 2em;
+    justify-content: flex-end;
+    padding-left: 4em;
+    font-family: 'Alata', sans-serif;
+    text-align: justify;
+
+}
+
+.about-title {
+
+    font-weight: 700;
+    line-height: 5rem;
+    font-size: 3.4em;
+}
+
+.about-subtitle {
+    padding-top: 1em;
+    padding-bottom: 2rem;
+  
+    font-size: 1.4rem;
+    font-family: "space grotesk", sans-serif;
+
+}
+
+.seemore {
+    font-size: .7rem;
+    font-weight: 100;
+    color: white;
+    background-color: #62326E;
+    text-decoration: none;
+    text-align: center;
+    width: 13rem;
+    border-radius: 1em;
+    height: 3rem;
+    border: .5px solid white;
+    font-family: "space grotesk", sans-serif;
+
+}
+.seemore:hover {
+    background-color: black;
+    color: white;
+}
+
+
+@media only screen and (max-width: 992px) {
+    .about-right-content {
+        text-align: center;
+        justify-content: center;
+    }
+    .about-left-animation {
+        height: 16rem;
+        overflow: hidden;
+        width: 16rem;
+        margin-bottom: 2rem;
+    }
+    .about-title {
+        font-size: 1.6em;
+        line-height: 2rem !important;
+        margin-bottom: 6px !important;
+    }
+
+    .about-subtitle {
+        font-size: .8em;
+        margin-bottom: 0;
+        text-align: justify;
+  
+
+    }
+
+    .seemore {
+        width: 100%;
+        height: 2.5rem;
+        font-size: .9em;
+    }
+
+    .about-right-content {
+        padding-left: 0 !important;
+        margin-top: 0;
+        text-align: left;
+       
+    }
+
+    .about-both-col {
+        margin-left: 1rem !important;
+        margin-right: 1rem !important;
+        padding-bottom: 0rem;
+        
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+    .about__img {
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .about-right-content {
+        padding-left: 0 !important;
+    }
+}

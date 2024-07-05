@@ -1,0 +1,78 @@
+/* .overallcustomisedpackage {
+    background-color: #0f5978;
+} */
+
+.Customizedpackage {
+    margin-top: 6rem;
+    margin-bottom: 2rem !important;
+    background-color: #0f5978;
+    /* background-image: url("../assets/customized.jpg"); */
+   
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    font-family: 'Alata', sans-serif;
+}
+
+.Customizedpackage-content {
+    background-color: #0f5978c4;
+    padding: 3rem;
+    align-items: center;
+    width: 100%;
+}
+
+.Customizedpackage-content p {
+    font-size: 2.4em;
+    font-weight: 700;
+    color: white;
+}
+
+.Customizedpackage-content button {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #0d4d68;
+    background-color: white;
+    border: none;
+    /* padding: 1rem , 4rem , 1rem, 4rem ; */
+    padding-top: 1em;
+    padding-right: 4em;
+    padding-bottom: 1em;
+    padding-left: 4em;
+    border-radius: 1em;
+
+}
+
+.Customizedpackage-button button:hover {
+    background-color: #08384d;
+    color: white;
+}
+
+.Customizedpackage-button {
+    text-align: center;
+}
+
+@media only screen and (max-width: 992px) {
+    .Customizedpackage {
+        margin-top: 3rem;
+        background-image: none;
+    }
+
+    .Customizedpackage-content p {
+        font-size: 1.2em;
+        font-weight: 400;
+        text-align: center;
+    }
+
+    .Customizedpackage-content {
+        padding: 1.5em;
+    }
+
+    .Customizedpackage-content button {
+        font-size: .8em;
+        width: 50%;
+        padding-left: 1em !important;
+        padding-right: 1em !important;
+    }
+
+}
