@@ -17,17 +17,18 @@ const Packagespage = () => {
                 <p className='allservice-overall-title' >Packages</p>
             </div>
 
-            <div>
-            <Row xs={2} sm={2} md={3} lg={3} className="g-4 packageall">
 
-<Card className='level1-card' >
+            <div className='packagepage-overall'>
+            <Row xs={2} sm={2} md={3} lg={3} className="g-4 ">
+
+<Card className='' >
     <Card.Body >
-        <div className='card-content'>
-            <p className='level1-title'>Package 1</p>
-            <p className='level1-description'>Essential services with standard cover and interior designs,
+        <div className=''>
+            <p className='package-title'>Package 1</p>
+            <p className='package-subtitle'>Essential services with standard cover and interior designs,
                 and eBook formatting for budding authors /Online
                 distribution in India stores.</p>
-            <p className='level1-Price'>₹8,999</p>
+            <p className='package-Price'>₹8,999</p>
             <Popupcontactus />
 
         </div>
@@ -46,14 +47,14 @@ const Packagespage = () => {
 </Card>
 
 
-<Card className='level1-card' >
+<Card className='' >
     <Card.Body>
-        <div className='card-content'>
-            <p className='level1-title'>Package 2</p>
-            <p className='level1-description'>Comprehensive support for aspiring authors with free
+        <div className=''>
+            <p className='package-title'>Package 2</p>
+            <p className='package-subtitle'>Comprehensive support for aspiring authors with free
                 Author copies, certificate, and and eBook placement on
                 Google and Kobo /Online distribution in India</p>
-            <p className='level1-Price'>₹12,999</p>
+            <p className='package-Price'>₹12,999</p>
             <Popupcontactus />
             <ul className='package-features'>
                 <li>All service in previous</li>
@@ -71,15 +72,15 @@ const Packagespage = () => {
 </Card>
 
 
-<Card className='level1-card' >
+<Card className='' >
     <Card.Body>
-        <div className='card-content'>
-            <p className='level1-title'>Package 3</p>
-            <p className='level1-description'>All-inclusive package with International Distribution
+        <div className='package-title'>
+            <p className=''>Package 3</p>
+            <p className='package-subtitle'>All-inclusive package with International Distribution
                 premium cover and interior design, Prime placement,
                 promotions, and free author session for ambitious authors</p>
 
-            <p className='level1-Price'>₹29,999</p>
+            <p className='package-Price'>₹29,999</p>
             <Popupcontactus />
 
             <ul className='package-features'>
@@ -100,7 +101,8 @@ const Packagespage = () => {
             <br/>
             <br/>
 
-<div>
+
+{/* <div>
             <Row xs={2} md={2} lg={3} className="g-4  packageall">
 
 <Card className='level1-card'>
@@ -183,7 +185,7 @@ const Packagespage = () => {
 
 
 </Row>
-</div>
+</div> */}
 
 
     </div>

@@ -4,7 +4,32 @@
     background-size: cover;
     background-attachment: fixed;
 } */
+.package-title {
+    font-size: 1.7rem;
+    font-weight: bold;
+    margin-bottom: 0 !important;
+    font-family: "space grotesk", sans-serif;
 
+}
+
+.package-subtitle {
+    font-size: .8rem;
+    font-family: "space grotesk", sans-serif;
+}
+
+.package-Price {
+    padding-top: 1rem;
+    font-size: 3rem;
+    font-weight: 700;
+
+}
+
+.package-features {
+    margin-top: 1rem;
+    text-align: left;
+    font-family: 'Alata', sans-serif;
+    font-size: 1.2rem;
+}
 .seeallpackages{
     background:  #0F5978;
     color: white;
@@ -52,51 +77,40 @@
     color: black;
     border: none !important;
 }
-.level1-title {
-    font-size: 1.7rem;
-    font-weight: bold;
-    margin-bottom: 0 !important;
-    font-family: "space grotesk", sans-serif;
 
-}
-.level1-description {
-    font-size: .8rem;
-    font-family: "space grotesk", sans-serif;
-}
 
-.level1-Price {
-    padding-top: 1rem;
-    font-size: 3rem;
-    font-weight: 700;
 
-}
 
-.package-features {
-    margin-top: 1rem;
-    text-align: left;
-    font-family: 'Alata', sans-serif;
-    font-size: 1.2rem;
-}
 
 
 
 @media only screen and (max-width: 992px) {
-
+.packagepage-overall{
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
     .level1-card {
         width: 16rem;
     }
 
-    .level1-title {
-        font-size: 1.5rem;
+    .package-title {
+        font-size: 1.2rem;
+    }
+    .package-subtitle {
+        font-size: .6rem;
+        text-align: left;
     }
 
-    .level1-Price {
-        font-size: 2rem;
+    .package-Price {
+        font-size: 1.7rem;
+    }
+    .package-features {
+        margin-top: .5rem;
+        text-align: left;
+        font-size: .6rem;
     }
 
-    .level1-description {
-        font-size: .7rem;
-    }
+  
 
     .level1-button {
     
@@ -115,41 +129,8 @@
         margin-top: .7rem;
         
     }
-    .package-features {
-        margin-top: .5rem;
-        text-align: left;
-        font-size: .8rem;
-    }
-
-    .swiper {
-        /* width: 100%; */
-        height: 100%;
-    }
     
-    .mySwiper{
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-    }
-    .swiper-slide {
-        text-align: center;
+  
     
-    
-        /* Center slide text vertically */
-        /* display: flex !important; */
-        justify-content: center !important;
-        align-items: center !important;
-    }
-    .swiper-pagination-bullet-active {
-        background-color: #0F5978 !important;
-        border: solid 1px #0F5978 !important;
-    }
-    .swiper-pagination{
-        position: static !important;
-        margin-top: 1.5rem;
-    }
-    .swiper-pagination-bullet {
-        width: 8px !important;
-        height: 8px !important;
-        margin-right: 5px !important;
-    }
+   
 }

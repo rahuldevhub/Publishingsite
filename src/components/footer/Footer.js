@@ -20,9 +20,9 @@ const Footer = () => {
                     <Row>
                         <Col lg="6" md="6" sm="4" >
                             {/* <img src={logo} alt='logo image' ></img> */}
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
+                            <p>Join Ritera's world of readers, where we act as your compass in the labyrinth of literature,
+                                helping you chart a course through the rich tapestry of stories waiting to be explored
+                            </p>
                         </Col>
                         <Col lg="2" md="6" sm="4" className='footer-col-right-content'>
 

@@ -18,7 +18,7 @@ const Hero = () => {
                 <Col lg="6" md="6" sm="4" className='home-leftcontent-col'  >
                     <div className='home-leftcontent' >
                         <h3 className='home-title'  data-aos="fade-right" >Empower your story<br /><span style={{ color: '#E53766' }}>Self Publish</span> with<br /> Confidence</h3>
-                        <p className='home-subtitle'  data-aos="fade-left">Ratix Info Tech offers you a unique and enjoyable experience of innovation, as well as a variety of services.</p>
+                        <p className='home-subtitle'  data-aos="fade-left">At Ritera, We're passionate about transforming ideas into stories and visions into masterpiece</p>
                         <a href='#packages' ><button className='getstart'data-aos="zoom-in" >Lets get started</button></a>
                     </div>
                 </Col>
