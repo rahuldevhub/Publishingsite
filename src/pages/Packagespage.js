@@ -20,17 +20,17 @@ const Packagespage = () => {
 
 
             <div className='packagepage-overall'>
-                <h1>Basic</h1>
-                <p className='package-subtitle'>Sample text</p>
+                <h1 className='packagepage-heading'>Basic :</h1>
+                <p className='packagepage-subheading'>Sample text</p>
                 <Row xs={2} sm={2} md={3} lg={3} className="g-4  packagepage-overall-row">
                     <Col className='packagecol'>  <div className='packagepage-card'>
                         <Card  >
                             <Card.Body >
                                 <div className=''>
                                     <p className='package-title'>Package 1</p>
-                                    {/* <p className='package-subtitle'>Essential services with standard cover and interior designs,
+                                    <p className='packagepage-subtitle'>Essential services with standard cover and interior designs,
                                         and eBook formatting for budding authors /Online
-                                        distribution in India stores.</p> */}
+                                        distribution in India stores.</p>
 
 
                                 </div>
@@ -62,9 +62,9 @@ const Packagespage = () => {
                                 <Card.Body>
                                     <div className=''>
                                         <p className='package-title'>Package 2</p>
-                                        {/* <p className='package-subtitle'>Comprehensive support for aspiring authors with free
+                                        <p className='packagepage-subtitle'>Comprehensive support for aspiring authors with free
                                         Author copies, certificate, and and eBook placement on
-                                        Google and Kobo /Online distribution in India</p> */}
+                                        Google and Kobo /Online distribution in India</p>
                                         <ul className='package-features'>
                                             <li>All service in previous</li>
                                             <li>80% Royalty for Author</li>
@@ -87,15 +87,15 @@ const Packagespage = () => {
                             </Card>
                         </div>
                     </Col>
-                    <Col className='packagecol'>
+                    <Col className='packagecol3'>
                         <div className='packagepage-card'>
                             <Card  >
                                 <Card.Body>
                                     <div className=''>
                                         <p className='package-title'>Package 3</p>
-                                        {/* <p className='package-subtitle'>All-inclusive package with International Distribution
+                                        <p className='packagepage-subtitle'>All-inclusive package with International Distribution
                                         premium cover and interior design, Prime placement,
-                                        promotions, and free author session for ambitious authors</p> */}
+                                        promotions, and free author session for ambitious authors</p>
 
                                         <ul className='package-features'>
                                             <li>All service in previous</li>
@@ -126,8 +126,8 @@ const Packagespage = () => {
 
 
             <div className='packagepage-overall'>
-                <h1>Premium</h1>
-                <p className='package-subtitle'>Sample text</p>
+                <h1 className='packagepage-heading'>Premium :</h1>
+                <p className='packagepage-subheading'>Sample text</p>
 
                 <Row xs={2} md={2} lg={3} className="g-4  packagepage-overall-row">
                     < Col className='packagecol'> <div className='packagepage-card'>
@@ -135,9 +135,9 @@ const Packagespage = () => {
                             <Card.Body >
                                 <div className=''>
                                     <p className='package-title'>Package 4</p>
-                                    {/* <p className='level1-description'>Advanced cover & Interior design, extensive marketing
+                                    <p className='packagepage-subtitle'>Advanced cover & Interior design, extensive marketing
                                     campaigns, early or post reviews, promotions and prime
-                                    listing..</p> */}
+                                    listing..</p>
 
 
                                 </div>
@@ -159,76 +159,80 @@ const Packagespage = () => {
 
                             </Card.Body>
                         </Card>
-                    </div>
-                    </Col>
+                    </div></Col>
 
 
                     <Col className='packagecol'><div className='packagepage-card' >
-                            <Card >
-                                <Card.Body>
-                                    <div className=''>
-                                        <p className='package-title'>Package 5</p>
-                                        
-                                      
-                                      
-                                        <ul className='package-features'>
-                                            <li>All service in previous</li>
-                                            <li>Complimentry Proof reading or Copy editing</li>
-                                            <li>Customized Cover Design</li>
-                                            <li>Advance interior Design</li>
-                                            <li>International Paperback distribution</li>
-                                    <li>E-Book Placement</li>
-                                    <li>Kindle Promotion</li>
-                                    <li>Social Media Promotion (Post Publishing)</li>
-                                    <li>Book Reviews</li>
-                                    <li>Author Copies</li>
-                                    <li>Author Video</li>
-                                        
+                        <Card >
+                            <Card.Body>
+                                <div className=''>
+                                    <p className='package-title'>Package 5</p>
 
-                                        </ul>
-                                        <p className='package-Price'>₹69999</p>
-                                <Popupcontactus />
-                                     
-                                    </div>
-                                </Card.Body>
-                            </Card>
-                        </div></Col>
-                        <Col className='packagecol'><div className='packagepage-card' >
-                    <Card >
-                        <Card.Body>
-                            <div className=''>
-                                <p className='package-title'>Package 6</p>
-                               
-                          
-                      
+                                    <p className='packagepage-subtitle'>Spot light package including Author interviews,
+                                        Customised designs, proofreading or copy editing sercice,
+                                        Review campaigns, and additional author copies</p>
 
-                                <ul className='package-features'>
-                 
-
-                                    <li>Personal Publishing Manager</li>
-                                    <li>Proff Reading (40k words)</li>
-                                    <li>Copy Editing (15k words)</li>
-                                    <li>Customized Cover Design</li>
-                                    <li>International Paperback distribution</li>
-                                    <li>E-book Placements</li>
-                                    <li>Author Vedio on website</li>
-                                    <li>Kindle Promotion</li>
-                                    <li>Print media Promotion</li>
-                                    <li>Social Media Promotion (Pre and Post Publishing)</li>
-
-                                    <li>Marketing Plan suggestion</li>
-                                    <li>Publishing Event Handling</li>
+                                    <ul className='package-features'>
+                                        <li>All service in previous</li>
+                                        <li>Complimentry Proof reading or Copy editing</li>
+                                        <li>Customized Cover Design</li>
+                                        <li>Advance interior Design</li>
+                                        <li>International Paperback distribution</li>
+                                        <li>E-Book Placement</li>
+                                        <li>Kindle Promotion</li>
+                                        <li>Social Media Promotion (Post Publishing)</li>
+                                        <li>Book Reviews</li>
+                                        <li>Author Copies</li>
+                                        <li>Author Video</li>
 
 
-                                </ul>
-                                <p className='package-Price'>₹118999</p>
-                                <Popupcontactus />
-                              
-                            </div>
-                        </Card.Body>
-                    </Card>
-                    </div>
-                    </Col>
+                                    </ul>
+                                    <p className='package-Price'>₹69999</p>
+                                    <Popupcontactus />
+
+                                </div>
+                            </Card.Body>
+                        </Card>
+                    </div></Col>
+
+
+                    <Col className='packagecol3'><div className='packagepage-card' >
+                        <Card >
+                            <Card.Body>
+                                <div className=''>
+                                    <p className='package-title'>Package 6</p>
+
+
+                                    <p className='packagepage-subtitle'>Elite services including developmental editing,
+                                        Proofreading & Copy editing, marketing support, Print
+                                        media promotions and etc for seasoned authors.</p>
+
+                                    <ul className='package-features'>
+
+
+                                        <li>Personal Publishing Manager</li>
+                                        <li>Proff Reading (40k words)</li>
+                                        <li>Copy Editing (15k words)</li>
+                                        <li>Customized Cover Design</li>
+                                        <li>International Paperback distribution</li>
+                                        <li>E-book Placements</li>
+                                        <li>Author Vedio on website</li>
+                                        <li>Kindle Promotion</li>
+                                        <li>Print media Promotion</li>
+                                        <li>Social Media Promotion (Pre and Post Publishing)</li>
+
+                                        <li>Marketing Plan suggestion</li>
+                                        <li>Publishing Event Handling</li>
+
+
+                                    </ul>
+                                    <p className='package-Price'>₹118999</p>
+                                    <Popupcontactus />
+
+                                </div>
+                            </Card.Body>
+                        </Card>
+                    </div></Col>
 
 
                 </Row>

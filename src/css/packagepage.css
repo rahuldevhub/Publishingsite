@@ -1,13 +1,31 @@
+.packagepage-overall{
+    overflow: hidden;
+    margin-left: 6rem;
+    margin-right: 6rem;
+}
+.packagepage-heading{
+    font-size: 2.4rem;
+    font-family: 'Alata', sans-serif;
+
+
+}
+/* .packagepage-subheading{
+
+} */
 .package-title {
-    font-size: 1.7rem;
+    font-size:2.4rem;
+    margin-top: .7rem;
     font-weight: bold;
     margin-bottom: 0 !important;
     font-family: "space grotesk", sans-serif;
 
 }
 
-.package-subtitle {
-    font-size: .8rem;
+.packagepage-subtitle {
+    margin-top: .5rem;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    text-align: left;
     font-family: "space grotesk", sans-serif;
 }
 
@@ -89,7 +107,9 @@
         font-size: .6rem;
         text-align: left;
     }
-
+.packagepage-subtitle{
+    display: none;
+}
     .package-Price {
         font-size: 1.7rem;
         padding-top: 0;
