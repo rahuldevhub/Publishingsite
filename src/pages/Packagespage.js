@@ -20,8 +20,8 @@ const Packagespage = () => {
 
             <div className='packagepage-overall'>
             <Row xs={2} sm={2} md={3} lg={3} className="g-4 ">
-
-<Card className='' >
+            <div className='packagepage-card'>
+<Card  >
     <Card.Body >
         <div className=''>
             <p className='package-title'>Package 1</p>
@@ -29,7 +29,6 @@ const Packagespage = () => {
                 and eBook formatting for budding authors /Online
                 distribution in India stores.</p>
             <p className='package-Price'>₹8,999</p>
-            <Popupcontactus />
 
         </div>
         <ul className='package-features'>
@@ -41,13 +40,15 @@ const Packagespage = () => {
             <li>E-Book Placement (Google) </li>
 
         </ul>
-        <Link to={'/packages'}><button className='seeallpackages'>See all Features</button></Link>
+        <Popupcontactus />
 
+    
     </Card.Body>
 </Card>
 
-
-<Card className='' >
+</div>
+<div className='packagepage-card2' >
+<Card  >
     <Card.Body>
         <div className=''>
             <p className='package-title'>Package 2</p>
@@ -55,7 +56,6 @@ const Packagespage = () => {
                 Author copies, certificate, and and eBook placement on
                 Google and Kobo /Online distribution in India</p>
             <p className='package-Price'>₹12,999</p>
-            <Popupcontactus />
             <ul className='package-features'>
                 <li>All service in previous</li>
                 <li>80% Royalty for Author</li>
@@ -64,15 +64,16 @@ const Packagespage = () => {
                 <li>Online Paperback distribution</li>
 
             </ul>
-            <Link to={'/packages'}><button className='seeallpackages'>See all Features</button></Link>
+            <Popupcontactus />
 
 
         </div>
     </Card.Body>
 </Card>
+</div>
+<div className='packagepage-card'>
 
-
-<Card className='' >
+<Card  >
     <Card.Body>
         <div className='package-title'>
             <p className=''>Package 3</p>
@@ -81,7 +82,6 @@ const Packagespage = () => {
                 promotions, and free author session for ambitious authors</p>
 
             <p className='package-Price'>₹29,999</p>
-            <Popupcontactus />
 
             <ul className='package-features'>
                 <li>All service in previous</li>
@@ -90,11 +90,13 @@ const Packagespage = () => {
                 <li>Premium Interior Design</li>
                 <li>International PaperBack Distribution</li>
             </ul>
-            <Link to={'/packages'}><button className='seeallpackages'>See all Features</button></Link>
+            <Popupcontactus />
+
+           
         </div>
     </Card.Body>
 </Card>
-
+</div>
 </Row>
             </div>
 

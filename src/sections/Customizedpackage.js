@@ -1,6 +1,7 @@
 import React from 'react'
 import { Row, Col } from 'react-bootstrap'
 import '../css/Customized.css'
+import { Link } from 'react-router-dom'
 const Customizedpackage = () => {
   return (
 
@@ -14,7 +15,8 @@ const Customizedpackage = () => {
       </Col>
 
       <Col lg="6" sm="4" className=' Customizedpackage-button'>
-        <button>Customize Now</button>
+      <Link to={'https://docs.google.com/forms/d/e/1FAIpQLSfNgLaoeUX9ZmnJkRdaSBH7EkEH48LUhowXbJgQ9sdRFHj-Xw/viewform?usp=sf_link'} target="_blank">
+        <button >Customize Now</button></Link>
       </Col  >
     </Row>
 

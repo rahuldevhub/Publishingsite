@@ -27,6 +27,7 @@
         margin-right: 2rem;
         padding-bottom: 1rem;
         padding-top: 0rem;
+        overflow: hidden;
     }
     .title{
         font-size: 1.5rem;

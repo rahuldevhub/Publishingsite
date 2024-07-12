@@ -9,14 +9,14 @@ const FAQ = () => {
         <div className='FAQ'>
 
             <Row >
-                <Col lg="6" md="6" sm="4" className='faq-leftcontent-col'>
+                <Col lg="6" md="6" sm="3"  className='faq-leftcontent-col'>
                     <div className='faq-animation' data-aos="zoom-in">
                         <Lottie animationData={faq} />
                     </div>
                 </Col>
 
 
-                <Col lg="6" md="6" sm="4">
+                <Col lg="6" md="6" sm="3" >
                 <p className='title' data-aos="fade-left" >Frequently Asked Questions</p>
                 <Faqcontent/>
 

@@ -30,7 +30,7 @@
     font-family: 'Alata', sans-serif;
     font-size: 1.2rem;
 }
-.seeallpackages{
+/* .seeallpackages{
     background:  #0F5978;
     color: white;
     font-weight: 600;
@@ -80,7 +80,7 @@
 
 
 
-
+ */
 
 
 
@@ -110,9 +110,20 @@
         font-size: .6rem;
     }
 
-  
+  .packagepage-card{
+  /* --bs-card-spacer-x:0rem !important; */
+  /* width: rem !important; */
+  margin-right: 5px;
+  padding: 0rem !important;
+ 
+  }
+  .packagepage-card2{
+margin-left: 5px;
+    padding: 0rem !important;
+  }
 
-    .level1-button {
+
+    /* .level1-button {
     
         font-size: 1rem;
         border-radius: .5rem;
@@ -130,7 +141,7 @@
         
     }
     
-  
+   */
     
    
 }

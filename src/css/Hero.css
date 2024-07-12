@@ -10,26 +10,30 @@
     margin-right: 6em;
     padding-top: 2rem;
     padding-bottom: 10rem;
+    overflow: hidden;
+
 
 }
 
 .home-leftcontent {
     margin-top: 8em;
-
     justify-content: flex-end;
     padding-left: 4em;
     font-family: 'Alata', sans-serif;
     text-align: left;
     color: #19759C;
+    overflow: hidden;
+
 }
 
 .home-animation {
     margin-top: -3em !important;
-
     margin: auto;
     height: 40rem;
     width: 40rem;
     overflow: hidden;
+ 
+
 }
 
 
@@ -68,7 +72,7 @@
 
 
 @media only screen and (max-width: 992px) {
-    .home-both-col {}
+    /* .home-both-col {} */
 
     .home-title {
         font-size: 1.8rem;
@@ -132,6 +136,8 @@
         padding-bottom: 2rem;
         margin-left: 0rem;
         margin-right: 0rem;
+        overflow: hidden;
+
     }
 
     .home-landing {
@@ -143,12 +149,16 @@
         width: 100%;
         padding-right: 1em;
         padding-left: 1em;
+        overflow: hidden;
+        
     }
 
     .home-rightcontent-col {
         width: 100%;
         padding-left: 2em;
         padding-right: 2em;
+        overflow: hidden;
+
     }
 
 }

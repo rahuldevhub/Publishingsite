@@ -11,16 +11,18 @@
     margin-right: 6em;
     padding-bottom: 6rem;
     padding-top: -1rem !important;
+    overflow: hidden;
     /* align-items: center; */
 }
 .about-left-animation{
     margin-top: 4em;
-    align-items: center;
+    /* align-items: center; */
     margin: auto;
     height: 30rem;
     width: 30rem;
     overflow: hidden;
 }
+
 .about-right-content {
 
     margin-top: 2em;
@@ -28,13 +30,14 @@
     padding-left: 4em;
     font-family: 'Alata', sans-serif;
     text-align: justify;
+    overflow: hidden;
 
 }
 
 .about-title {
 
     font-weight: 700;
-    line-height: 5rem;
+    /* line-height: 5rem; */
     font-size: 3.4em;
 }
 
@@ -68,9 +71,17 @@
 
 
 @media only screen and (max-width: 992px) {
-    .about-right-content {
-        text-align: center;
-        justify-content: center;
+
+    .about-title {
+        font-size: 1.6em;
+        line-height: 2rem !important;
+        margin-bottom: 6px !important;
+    }
+    .about-subtitle {
+        font-size: .8em;
+        margin-bottom: 0;
+        line-height: 1.4rem !important;
+
     }
     .about-left-animation {
         height: 16rem;
@@ -78,50 +89,77 @@
         width: 16rem;
         margin-bottom: 2rem;
     }
-    .about-title {
-        font-size: 1.6em;
-        line-height: 2rem !important;
-        margin-bottom: 6px !important;
-    }
-
-    .about-subtitle {
-        font-size: .8em;
-        margin-bottom: 0;
-        text-align: justify;
-  
-
-    }
-
-    .seemore {
-        width: 100%;
-        height: 2.5rem;
-        font-size: .9em;
-    }
 
     .about-right-content {
         padding-left: 0 !important;
+        margin-bottom: 0;
         margin-top: 0;
         text-align: left;
-       
+        justify-content: center;
     }
+    
 
-    .about-both-col {
-        margin-left: 1rem !important;
-        margin-right: 1rem !important;
-        padding-bottom: 0rem;
+    .seemore {
+        width: 18rem;
+        height: 2.5rem;
+        font-size: .9em;
         
     }
+
+   
+
+    
 
 }
 
 @media only screen and (max-width: 768px) {
-    .about__img {
-        margin-top: 30px;
+  
+    .about-left-animation{
+
+        height: 18rem;
+        width: 18rem;
+     
     }
 }
 
 @media only screen and (max-width: 576px) {
+    
+    .About{
+        overflow: hidden;
+    }
+    .about-left-animation{
+        margin: 0;
+        margin-bottom: 2rem;
+    }
     .about-right-content {
         padding-left: 0 !important;
+    }
+    .about-both-col {
+        align-items: center;
+        width: 100%;
+        margin: 0;
+        margin-left: 0rem !important;
+        margin-right: 0rem !important;
+        padding-bottom: 0rem;
+        overflow: hidden;
+
+        
+        
+    }
+    .about-leftcontent-col {
+        /* width: 100%; */
+        padding-right: 1rem;
+        padding-left: 1rem;
+        overflow: hidden;
+        text-align: -webkit-center;
+
+    }
+
+    .about-rightcontent-col {
+        /* width: 100%; */
+        padding-left: 2rem;
+        padding-right: 2rem;
+        overflow: hidden;
+
     }
 }

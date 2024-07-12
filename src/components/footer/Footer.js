@@ -28,10 +28,10 @@ const Footer = () => {
 
                             <div>
                                 <h3>Company</h3>
-                                <a href='#About'>About</a><br />
-                                <a href='#ServiceWeOffer'>Services</a><br />
-                                <a href='#Testimonials'>Reviews</a><br />
-                                <a href='#contact'>Social Media</a><br />
+                                <a href='/aboutus'>About</a><br />
+                                <a href='/allservice'>Services</a><br />
+                                <a href='/packages'>Packages</a><br />
+                                <a href='/contact'>Social Media</a><br />
                                
 
                             </div>
@@ -44,9 +44,10 @@ const Footer = () => {
                                
                                 <h3>Useful Links</h3>
 
-                                <a href='#ServiceWeOffer'>More Services</a><br />
-                                <a href='#careers'>Careers</a><br />
-                                <a href='#contact'>Get in touch</a><br />
+                                <a href='/allservice'>More Services</a><br />
+                              
+                                <a href='/contact'>Get in touch</a><br />
+                                <a href='#careers'><s>Careers </s></a><br />
                                
                                 
 
@@ -58,9 +59,8 @@ const Footer = () => {
                             <div>
                               
                             <h3>Careers</h3>
-                                <a href='#careers'>Job Openings</a><br />
-                               
-                               <a href='#careers'>Job responsibilities</a><br />
+                                <a href='#'><s>Job Openings </s></a><br />
+                               <a href='#'><s>Job responsibilities</s></a><br />
                                 
 
 
