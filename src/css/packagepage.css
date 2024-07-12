@@ -116,10 +116,11 @@
     .package-features {
         margin-top: .5rem;
         text-align: left;
-        font-size: .6rem;
+        font-size: .7rem;
     }
 ul{
     padding-left: 1rem;
+    margin-bottom: .5rem;
 }
   .packagepage-card{
   /* --bs-card-spacer-x:0rem !important; */

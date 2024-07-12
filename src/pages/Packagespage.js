@@ -65,18 +65,23 @@ const Packagespage = () => {
                             <Card.Body>
                                 <div className=''>
                                     <p className='package-title'>Package 2</p>
-                                    <p className='package-subtitle'>Comprehensive support for aspiring authors with free
+                                    {/* <p className='package-subtitle'>Comprehensive support for aspiring authors with free
                                         Author copies, certificate, and and eBook placement on
-                                        Google and Kobo /Online distribution in India</p>
-                                    <p className='package-Price'>₹12,999</p>
+                                        Google and Kobo /Online distribution in India</p> */}
                                     <ul className='package-features'>
                                         <li>All service in previous</li>
                                         <li>80% Royalty for Author</li>
                                         <li>Author Copies & Certificate</li>
                                         <li>E-Book (Google, Kindle)</li>
-                                        <li>Online Paperback distribution</li>
+                                        <li>Standard cover design</li>
+                                        <li>Interior Design</li>
+                                        <li>Online Paperback distribution (India)</li>
+                                        <li>Publishing Plan</li>
+                                        <li>Digital Proof</li>
 
                                     </ul>
+                                    <p className='package-Price'>₹12,999</p>
+
                                     <Popupcontactus />
 
 
@@ -93,11 +98,9 @@ const Packagespage = () => {
                             <Card.Body>
                                 <div className='package-title'>
                                     <p className=''>Package 3</p>
-                                    <p className='package-subtitle'>All-inclusive package with International Distribution
+                                    {/* <p className='package-subtitle'>All-inclusive package with International Distribution
                                         premium cover and interior design, Prime placement,
-                                        promotions, and free author session for ambitious authors</p>
-
-                                    <p className='package-Price'>₹29,999</p>
+                                        promotions, and free author session for ambitious authors</p> */}
 
                                     <ul className='package-features'>
                                         <li>All service in previous</li>
@@ -105,10 +108,16 @@ const Packagespage = () => {
                                         <li>Premium Cover Design</li>
                                         <li>Premium Interior Design</li>
                                         <li>International PaperBack Distribution</li>
+                                        <li>E-Book ( google, kindle, kobo)</li>
+                                        <li>Author copies (10)</li>
+                                        <li>Amazon Prime placement (3mon)</li>
+                                        <li>Kindle Promotion</li>
+                                        <li>Book Reviews</li>
+                                        <li>Free Author Session</li>
+                                        <li>Beta Reading</li>
                                     </ul>
+                                    <p className='package-Price'>₹29,999</p>
                                     <Popupcontactus />
-
-
                                 </div>
                             </Card.Body>
                         </Card>
