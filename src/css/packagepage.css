@@ -87,16 +87,19 @@
 
 @media only screen and (max-width: 992px) {
 .packagepage-overall{
-    margin-top: 2rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
     /* overflow: hidden; */
 
 }
 .packagepage-overall-row{
     display: flex;
+    padding: 0 !important;
 }
-
+.packagecol{
+    padding: 0 !important;
+}
     .package-title {
         font-size: 1.2rem;
     }
@@ -107,13 +110,17 @@
 
     .package-Price {
         font-size: 1.7rem;
+        padding-top: 0;
+        margin-bottom: .5rem;
     }
     .package-features {
         margin-top: .5rem;
         text-align: left;
         font-size: .6rem;
     }
-
+ul{
+    padding-left: 1rem;
+}
   .packagepage-card{
   /* --bs-card-spacer-x:0rem !important; */
   /* width: rem !important; */
@@ -122,11 +129,7 @@
   overflow: hidden;
  
   }
-  .packagepage-card2{
-margin-left: 5px;
-    padding: 0rem !important;
-    overflow: hidden;
-  }
+ 
 
 
     /* .level1-button {

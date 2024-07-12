@@ -20,17 +20,19 @@ const Packagespage = () => {
 
 
             <div className='packagepage-overall'>
+                <h1>Basic</h1>
+                <p className='package-subtitle'>Sample text</p>
                 <Row xs={2} sm={2} md={3} lg={3}  className="g-4  packagepage-overall-row">
-                  <Col>  <div className='packagepage-card'>
+                  <Col className='packagecol'>  <div className='packagepage-card'>
 
                         <Card  >
                             <Card.Body >
                                 <div className=''>
                                     <p className='package-title'>Package 1</p>
-                                    <p className='package-subtitle'>Essential services with standard cover and interior designs,
+                                    {/* <p className='package-subtitle'>Essential services with standard cover and interior designs,
                                         and eBook formatting for budding authors /Online
-                                        distribution in India stores.</p>
-                                    <p className='package-Price'>₹8,999</p>
+                                        distribution in India stores.</p> */}
+                                
 
                                 </div>
                                 <ul className='package-features'>
@@ -40,8 +42,14 @@ const Packagespage = () => {
                                     <li>Standard Interior Design</li>
                                     <li>Online PaperBack Distribution (India)</li>
                                     <li>E-Book Placement (Google) </li>
+                                    <li>Copy Rights </li>
+                                    <li>ISBN + Barcode </li>
+                                    <li>Author Dashboard </li>
+                                    <li>Post Publishing Support </li>
+                                    <li>60% Royalty for Author</li>
 
                                 </ul>
+                                <p className='package-Price'>₹8,999</p>
                                 <Popupcontactus />
 
 
@@ -49,8 +57,8 @@ const Packagespage = () => {
                         </Card>
 
                     </div>
-                    </Col>
-                    <Col>
+                    </Col >
+                    <Col className='packagecol'>
                     <div className='packagepage-card' >
 
                         <Card  >
@@ -78,7 +86,7 @@ const Packagespage = () => {
 
                     </div>
                     </Col>
-                    <Col>
+                    <Col className='packagecol'>
                     <div className='packagepage-card'>
 
                         <Card  >
