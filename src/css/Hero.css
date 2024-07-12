@@ -76,7 +76,8 @@
     /* .home-both-col {} */
 
     .home-title {
-        font-size: 1.8rem;
+        font-weight: 700;
+        font-size: 2rem;
         /* line-height: 2.4rem !important; */
     }
 
