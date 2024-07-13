@@ -6,6 +6,7 @@ import Card from 'react-bootstrap/Card';
 import '../css/packagepage.css'
 import { Link } from 'react-router-dom';
 import Popupcontactus from '../components/popup/Popupcontactus';
+import Footer from '../components/footer/Footer';
 const Packagespage = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -238,7 +239,7 @@ const Packagespage = () => {
                 </Row>
 
             </div>
-
+<Footer/>
 
         </div>
     )
