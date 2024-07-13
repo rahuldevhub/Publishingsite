@@ -21,7 +21,7 @@ const Packagespage = () => {
 
             <div className='packagepage-overall'>
                 <h1 className='packagepage-heading'>Basic :</h1>
-                <p className='packagepage-subheading'>Sample text</p>
+                {/* <p className='packagepage-subheading'>Sample text</p> */}
                 <Row xs={2} sm={2} md={3} lg={3} className="g-4  packagepage-overall-row">
                     <Col className='packagecol'>  <div className='packagepage-card'>
                         <Card  >
@@ -127,7 +127,7 @@ const Packagespage = () => {
 
             <div className='packagepage-overall'>
                 <h1 className='packagepage-heading'>Premium :</h1>
-                <p className='packagepage-subheading'>Sample text</p>
+                {/* <p className='packagepage-subheading'>Sample text</p> */}
 
                 <Row xs={2} md={2} lg={3} className="g-4  packagepage-overall-row">
                     < Col className='packagecol'> <div className='packagepage-card'>

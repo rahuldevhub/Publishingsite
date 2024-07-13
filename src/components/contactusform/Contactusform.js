@@ -29,8 +29,8 @@ const Contactusform = () => {
                 <Form.Select aria-label="Default select example">
                     <option>Select Reason for Contacting</option>
                     <option value="1">Manuscript Submission</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="2">Package Details</option>
+                    <option value="3">Other Services</option>
                 </Form.Select>
                 <Form.Text className="text-muted">
                     Your details are in safe hands.
