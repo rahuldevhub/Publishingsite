@@ -24,7 +24,7 @@ const Package1 = () => {
                         <Card className='level1-card' >
                             <Card.Body >
                                 <div className='card-content'>
-                                    <p className='level1-title'>Package 1</p>
+                                    <p className='level1-title'>Essential </p>
                                     <p className='level1-description'>Essential services with standard cover and interior designs,and eBook formatting for budding authors /Online distribution in India stores.</p>
                                     <p className='level1-Price'>₹8,999</p>
                                     <Popupcontactus />
@@ -43,7 +43,7 @@ const Package1 = () => {
                         <Card className='level1-card' >
                             <Card.Body>
                                 <div className='card-content'>
-                                    <p className='level1-title'>Package 2</p>
+                                    <p className='level1-title'>Standard </p>
                                     <p className='level1-description'>Comprehensive support for aspiring authors with free Author copies, certificate, and and eBook placement on Google and Kobo /Online distribution in India</p>
                                     <p className='level1-Price'>₹12,999</p>
                                     <Popupcontactus />
@@ -65,7 +65,7 @@ const Package1 = () => {
                         <Card className='level1-card' >
                             <Card.Body>
                                 <div className='card-content'>
-                                    <p className='level1-title'>Package 3</p>
+                                    <p className='level1-title'>Advanced</p>
                                     <p className='level1-description'>All-inclusive package with International Distribution
                                         premium cover and interior design, Prime placement,
                                         promotions, and free author session for ambitious authors</p>
@@ -108,7 +108,7 @@ const Package1 = () => {
                                 <Card className='level1-card' >
                                     <Card.Body >
                                         <div className='card-content'>
-                                            <p className='level1-title'>Package 1</p>
+                                            <p className='level1-title'>Essential</p>
                                             <p className='level1-description'>Essential services with standard cover and interior designs,and eBook formatting for budding authors /Online distribution in India stores.</p>
                                             <p className='level1-Price'>₹8,999</p>
                                             <Popupcontactus />
@@ -128,7 +128,7 @@ const Package1 = () => {
                                 <Card className='level1-card' >
                                     <Card.Body>
                                         <div className='card-content'>
-                                            <p className='level1-title'>Package 2</p>
+                                            <p className='level1-title'>Standard</p>
                                             <p className='level1-description'>Comprehensive support for aspiring authors with free Author copies, certificate, and and eBook placement on Google and Kobo /Online distribution in India</p>
                                             <p className='level1-Price'>₹12,999</p>
                                             <Popupcontactus />
@@ -151,7 +151,7 @@ const Package1 = () => {
                                 <Card className='level1-card' >
                                     <Card.Body>
                                         <div className='card-content'>
-                                            <p className='level1-title'>Package 3</p>
+                                            <p className='level1-title'>Advanced</p>
                                             <p className='level1-description'>All-inclusive package with International Distribution
                                                 premium cover and interior design, Prime placement,
                                                 promotions, and free author session for ambitious authors</p>

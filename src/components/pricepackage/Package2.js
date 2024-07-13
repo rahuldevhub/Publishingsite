@@ -23,7 +23,7 @@ const Package2 = () => {
                         <Card className='level1-card'>
                             <Card.Body >
                                 <div className='card-content'>
-                                    <p className='level1-title'>Package 4</p>
+                                    <p className='level1-title'>Elite </p>
                                     <p className='level1-description'>Advanced cover & Interior design, extensive marketing
                                         campaigns, early or post reviews, promotions and prime
                                         listing..</p>
@@ -50,7 +50,7 @@ const Package2 = () => {
                         <Card className='level1-card'>
                             <Card.Body>
                                 <div className='card-content'>
-                                    <p className='level1-title'>Package 5</p>
+                                    <p className='level1-title'>Premium </p>
                                     <p className='level1-description'>Spot light package including Author interviews,
                                         Customised designs, proofreading or copy editing sercice,
                                         Review campaigns, and additional author copies</p>
@@ -77,7 +77,7 @@ const Package2 = () => {
                         <Card className='level1-card'>
                             <Card.Body>
                                 <div className='card-content'>
-                                    <p className='level1-title'>Package 6</p>
+                                    <p className='level1-title'>Exclusive </p>
                                     <p className='level1-description'>Elite services including developmental editing,
                                         Proofreading & Copy editing, marketing support, Print
                                         media promotions and etc for seasoned authors.</p>
@@ -126,7 +126,7 @@ const Package2 = () => {
                             <SwiperSlide> <Card className='level1-card'>
                                 <Card.Body >
                                     <div className='card-content'>
-                                        <p className='level1-title'>Package 4</p>
+                                        <p className='level1-title'>Elite</p>
                                         <p className='level1-description'>Advanced cover & Interior design, extensive marketing
                                             campaigns, early or post reviews, promotions and prime
                                             listing..</p>
@@ -153,7 +153,7 @@ const Package2 = () => {
                             <SwiperSlide>  <Card className='level1-card'>
                                 <Card.Body>
                                     <div className='card-content'>
-                                        <p className='level1-title'>Package 5</p>
+                                        <p className='level1-title'>Premium</p>
                                         <p className='level1-description'>Spot light package including Author interviews,
                                             Customised designs, proofreading or copy editing sercice,
                                             Review campaigns, and additional author copies</p>
@@ -180,7 +180,7 @@ const Package2 = () => {
                             <SwiperSlide> <Card className='level1-card'>
                                 <Card.Body>
                                     <div className='card-content'>
-                                        <p className='level1-title'>Package 6</p>
+                                        <p className='level1-title'>Exclusive</p>
                                         <p className='level1-description'>Elite services including developmental editing,
                                             Proofreading & Copy editing, marketing support, Print
                                             media promotions and etc for seasoned authors.</p>

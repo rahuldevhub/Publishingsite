@@ -27,7 +27,7 @@ const Packagespage = () => {
                         <Card  >
                             <Card.Body >
                                 <div className=''>
-                                    <p className='package-title'>Package 1</p>
+                                    <p className='package-title'>Essential</p>
                                     <p className='packagepage-subtitle'>Essential services with standard cover and interior designs,
                                         and eBook formatting for budding authors /Online
                                         distribution in India stores.</p>
@@ -61,7 +61,7 @@ const Packagespage = () => {
                             <Card  >
                                 <Card.Body>
                                     <div className=''>
-                                        <p className='package-title'>Package 2</p>
+                                        <p className='package-title'>Standard</p>
                                         <p className='packagepage-subtitle'>Comprehensive support for aspiring authors with free
                                         Author copies, certificate, and and eBook placement on
                                         Google and Kobo /Online distribution in India</p>
@@ -92,7 +92,7 @@ const Packagespage = () => {
                             <Card  >
                                 <Card.Body>
                                     <div className=''>
-                                        <p className='package-title'>Package 3</p>
+                                        <p className='package-title'>Advanced</p>
                                         <p className='packagepage-subtitle'>All-inclusive package with International Distribution
                                         premium cover and interior design, Prime placement,
                                         promotions, and free author session for ambitious authors</p>
@@ -126,7 +126,7 @@ const Packagespage = () => {
 
 
             <div className='packagepage-overall'>
-                <h1 className='packagepage-heading'>Premium :</h1>
+                <h1 className='packagepage-heading'>Top-Tier :</h1>
                 {/* <p className='packagepage-subheading'>Sample text</p> */}
 
                 <Row xs={2} md={2} lg={3} className="g-4  packagepage-overall-row">
@@ -134,7 +134,7 @@ const Packagespage = () => {
                         <Card >
                             <Card.Body >
                                 <div className=''>
-                                    <p className='package-title'>Package 4</p>
+                                    <p className='package-title'>Elite</p>
                                     <p className='packagepage-subtitle'>Advanced cover & Interior design, extensive marketing
                                     campaigns, early or post reviews, promotions and prime
                                     listing..</p>
@@ -166,7 +166,7 @@ const Packagespage = () => {
                         <Card >
                             <Card.Body>
                                 <div className=''>
-                                    <p className='package-title'>Package 5</p>
+                                    <p className='package-title'>Premium </p>
 
                                     <p className='packagepage-subtitle'>Spot light package including Author interviews,
                                         Customised designs, proofreading or copy editing sercice,
@@ -200,7 +200,7 @@ const Packagespage = () => {
                         <Card >
                             <Card.Body>
                                 <div className=''>
-                                    <p className='package-title'>Package 6</p>
+                                    <p className='package-title'>Exclusives</p>
 
 
                                     <p className='packagepage-subtitle'>Elite services including developmental editing,
