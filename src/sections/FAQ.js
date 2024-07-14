@@ -2,7 +2,7 @@ import React from 'react'
 import { Row, Col } from 'react-bootstrap';
 import '../css/FAQ.css'
 import Lottie from 'lottie-react'
-import faq from '../assets/Animation/Animation - 1709309979308.json'
+import faq from '../assets/Animation/FAQ.json'
 import Faqcontent from '../components/faq/Faqcontent';
 const FAQ = () => {
     return (

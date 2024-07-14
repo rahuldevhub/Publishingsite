@@ -4,12 +4,12 @@ import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 
-import kindle from '../assets/ourservice/13818745_5362964.png'
-import proff from '../assets/ourservice/proff.png'
-import globe from '../assets/ourservice/globe.png'
-import marketing from '../assets/ourservice/marketing.png'
-import seeall from '../assets/ourservice/see all.png'
-import writing from '../assets/ourservice/writing.png'
+import kindle from '../assets/ourservice/betareading.webp'
+import proff from '../assets/ourservice/proff.webp'
+import globe from '../assets/ourservice/globe.webp'
+import marketing from '../assets/ourservice/marketing.webp'
+import seeall from '../assets/ourservice/see all.webp'
+import writing from '../assets/ourservice/writing.webp'
 
 import MediaQuery, { useMediaQuery } from "react-responsive";
 import 'swiper/css';

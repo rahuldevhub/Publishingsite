@@ -5,6 +5,7 @@
     padding-top: 5rem;
     margin-left: 1rem;
     margin-right: 1rem;
+    overflow: hidden;
 }
 
 .faq-animation {

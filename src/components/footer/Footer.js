@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import '../footer/Footer.css'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-// import logo from '../../Assets/logo.png'
+import logo from '../../assets/logo.webp'
 import { Row, Col } from 'react-bootstrap';
 
 
@@ -19,7 +19,7 @@ const Footer = () => {
                 <div className='footer-col'>
                     <Row>
                         <Col lg="6" md="6" sm="4" >
-                            {/* <img src={logo} alt='logo image' ></img> */}
+                            <img src={logo} alt='logo image' ></img>
                             <p>Join Ritera's world of readers, where we act as your compass in the labyrinth of literature,
                                 helping you chart a course through the rich tapestry of stories waiting to be explored
                             </p>

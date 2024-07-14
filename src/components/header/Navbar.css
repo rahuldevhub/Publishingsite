@@ -18,12 +18,18 @@
   
 }
 .Brandlogo{
-    margin-left: 8rem;
+    margin-left: 12rem;
+}
+.Brandlogo img{
+    height: 3rem;
+    width: 3rem;
+    /* border-radius: rem; */
 }
 .navbar>.container{
     display: contents;
 }
 .Navbarcomponents{
+    overflow: hidden;
     margin-right: 10rem;
 }
 .Navbarcomponents a{

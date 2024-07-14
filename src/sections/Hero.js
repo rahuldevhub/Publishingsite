@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap';
 import '../css/Hero.css'
 import Lottie from 'lottie-react'
-import heroanimationData from '../assets/Animation/Animation - 1709385705553.json'
+import heroanimationData from '../assets/Animation/landinganimation.json'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 const Hero = () => {

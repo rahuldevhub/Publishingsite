@@ -1,8 +1,10 @@
 import React from 'react'
 import '../css/Detailedabout.css'
 import { Row, Col } from 'react-bootstrap';
-import ic from '../assets/ourservice/globe.png'
-import sh from '../assets/characters/sf.jpg'
+import gobi from '../assets/characters/female1.webp'
+import sh from '../assets/characters/sf.webp'
+import marketingteam from '../assets/characters/marketingteam.webp'
+import saranraj from "../assets/characters/saranraj.webp"
 const Detailedabout = () => {
     return (
         <div>
@@ -31,10 +33,10 @@ const Detailedabout = () => {
                 <div className='aboutcharacters'>
 
                     <Row className='about-characters' data-aos="zoom-in">
-                        <Col lg='4' >
-                            <img src={ic} alt='char' className='char-left-img'></img>
+                        <Col lg='4' style={{textAlign: "center"}}>
+                            <img src={saranraj} alt='char' className='char-left-img'></img>
                         </Col>
-                        <Col lg='8'>
+                        <Col lg='8' style={{textAlign: "center"}}>
                             <p className='detailedabout-name' > Saran Raj </p>
                             <p className='detailedabout-roll' >Author</p>
                             <p className='detailedabout-subtitle' >
@@ -50,7 +52,7 @@ author session!
 
                     <Row className='about-characters1' data-aos="zoom-in" >
 
-                        <Col lg='8'>
+                        <Col lg='8' style={{textAlign: "center"}}>
                             <p className='detailedabout-name1' > Gobika</p>
                             <p className='detailedabout-roll1' > Senior Designer</p>
                             <p className='detailedabout-subtitle' >
@@ -59,18 +61,18 @@ author session!
                                 transforms concepts into visual masterpieces that shine on shelves worldwide. Her dedication to her craft and meticulous attention to detail ensure that each cover reflects the essence of the story within, enticing readers to dive into the worlds created by our authors.
                             </p>
                         </Col>
-                        <Col lg='4' >
-                            <img src={ic} alt='char' className='char-left-img'></img>
+                        <Col lg='4'style={{textAlign: "center"}} >
+                            <img src={gobi} alt='char' className='char-left-img'></img>
 
                         </Col>
 
                     </Row>
 
                     <Row className='about-characters' data-aos="zoom-in">
-                        <Col lg='4'   >
+                        <Col lg='4'  style={{textAlign: "center"}} >
                             <img src={sh} alt='char' className='char-left-img'></img>
                         </Col>
-                        <Col lg='8'  >
+                        <Col lg='8' style={{textAlign: "center"}} >
                             <p className='detailedabout-name' > Shahitha Fareen M</p>
                             <p className='detailedabout-roll' > Reviewer, Writer</p>
                             <p className='detailedabout-subtitle' >
@@ -86,16 +88,16 @@ author session!
                     <Row className='about-characters1' data-aos="zoom-in" >
 
                         <Col lg='8'>
-                            <p className='detailedabout-name1' > Marketing Team</p>
-                            <p className='detailedabout-roll1' > Author</p>
+                            <p className='detailedabout-name1' style={{textAlign: "left" , marginTop: "2rem"}} > Marketing Team </p>
+                            {/* <p className='detailedabout-roll1' > Author</p> */}
                             <p className='detailedabout-subtitle' >
                             A skilled marketing team with high potential marketing strategies will take your book to every
 nook and cranny of this world. Their only motive is to take both you and your book to the
 spotlight of the world and taste the success.
                             </p>
                         </Col>
-                        <Col lg='4' >
-                            <img src={ic} alt='char' className='char-left-img'></img>
+                        <Col lg='4' style={{textAlign: "center"}}>
+                            <img src={marketingteam} alt='char' className='char-left-img'></img>
 
                         </Col>
 

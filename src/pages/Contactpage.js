@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import Header from '../components/header/Header'
-
 import Contactusform from '../components/contactusform/Contactusform'
 import Footer from '../components/footer/Footer'
 
@@ -14,7 +13,7 @@ const Contactpage = () => {
         <div>
             <Header />
             <div className='allservice-title-top'>
-                <p className='allservice-title' >Contact Us</p>
+                <p className='allservice-overall-title' >Contact Us</p>
             </div>
 
             <Contactusform />

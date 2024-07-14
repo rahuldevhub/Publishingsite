@@ -5,11 +5,11 @@ import '../css/contactus.css'
 // import left from '../assets/contactleft.jpg'
 import { Link } from 'react-router-dom';
 
-import insta from '../assets/socialmedia/instalogo.png'
-import facebook from '../assets/socialmedia/fblogo.png'
+import insta from '../assets/socialmedia/instalogo.webp'
+import facebook from '../assets/socialmedia/fblogo.webp'
 // import xlogo from '../assets/socialmedia/xlogo.png'
-import whatsapp from '../assets/socialmedia/whatsapplogo.png'
-import linkedin from '../assets/socialmedia/linkedinlogo.png'
+import whatsapp from '../assets/socialmedia/whatsapplogo.webp'
+import linkedin from '../assets/socialmedia/linkedinlogo.webp'
 
 const Contactus = () => {
     return (

@@ -2,13 +2,15 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import './Navbar.css'
+import logo from '../../assets/logo.webp'
+
 
 const Header = () => {
   return (
     <Navbar collapseOnSelect expand="lg" sticky="top" className="bg-body-tertiary navbar-just  color">
       <Container className='container '>
         <Navbar.Brand href="/" className='Brandlogo'>
-          {/* <img src={logo} alt='logo image'></img> */}
+          <img src={logo} alt='logo image'></img>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" className='toggle' />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -19,7 +21,7 @@ const Header = () => {
           </Nav>
 
           <Nav className='Navbarcomponents'>
-          {/* <Nav.Link href="#deets">Home</Nav.Link> */}
+   
           <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/aboutus">About Us</Nav.Link>
             <Nav.Link href="/allservice">Services</Nav.Link>

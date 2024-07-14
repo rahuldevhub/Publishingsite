@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap';
 import '../css/Allservice.css'
-import marketing from '../assets/ourservice/marketing.png'
+import marketing from '../assets/ourservice/marketing.webp'
 import Header from '../components/header/Header'
 import Footer from '../components/footer/Footer'
-import proff from '../assets/ourservice/proff.png'
-import globe from '../assets/ourservice/globe.png'
-import book from '../assets/ourservice/13818745_5362964.png'
-import writing from '../assets/ourservice/writing.png'
+import proff from '../assets/ourservice/proff.webp'
+import globe from '../assets/ourservice/globe.webp'
+import book from '../assets/ourservice/betareading.webp'
+import writing from '../assets/ourservice/writing.webp'
 const Allservice = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
