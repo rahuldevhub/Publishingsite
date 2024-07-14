@@ -1,19 +1,17 @@
 import React, { useEffect } from 'react'
-import Header from '../components/header/Header'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import '../css/packagepage.css'
 import { Link } from 'react-router-dom';
 import Popupcontactus from '../components/popup/Popupcontactus';
-import Footer from '../components/footer/Footer';
 const Packagespage = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
     return (
         <div className='Packagespage'>
-            <Header />
+         
 
             <div className='allservice-title-top'>
                 <p className='allservice-overall-title' >Packages</p>
@@ -64,8 +62,8 @@ const Packagespage = () => {
                                     <div className=''>
                                         <p className='package-title'>Standard</p>
                                         <p className='packagepage-subtitle'>Comprehensive support for aspiring authors with free
-                                        Author copies, certificate, and and eBook placement on
-                                        Google and Kobo /Online distribution in India</p>
+                                            Author copies, certificate, and and eBook placement on
+                                            Google and Kobo /Online distribution in India</p>
                                         <ul className='package-features'>
                                             <li>All service in previous</li>
                                             <li>80% Royalty for Author</li>
@@ -95,8 +93,8 @@ const Packagespage = () => {
                                     <div className=''>
                                         <p className='package-title'>Advanced</p>
                                         <p className='packagepage-subtitle'>All-inclusive package with International Distribution
-                                        premium cover and interior design, Prime placement,
-                                        promotions, and free author session for ambitious authors</p>
+                                            premium cover and interior design, Prime placement,
+                                            promotions, and free author session for ambitious authors</p>
 
                                         <ul className='package-features'>
                                             <li>All service in previous</li>
@@ -137,8 +135,8 @@ const Packagespage = () => {
                                 <div className=''>
                                     <p className='package-title'>Elite</p>
                                     <p className='packagepage-subtitle'>Advanced cover & Interior design, extensive marketing
-                                    campaigns, early or post reviews, promotions and prime
-                                    listing..</p>
+                                        campaigns, early or post reviews, promotions and prime
+                                        listing..</p>
 
 
                                 </div>
@@ -239,7 +237,6 @@ const Packagespage = () => {
                 </Row>
 
             </div>
-<Footer/>
 
         </div>
     )

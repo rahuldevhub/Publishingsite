@@ -11,16 +11,12 @@ const Contactpage = () => {
     }, []);
     return (
         <div>
-            <Header />
+
             <div className='allservice-title-top'>
                 <p className='allservice-overall-title' >Contact Us</p>
             </div>
 
             <Contactusform />
-            
-            <Footer/>
-
-
 
         </div>
     )

@@ -2,8 +2,6 @@ import React, { useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap';
 import '../css/Allservice.css'
 import marketing from '../assets/ourservice/marketing.webp'
-import Header from '../components/header/Header'
-import Footer from '../components/footer/Footer'
 import proff from '../assets/ourservice/proff.webp'
 import globe from '../assets/ourservice/globe.webp'
 import book from '../assets/ourservice/betareading.webp'
@@ -13,10 +11,7 @@ const Allservice = () => {
         window.scrollTo(0, 0);
     }, []);
     return (
-        <div className='allservice'> 
-            <Header />
-
-{/* header completed  */}
+        <div className='allservice'>
 
             <div className='allservice-title-top'>
                 <p className='allservice-overall-title' data-aos="fade-right">Service we offer</p>
@@ -27,9 +22,9 @@ const Allservice = () => {
 
                 {/* top bar completed */}
 
-                <Row className='icons'  data-aos="zoom-in">
+                <Row className='icons' data-aos="zoom-in">
                     <Col lg='4' className='service-left-img'>
-                    <img src={book} alt='character-img'></img>
+                        <img src={book} alt='character-img'></img>
                     </Col>
                     <Col lg='8'>
                         <p className='allservice-title' >Beta Reading</p>
@@ -46,7 +41,7 @@ const Allservice = () => {
                 </Row>
 
 
-                <Row className='icons1'data-aos="zoom-in">
+                <Row className='icons1' data-aos="zoom-in">
                     <Col lg='8'>
                         <p className='allservice-title' >Copy Writing</p>
 
@@ -77,12 +72,12 @@ const Allservice = () => {
                 </Row>
 
 
-                <Row className='icons1 'data-aos="zoom-in">
+                <Row className='icons1 ' data-aos="zoom-in">
                     <Col lg='8'>
                         <p className='allservice-title' > Proof Reading </p>
 
                         <p className='detailedservice-subtitle' >
-                        A polished manuscript is essential, and our proofreaders will help you correct
+                            A polished manuscript is essential, and our proofreaders will help you correct
                             grammar, spelling, punctuation errors, and Ensure consistency in formatting and style.
 
 
@@ -100,7 +95,7 @@ const Allservice = () => {
                         <p className='allservice-title' >Marketing</p>
 
                         <p className='detailedservice-subtitle' >
-                            
+
                             Tailor marketing plans to each book’s unique needs:
                             Social Media Campaigns: Leverage platforms like Twitter, Instagram, and Goodreads.
                             Email Newsletters: Regular updates to engage existing readers and attract new ones.
@@ -112,8 +107,6 @@ const Allservice = () => {
 
             </div>
 
-
-            <Footer />
         </div>
 
 
