@@ -4,7 +4,7 @@ import '../contactusform/contactusform.css'
 
 const Contactusform = () => {
     return (
-        <Form className='Contactusform' onSubmit={(e)=> e.preventDefault()}  >
+        <Form className='Contactusform'   >
             {/* <p className='contactform-title'>Contact Us</p> */}
 
 
@@ -36,9 +36,9 @@ const Contactusform = () => {
                     Your details are in safe hands.
                 </Form.Text></Form.Group>
 
-            <Button className='contactus' type="submit">
+          <a href="mailto:riterapublishing@gmail.com?body=My custom mail body">  <Button className='contactus' type="submit">
                 Submit
-            </Button>
+            </Button></a>
         </Form>
     )
 }
