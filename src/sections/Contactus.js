@@ -6,7 +6,7 @@ import '../css/contactus.css'
 import { Link } from 'react-router-dom';
 
 import insta from '../assets/socialmedia/instalogo.webp'
-import facebook from '../assets/socialmedia/fblogo.webp'
+// import facebook from '../assets/socialmedia/fblogo.webp'
 // import xlogo from '../assets/socialmedia/xlogo.png'
 import whatsapp from '../assets/socialmedia/whatsapplogo.webp'
 import linkedin from '../assets/socialmedia/linkedinlogo.webp'
@@ -23,8 +23,8 @@ const Contactus = () => {
             <p className='Getintouch-subtitle'data-aos="fade-right"> We're always happy to chat!  Whether you have a question, want to collaborate, or just to say hi, we're here for you. Follow us on your favorite platforms for updates, inspiration, and exclusive contents.</p>
 
         <Link to={'https://www.instagram.com/ritera_publishing/'}> <img src={insta}    alt='sample' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="1000" /> </Link>
-        <Link to={'https://www.instagram.com/ratix_infotech?igsh=Y2dtZWJ1djlqYTQ2&utm_source=qr'}> <img src={whatsapp}   alt='sample' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="1500" /></Link>
-        <Link to={'https://www.instagram.com/ratix_infotech?igsh=Y2dtZWJ1djlqYTQ2&utm_source=qr'}> <img src={facebook}   alt='sample' className='socialmedia-img'  data-aos="zoom-in-down" data-aos-duration="2000"/></Link>
+        <Link to={'https://www.instagram.com/ritera_publishing/'}> <img src={whatsapp}   alt='sample' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="1500" /></Link>
+        {/* <Link to={'https://www.instagram.com/ratix_infotech?igsh=Y2dtZWJ1djlqYTQ2&utm_source=qr'}> <img src={facebook}   alt='sample' className='socialmedia-img'  data-aos="zoom-in-down" data-aos-duration="2000"/></Link> */}
         <Link to={'https://www.linkedin.com/company/ritera-publishing/'}> <img src={linkedin}   alt='sample' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="2500"/></Link>
         {/* <Link to={'https://twitter.com/rahulriyaz_'}>  <img src={xlogo}   alt='sample' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="3000"/></Link> */}
 
