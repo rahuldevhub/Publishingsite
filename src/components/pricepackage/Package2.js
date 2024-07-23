@@ -196,7 +196,7 @@ const Package2 = () => {
                                             <li>Customized Cover Design</li>
                                             <li>International Paperback distribution</li>
                                             <li>E-book Placements</li>
-                                            <li>Author Vedio on website</li>
+                                            <li>Author Video on website</li>
 
                                         </ul>
 
