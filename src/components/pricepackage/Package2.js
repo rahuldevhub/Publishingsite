@@ -25,7 +25,7 @@ const Package2 = () => {
                                 <div className='card-content'>
                                     <p className='level1-title'>Elite </p>
                                     <p className='level1-description'>Advanced cover & Interior design, extensive marketing
-                                        campaigns, early or post reviews, promotions and prime
+                                        campaigns, early or post reviews, promotions, and prime
                                         listing..</p>
                                     <p className='level1-Price'>₹49,999</p>
 
@@ -34,8 +34,8 @@ const Package2 = () => {
                                 </div>
                                 <ul className='package-features'>
                                     <li>All service in previous</li>
-                                    <li>Advance Cover Design</li>
-                                    <li>Advance Interior Design</li>
+                                    <li>Advanced Cover Design</li>
+                                    <li>Advanced Interior Design</li>
                                     <li>International PaperBack Distribution (India)</li>
                                     <li>E-Book Placement</li>
                                     <li>Amazon A+ listing</li>
@@ -52,7 +52,7 @@ const Package2 = () => {
                                 <div className='card-content'>
                                     <p className='level1-title'>Premium </p>
                                     <p className='level1-description'>Spot light package including Author interviews,
-                                        Customised designs, proofreading or copy editing sercice,
+                                        Customized designs, proofreading or copy editing service,
                                         Review campaigns, and additional author copies</p>
                                     <p className='level1-Price'>₹69,999</p>
 
@@ -61,7 +61,7 @@ const Package2 = () => {
 
                                     <ul className='package-features'>
                                         <li>All service in previous</li>
-                                        <li>Complimentry Proof reading or Copy editing</li>
+                                        <li>Complimentary Proof reading or Copy editing</li>
                                         <li>Customized Cover Design</li>
                                         <li>Advance interior Design</li>
                                         <li>International Paperback distribution</li>
@@ -88,7 +88,7 @@ const Package2 = () => {
 
                                     <ul className='package-features'>
                                         <li>Personal Publishing Manager</li>
-                                        <li>Proff Reading (40k words)</li>
+                                        <li>Proof Reading (40k words)</li>
                                         <li>Copy Editing (15k words)</li>
                                         <li>Customized Cover Design</li>
                                         <li>International Paperback distribution</li>
