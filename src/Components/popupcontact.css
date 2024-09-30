@@ -1,0 +1,41 @@
+.package-button {
+    background: #6A1B1B;
+    color: white;
+    border: 2px solid white;
+    border-radius: .4rem;
+    width: 100%;
+    height: 3rem;
+    margin-top: .5rem;
+}
+
+.package-button:hover {
+    background-color: #a32525;
+    border-color: #a32525;
+}
+
+.package-button:active {
+    background-color: #a32525;
+    border-color: #a32525;
+}
+.contactheader-bg {
+    background: #FAEBD7;
+}
+
+.contactbody-bg {
+    background: #F5F1E0;
+}
+
+.popupsendbtn {
+    background: #6A1B1B;
+    border-color: #6A1B1B;
+}
+
+.popupsendbtn:hover {
+    background-color: #a32525;
+    border-color: #a32525;
+}
+
+.popupsendbtn:active {
+    background-color: #a32525;
+    border-color: #a32525;
+}
