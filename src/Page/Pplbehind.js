@@ -17,6 +17,10 @@ import char1 from '../Assets/pplbehind/char1.jpg'
 import char2 from '../Assets/pplbehind/char2.png'
 import char3 from '../Assets/pplbehind/char3.png'
 import char4 from '../Assets/pplbehind/char4.png'
+import char5 from '../Assets/pplbehind/char5.png'
+import marketingteam from '../Assets/serviceicons/marketing.png'
+import supportteam from '../Assets/serviceicons/copywriting.png'
+import writingteam from '../Assets/serviceicons/proofreading.png'
 
 const Pplbehind = () => {
   const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 992px)' })
@@ -109,7 +113,7 @@ const Pplbehind = () => {
         <div className='Pplbehind-indivualcontent'>
           <Row className='Pplbehind-subcontent-row'>
             <Col lg="6" md="6" sm="1" className='Pplbehind-subcontent-col1'>
-              <img src={sideimg} className='Pplbehind-subcontent-img'></img>
+              <img src={char5} className='Pplbehind-subcontent-img'></img>
 
             </Col>
             <Col lg="6" md="6" sm="1" >
@@ -132,7 +136,7 @@ const Pplbehind = () => {
             <Card className='teamcard' >
               <Card.Body >
                 <div className='card-content'>
-                  <img src={prooficon} className='team-card-icon'></img>
+                  <img src={marketingteam} className='team-card-icon'></img>
                   <p className='team-card-title'>Marketing Team </p>
                   <p className='team-card-description'>
                   The talented marketing minds at Ritera are dedicated to maximizing the reach and growth of books. They excel in both traditional and digital marketing, constantly experimenting with new strategies and applying proven success formulas to benefit authors and their works.
@@ -144,7 +148,7 @@ const Pplbehind = () => {
             <Card className='teamcard' >
               <Card.Body>
                 <div className='card-content'>
-                  <img src={prooficon} className='team-card-icon'></img>
+                  <img src={supportteam} className='team-card-icon'></img>
                   <p className='team-card-title'>Support Team </p>
                   <p className='team-card-description'>
                   Ritera provides seamless support to authors via email, Whats App, and phone calls, both before and after publishing. Our dedicated team is always available to assist with any queries or concerns, ensuring a smooth and stress-free experience for authors at every stage of their publishing journey
@@ -156,7 +160,7 @@ const Pplbehind = () => {
             <Card className='teamcard' >
               <Card.Body>
                 <div className='card-content'>
-                  <img src={prooficon} className='team-card-icon'></img>
+                  <img src={writingteam} className='team-card-icon'></img>
                   <p className='team-card-title'>Writing Team </p>
                   <p className='team-card-description'>
                   We take proactive steps by conducting seminars and virtual meetings between talented authors and our writing team. This team captures the literary visions of authors and applies them to every book they work on, ensuring the best version of each book is brought to life.
@@ -186,7 +190,7 @@ const Pplbehind = () => {
                         <Card className='teamcard' >
               <Card.Body >
                 <div className='card-content'>
-                  <img src={prooficon} className='team-card-icon'></img>
+                  <img src={marketingteam} className='team-card-icon'></img>
                   <p className='team-card-title'>Marketing Team </p>
                   <p className='team-card-description'>
                   The talented marketing minds at Ritera are dedicated to maximizing the reach and growth of books. They excel in both traditional and digital marketing, constantly experimenting with new strategies and applying proven success formulas to benefit authors and their works.
@@ -200,7 +204,7 @@ const Pplbehind = () => {
                         <Card className='teamcard' >
               <Card.Body>
                 <div className='card-content'>
-                  <img src={prooficon} className='team-card-icon'></img>
+                  <img src={supportteam} className='team-card-icon'></img>
                   <p className='team-card-title'>Support Team </p>
                   <p className='team-card-description'>
                   Ritera provides seamless support to authors via email, Whats App, and phone calls, both before and after publishing. Our dedicated team is always available to assist with any queries or concerns, ensuring a smooth and stress-free experience for authors at every stage of their publishing journey
@@ -214,7 +218,7 @@ const Pplbehind = () => {
                         <Card className='teamcard' >
               <Card.Body>
                 <div className='card-content'>
-                  <img src={prooficon} className='team-card-icon'></img>
+                  <img src={writingteam} className='team-card-icon'></img>
                   <p className='team-card-title'>Writing Team </p>
                   <p className='team-card-description'>
                   We take proactive steps by conducting seminars and virtual meetings between talented authors and our writing team. This team captures the literary visions of authors and applies them to every book they work on, ensuring the best version of each book is brought to life.

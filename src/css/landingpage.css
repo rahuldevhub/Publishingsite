@@ -339,9 +339,14 @@
     }
 }
 
+
+
+
+
 .landingpage-article {
     background: #F5F1E0;
-    padding-bottom: 5rem;
+    padding-bottom: 8rem;
+    padding-top: 3rem;
 
 }
 
@@ -354,26 +359,51 @@
 .landingpage-article h2 {
     font-family: "Merriweather", serif;
     font-weight: 600;
-    font-size: 3rem;
+    font-size: 2.5rem;
     text-align: center;
     padding-top: 3rem;
     padding-bottom: 5rem;
+}
+.Literaryhub a{
+    text-decoration: none;
+}
+.landingpage-article-container h2 {
+    font-family: "Merriweather", serif;
+    font-weight: 600;
+    font-size: 2.3rem;
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
 }
 
 .landingpage-article-container {
     border-radius: 1rem;
     border: solid 2px #D4A373;
     background-color: white;
-    margin-left: 4rem;
-    margin-right: 4rem;
-    padding: 2rem;
+    margin-left: 7rem;
+    margin-right: 7rem;
+    /* padding: 2rem; */
+    padding-top: 2rem;
 }
+.landingpage-article-container:hover{
+    background-color: #D4A373;
 
-.landingpage-article-img {
+}
+/* .landingpage-article-img {
     height: 10rem;
     width: 10rem;
     object-fit: cover;
     border-radius: 1.3rem;
+} */
+.landingpage-article-img{
+    height: 8rem;
+    width: 8rem;
+    background-color: #6E7E4B;
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: .4rem;
+    margin-bottom: 2rem;
+
 }
 
 .landingpage-article-description {
@@ -415,6 +445,13 @@
 }
 
 
+
+.service-card-icon{
+    height: 6rem;
+    width: 6rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
 
 
 

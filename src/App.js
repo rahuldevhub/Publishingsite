@@ -8,6 +8,9 @@ import Pplbehind from './Page/Pplbehind';
 import Customized from './Page/Customized';
 import Packages from './Page/Packages';
 import Header from './Components/header/Header';
+import Poems from './Page/literaryHub/Poems';
+import Articles from './Page/literaryHub/Articles';
+import ShortStories from './Page/literaryHub/ShortStories';
 
 
 
@@ -23,6 +26,10 @@ function App() {
 <Route path='/people-behind-ritera' element={<Pplbehind/>}></Route>
 <Route path='/customize-package' element={<Customized/>}></Route>
 <Route path='/packages' element={<Packages/>}></Route>
+
+<Route path='/literayhub-poems' element={<Poems/>}></Route>
+<Route path='/literayhub-articles' element={<Articles/>}></Route>
+<Route path='/literayhub-short-stories' element={<ShortStories/>}></Route>
 
 
 

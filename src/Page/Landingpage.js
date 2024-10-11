@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React, { useEffect } from 'react'
 import '../css/landingpage.css'
 // import Header from '../Components/header/Header'
 import Serviceswiper from '../Components/swiper/Serviceswiper'
@@ -8,6 +8,7 @@ import Package from '../Components/landingpagepackage/Package'
 import customizedbg from '../Assets/customizedbg.jpg'
 import Getintouch from '../Components/Getintouch'
 import { Link } from 'react-router-dom';
+import Literaryhub from '../Components/literaryhub/Literaryhub'
 
 const Landingpage = () => {
   useEffect(() => {
@@ -22,7 +23,7 @@ const Landingpage = () => {
           <div className='landing-content'>
             <p className='landing-title'>Empower your story <br /> Self Publish with confidence</p>
             <p className='landing-subtitle'>At Ritera, We're passionate about transforming ideas <br /> into stories and visions into masterpiece</p>
-           <a href='#landingpage-package'><button className='landing-button'> Get Start</button></a>
+            <a href='#landingpage-package'><button className='landing-button'> Get Start</button></a>
           </div>
         </div>
 
@@ -32,9 +33,9 @@ const Landingpage = () => {
         <div className='landingpage-whywe-content'>
           <Row>
             <Col lg="6" md="6" sm="1" className='landingpage-col-centering'>
-         
-                <img  src={whywebg} className='landingpage-whywe-leftimg'></img>
-              
+
+              <img src={whywebg} className='landingpage-whywe-leftimg'></img>
+
             </Col>
 
             <Col lg="6" md="6" sm="1" className='landingpage-col-centering'>
@@ -43,8 +44,8 @@ const Landingpage = () => {
                 <p><b>Confused about choosing the best publishing house for your book?</b> Look no further! At Ritera Publishing, we offer an unparalleled publishing experience with exclusive services you won’t find anywhere else. Our complete motto is to make the publishing process smoother and comfortable for you. With the shared love we both have for literature,
                   Ritera decided to offer some special services exclusively!</p>
                 <Link to={'/aboutus'}>
-                <button className='Whywe-button'> Learn more</button>
-                </Link> 
+                  <button className='Whywe-button'> Learn more</button>
+                </Link>
               </div>
 
             </Col >
@@ -70,20 +71,20 @@ const Landingpage = () => {
       <div className='landingpage-customizedroyalty'>
         <div className='landingpage-customizedroyalty-content'>
           {/* <Row> */}
-            {/* <Col lg="12" md="6" sm="1" className='landingpage-col-centering'> */}
-<div className='landingpage-col-centering'>
-              <div className='landingpage-customizedroyalty-blackdrop'>
-                <div className='landingpage-customizedroyalty-insidecontent'>
-                  <h2>Customizeable Package</h2>
-                  <p> Upon submitting your preferences, our marketing specialist will present you with a tailored package, detailing its pricing and benefits. </p>
-                  <Link to={'/customize-package'}><button className='landingpage-customizedroyalty-button'> Learn more</button></Link>
-                </div>
+          {/* <Col lg="12" md="6" sm="1" className='landingpage-col-centering'> */}
+          <div className='landingpage-col-centering'>
+            <div className='landingpage-customizedroyalty-blackdrop'>
+              <div className='landingpage-customizedroyalty-insidecontent'>
+                <h2>Customizeable Package</h2>
+                <p> Upon submitting your preferences, our marketing specialist will present you with a tailored package, detailing its pricing and benefits. </p>
+                <Link to={'/customize-package'}><button className='landingpage-customizedroyalty-button'> Learn more</button></Link>
               </div>
-              </div>
-            {/* </Col> */}
+            </div>
+          </div>
+          {/* </Col> */}
 
-            {/* <Col lg="12" md="6" sm="1" className='landingpage-col-centering'> */}
-              {/* <div className='landingpage-customizedroyalty-blackdrop'>
+          {/* <Col lg="12" md="6" sm="1" className='landingpage-col-centering'> */}
+          {/* <div className='landingpage-customizedroyalty-blackdrop'>
                 <img src={customizedbg} className='landingpage-customizedroyalty-img'></img>
                 <div className='landingpage-customizedroyalty-insidecontent'>
                   
@@ -94,51 +95,21 @@ const Landingpage = () => {
                 </div>
 
               </div> */}
-            {/* </Col > */}
+          {/* </Col > */}
           {/* </Row> */}
         </div>
       </div>
 
-      {/* <div className='landingpage-article'>
+      <div className='landingpage-article'>
         <div className='landingpage-article-content'>
-          <h2>Article</h2>
-          <div >
-            <Row>
-              <Col>
-                <div className='landingpage-article-container'>
-                  <Row>
-                    <Col lg='3'>
+          <h2>Literary Hub</h2>
 
-                      <img src={whywebg} className='landingpage-article-img'></img>
-                    </Col>
-                    <Col lg='9' className='landingpage-article-col'>
-                      <p className='landingpage-article-description'>As an aspiring publishing house, Ritera stands apart with our unique approach and unwavering commitment to authors' satisfaction. While we hold respect for other publishers in the field.....see more</p>
-                      <button className='landingpage-article-button'> See more</button>
-                    </Col>
-                  </Row>
-                </div>
-              </Col>
-              <Col>
-                <div className='landingpage-article-container'>
-                  <Row>
-                    <Col lg='3'>
+       <Literaryhub/>
 
-                      <img src={whywebg} className='landingpage-article-img'></img>
-                    </Col>
-                    <Col lg='9' className='landingpage-article-col'>
-                      <p className='landingpage-article-description'>As an aspiring publishing house, Ritera stands apart with our unique approach and unwavering commitment to authors' satisfaction. While we hold respect for other publishers in the field.....see more</p>
-                      <button className='landingpage-article-button'> See more</button>
-                    </Col>
-                  </Row>
-                </div>
-              </Col>
 
-            </Row>
-            <button className='landingpage-article-button2'> See all Article</button>
-          </div>
         </div>
 
-      </div> */}
+      </div>
 
       <div className='landingpage-hookredirect'>
         <Row className='landingpage-hookredirect-content'>
