@@ -100,7 +100,7 @@ const Landingpage = () => {
         </div>
       </div>
 
-      <div className='landingpage-article'>
+      {/* <div className='landingpage-article'>
         <div className='landingpage-article-content'>
           <h2>Literary Hub</h2>
 
@@ -109,7 +109,7 @@ const Landingpage = () => {
 
         </div>
 
-      </div>
+      </div> */}
 
       <div className='landingpage-hookredirect'>
         <Row className='landingpage-hookredirect-content'>
