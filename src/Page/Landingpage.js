@@ -99,17 +99,17 @@ const Landingpage = () => {
           {/* </Row> */}
         </div>
       </div>
-
+{/* 
       <div className='landingpage-article'>
         <div className='landingpage-article-content'>
           <h2>Literary Hub</h2>
 
        <Literaryhub/>
 
-
         </div>
 
-      </div>
+      </div> */}
+
 
       <div className='landingpage-hookredirect'>
         <Row className='landingpage-hookredirect-content'>
