@@ -29,7 +29,7 @@ const LiteraryhubSubmission = () => {
                             <Form>
                                 <Form.Group className="mb-3">
                                     <Form.Label>What ?</Form.Label>
-                                    <Form.Select aria-label="Default select example">
+                                    <Form.Select aria-label="Default select example" className='form-selectsub'>
                                         {/* <option>Open this select menu</option> */}
                                         <option value="1">Poem</option>
                                         <option value="2">Article</option>
@@ -39,7 +39,7 @@ const LiteraryhubSubmission = () => {
 
                                 <Form.Group className="mb-3">
                                     <Form.Label>Type ?</Form.Label>
-                                    <Form.Select aria-label="Default select example">
+                                    <Form.Select aria-label="Default select example" className='form-selectsub'>
                                         {/* <option>Open this select menu</option> */}
                                         <option value="1">Fiction</option>
                                         <option value="2">Non-Fiction</option>
@@ -48,7 +48,7 @@ const LiteraryhubSubmission = () => {
 
                                 <Form.Group className="mb-3">
                                     <Form.Label>Genre ?</Form.Label>
-                                    <Form.Select aria-label="Default select example">
+                                    <Form.Select aria-label="Default select example" className='form-selectsub'>
                                         {/* <option>Open this select menu</option> */}
                                         <option value="1">Poem</option>
                                         <option value="2">Article</option>
@@ -63,21 +63,21 @@ const LiteraryhubSubmission = () => {
 
                             <Form>
 
-                                <Form.Group className="mb-3" controlId="formBasicText" >
+                                <Form.Group className="mb-3 " controlId="formBasicText" >
                                     <Form.Label>Title</Form.Label>
-                                    <Form.Control type="text" placeholder="Enter Title" />
+                                    <Form.Control type="text" placeholder="Enter Title"   className='form-controlsub'/>
                                     <Form.Text className="text-muted">
                                     </Form.Text>
                                 </Form.Group>
 
                                 <Form.Group controlId="formFile" className="mb-3">
                                     <Form.Label>Cover Picture</Form.Label>
-                                    <Form.Control type="file" />
+                                    <Form.Control type="file"   className='form-controlsub'/>
                                 </Form.Group>
 
                                 <Form.Group controlId="formFile" className="mb-3">
                                     <Form.Label>Manuscript</Form.Label>
-                                    <Form.Control type="file" />
+                                    <Form.Control type="file" className='form-controlsub'/>
                                 </Form.Group>
                             </Form>
 
@@ -88,17 +88,17 @@ const LiteraryhubSubmission = () => {
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Label>Name</Form.Label>
-                            <Form.Control type="text" placeholder="Enter your name" />
+                            <Form.Control type="text" placeholder="Enter your name"  className='form-controlsub'/>
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" placeholder="Enter your email" />
+                            <Form.Control type="email" placeholder="Enter your email"  className='form-controlsub' />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Number</Form.Label>
-                            <Form.Control type="number" placeholder="Enter your number" />
+                            <Form.Control type="number" placeholder="Enter your number"  className='form-controlsub' />
                         </Form.Group>
 
                     </Form>

@@ -376,25 +376,7 @@
     padding-bottom: 3rem;
 }
 
-.landingpage-article-container {
-    border-radius: 1rem;
-    border: solid 2px #D4A373;
-    background-color: white;
-    margin-left: 7rem;
-    margin-right: 7rem;
-    /* padding: 2rem; */
-    padding-top: 2rem;
-}
-.landingpage-article-container:hover{
-    background-color: #D4A373;
 
-}
-/* .landingpage-article-img {
-    height: 10rem;
-    width: 10rem;
-    object-fit: cover;
-    border-radius: 1.3rem;
-} */
 .landingpage-article-img{
     height: 8rem;
     width: 8rem;
@@ -406,33 +388,21 @@
 
 }
 
-.landingpage-article-description {
-    font-size: 1rem;
-    text-align: justify;
-    font-family: "Teachers", sans-serif;
-    margin-left: 1rem;
+/* .landingpage-article-img {
+    height: 10rem;
+    width: 10rem;
+    object-fit: cover;
+    border-radius: 1.3rem;
+} */
 
 
-}
 
-.landingpage-article-col {
-    align-content: center;
-}
 
-.landingpage-article-button {
-    background-color: #6A1B1B;
-    color: white;
-    border: none;
-    margin-left: 1rem;
-    border-radius: 1rem;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    width: 15rem;
-    text-align: center;
-    float: left;
-}
 
-.landingpage-article-button2 {
+
+
+
+/* .landingpage-article-button2 {
     align-items: center;
     background-color: #6E7E4B;
     color: white;
@@ -442,7 +412,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
     width: 15rem;
-}
+} */
 
 
 

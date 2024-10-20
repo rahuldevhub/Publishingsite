@@ -29,6 +29,7 @@
 .literaryhubSubmission-content {
     margin-left: 10rem;
     margin-right: 10rem;
+    text-align: center;
 }
 
 .literaryhubSubmission-subcontent-description{
@@ -41,14 +42,14 @@
     
 }
 
-.form-select{
+.form-selectsub{
     width: 30rem;
     line-height: 1.7rem;
     float : inline-end;
     border: solid 1px #D4A373; 
     /* color: #D4A373; */
 }
-.form-control{
+.form-controlsub{
     width: 30rem;
     line-height: 1.7rem;
     float : inline-end;
@@ -62,12 +63,9 @@
     border-radius: .5rem;
     padding-top: 10px;
     padding-bottom: 10px;
-    width: 15rem;
+    width: 37rem;
     margin-top: 2rem;
     margin-bottom: 4rem;
     /* text-align: center; */
 }
 
-.literaryhubSubmission-content button{
-    text-align: center;
-}

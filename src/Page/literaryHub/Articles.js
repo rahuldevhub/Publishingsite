@@ -1,8 +1,8 @@
-import React,{useEffect} from 'react'
+import React, { useEffect } from 'react'
 import './literaryhubsubpages.css'
 import { Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
-
+import dummycover from '../../Assets/landingpagewhywe.jpg'
 const Articles = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -21,9 +21,57 @@ const Articles = () => {
 
 
       <div className='literaryhub-content' >
+        <h2>New Articles</h2>
+
+        <div className='landingpage-article-container'>
+          <Row>
+      <Col className='article-content-card'>
+          <Row>
+            <Col lg='3'>
+
+              <img src={dummycover} className='literaryhub-cover-img'></img>
+            </Col>
+            <Col lg='9' className='landingpage-article-col'>
+              <p className='landingpage-article-description'>As an aspiring publishing house, Ritera stands apart with our unique approach and unwavering commitment to authors' satisfaction. While we hold respect for other publishers in the field  While we hold respect for other publishers.</p>
+              <button className='landingpage-article-button'> See more</button>
+            </Col>
+          </Row>
+          </Col>
 
 
-      </div>
+          <Col className='article-content-card'>
+          <Row>
+            <Col lg='3'>
+
+              <img src={dummycover} className='literaryhub-cover-img'></img>
+            </Col>
+            <Col lg='9' className='landingpage-article-col'>
+            <p className='landingpage-article-description'>As an aspiring publishing house, Ritera stands apart with our unique approach and unwavering commitment to authors' satisfaction. While we hold respect for other publishers in the field  While we hold respect for other publishers.</p>
+            <button className='landingpage-article-button'> See more</button>
+            </Col>
+          </Row>
+          </Col>
+
+          </Row>
+
+
+
+        </div>
+        .
+      </div >
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
       <div className='literaryhub-hookredirect'>
@@ -43,7 +91,7 @@ const Articles = () => {
 
 
 
-    </div>
+    </div >
   )
 }
 
