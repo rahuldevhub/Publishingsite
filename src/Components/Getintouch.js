@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useMemo, useRef, useState } from "react";
+
 import '../css/Getintouch.css'
 import { Row, Col } from 'react-bootstrap'
 
@@ -14,6 +15,45 @@ import Button from 'react-bootstrap/Button';
 import Accordion from 'react-bootstrap/Accordion';
 
 const Getintouch = () => {
+
+    const target1=useRef()
+const [userName, setUserName]=useState("")
+const [mailId,setMailId]=useState("");
+const [number,setNumber]=useState("");
+const [service,setService]=useState("");
+
+const [success,setSuccess]=useState(false)
+const [visible,isVisible]=useState(false)
+
+
+const callBackFun=(entries)=>{
+    const [entry]=entries
+    isVisible(entry.isIntersecting)
+  }
+  
+  const options=useMemo(()=>{
+      return{
+          root:null,
+          rootMargin:"0px",
+          threshold:1
+      }
+  },[])
+  
+  useEffect(() => {
+    const observer =new IntersectionObserver(callBackFun,options);
+    const currentTarget= target1.current;
+    if(currentTarget){
+      observer.observe(currentTarget)
+    }
+  
+    return () => {
+      if(currentTarget){
+          observer.unobserve(currentTarget)
+          
+        }
+    }
+  }, [target1,options])
+
     return (
         <div className='Getintouch' id='Getintouch'>
 
@@ -32,30 +72,32 @@ const Getintouch = () => {
                         <Form className='Contactusform'   >
                             {/* <p className='contactform-title'>Contact Us</p> */}
 
-
-                            <Form.Group className="mb-3" controlId="formBasicPassword">
-                                <Form.Control type="text" placeholder="Enter your name" />
+                            <Form.Group className="mb-3" controlId="formBasicText">
+                                <Form.Control type="text" placeholder="Enter your name" onChange={(e)=> setUserName(e.target.value)} />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Control type="email" placeholder="Enter your email" />
+                                <Form.Control type="email" placeholder="Enter your email" onChange={(e)=> setMailId(e.target.value)} />
                             </Form.Group>
 
-
-                            <Form.Group className="mb-3" controlId="formBasicPassword">
-                                <Form.Control type="text" placeholder="Enter your number" />
+                            <Form.Group className="mb-3" controlId="formBasicNumber">
+                                <Form.Control type="text" placeholder="Enter your number" onChange={(e)=> setNumber(e.target.value)} />
 
                             </Form.Group>
+
                             <Form.Group className="mb-3">
                                 <Form.Select aria-label="Default select example">
+                                    <input onChange={(e)=> setService(e.target.value)}/>
                                     <option>Select Reason for Contacting</option>
                                     <option value="1">Manuscript Submission</option>
                                     <option value="2">Package Details</option>
                                     <option value="3">Other Services</option>
+                                    
                                 </Form.Select>
                                 <Form.Text className="text-muted">
                                     Your details are in safe hands.
                                 </Form.Text></Form.Group>
+
                             {/* ?body=My custom mail body */}
                             <a href="mailto:riterapublishing@gmail.com">
                                 <Button className='contactus' type="submit">Submit</Button>
