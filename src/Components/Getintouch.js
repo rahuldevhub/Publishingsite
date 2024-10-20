@@ -56,10 +56,10 @@ const Getintouch = () => {
                                 <Form.Text className="text-muted">
                                     Your details are in safe hands.
                                 </Form.Text></Form.Group>
-
-                            <a href="mailto:riterapublishing@gmail.com?body=My custom mail body">  <Button className='contactus' type="submit">
-                                Submit
-                            </Button></a>
+                            {/* ?body=My custom mail body */}
+                            <a href="mailto:riterapublishing@gmail.com">
+                                <Button className='contactus' type="submit">Submit</Button>
+                            </a>
                         </Form>
                     </div>
                 </Col>
