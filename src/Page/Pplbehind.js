@@ -58,7 +58,7 @@ const Pplbehind = () => {
           </Row>
         </div>
 
-        <div className='Pplbehind-indivualcontent2'>
+        {/* <div className='Pplbehind-indivualcontent2'>
 
           <Row className='Pplbehind-subcontent-row'>
             <Col lg="6" md="6" sm="1" className='Pplbehind-subcontent-col1'>
@@ -74,7 +74,7 @@ const Pplbehind = () => {
             </Col>
           </Row>
 
-        </div>
+        </div> */}
 
         <div className='Pplbehind-indivualcontent'>
           <Row className='Pplbehind-subcontent-row'>

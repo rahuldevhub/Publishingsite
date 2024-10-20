@@ -23,19 +23,70 @@ const Customized = () => {
       <div className='customized-content-bg'>
         <div className='customized-content'>
           <div className='customized-subcontent-description'>Have your own designer or editor? No problem! You can tailor your package by choosing the services you need. Once you submit your requirements, our consultant will reach out to discuss them with you. We’ll then provide a customized package fee, based on your selections.</div>
+          <h3>Pre - Publishing</h3>
 
           <Row>
             <Col lg="6" md="6" sm="1" className='customized-col'>
-              <h3>Pre - Publishing</h3>
 
               <form class="form-inline">
 
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>Cover Design</label>
+                <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>Number of pages</label>
                 <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
                   {/* <option selected>Standard</option> */}
                   <option value="1">Standard</option>
                   <option value="2">Advanced</option>
+                  <option value="3">Premium</option>
+                </select><br />
 
+
+                <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>Type of Books</label>
+                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                  {/* <option selected>Standard</option> */}
+                  <option value="1">Standard</option>
+                  <option value="2">Advanced</option>
+                  <option value="3">Premium</option>
+
+                </select><br />
+
+                <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>Genre</label>
+                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                  {/* <option selected>Standard</option> */}
+                  <option value="1">No Needed</option>
+                  <option value="2">Below 10k words</option>
+                  <option value="3">Below 25k words</option>
+                  <option value="4">More than 40k words</option>
+                </select><br />
+
+                <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>Paper back</label>
+                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                  {/* <option selected>Standard</option> */}
+                  <option value="1">India </option>
+                  <option value="2">International</option>
+                </select><br />
+
+
+                <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>E- Book</label>
+                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                  {/* <option selected>Standard</option> */}
+                  <option value="1">Standard</option>
+                  <option value="2">Premium</option>
+                </select><br />
+
+
+              </form>
+
+            </Col>
+            <Col lg="6" md="6" sm="1" className='customized-col '>
+              {/* <h3>Placements</h3> */}
+
+              <form class="form-inline">
+
+
+              <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>Cover Design</label>
+                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                  {/* <option selected>Standard</option> */}
+                  <option value="1">Standard</option>
+                  <option value="2">Advanced</option>
                   <option value="3">Premium</option>
                 </select><br />
 
@@ -73,38 +124,9 @@ const Customized = () => {
                   <option value="1">No</option>
                   <option value="2">Yes</option>
                 </select><br />
+               
 
 
-
-              </form>
-
-            </Col>
-            <Col lg="6" md="6" sm="1" className='customized-col '>
-              <h3>Placements</h3>
-
-              <form class="form-inline">
-
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>Paper back</label>
-                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                  {/* <option selected>Standard</option> */}
-                  <option value="1">India </option>
-                  <option value="2">International</option>
-                </select><br />
-
-
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>E- Book</label>
-                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                  {/* <option selected>Standard</option> */}
-                  <option value="1">Standard</option>
-                  <option value="2">Premium</option>
-                </select><br />
-
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>Audio Book</label>
-                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                  {/* <option selected>Standard</option> */}
-                  <option value="1">No</option>
-                  <option value="2">Yes</option>
-                </select><br />
               </form>
             </Col>
           </Row>

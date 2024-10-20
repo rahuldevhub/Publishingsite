@@ -11,6 +11,7 @@ import Header from './Components/header/Header';
 import Poems from './Page/literaryHub/Poems';
 import Articles from './Page/literaryHub/Articles';
 import ShortStories from './Page/literaryHub/ShortStories';
+import LiteraryhubSubmission from './Page/LiteraryhubSubmission';
 
 
 
@@ -30,6 +31,9 @@ function App() {
 <Route path='/literayhub-poems' element={<Poems/>}></Route>
 <Route path='/literayhub-articles' element={<Articles/>}></Route>
 <Route path='/literayhub-short-stories' element={<ShortStories/>}></Route>
+
+<Route path='/literayhub-submission' element={<LiteraryhubSubmission/>}></Route>
+
 
 
 
