@@ -1,12 +1,12 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
-
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import '../css/Getintouch.css'
 import { Row, Col } from 'react-bootstrap'
 
 
 import insta from '../Assets/socialmedia/instalogo.webp'
-import facebook from '../Assets/socialmedia/fblogo.webp'
-import xlogo from '../Assets/socialmedia/xlogo.webp'
+// import facebook from '../Assets/socialmedia/fblogo.webp'
+// import xlogo from '../Assets/socialmedia/xlogo.webp'
 import whatsapp from '../Assets/socialmedia/whatsapplogo.webp'
 import linkedin from '../Assets/socialmedia/linkedinlogo.webp'
 import { Link } from 'react-router-dom';
@@ -16,43 +16,25 @@ import Accordion from 'react-bootstrap/Accordion';
 
 const Getintouch = () => {
 
-    const target1=useRef()
-const [userName, setUserName]=useState("")
-const [mailId,setMailId]=useState("");
-const [number,setNumber]=useState("");
-const [service,setService]=useState("");
+    const form = useRef();
 
-const [success,setSuccess]=useState(false)
-const [visible,isVisible]=useState(false)
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs.sendForm('service_ivsbffk', 'template_symmsej', form.current, {
+            publicKey: 'EPw5IJ4VuRmSRdQZg',
+        })
+            .then(
+                () => {
+                    console.log('SUCCESS!');
+                },
+                (error) => {
+                    console.log('FAILED...', error.text);
+                },
+            );
+    };
 
 
-const callBackFun=(entries)=>{
-    const [entry]=entries
-    isVisible(entry.isIntersecting)
-  }
-  
-  const options=useMemo(()=>{
-      return{
-          root:null,
-          rootMargin:"0px",
-          threshold:1
-      }
-  },[])
-  
-  useEffect(() => {
-    const observer =new IntersectionObserver(callBackFun,options);
-    const currentTarget= target1.current;
-    if(currentTarget){
-      observer.observe(currentTarget)
-    }
-  
-    return () => {
-      if(currentTarget){
-          observer.unobserve(currentTarget)
-          
-        }
-    }
-  }, [target1,options])
 
     return (
         <div className='Getintouch' id='Getintouch'>
@@ -69,39 +51,39 @@ const callBackFun=(entries)=>{
                         {/* <Link to={'https://www.instagram.com/ratix_infotech?igsh=Y2dtZWJ1djlqYTQ2&utm_source=qr'} target='_blank'> <img src={facebook} alt='sample' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="2000" /></Link><br /> */}
                         <Link to={'https://www.linkedin.com/company/ratix/'} target='_blank'> <img src={linkedin} alt='sample' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="2500" /></Link>
 
-                        <Form className='Contactusform'   >
+
+
+                        <Form className='Contactusform' ref={form} onSubmit={sendEmail}  >
                             {/* <p className='contactform-title'>Contact Us</p> */}
 
                             <Form.Group className="mb-3" controlId="formBasicText">
-                                <Form.Control type="text" placeholder="Enter your name" onChange={(e)=> setUserName(e.target.value)} />
+                                <Form.Control type="text" name='user_name' placeholder="Enter your name" />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Control type="email" placeholder="Enter your email" onChange={(e)=> setMailId(e.target.value)} />
+                                <Form.Control type="email" name="user_email" placeholder="Enter your email" />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicNumber">
-                                <Form.Control type="text" placeholder="Enter your number" onChange={(e)=> setNumber(e.target.value)} />
+                                <Form.Control type="text" name="user_number" placeholder="Enter your number" />
 
                             </Form.Group>
 
                             <Form.Group className="mb-3">
-                                <Form.Select aria-label="Default select example">
-                                    <input onChange={(e)=> setService(e.target.value)}/>
+                                <Form.Select aria-label="Default select example" name='user_selection'>
+                                    {/* <input onChange={(e) => setService(e.target.value)} /> */}
                                     <option>Select Reason for Contacting</option>
-                                    <option value="1">Manuscript Submission</option>
-                                    <option value="2">Package Details</option>
-                                    <option value="3">Other Services</option>
+                                    <option value="Manuscript Submission">Manuscript Submission</option>
+                                    <option value="Package Details">Package Details</option>
+                                    <option value="Other Services">Other Services</option>
                                     
                                 </Form.Select>
-                                <Form.Text className="text-muted">
-                                    Your details are in safe hands.
-                                </Form.Text></Form.Group>
+                                <Form.Text className="text-muted">Your details are in safe hands.</Form.Text>
+                            </Form.Group>
 
-                            {/* ?body=My custom mail body */}
-                            <a href="mailto:riterapublishing@gmail.com">
-                                <Button className='contactus' type="submit">Submit</Button>
-                            </a>
+
+                            <Button className='contactus' type="submit" value="Send">Submit</Button>
+
                         </Form>
                     </div>
                 </Col>
