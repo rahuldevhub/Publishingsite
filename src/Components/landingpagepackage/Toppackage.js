@@ -19,7 +19,7 @@ const Toppackage = () => {
                 <div className='Package2'>
                     <Row xs={1} md={2} lg={3} className="g-4  packageall">
 
-                        <Card className='level1-card'>
+                        <Card className='level1-card' data-aos="flip-left">
                             <Card.Body >
                                 <div className='card-content'>
                                     <p className='level1-title'>Elite </p>
@@ -50,7 +50,7 @@ const Toppackage = () => {
                             </Card.Body>
                         </Card>
 
-                        <Card className='level1-card'>
+                        <Card className='level1-card' data-aos="flip-left">
                             <Card.Body>
                                 <div className='card-content'>
                                     <p className='level1-title'>Premium </p>
@@ -84,7 +84,7 @@ const Toppackage = () => {
                         </Card>
 
 
-                        <Card className='level1-card'>
+                        <Card className='level1-card' data-aos="flip-left">
                             <Card.Body>
                                 <div className='card-content'>
                                     <p className='level1-title'>Exclusive </p>

@@ -10,12 +10,12 @@ import { useMediaQuery } from 'react-responsive';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 import prooficon from '../../Assets/study.png'
-import proofreading from '../../Assets/serviceicons/proofreading.png'
-import marketing from '../../Assets/serviceicons/marketing.png'
-import articles from '../../Assets/serviceicons/articles.png'
-import betareading from '../../Assets/serviceicons/betareading.png'
-import copywriting from '../../Assets/serviceicons/copywriting.png'
-import International from '../../Assets/serviceicons/international.png'
+import proofreading from '../../Assets/serviceicons/proofreading.webp'
+import marketing from '../../Assets/serviceicons/marketing.webp'
+import articles from '../../Assets/serviceicons/articles.webp'
+import betareading from '../../Assets/serviceicons/betareading.webp'
+import copywriting from '../../Assets/serviceicons/copywriting.webp'
+import International from '../../Assets/serviceicons/international.webp'
 
 
 const Serviceswiper = () => {
@@ -28,7 +28,7 @@ const Serviceswiper = () => {
 
                     <Row xs={1} md={2} lg={3} className="g-4  services-card">
 
-                        <Card className='servicecard' >
+                        <Card className='servicecard'data-aos="zoom-in-right" >
                             <Card.Body >
                                 <div className='service-card-content'>
                                     <img src={proofreading} className='service-card-icon'></img>
@@ -38,7 +38,7 @@ const Serviceswiper = () => {
                             </Card.Body>
                         </Card>
 
-                        <Card className='servicecard' >
+                        <Card className='servicecard' data-aos="zoom-in" >
                             <Card.Body>
                                 <div className='service-card-content'>
                                     <img src={marketing} className='service-card-icon'></img>
@@ -50,7 +50,7 @@ const Serviceswiper = () => {
                             </Card.Body>
                         </Card>
 
-                        <Card className='servicecard' >
+                        <Card className='servicecard'data-aos="zoom-in-left" >
                             <Card.Body>
                                 <div className='service-card-content'>
                                     <img src={articles} className='service-card-icon'></img>
@@ -125,7 +125,7 @@ const Serviceswiper = () => {
                     <Row xs={1} md={2} lg={3} className="g-4 packageall">
 
                         <SwiperSlide>
-                            <Card className='servicecard' >
+                            <Card className='servicecard'data-aos="zoom-in" >
                                 <Card.Body >
                                     <div className='service-card-content'>
                                         <img src={proofreading} className='service-card-icon'></img>

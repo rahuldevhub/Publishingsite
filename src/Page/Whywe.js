@@ -4,12 +4,12 @@ import '../css/whywe.css'
 import { Row, Col } from 'react-bootstrap'
 import Getintouch from '../Components/Getintouch'
 import { Link } from 'react-router-dom';
-import whywe1 from '../Assets/whywe/whywe1.jpg'
-import whywe2 from '../Assets/whywe/whywe2.png'
-import whywe3 from '../Assets/whywe/whywe3.jpg'
-import whywe4 from '../Assets/whywe/whywe4.png'
-import whywe5 from '../Assets/whywe/whywe5.png'
-import whywe6 from '../Assets/whywe/whywe6.png'
+import whywe1 from '../Assets/whywe/whywe1.webp'
+import whywe2 from '../Assets/whywe/whywe2.webp'
+import whywe3 from '../Assets/whywe/whywe3.webp'
+import whywe4 from '../Assets/whywe/whywe4.webp'
+import whywe5 from '../Assets/whywe/whywe5.webp'
+import whywe6 from '../Assets/whywe/whywe6.webp'
 const Whywe = () => {
   useEffect(() => {
     window.scrollTo(0, 0);

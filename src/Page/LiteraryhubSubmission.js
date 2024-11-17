@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React, { useEffect } from 'react'
 import '../css/literaryhubsubmission.css'
 import { Row, Col } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form';
@@ -6,7 +6,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 const LiteraryhubSubmission = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
-      }, []);
+    }, []);
     return (
         <div className='LiteraryhubSubmission'>
 
@@ -65,19 +65,19 @@ const LiteraryhubSubmission = () => {
 
                                 <Form.Group className="mb-3 " controlId="formBasicText" >
                                     <Form.Label>Title</Form.Label>
-                                    <Form.Control type="text" placeholder="Enter Title"   className='form-controlsub'/>
+                                    <Form.Control type="text" placeholder="Enter Title" className='form-controlsub' />
                                     <Form.Text className="text-muted">
                                     </Form.Text>
                                 </Form.Group>
 
                                 <Form.Group controlId="formFile" className="mb-3">
                                     <Form.Label>Cover Picture</Form.Label>
-                                    <Form.Control type="file"   className='form-controlsub'/>
+                                    <Form.Control type="file" className='form-controlsub' />
                                 </Form.Group>
 
                                 <Form.Group controlId="formFile" className="mb-3">
                                     <Form.Label>Manuscript</Form.Label>
-                                    <Form.Control type="file" className='form-controlsub'/>
+                                    <Form.Control type="file" className='form-controlsub' />
                                 </Form.Group>
                             </Form>
 
@@ -88,17 +88,17 @@ const LiteraryhubSubmission = () => {
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Label>Name</Form.Label>
-                            <Form.Control type="text" placeholder="Enter your name"  className='form-controlsub'/>
+                            <Form.Control type="text" placeholder="Enter your name" className='form-controlsub' />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" placeholder="Enter your email"  className='form-controlsub' />
+                            <Form.Control type="email" placeholder="Enter your email" className='form-controlsub' />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Number</Form.Label>
-                            <Form.Control type="number" placeholder="Enter your number"  className='form-controlsub' />
+                            <Form.Control type="number" placeholder="Enter your number" className='form-controlsub' />
                         </Form.Group>
 
                     </Form>

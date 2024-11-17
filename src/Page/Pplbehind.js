@@ -18,9 +18,9 @@ import char2 from '../Assets/pplbehind/char2.png'
 import char3 from '../Assets/pplbehind/char3.png'
 import char4 from '../Assets/pplbehind/char4.png'
 import char5 from '../Assets/pplbehind/char5.png'
-import marketingteam from '../Assets/serviceicons/marketing.png'
-import supportteam from '../Assets/serviceicons/copywriting.png'
-import writingteam from '../Assets/serviceicons/proofreading.png'
+import marketingteam from '../Assets/serviceicons/marketing.webp'
+import supportteam from '../Assets/serviceicons/copywriting.webp'
+import writingteam from '../Assets/serviceicons/proofreading.webp'
 
 const Pplbehind = () => {
   const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 992px)' })

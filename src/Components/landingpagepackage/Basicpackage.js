@@ -20,9 +20,9 @@ const Basicpackage = () => {
 
             {isDesktopOrLaptop &&
 
-                <div className='Package1'>
+                <div className='Package1' >
                     <Row xs={1} md={2} lg={3} className="g-4 packageall">
-                        <Card className='level1-card' >
+                        <Card className='level1-card' data-aos="flip-left" >
                             <Card.Body >
                                 <div className='card-content'>
                                     <p className='level1-title'>Essential </p>
@@ -45,7 +45,7 @@ const Basicpackage = () => {
                                 </Card.Body>
                         </Card>
 
-                        <Card className='level1-card' >
+                        <Card className='level1-card' data-aos="flip-left" >
                             <Card.Body>
                                 <div className='card-content'>
                                     <p className='level1-title'>Standard </p>
@@ -69,7 +69,7 @@ const Basicpackage = () => {
                             </Card.Body>
                         </Card>
 
-                        <Card className='level1-card' >
+                        <Card className='level1-card' data-aos="flip-left">
                             <Card.Body>
                                 <div className='card-content'>
                                     <p className='level1-title'>Advanced</p>

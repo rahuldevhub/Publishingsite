@@ -1,7 +1,7 @@
 .landingpage-bgimg {
 
     background: #000;
-    background-image: url("../Assets/image.jpg");
+    background-image: url("../Assets/pageheader/landing.webp");
     background-position: bottom;
     background-size: cover;
 }
@@ -345,35 +345,45 @@
 
 .landingpage-article {
     background: #F5F1E0;
-    padding-bottom: 8rem;
+    padding-bottom: 5rem;
     padding-top: 3rem;
 
 }
 
 .landingpage-article-content {
-    margin-left: 6rem;
-    margin-right: 6rem;
+    margin-left: 18rem;
+    margin-right: 18rem;
     text-align: center;
 }
-
+.landingpage-article-container {
+    border-radius: 1rem;
+    border: solid 2px #D4A373;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    padding-left:1rem;
+    padding-right: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+.landingpage-article a{
+    text-decoration: none !important;
+}
 .landingpage-article h2 {
     font-family: "Merriweather", serif;
     font-weight: 600;
     font-size: 2.5rem;
     text-align: center;
     padding-top: 3rem;
-    padding-bottom: 5rem;
+    padding-bottom: 2rem;
 }
-.Literaryhub a{
-    text-decoration: none;
-}
+
 .landingpage-article-container h2 {
     font-family: "Merriweather", serif;
     font-weight: 600;
-    font-size: 2.3rem;
+    font-size: 2rem;
     text-align: center;
     padding-top: 2rem;
-    padding-bottom: 3rem;
+    padding-bottom: 1.5rem;
 }
 
 
@@ -388,31 +398,6 @@
 
 }
 
-/* .landingpage-article-img {
-    height: 10rem;
-    width: 10rem;
-    object-fit: cover;
-    border-radius: 1.3rem;
-} */
-
-
-
-
-
-
-
-
-/* .landingpage-article-button2 {
-    align-items: center;
-    background-color: #6E7E4B;
-    color: white;
-    border: none;
-    margin-top: 3rem;
-    border-radius: 1rem;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    width: 15rem;
-} */
 
 
 
@@ -422,6 +407,52 @@
     padding: 1rem;
     margin-bottom: 1.5rem;
 }
+
+@media only screen and (max-width: 992px){
+
+    .landingpage-article {
+        padding-bottom: 3rem;
+        padding-top: 3rem;
+    
+    }
+    
+    .landingpage-article-content {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        text-align: center;
+    }
+    .landingpage-article h2 {
+        font-size: 1.7rem;
+        text-align: center;
+        padding-top: 0rem;
+        padding-bottom: 2rem;
+    }
+    .landingpage-article-container {
+        margin-left: 2rem;
+        margin-right: 2rem;
+        padding-left:0rem;
+        padding-right: 0rem;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        margin-bottom: 1rem;
+    }
+    .landingpage-article-container h2 {
+        font-size: 2rem;
+        padding-top: .5rem;
+        padding-bottom: 0rem;
+    }
+    .landingpage-article-img{
+        height: 7rem;
+        width: 7rem;
+        padding: 1.3rem;
+        border-radius: .4rem;
+        margin-bottom: 1rem;
+    
+    }
+    
+}
+
+
 
 
 
