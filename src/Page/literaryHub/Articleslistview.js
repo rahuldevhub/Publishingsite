@@ -81,7 +81,7 @@ export const Articleslistview = () => {
             <div className='literaryhub-hookredirect'>
         <Row className='literaryhub-hookredirect-content'>
           <Col lg="12" md='6' sm="4" >
-            <p>Publish your work Free</p>
+            <p>Publish your work for free</p>
           </Col>
 
           <Col lg="12" md='6' sm="4" className=' literaryhub-hookredirect-button'>

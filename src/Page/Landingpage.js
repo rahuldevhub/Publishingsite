@@ -18,15 +18,15 @@ const Landingpage = () => {
     <div className='Landingpage'>
 
       <div className='landingpage-bgimg' >
-        <div className='landingpage-blackdrop'data-aos="fade-down" >
+        <div className='landingpage-blackdrop' data-aos="fade-down" >
           {/* <Header /> */}
           <div className='landing-content'>
-            <p className='landing-title'  data-aos="fade-down"
-     data-aos-easing="linear"
-     data-aos-duration="1000">Empower your story <br /> Self Publish with confidence</p>
+            <p className='landing-title' data-aos="fade-down"
+              data-aos-easing="linear"
+              data-aos-duration="1000">Empower your story <br /> Self Publish with confidence</p>
             <p className='landing-subtitle' data-aos="fade-down"
-     data-aos-easing="linear"
-     data-aos-duration="1000">At Ritera, We're passionate about transforming ideas <br /> into stories and visions into masterpiece</p>
+              data-aos-easing="linear"
+              data-aos-duration="1000">At Ritera, We're passionate about transforming ideas <br /> into stories and visions into masterpiece</p>
             <a href='#landingpage-package'><button className='landing-button'> Get Start</button></a>
           </div>
         </div>
@@ -79,7 +79,7 @@ const Landingpage = () => {
           <div className='landingpage-col-centering'>
             <div className='landingpage-customizedroyalty-blackdrop'>
               <div className='landingpage-customizedroyalty-insidecontent'>
-                <h2>Customizeable Package</h2>
+                <h2>Customizable Package</h2>
                 <p> Upon submitting your preferences, our marketing specialist will present you with a tailored package, detailing its pricing and benefits. </p>
                 <Link to={'/customize-package'}><button className='landingpage-customizedroyalty-button'> Learn more</button></Link>
               </div>
@@ -104,19 +104,19 @@ const Landingpage = () => {
         </div>
       </div>
 
-{/* Literaryhub section start */}
+      {/* Literaryhub section start */}
 
       <div className='landingpage-article'>
         <div className='landingpage-article-content'>
           <h2>Literary Hub</h2>
 
-       <Literaryhub/>
+          <Literaryhub />
 
         </div>
 
       </div>
 
-{/* Literaryhub section end */}
+      {/* Literaryhub section end */}
 
       <div className='landingpage-hookredirect'>
         <Row className='landingpage-hookredirect-content'>

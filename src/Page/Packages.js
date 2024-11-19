@@ -188,12 +188,12 @@ const Packages = () => {
                       media promotions and etc for seasoned authors.</p>
                     <ul className='package-features'>
                       <li>Personal Publishing Manager</li>
-                      <li>Proff Reading (40k words)</li>
+                      <li>Proof Reading (40k words)</li>
                       <li>Copy Editing (15k words)</li>
                       <li>Customized Cover Design</li>
                       <li>International Paperback distribution</li>
                       <li>E-book Placements</li>
-                      <li>Author Vedio on website</li>
+                      <li>Author Video on website</li>
                       <li>Kindle Promotion</li>
                       <li>Print media Promotion</li>
                       <li>Social Media Promotion (Pre and Post Publishing)</li>
