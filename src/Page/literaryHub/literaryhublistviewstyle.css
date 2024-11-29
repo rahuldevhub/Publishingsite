@@ -1,3 +1,6 @@
+.Poemlistview{
+    background-color: rgb(241, 241, 241);
+}
 .literaryhub-bgimg {
 
     background: #000;
@@ -32,7 +35,13 @@
     border-radius: 1rem;
     background-color: #D4A373;
 }
-
+.literaryhub-content2{
+    margin-left: 6rem;
+    margin-right: 6rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    
+}
 .literaryhub-content h2 {
     font-size: 2.5rem;
     font-family: "Merriweather", serif;
@@ -41,7 +50,14 @@
     padding-top: 3rem;
     text-align: center;
 }
-
+.literaryhub-content2 h2 {
+    font-size: 2.5rem;
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    color: black;
+    padding-top: 1rem;
+    text-align: center;
+}
 .literaryhub-article-container1 {
     border-radius: 1rem;
   
@@ -53,6 +69,7 @@
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
+
 .Poemlistview a{
     text-decoration: none;
     color: #000;
@@ -82,7 +99,15 @@
     object-fit: cover;
     
 }
-
+.literaryhub-cover-img2 {
+    height: 13.5rem;
+    width: 18rem;
+    padding: .5rem;
+    text-align: center;
+    border-radius: 1rem;
+    object-fit: cover;
+    
+}
 
 
 .literary-cardcontent-col {
@@ -195,7 +220,11 @@
         font-size: 2rem;
         padding-top: 4.5rem;
     }
-
+.literaryhub-article-container1-row{
+    display: contents;
+    /* margin-left: 0 !important; */
+    /* margin-right: 0 !important; */
+}
     .literaryhub-content {
 
         margin-left: 1rem;
@@ -210,6 +239,11 @@
         padding-top: 1.5rem;
         padding-bottom: 1;
     }
+    .literaryhub-content2 h2 {
+        font-size: 1.7rem;
+        padding-top: 0rem;
+        padding-bottom: 1rem;
+    }
     .literaryhub-cover-img {
         height: 10rem;
         width: 100%;
@@ -219,7 +253,18 @@
         object-fit: cover;
         
     }
-
+    .literaryhub-content-card {
+        justify-self: center;
+        background-color: white;
+        margin-left: .5rem;
+        margin-right: .5rem;
+        margin-bottom: 1rem;
+        border-radius: 1rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        text-decoration: none;
+    }
+    
     .literaryhub-cardcontent-title {
     font-size: 1.1rem;
     text-align: center;

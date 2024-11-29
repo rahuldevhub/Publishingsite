@@ -79,19 +79,19 @@ const SingleArticleView = () => {
                                 <div className="Demo__container">
 
                                     <div className="Demo__some-network">
-                                        <FacebookShareButton url={"/"} className="Demo__some-network__share-button">
+                                        <FacebookShareButton url={`https://www.riterapublishing.com/literaryhub-articles/`} className="Demo__some-network__share-button">
                                             <FacebookIcon size={32} round />
                                         </FacebookShareButton></div>
 
                                     <div className="Demo__some-network">
-                                        <TwitterShareButton url={"/"} title={singlearticle.title} className="Demo__some-network__share-button">
+                                        <TwitterShareButton url={`https://www.riterapublishing.com/literaryhub-articles/`} title={singlearticle.title} className="Demo__some-network__share-button">
                                             <XIcon size={32} round />
                                         </TwitterShareButton></div>
 
                                     <div className="Demo__some-network">
 
                                         <WhatsappShareButton
-                                            url={"/"}
+                                            url={`https://www.riterapublishing.com/literaryhub-articles/`}
                                             title={singlearticle.title}
                                             separator=":: "
                                             className="Demo__some-network__share-button"
@@ -102,7 +102,7 @@ const SingleArticleView = () => {
 
                                     <div className="Demo__some-network">
                                         <LinkedinShareButton
-                                            url={"/"}
+                                            url={`https://www.riterapublishing.com/literaryhub-articles/`}
                                             className="Demo__some-network__share-button"
                                         >
                                             <LinkedinIcon size={32} round />

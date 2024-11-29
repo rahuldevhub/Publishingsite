@@ -1,5 +1,6 @@
 import img01 from "../../Assets/literaryhub/poemcoverimg/cover1.webp";
 import img02 from "../../Assets/literaryhub/poemcoverimg/cover2.png";
+import img03 from "../../Assets/literaryhub/poemcoverimg/cover3.png";
 
 const poemData = [
     {
@@ -78,7 +79,7 @@ const poemData = [
     },
     {
         id: 2,
-        title: 'Daddy"s little girl', 
+        title: "Daddy's little girl", 
         authorname: "Zain Al Fikri",
         posteddate: "Oct 29th 2024",
         imgUrl: img02,
@@ -114,6 +115,34 @@ const poemData = [
             Sailing through the border of our homeland,
             With hearts unburdened, and spirits light.`
 
+    },
+    {
+        id: 3,
+        title: "Invisible strokes", 
+        authorname: "Stan Miller",
+        posteddate: "Nov 25th 2024",
+        imgUrl: img03,
+        poemSynopsis:"In a grand, empty hall, an artist embarks on creating a masterpiece. Withnoaudience to witness his work, he finds solace and inspiration in solitude. Each brushstroke and color choice becomes a dance and a song, bringing the canvas to life. The poem explores the beauty of creating art for oneself, without the need for external validation. It celebrates the artist's journey of self-expression and the profound connection between the creator and their creation",
+        authorBio:"Stan Miller, a visionary artist and storyteller, resides in the rugged beauty of WesternAustralia. His days are a kaleidoscope of colors and words, as he captures the essenceof the outback on canvas and paper. Stan's art is a vivid reflection of the landscapes heloves, while his writing delves into the human spirit with profound insight. A true renaissance man, he finds inspiration in the solitude of nature, where he paints andwrites with a passion that knows no bounds. In the quiet moments by the sea, Stan's creativity flows, bringing his unique perspective to life.",
+        poem: `In a grand hall, vast and still,
+        An artist's heart begins to fill.
+        With colors bright and shadows deep,
+        A masterpiece, his soul to keep.
+        
+        No eyes to see, no ears to hear,
+        Yet in this space, he feels no fear.
+        Each stroke a dance, each hue a song,
+        In solitude, where he belongs.
+
+        The canvas breathes, the pigments sing,
+        A silent symphony takes wing.
+        No audience to praise or scorn,
+        In this quiet, art is born.
+        
+        A world within, a dream unfurled,
+        The artist paints his own new world.
+        In empty halls, his strokes soars,
+        Creating beauty, forevermore.`
     },
 ];
 export default poemData;

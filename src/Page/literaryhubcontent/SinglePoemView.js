@@ -77,19 +77,19 @@ const SinglePoemView = () => {
                                 <div className="Demo__container">
 
                                     <div className="Demo__some-network">
-                                        <FacebookShareButton url={"/"} className="Demo__some-network__share-button">
+                                        <FacebookShareButton url={`https://www.riterapublishing.com/literaryhub-poems/`} className="Demo__some-network__share-button">
                                             <FacebookIcon size={32} round />
                                         </FacebookShareButton></div>
 
                                     <div className="Demo__some-network">
-                                        <TwitterShareButton url={"/"} title={singlepoem.title} className="Demo__some-network__share-button">
+                                        <TwitterShareButton url={`https://www.riterapublishing.com/literaryhub-poems/`} title={singlepoem.title} className="Demo__some-network__share-button">
                                             <XIcon size={32} round />
                                         </TwitterShareButton></div>
 
                                     <div className="Demo__some-network">
 
                                         <WhatsappShareButton
-                                            url={`https://www.riterapublishing.com/literaryhub-poems/${singlepoem.title}`}
+                                            url={`https://www.riterapublishing.com/literaryhub-poems/`}
                                             title={singlepoem.title}
                                             separator=":: "
                                             className="Demo__some-network__share-button"
@@ -100,7 +100,7 @@ const SinglePoemView = () => {
 
                                     <div className="Demo__some-network">
                                         <LinkedinShareButton
-                                            url={"/"}
+                                            url={`https://www.riterapublishing.com/literaryhub-poems/`}
                                             className="Demo__some-network__share-button"
                                         >
                                             <LinkedinIcon size={32} round />
