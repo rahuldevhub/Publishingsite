@@ -60,7 +60,6 @@
 }
 .literaryhub-article-container1 {
     border-radius: 1rem;
-  
     border: solid 1px #D4A373;
     margin-left: 0rem;
     margin-right: 0rem;
@@ -227,6 +226,14 @@
 }
     .literaryhub-content {
 
+        margin-left: 0rem;
+        margin-right: 0rem;
+        margin-top: 0rem;
+        margin-bottom: 2rem;
+        border-radius: 0rem;
+    }
+    .literaryhub-content2 {
+
         margin-left: 1rem;
         margin-right: 1rem;
         margin-top: 1rem;
@@ -249,7 +256,16 @@
         width: 100%;
         padding: 0rem !important;
         text-align: center;
-        border-radius: 1rem;
+        border-radius: .5rem;
+        object-fit: cover;
+        
+    }
+    .literaryhub-cover-img2 {
+        height: 10rem;
+        width: 100%;
+        padding: 0rem !important;
+        text-align: center;
+        border-radius: .5rem;
         object-fit: cover;
         
     }
@@ -259,9 +275,9 @@
         margin-left: .5rem;
         margin-right: .5rem;
         margin-bottom: 1rem;
-        border-radius: 1rem;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
+        border-radius: .5rem;
+        padding-top: .8rem;
+        padding-bottom: .8rem;
         text-decoration: none;
     }
     
