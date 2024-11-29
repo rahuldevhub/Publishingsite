@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import './literaryhublistviewstyle.css';
 import { Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
-import dummycover from '../../Assets/landingpagewhywe.jpg';
-import img01 from '../../Assets/cover1.webp';
+import dummycover from '../../Assets/literaryhub/poemcoverimg/cover2.png';
+import img01 from '../../Assets/literaryhub/poemcoverimg/cover1.webp';
 
 export const Poemlistview = () => {
     useEffect(() => {
@@ -19,14 +19,14 @@ export const Poemlistview = () => {
             description: "The poem “Happily ever after” portrays a man in his 80s, sitting in a graveyard, drenched in sweat, with tired, worn hands. Unable to escape the void left by his wife’s death, he decides to commit suicide, not by shooting himself, hanging, or bleeding to death. Instead, he dozed himself high and dig a grave beside his wife’s, seeking peaceful rest by her side. He writes one last poem before dawn and places it atop her cemetery with her favourite California poppies.",
             posdate: "Oct 29th 2024",
         },
-        // {
-        //     id: 2,
-        //     title: 'Happily Ever After',
-        //     authorname: "Saran Raj",
-        //     img: dummycover,
-        //     description: "The poem “Happily ever after” portrays a man in his 80s, sitting in a graveyard, drenched in sweat, with tired, worn hands. Unable to escape the void left by his wife’s death, he decides to commit suicide, not by shooting himself, hanging, or bleeding to death. Instead, he dozed himself high and dig a grave beside his wife’s, seeking peaceful rest by her side. He writes one last poem before dawn and places it atop her cemetery with her favourite California poppies.",
-        //     posdate: "Oct 20th 2024",
-        // },
+        {
+            id: 2,
+            title: 'Daddy"s little girl',
+            authorname: "Zain Al Fikri",
+            img: dummycover,
+            description: "In this moving poetry, a father and daughter set out on a peaceful journey at dawn, hand in hand, leaving behind their birthplace. The soft waves of the sea, as well as thepromise of a pleasant voyage, calm their hearts. As they sail, their laughter and unspoken intimacy create a tune of love and trust. The rising light colors the sky goldand amber, leading them to a new horizon of limitless possibilities.",
+            posdate: "Nov 12th 2024",
+        },
 
     ]
 

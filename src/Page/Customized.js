@@ -30,32 +30,21 @@ const Customized = () => {
 
               <form class="form-inline">
 
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>Number of pages</label>
-                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                  {/* <option selected>Standard</option> */}
-                  <option value="1">Standard</option>
-                  <option value="2">Advanced</option>
-                  <option value="3">Premium</option>
-                </select><br />
+                <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>No.of pages</label>
+                <input type="text" class="custom-select my-1 mr-sm-2" placeholder='No. of pages' />
+                <br />
 
 
                 <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>Type of Books</label>
-                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" >
                   {/* <option selected>Standard</option> */}
-                  <option value="1">Standard</option>
-                  <option value="2">Advanced</option>
-                  <option value="3">Premium</option>
-
+                  <option value="1">Fiction</option>
+                  <option value="2">Non-Fiction</option>
                 </select><br />
 
                 <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>Genre</label>
-                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                  {/* <option selected>Standard</option> */}
-                  <option value="1">No Needed</option>
-                  <option value="2">Below 10k words</option>
-                  <option value="3">Below 25k words</option>
-                  <option value="4">More than 40k words</option>
-                </select><br />
+                <input type="text"  class="custom-select my-1 mr-sm-2" placeholder='Genre' />
+                <br />
 
                 <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>Paper back</label>
                 <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
@@ -82,7 +71,7 @@ const Customized = () => {
               <form class="form-inline">
 
 
-              <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>Cover Design</label>
+                <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>Cover Design</label>
                 <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
                   {/* <option selected>Standard</option> */}
                   <option value="1">Standard</option>
@@ -124,7 +113,7 @@ const Customized = () => {
                   <option value="1">No</option>
                   <option value="2">Yes</option>
                 </select><br />
-               
+
 
 
               </form>
@@ -195,7 +184,7 @@ const Customized = () => {
 
         </div>
       </div>
-{/* 
+      {/* 
       <div className='customized-getintouch'>
         <Getintouch />
       </div> */}

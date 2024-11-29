@@ -89,7 +89,7 @@ const SinglePoemView = () => {
                                     <div className="Demo__some-network">
 
                                         <WhatsappShareButton
-                                            url={"/"}
+                                            url={"/literayhub-articles/:slug"}
                                             title={singlepoem.title}
                                             separator=":: "
                                             className="Demo__some-network__share-button"
