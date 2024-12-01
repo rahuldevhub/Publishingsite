@@ -1,6 +1,7 @@
 import img01 from "../../Assets/literaryhub/poemcoverimg/cover1.webp";
 import img02 from "../../Assets/literaryhub/poemcoverimg/cover2.png";
 import img03 from "../../Assets/literaryhub/poemcoverimg/cover3.png";
+import img04 from "../../Assets/literaryhub/poemcoverimg/cover4.webp";
 
 const poemData = [
     {
@@ -143,6 +144,39 @@ const poemData = [
         The artist paints his own new world.
         In empty halls, his strokes soars,
         Creating beauty, forevermore.`
+    },
+    {
+        id: 4,
+        title: "To someone who’s struggling in silence", 
+        authorname: "Shahitha Fareen M",
+        posteddate: "Nov 25th 2024",
+        imgUrl: img04,
+        poemSynopsis:"You Deserve the World Author takes readers on an emotional journey through the highs and lows of life. This heartfelt piece emphasizes the importance of surrounding oneself with people who love unconditionally and bring out the best in us. It acknowledges the inevitable encounters with those who may cause pain and doubt but reassures that these negative influences are temporary. The narrative encourages embracing all emotions—pain, love, anger, sadness, and happiness—as integral parts of the human experience. It reminds readers that they are never truly alone, highlighting the presence of supportive individuals who are always ready to lend a helping hand. Ultimately, the piece is a powerful reminder to believe in oneself and the goodness of others, fostering a sense of hope and resilience.",
+        authorBio:"Shahitha Fareen is a multifaceted individual, seamlessly blending her passion for poetry with her professional expertise as a physiotherapist. Born and raised in Tamil Nadu, India, Shahitha has always been drawn to the healing arts, both physical and emotional. In addition to her medical career, Shahitha is an accomplished poet. Her poetry, rich with emotion and insight, explores themes of healing, resilience, and the beauty of everyday moments. Shahitha's unique combination of skills allows her to touch lives in multiple ways, whether through the physical relief she provides, or the emotional resonance of her poetry. She continues to inspire many with her dedication to both her crafts, proving that the art of healing can take many forms.",
+        poem: `You deserve the world!
+        Yes, you do. 
+        And by saying “world,” I mean all the people who love you unconditionally,
+        People who wish the best for you,
+        People who bring out the better in you,
+        People you’re comfortable around,
+        People with whom you can laugh like an idiot, Yet not feel embarrassed about it!
+        
+        And remember, in this path of life,
+        You’ll meet people who may bring the worst into your life,
+        People who manipulate you,
+        People who make you question your care, honesty, trust, and love.
+        But you see, they’re never permanent!
+        You can ask, “Why me?”
+        But oh dear, don’t you want to feel
+        All kinds of pain, love, tears, anger, sadness, sorrow, 
+        Sympathy, happiness, and much more in this life!?
+
+        No, you’re not in this alone!
+        Look around; there’ll always be a person
+        Standing quietly in the corner
+        Just waiting for you to reach their hand to help you!
+        There always is someone
+        Believe in me, you, and them!`
     },
 ];
 export default poemData;

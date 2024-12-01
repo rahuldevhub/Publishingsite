@@ -359,8 +359,8 @@
 .landingpage-article-container {
     border-radius: 1rem;
     border: solid 2px #D4A373;
-    margin-left: 3rem;
-    margin-right: 3rem;
+    margin-left: 7rem;
+    margin-right: 7rem;
     padding-left:1rem;
     padding-right: 1rem;
     padding-top: 2rem;
@@ -383,8 +383,8 @@
     font-weight: 600;
     font-size: 2rem;
     text-align: center;
-    padding-top: 2rem;
-    padding-bottom: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 
@@ -392,7 +392,7 @@
     height: 8rem;
     width: 8rem;
     background-color: #6E7E4B;
-    padding: 1.5rem;
+    padding: .1rem;
     text-align: center;
     border-radius: .4rem;
     margin-bottom: 2rem;

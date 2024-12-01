@@ -47,7 +47,7 @@ const SinglePoemView = () => {
 
             <div className='Poemcontent-margin'>
 
-                <h1 className='poemcontent-title'>{singlepoem.title}</h1>
+                <h1 className='poemcontent-title' data-aos="fade-down">{singlepoem.title}</h1>
 
                 <div>
                     <img src={singlepoem.imgUrl} className='poemcontent-coverpic'></img>
@@ -56,7 +56,7 @@ const SinglePoemView = () => {
                             {/* {poemcontent.map((data) => ( */}
                             <div key={singlepoem.poem} style={{ marginBottom: '2rem' }}>
 
-                                <p className='poemcontent-content'>
+                                <p className='poemcontent-content' data-aos="fade-up">
                                     {singlepoem.poem.split('\n').map((line, index) => (
                                         <span key={index}>
                                             {line}
@@ -69,7 +69,7 @@ const SinglePoemView = () => {
                         <Col lg='4'>
                             <div className='poemcontent-sidecard'>
 
-                                <h4>Poem Details</h4>
+                                <h4  data-aos="fade-up">Poem Details</h4>
 
                                 <p> {singlepoem.poemSynopsis}</p>
                                 <p>Poet: {singlepoem.authorname}</p>
