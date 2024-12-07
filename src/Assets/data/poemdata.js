@@ -178,5 +178,55 @@ const poemData = [
         There always is someone
         Believe in me, you, and them!`
     },
+    {
+        id: 5,
+        title: "Sun in Africa", 
+        authorname: "Zuri",
+        posteddate: "Dec 5th 2024",
+        imgUrl: img04,
+        poemSynopsis:"Sun in Africa” paints a vivid picture of Africa, a continent marked by both struggle and resilience. It highlights the harsh realities of poverty and hardship, yet celebrates the unbroken spirit and grace of its people. The poem portrays children with dreams, mothers and fathers who work tirelessly, and communities that remain strong and united despite adversity. It emphasizes the resilience and hope that bloom in every corner of Africa, from the slums of Kibera to the deserts of Mali. The poem concludes by affirming the enduring strength and true rhythm of Africa's heart.",
+        authorBio:"Zuri, a distinguished poet of African descent, weaves her verses with the threads of poverty and the indomitable spirit of her people. Her poetry, rich in imagery and profound in its depth, captures the stark realities of life while celebrating the resilience and hope that define the human spirit. Through her eloquent and evocative lines, Zuri seeks to illuminate the socio-economic challenges faced by many, urging her audience towards empathy and action. Her work stands as a testament to her unwavering commitment to justice and equality, reflecting a deep connection to her heritage.Zuri's literary contributions continue to inspire and uplift, making her a beacon of hope and a voice for the voiceless.",
+        poem: `
+        In the heart of Africa,
+        where the sun blazes bright, 
+        Lies a land of struggle,
+        yet a beacon of light.
+        
+        Amidst the shadows of poverty's cruel embrace,
+        Lives a spirit unbroken,
+        with an unyielding grace.
+        
+        Children with eyes,
+        That tell tales of despair,
+        Yet dreams in their hearts,
+        beyond compare.
+        
+        Mothers who toil from dawn,
+        Till dusk,
+        With hands that are calloused,
+        yet hearts full of trust.
+        
+        Fathers who labor in fields of dust,
+        With hopes that tomorrow will bring what it must.
+        
+        Communities bound by a thread so strong,
+        In the face of adversity, they sing their song.
+        
+        For in the depths of hardship,
+        a fire does burn,
+        A fighting spirit,
+        with lessons to learn.
+        
+        From the slums of Kibera to the deserts of Mali,
+        Resilience blooms in every alley.
+        
+        With every sunrise,
+        a new hope is born,
+        In the land where the acacia and baobab adorn.
+        
+        For Africa's heart beats with a rhythm so true,
+        A testament to the strength that sees them through
+        `
+    },
 ];
 export default poemData;
