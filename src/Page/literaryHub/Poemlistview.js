@@ -6,6 +6,7 @@ import img01 from '../../Assets/literaryhub/poemcoverimg/cover1.webp';
 import img02 from '../../Assets/literaryhub/poemcoverimg/cover2.png';
 import img03 from '../../Assets/literaryhub/poemcoverimg/cover3.png';
 import img04 from '../../Assets/literaryhub/poemcoverimg/cover4.webp';
+import img05 from '../../Assets/literaryhub/poemcoverimg/cover5.png';
 
 
 export const Poemlistview = () => {
@@ -18,7 +19,7 @@ export const Poemlistview = () => {
             id: 1,
             title: 'Sun in Africa',
             authorname: "Zuri",
-            img: img04,
+            img: img05,
             description: "Sun in Africa” paints a vivid picture of Africa, a continent marked by both struggle and resilience. It highlights the harsh realities of poverty and hardship, yet celebrates the unbroken spirit and grace of its people.",
             posdate: "Dec 5th 2024",
         },
