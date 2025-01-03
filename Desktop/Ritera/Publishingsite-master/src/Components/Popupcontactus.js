@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { useRef } from 'react'
+
+import emailjs from '@emailjs/browser';
+
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -9,6 +12,25 @@ const Popupcontactus = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    
+
+    emailjs.sendForm('service_ivsbffk', 'template_symmsej', form.current, {
+      publicKey: 'EPw5IJ4VuRmSRdQZg',
+    })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+  };
+
   return (
     <>
       <Button className='package-button' onClick={handleShow}>
@@ -21,12 +43,13 @@ const Popupcontactus = () => {
         </Modal.Header>
 
         <Modal.Body className='contactbody-bg'>
-          <Form>
+          <Form ref={form} onSubmit={sendEmail}>
 
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type="text"
+                name='user_name'
                 placeholder="Enter your name"
                 autoFocus
               />
@@ -37,8 +60,9 @@ const Popupcontactus = () => {
               <Form.Label>Email address</Form.Label>
               <Form.Control
                 type="email"
+                name='user_email'
                 placeholder="name@example.com"
-              
+
               />
 
             </Form.Group>
@@ -47,8 +71,9 @@ const Popupcontactus = () => {
               <Form.Label>Phone Number</Form.Label>
               <Form.Control
                 type="number"
+                name='user_number'
                 placeholder="Enter your number"
-              
+
               />
             </Form.Group>
 
@@ -66,7 +91,7 @@ const Popupcontactus = () => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" className='popupsendbtn' onClick={handleClose}>
+          <Button variant="primary" className='popupsendbtn' type='sumbit' value="Send" onClick={sendEmail}>
             Send
           </Button>
         </Modal.Footer>

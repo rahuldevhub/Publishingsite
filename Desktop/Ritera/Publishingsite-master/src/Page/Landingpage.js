@@ -9,6 +9,7 @@ import customizedbg from '../Assets/customizedbg.jpg'
 import Getintouch from '../Components/Getintouch'
 import { Link } from 'react-router-dom';
 import Literaryhub from '../Components/literaryhub/Literaryhub'
+import Popuplanding from '../Components/Popups/Popuplanding'
 
 const Landingpage = () => {
   useEffect(() => {
@@ -27,7 +28,8 @@ const Landingpage = () => {
             <p className='landing-subtitle' data-aos="fade-down"
               data-aos-easing="linear"
               data-aos-duration="1000">At Ritera, We're passionate about transforming ideas <br /> into stories and visions into masterpiece</p>
-            <a href='#landingpage-package'><button className='landing-button'> Get Start</button></a>
+              <Popuplanding/>
+           
           </div>
         </div>
 
