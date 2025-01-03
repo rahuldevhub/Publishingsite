@@ -7,6 +7,9 @@ import img02 from '../../Assets/literaryhub/poemcoverimg/cover2.png';
 import img03 from '../../Assets/literaryhub/poemcoverimg/cover3.png';
 import img04 from '../../Assets/literaryhub/poemcoverimg/cover4.webp';
 import img05 from '../../Assets/literaryhub/poemcoverimg/cover5.png';
+import img06 from '../../Assets/literaryhub/poemcoverimg/cover6.webp';
+import img07 from '../../Assets/literaryhub/poemcoverimg/cover7.jpeg';
+import img08 from '../../Assets/literaryhub/poemcoverimg/cover8.jpeg';
 
 
 export const Poemlistview = () => {
@@ -17,6 +20,35 @@ export const Poemlistview = () => {
     const newpoemdata = [
          {
             id: 1,
+            title: 'Echoes of the Harvest Gone',
+            authorname: "Austin Flint",
+            img: img08,
+            description: "Echoes of the Harvest Gone is a reflective poem by Austin Flint that delves intothepoignant imagery of a desolate backyard, once teeming with life. Through vivid descriptions and evocative language, Flint portrays the cycle of growth and decayinherent in nature. The poem speaks to the resilience of the human spirit, symbolizedby a farmer's unwavering hope despite the harsh realities of drought and death. Eachstanza weaves a tale of loss and renewal, ultimately suggesting that even in the face of adversity, life finds a way to endure and flourish.",
+            posdate: "Jan 3rd 2025",
+        },
+        {
+            id: 2,
+            title: 'A Glimmer Of Hope',
+            authorname: "Anshidha Jagadheesh",
+            img: img07,
+            description: "“A Glimmer Of Hope” reflects on the struggles and inner battles facedbyindividuals who seek peace and belonging in a world often quick to judge and isolate. It highlights the hidden strength within these individuals, their unwavering courage, and their unique journeys. The poem emphasizes the importance of unity, compassion, and acceptance, encouraging us to stand together, support one another, and celebratethe beauty of diversity. By nurturing a world of care and love, we can transformhardships into hope and create a brighter, more inclusive future.",
+            posdate: "Dec 28th 2024",
+        },
+      
+    ]
+
+    const poemdata = [
+        {
+            id: 1,
+            title: 'Embrace the silence',
+            authorname: "Julia Shade",
+            img: img06,
+            description: "Embrace of Silence by Julia Shade is a serene meditation on the joys of solitude and the profound peace found in embracing the void. Through delicateand introspective language, the poem captures the quiet beauty of beingaloneand the clarity that comes from within. Shade’s verses depict a soul at easeinthe stillness, finding solace and healing in the absence of external noise. Eachstanza reflects the tranquil journey of self-discovery and the serenity that emerges from solitude, celebrating the inner peace that arises whenoneembraces the emptiness",
+            posdate: "Dec 15th 2024",
+        },
+      
+        {
+            id: 2,
             title: 'Sun in Africa',
             authorname: "Zuri",
             img: img05,
@@ -24,19 +56,15 @@ export const Poemlistview = () => {
             posdate: "Dec 5th 2024",
         },
         {
-            id: 2,
+            id: 3,
             title: 'To someone who’s struggling in silence',
             authorname: "Shahitha Fareen M",
             img: img04,
             description: "Author takes readers on an emotional journey through the highs and lows of life. This heartfelt piece emphasizes the importance of surrounding oneself with people who love unconditionally and bring out the best in us. It acknowledges the inevitable encounters with those who may cause pain and doubt but reassures that these negative influences are temporary. ",
             posdate: "Dec 1st 2024",
         },
-      
-    ]
-
-    const poemdata = [
          {
-            id: 3,
+            id: 4,
             title: 'Invisible strokes',
             authorname: "Stan Miller",
             img: img03,
@@ -44,7 +72,7 @@ export const Poemlistview = () => {
             posdate: "Nov 25th 2024",
         },
         {
-            id: 4,
+            id: 5,
             title: "Daddy's little girl",
             authorname: "Zain Al Fikri",
             img: img02,
@@ -52,7 +80,7 @@ export const Poemlistview = () => {
             posdate: "Nov 12th 2024",
         },
         {
-            id: 5,
+            id: 6,
             title: 'Happily Ever After',
             authorname: "Saran Raj",
             img: img01,

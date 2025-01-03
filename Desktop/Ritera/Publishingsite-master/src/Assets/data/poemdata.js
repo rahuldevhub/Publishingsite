@@ -2,6 +2,10 @@ import img01 from "../../Assets/literaryhub/poemcoverimg/cover1.webp";
 import img02 from "../../Assets/literaryhub/poemcoverimg/cover2.png";
 import img03 from "../../Assets/literaryhub/poemcoverimg/cover3.png";
 import img04 from "../../Assets/literaryhub/poemcoverimg/cover4.webp";
+import img05 from "../../Assets/literaryhub/poemcoverimg/cover5.png";
+import img06 from "../../Assets/literaryhub/poemcoverimg/cover6.webp";
+import img07 from "../../Assets/literaryhub/poemcoverimg/cover7.jpeg";
+import img08 from "../../Assets/literaryhub/poemcoverimg/cover8.jpeg";
 
 const poemData = [
     {
@@ -12,9 +16,7 @@ const poemData = [
         imgUrl: img01,
         poemSynopsis:"The poem “Happily ever after” portrays a man in his 80s, sitting in a graveyard, drenched in sweat, with tired, worn hands. Unable to escape the void left by his wife’s death, he decides to commit suicide, not by shooting himself, hanging, or bleeding to death. Instead, he dozed himself high and dig a grave beside his wife’s, seeking peaceful rest by her side. He writes one last poem before dawn and places it atop her cemetery with her favourite California poppies.",
         authorBio:"A Published author known for his evocative storytelling and deep emotional resonance. With works like Twined Echoes and Someday, Perhaps, he has captivated readers through vivid narratives that explore themes of love, loss, and self-discovery. His unique ability to weave heartfelt emotions with relatable experiences has earned him a devoted audience. Saranraj continues to inspire with his poetic prose and timeless tales, leaving an indelible mark in the literary world.",
-        poem: `You deserve the world!
-            Yes, you do.
-            I left behind all my belongings,
+        poem: `I left behind all my belongings,
             Just to reach you with pure love.
             Sorry, babe, I lied---
             It’s just the shovel, a piece to reach my love.
@@ -183,7 +185,7 @@ const poemData = [
         title: "Sun in Africa", 
         authorname: "Zuri",
         posteddate: "Dec 5th 2024",
-        imgUrl: img04,
+        imgUrl: img05,
         poemSynopsis:"Sun in Africa” paints a vivid picture of Africa, a continent marked by both struggle and resilience. It highlights the harsh realities of poverty and hardship, yet celebrates the unbroken spirit and grace of its people. The poem portrays children with dreams, mothers and fathers who work tirelessly, and communities that remain strong and united despite adversity. It emphasizes the resilience and hope that bloom in every corner of Africa, from the slums of Kibera to the deserts of Mali. The poem concludes by affirming the enduring strength and true rhythm of Africa's heart.",
         authorBio:"Zuri, a distinguished poet of African descent, weaves her verses with the threads of poverty and the indomitable spirit of her people. Her poetry, rich in imagery and profound in its depth, captures the stark realities of life while celebrating the resilience and hope that define the human spirit. Through her eloquent and evocative lines, Zuri seeks to illuminate the socio-economic challenges faced by many, urging her audience towards empathy and action. Her work stands as a testament to her unwavering commitment to justice and equality, reflecting a deep connection to her heritage.Zuri's literary contributions continue to inspire and uplift, making her a beacon of hope and a voice for the voiceless.",
         poem: `
@@ -228,5 +230,137 @@ const poemData = [
         A testament to the strength that sees them through
         `
     },
+
+    {
+        id: 6,
+        title: "Embrace the silence", 
+        authorname: "Julia Shade",
+        posteddate: "Dec 15th 2024",
+        imgUrl: img06,
+        poemSynopsis:"Embrace of Silence by Julia Shade is a serene meditation on the joys of solitude and the profound peace found in embracing the void. Through delicateand introspective language, the poem captures the quiet beauty of beingaloneand the clarity that comes from within. Shade’s verses depict a soul at easeinthe stillness, finding solace and healing in the absence of external noise. Eachstanza reflects the tranquil journey of self-discovery and the serenity that emerges from solitude, celebrating the inner peace that arises whenoneembraces the emptiness",
+        authorBio:"Julia Shade is a contemplative poet whose works explore the depths of solitudeand the beauty of the inner world. Her verses are characterized by their introspective nature, capturing the nuances of quiet moments and the serenityfound in stillness. Drawing inspiration from her own experiences with solitude, Shade's poetry offers a profound meditation on the joys of being alone andtheclarity that arises from embracing the void. Her writing resonates withthosewho seek solace in reflection and the quiet spaces of life.",
+        poem: `In quiet nights where shadows dance,
+        A soul finds peace in solitude,
+        With every breath, a silent trance,
+        Alone, yet never destitute.
+
+        The void, a canvas vast and pure,
+        Where thoughts can wander, unconfined,
+        In stillness, one begins to cure,
+        The restless heart, the troubled mind.
+
+        No voices break the tranquil air,
+        No chaos mars the silent sphere,
+        In nothingness, there's beauty rare,
+        A space where clarity draws near.
+
+        Each moment spent in silent grace,
+        Is filled with whispers of the soul,
+        In solitude, one finds a place,
+        Where broken parts become a whole.
+
+        The world outside may roar and fight,
+        But in the quiet, joy is found,
+        For in the heart of darkest night,
+        A gentle peace in void is crowned.
+        `
+
+    },
+    {
+        id: 7,
+        title: "A Glimmer Of Hope", 
+        authorname: "Anshidha Jagadheesh",
+        posteddate: "Dec 28th 2024",
+        imgUrl: img07,
+        poemSynopsis:"“A Glimmer Of Hope” reflects on the struggles and inner battles facedbyindividuals who seek peace and belonging in a world often quick to judge and isolate. It highlights the hidden strength within these individuals, their unwavering courage, and their unique journeys. The poem emphasizes the importance of unity, compassion, and acceptance, encouraging us to stand together, support one another, and celebratethe beauty of diversity. By nurturing a world of care and love, we can transformhardships into hope and create a brighter, more inclusive future.",
+        authorBio:"Anshidha is a poet and master's psychology student dedicated to advocating for thosewith mental illnesses. With her eloquent verse and deep understanding of the humanmind, she fights tirelessly for their recognition and dignity. Her work, both poetic andacademic, aims to illuminate the value and beauty in every life, challengingthestigma surrounding mental health with compassion and grace. Through her words andactions, Anshidha seeks to create a world where every individual's life truly matters.",
+        poem: `
+        In the quiet corners where shadows play,
+        Minds may wander,
+        Hearts may fray
+
+        Amidst the whispers and the silent cries,
+        There lies a strength,
+        Hidden from the eyes.
+        
+        A battle waged,
+        within, without,
+        Against the world,
+        Against the doubt.
+        
+        For those who fight to find their peace,
+        Their courage, steadfast, will never cease.
+        
+        In a world so quick to cast a stone,
+        We forget that no one walks alone.
+
+        Each soul, unique, each path, its own,
+        Deserving love, a place called home.
+        
+        With hearts so pure, yet minds in pain,
+        They seek the sun, beyond the rain.
+        Their spirit, bright, despite the scars,
+        Guided by hope, like distant stars.
+        
+        So let us stand, with open hearts,
+        Embrace them as their healing starts.
+        For in this world, we all belong,
+        Together, we are brave and strong.
+        
+        Let’s weave a tapestry of care,
+        With threads of love, and hands that share.
+        
+        For when we fight for those in need,
+        We plant a most compassionate seed.
+
+        In unity, let’s find the way,
+        To turn the night into the day.
+        
+        A world where everyone can see,
+        The beauty in diversity
+        `
+
+    },
+    {
+        id: 8,
+        title: "Echoes of the Harvest Gone", 
+        authorname: "Austin Flint",
+        posteddate: "Jan 3rd 2025",
+        imgUrl: img08,
+        poemSynopsis:"Echoes of the Harvest Gone is a reflective poem by Austin Flint that delves intothepoignant imagery of a desolate backyard, once teeming with life. Through vivid descriptions and evocative language, Flint portrays the cycle of growth and decayinherent in nature. The poem speaks to the resilience of the human spirit, symbolizedby a farmer's unwavering hope despite the harsh realities of drought and death. Eachstanza weaves a tale of loss and renewal, ultimately suggesting that even in the face of adversity, life finds a way to endure and flourish.",
+        authorBio:"Austin Flint, an enigmatic soul with an affinity for capturing the melancholic beautyof life's fleeting moments, hails from a small town steeped in agricultural history. With a pen that dances between despair and hope, his evocative verses reflect the rhythms of nature and human experience. Flint’s works often explore themes of resilience, loss, and renewal, drawing inspiration from the landscapes that have bothnurtured and challenged him. His poetry resonates with a raw, unfiltered honesty that invites readers to ponder the deeper truths of existence.",
+        poem: `
+        In the stillness of a backyard mourn,
+        Beneath the sky's melancholic hue,
+        Lie remnants of a summer's scorn,
+        Where once lush fields in fervor grew.
+        
+        The sun now casts a solemn gaze,
+        Upon the withered, lifeless ground,
+        As whispers of those golden days,
+        In nature's silent dirge are found.
+
+        Each brittle stalk, a testament,
+        To seasons' cruel and fickle ways,
+        Yet in their fading, there's a scent,
+        Of hope that springs from autumn's blaze.
+        
+        A farmer's hands, so rough and worn,
+        Cradle dreams within their grasp,
+        Through drought and storm, they’re not yet torn,
+        With faith that future seeds will clasp.
+
+        The earth remembers every tear,
+        Each seed sown in defiance bold,
+        In barren times, there's still no fear,
+        For life within the soil takes hold.
+        
+        So let the dead crops tell their tale,
+        Of battles fought and lessons learned,
+        In every loss, we shall prevail,
+        For through the ashes, life’s fire is burned.
+        `
+
+    }
 ];
 export default poemData;

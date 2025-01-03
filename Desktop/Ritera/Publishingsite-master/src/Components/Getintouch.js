@@ -2,8 +2,6 @@ import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import '../css/Getintouch.css'
 import { Row, Col } from 'react-bootstrap'
-
-
 import insta from '../Assets/socialmedia/instalogo.webp'
 // import facebook from '../Assets/socialmedia/fblogo.webp'
 // import xlogo from '../Assets/socialmedia/xlogo.webp'
@@ -57,15 +55,15 @@ const Getintouch = () => {
                             {/* <p className='contactform-title'>Contact Us</p> */}
 
                             <Form.Group className="mb-3" controlId="formBasicText">
-                                <Form.Control type="text" name='user_name' placeholder="Enter your name" />
+                                <Form.Control type="text" name='user_name' placeholder="Your name" />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Control type="email" name="user_email" placeholder="Enter your email" />
+                                <Form.Control type="email" name="user_email" placeholder="Your email" />
                             </Form.Group>
 
-                            <Form.Group className="mb-3" controlId="formBasicNumber">
-                                <Form.Control type="text" name="user_number" placeholder="Enter your number" />
+                            <Form.Group className="mb-3"  >
+                                <Form.Control type="text" name="user_number" placeholder="Your number" />
 
                             </Form.Group>
 
