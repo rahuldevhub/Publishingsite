@@ -22,6 +22,11 @@ export const Popuplanding = () => {
         })
             .then(
                 () => {
+
+
+
+                    handleClose()
+
                     console.log('SUCCESS!');
                 },
                 (error) => {
@@ -37,6 +42,7 @@ export const Popuplanding = () => {
             </Button>
 
             <Modal show={show} onHide={handleClose}>
+
                 <Modal.Header closeButton className='contactheader-bg'>
                     <Modal.Title>Thanks for Choosing Ritera</Modal.Title>
                 </Modal.Header>
@@ -90,7 +96,7 @@ export const Popuplanding = () => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" className='popupsendbtn' type='submit' value="Send" onClick={sendEmail}>
+                    <Button variant="primary" className='popupsendbtn' type='submit' value="Send" onClick={handleClose}>
                         Send
                     </Button>
                 </Modal.Footer>

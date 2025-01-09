@@ -52,10 +52,10 @@ const Shortstorieslistview = () => {
                                               <Col className='literaryhub-content-card' data-aos="zoom-in">
                                                   <Link to={`/literayhub-short-stories/${data.title}`}>
                                                       <Row>
-                                                          <Col lg='3' sm='6'>
+                                                          <Col lg='4' sm='6'>
                                                               <img src={data.img} className='literaryhub-cover-img'></img>
                                                           </Col>
-                                                          <Col lg='9' className='literary-cardcontent-col'>
+                                                          <Col lg='8' className='literary-cardcontent-col'>
                                                               <p className='literaryhub-cardcontent-title'>{data.title}</p>
                                                               <p className='literaryhub-cardcontent-description'>{data.description}</p>
                                                               <p className='literaryhub-cardcontent-authorname'>{data.authorname}</p>

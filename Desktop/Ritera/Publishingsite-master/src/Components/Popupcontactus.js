@@ -23,6 +23,8 @@ const Popupcontactus = () => {
     })
       .then(
         () => {
+          handleClose()
+
           console.log('SUCCESS!');
         },
         (error) => {

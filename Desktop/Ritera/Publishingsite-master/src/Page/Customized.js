@@ -1,14 +1,18 @@
 import React, { useEffect } from 'react'
 // import Header from '../Components/header/Header'
 import '../css/customizedpage.css'
-import { Row, Col } from 'react-bootstrap'
-import Getintouch from '../Components/Getintouch'
-import Form from 'react-bootstrap/Form';
+// import { Row, Col } from 'react-bootstrap'
+// import Getintouch from '../Components/Getintouch'
+// import Form from 'react-bootstrap/Form';
+import { Form, FormGroup, Label, Input } from "reactstrap";
+
 
 const Customized = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
+
+
   return (
     <div className='Customized' id='Customized'>
       {/* <Header /> */}
@@ -25,165 +29,130 @@ const Customized = () => {
           <div className='customized-subcontent-description'>Have your own designer or editor? No problem! You can tailor your package by choosing the services you need. Once you submit your requirements, our consultant will reach out to discuss them with you. We’ll then provide a customized package fee, based on your selections.</div>
           <h3>Pre - Publishing</h3>
 
-          <Row>
-            <Col lg="6" md="6" sm="1" className='customized-col'>
+          <Form >
+            <FormGroup className="booking__form d-inline-block me-4 mb-4">
+              <input type="text" name='page_count' placeholder="No. of Pages" />
+            </FormGroup>
+            <FormGroup className="booking__form d-inline-block ms-1 mb-4">
+              <select type="text" name='Type' placeholder="Type of Book" >
+                <option >Type of Book</option>
+                <option >Fiction</option>
+                <option >Non-Fiction</option>
 
-              <form class="form-inline">
+              </select>
+            </FormGroup>
 
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>No.of pages</label>
-                <input type="text" class="custom-select my-1 mr-sm-2" placeholder='No. of pages' />
-                <br />
+            <FormGroup className="booking__form d-inline-block me-4 mb-4">
+              <input type="text" name='genre' placeholder="Genre" />
+            </FormGroup>
 
+            <FormGroup className="booking__form d-inline-block ms-1 mb-4">
+              <select name="paper_back"  >
+                <option value="1 person">Paper Back</option>
+                <option value="2 person">2 Person</option>
+                <option value="3 person">3 Person</option>
 
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>Type of Books</label>
-                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" >
-                  {/* <option selected>Standard</option> */}
-                  <option value="1">Fiction</option>
-                  <option value="2">Non-Fiction</option>
-                </select><br />
+              </select>
+            </FormGroup>
 
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>Genre</label>
-                <input type="text"  class="custom-select my-1 mr-sm-2" placeholder='Genre' />
-                <br />
+            <FormGroup className="booking__form d-inline-block me-4 mb-4">
+            
+              <select name="Ebook"  >
+                <option value="1 person">Ebook</option>
+                <option value="2 person">2 Person</option>
+                <option value="3 person">3 Person</option>
 
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>Paper back</label>
-                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                  {/* <option selected>Standard</option> */}
-                  <option value="1">India </option>
-                  <option value="2">International</option>
-                </select><br />
+              </select>
+            </FormGroup>
+            <FormGroup className="booking__form d-inline-block ms-1 mb-4">
+              <input type="text" name='coverdesign' placeholder="Cover Design" />
+            </FormGroup>
 
+            <FormGroup className="booking__form d-inline-block me-4 mb-4">
+              <select name="Interior"   >
+                <option value="1 person">Interior Design</option>
+                <option value="2 person">2 Person</option>
+                <option value="3 person">3 Person</option>
 
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>E- Book</label>
-                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                  {/* <option selected>Standard</option> */}
-                  <option value="1">Standard</option>
-                  <option value="2">Premium</option>
-                </select><br />
+              </select>
+            </FormGroup>
+            <FormGroup className="booking__form d-inline-block ms-1 mb-4">
+              <select name="beta_read"    >
+                <option value="1 luggage">Beta Reading</option>
+                <option value="2 luggage">2 luggage</option>
+                <option value="3 luggage">3 luggage</option>
+              </select>
+            </FormGroup>
 
+            <FormGroup className="booking__form d-inline-block me-4 mb-4">
+              <select name="proof_read"   >
+                <option value="1 person">Proof Reading</option>
+                <option value="2 person">2 Person</option>
+                <option value="3 person">3 Person</option>
 
-              </form>
-
-            </Col>
-            <Col lg="6" md="6" sm="1" className='customized-col '>
-              {/* <h3>Placements</h3> */}
-
-              <form class="form-inline">
-
-
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>Cover Design</label>
-                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                  {/* <option selected>Standard</option> */}
-                  <option value="1">Standard</option>
-                  <option value="2">Advanced</option>
-                  <option value="3">Premium</option>
-                </select><br />
-
-
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>Interior Design</label>
-                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                  {/* <option selected>Standard</option> */}
-                  <option value="1">Standard</option>
-                  <option value="2">Advanced</option>
-                  <option value="3">Premium</option>
-
-                </select><br />
-
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>Beta Reading</label>
-                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                  {/* <option selected>Standard</option> */}
-                  <option value="1">No Needed</option>
-                  <option value="2">Below 10k words</option>
-                  <option value="3">Below 25k words</option>
-                  <option value="4">More than 40k words</option>
-                </select><br />
-
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>Proof Reading</label>
-                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                  {/* <option selected>Standard</option> */}
-                  <option value="1">No Needed</option>
-                  <option value="2">Below 10k words</option>
-                  <option value="3">Below 25k words</option>
-                  <option value="4">More than 40k words</option>
-                </select><br />
-
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref" className='customized-option-name'>Copy Writing</label>
-                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-                  {/* <option selected>Standard</option> */}
-                  <option value="1">No</option>
-                  <option value="2">Yes</option>
-                </select><br />
+              </select>
+            </FormGroup>
+            <FormGroup className="booking__form d-inline-block ms-1 mb-4">
+              <select name="copy_write"    >
+                <option value="1 luggage">Copy Writing</option>
+                <option value="2 luggage">2 luggage</option>
+                <option value="3 luggage">3 luggage</option>
+              </select>
+            </FormGroup>
 
 
+            <h3>Post - Publishing</h3>
 
-              </form>
-            </Col>
-          </Row>
 
-        </div>
-      </div>
+            <FormGroup check  >
+              <Input type="checkbox" name='amazon_prime'/>
+              <Label check>Amazon Prime</Label>
+            </FormGroup>
 
-      <div className='customized-content-bg2'>
-        <div className='customized-content'>
-          <h3>Post - Publishing</h3>
-          <Row >
-            <Col lg="6" md="6" sm="1" >
+            <FormGroup check  >
+              <Input type="checkbox" name='amazonaplus' />
+              <Label check>Amazon A+ Listing</Label>
+            </FormGroup>
 
-              <div class="custom-control custom-checkbox" className='customized-col3' >
-                <input type="checkbox" class="custom-control-input" id="customCheck1" className='customized-input-box'></input>
-                <label class="custom-control-label" for="customCheck1" className='customized-option-name3'>Amazon Prime</label>
-              </div>
-              <div class="custom-control custom-checkbox" className='customized-col3' >
-                <input type="checkbox" class="custom-control-input" id="customCheck1" className='customized-input-box'></input>
-                <label class="custom-control-label" for="customCheck1" className='customized-option-name3'>Amazon A+ Listing</label>
-              </div>
-              <div class="custom-control custom-checkbox" className='customized-col3' >
-                <input type="checkbox" class="custom-control-input" id="customCheck1" className='customized-input-box'></input>
-                <label class="custom-control-label" for="customCheck1" className='customized-option-name3'>Book Reviews</label>
-              </div>
-              <div class="custom-control custom-checkbox" className='customized-col3' >
-                <input type="checkbox" class="custom-control-input" id="customCheck1" className='customized-input-box'></input>
-                <label class="custom-control-label" for="customCheck1" className='customized-option-name3'>Social Media Promotions</label>
-              </div>
-            </Col>
-            <Col lg="6" md="6" sm="1" >
-              <div class="custom-control custom-checkbox" className='customized-col4' >
-                <input type="checkbox" class="custom-control-input" id="customCheck1" className='customized-input-box'></input>
-                <label class="custom-control-label" for="customCheck1" className='customized-option-name3'>Amazon Prime</label>
-              </div>
-              <div class="custom-control custom-checkbox" className='customized-col4' >
-                <input type="checkbox" class="custom-control-input" id="customCheck1" className='customized-input-box'></input>
-                <label class="custom-control-label" for="customCheck1" className='customized-option-name3'>Amazon A+ Listing</label>
-              </div>
-              <div class="custom-control custom-checkbox" className='customized-col4' >
-                <input type="checkbox" class="custom-control-input" id="customCheck1" className='customized-input-box'></input>
-                <label class="custom-control-label" for="customCheck1" className='customized-option-name3'>Book Reviews</label>
-              </div>
-              <div class="custom-control custom-checkbox" className='customized-col4' >
-                <input type="checkbox" class="custom-control-input" id="customCheck1" className='customized-input-box'></input>
-                <label class="custom-control-label" for="customCheck1" className='customized-option-name3'>Social Media Promotions</label>
-              </div>
-            </Col>
-          </Row>
-          <Form className='customizecontactusform'   >
+        
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Control type="text" placeholder="Enter your name" />
-            </Form.Group>
+            <FormGroup check  >
+              <Input type="checkbox" name='book_reviews' />
+              <Label check>Book Reviews</Label>
+            </FormGroup>
 
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Control type="email" placeholder="Enter your email" />
-            </Form.Group>
+            <FormGroup check  >
+              <Input type="checkbox" name='social_media' />
+              <Label check>Social Media Promotions</Label>
+            </FormGroup>
 
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Control type="number" placeholder="Enter your number" />
-            </Form.Group>
+            <h3>Contact Details</h3>
 
+            
+            <FormGroup className="booking__form  me-4 mb-4">
+              <input type="text" name='name' placeholder="Enter Name" />
+            </FormGroup>
+
+            <FormGroup className="booking__form  me-4 mb-4">
+              <input type="email" name='email' placeholder="Enter Email" />
+            </FormGroup>
+
+            <FormGroup className="booking__form  me-4 mb-4">
+              <input type="number" name='number' placeholder="Enter Number" />
+            </FormGroup>
+
+        
+            
+
+            <button className="book customized-submit-button" >Book Now</button>
           </Form>
-          <button className='customized-submit-button'> Submit</button>
+
+         
 
         </div>
       </div>
+
+      
       {/* 
       <div className='customized-getintouch'>
         <Getintouch />
