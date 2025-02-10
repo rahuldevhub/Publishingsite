@@ -26,10 +26,11 @@ const Customized = () => {
 
       <div className='customized-content-bg'>
         <div className='customized-content'>
-          <div className='customized-subcontent-description'>Have your own designer or editor? No problem! You can tailor your package by choosing the services you need. Once you submit your requirements, our consultant will reach out to discuss them with you. We’ll then provide a customized package fee, based on your selections.</div>
-          <h3>Pre - Publishing</h3>
+          {/* <div className='customized-subcontent-description'>Have your own designer or editor? No problem! You can tailor your package by choosing the services you need. Once you submit your requirements, our consultant will reach out to discuss them with you. We’ll then provide a customized package fee, based on your selections.</div>
+          <h3>Pre - Publishing</h3> */}
+          <h3>Current section is under maintance</h3>
 
-          <Form >
+          {/* <Form >
             <FormGroup className="booking__form d-inline-block me-4 mb-4">
               <input type="text" name='page_count' placeholder="No. of Pages" />
             </FormGroup>
@@ -145,7 +146,7 @@ const Customized = () => {
             
 
             <button className="book customized-submit-button" >Book Now</button>
-          </Form>
+          </Form> */}
 
          
 
