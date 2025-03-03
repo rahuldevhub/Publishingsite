@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
-import MetaTags from 'react-meta-tags';
+// import MetaTags from 'react-meta-tags';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
+
 // import Header from '../Components/header/Header'
 import '../css/whywe.css'
 import { Row, Col } from 'react-bootstrap'
@@ -21,15 +23,17 @@ const Whywe = () => {
 
   return (
     <>
-      <div class="wrapper">
-        <MetaTags>
+      <HelmetProvider>
+
+        <Helmet>
           <title>Ritera Publishing Empowering Authors to Publish Their Dreams</title>
           <meta id="meta-description" name="description" content="Discover Ritera Publishing, India's leading self-publishing company. Learn about our mission,  expert services, and Customized packages for your Book." />
-          <meta name='robots' content='index,follow'/>
-          <meta name='keywords' content='self publishing, service, books, authors, reader ,free publishing, cover design, manuscript, ritera, publishing company, customized package '/>
+          <meta name='robots' content='index,follow' />
+          <meta name='keywords' content='self publishing, service, books, authors, reader ,free publishing, cover design, manuscript, ritera, publishing company, customized package ' />
           <meta id="og-title" property="og:title" content="Ritera Publishing Empowering Authors to Publish Their Dreams" />
-        </MetaTags>
-      </div>
+        </Helmet>
+
+      </HelmetProvider>
 
       <div className='Whywe' id='Whywe'>
         {/* <Header /> */}

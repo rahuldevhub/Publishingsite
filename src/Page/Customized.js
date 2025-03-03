@@ -6,26 +6,29 @@ import '../css/customizedpage.css'
 // import Form from 'react-bootstrap/Form';
 import { Form, FormGroup, Label, Input } from "reactstrap";
 
-import MetaTags from 'react-meta-tags';
-
+// import MetaTags from 'react-meta-tags';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 const Customized = () => {
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
 
   return (
     <>
-    
-    <div class="wrapper">
-        <MetaTags>
-          <title>Customize Your Package  for Publishing | Ritera Publishing</title>
+    <HelmetProvider>
+   
+      <Helmet>
+      <title>Customize Your Package  for Publishing | Ritera Publishing</title>
           <meta id="meta-description" name="description" content="Create your perfect publishing plan with  Ritera Publishing's customized self-publishing packages tailored to your needs with high-quality printing." />
           <meta name='robots' content='index,follow'/>
           <meta name='keywords' content='self publishing, service, books, authors, reader ,free publishing, cover design, manuscript, ritera, publishing company, customized package '/>
           <meta id="og-title" property="og:title" content="Customize Your Package  for Publishing | Ritera Publishing" />
-        </MetaTags>
-      </div>
+      </Helmet>
+      
+  </HelmetProvider>
+    
+    
 
 
 

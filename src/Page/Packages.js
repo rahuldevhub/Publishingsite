@@ -5,7 +5,8 @@ import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
 import Getintouch from '../Components/Getintouch';
 import Popupcontactus from '../Components/Popupcontactus';
-import MetaTags from 'react-meta-tags';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
+
 
 const Packages = () => {
   useEffect(() => {
@@ -13,16 +14,18 @@ const Packages = () => {
   }, []);
   return (
     <>
+ <HelmetProvider>
+   
+      <Helmet>
 
-<div class="wrapper">
-        <MetaTags>
           <title>Explore the Packages of Ritera for your Publishing needs.</title>
           <meta id="meta-description" name="description" content="Explore Ritera Publishing’s packages designed for every author. Get professional editing, cover design, marketing, and more to publish your book" />
           <meta name='robots' content='index,follow' />
           <meta name='keywords' content='self publishing, service, books, authors, reader ,free publishing, cover design, manuscript, ritera, publishing company, customized package ' />
           <meta id="og-title" property="og:title" content="Explore the Packages of Ritera for your Publishing needs." />
-        </MetaTags>
-      </div>
+       </Helmet>
+             
+         </HelmetProvider>
 
     <div className='Packages' id='Packages'>
 

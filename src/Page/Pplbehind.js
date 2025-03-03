@@ -21,7 +21,7 @@ import char5 from '../Assets/pplbehind/char5.png'
 import marketingteam from '../Assets/serviceicons/marketing.webp'
 import supportteam from '../Assets/serviceicons/copywriting.webp'
 import writingteam from '../Assets/serviceicons/proofreading.webp'
-import MetaTags from 'react-meta-tags';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const Pplbehind = () => {
   const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 992px)' })
@@ -31,16 +31,18 @@ const Pplbehind = () => {
   }, []);
   return (
     <>
+<HelmetProvider>
+   
+      <Helmet>
 
-      <div class="wrapper">
-        <MetaTags>
           <title>Meet the Professional team behind Ritera Publishing for your needs</title>
           <meta id="meta-description" name="description" content="Explore the peoples who was behind The Best self book publishing Company in India. Choose Ritera For the Best service from Best rofessionals." />
           <meta name='robots' content='index,follow' />
           <meta name='keywords' content='self publishing, service, books, authors, reader ,free publishing, cover design, manuscript, ritera, publishing company, customized package ' />
           <meta id="og-title" property="og:title" content="Meet the Professional team behind Ritera Publishing for your needs" />
-        </MetaTags>
-      </div>
+         </Helmet>
+              
+          </HelmetProvider>
 
       <div className='Pplbehind' id='Pplbehind'>
         {/* <Header /> */}
