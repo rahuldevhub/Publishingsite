@@ -24,11 +24,8 @@ const Customized = () => {
           <meta name='robots' content='index,follow'/>
           <meta name='keywords' content='self publishing, service, books, authors, reader ,free publishing, cover design, manuscript, ritera, publishing company, customized package '/>
           <meta id="og-title" property="og:title" content="Customize Your Package  for Publishing | Ritera Publishing" />
-<<<<<<< HEAD
-=======
           <link rel="canonical" href="https://www.riterapublishing.com/customize-package" />
 
->>>>>>> a3e2fa8 (updates)
       </Helmet>
       
   </HelmetProvider>
