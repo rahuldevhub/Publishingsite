@@ -10,7 +10,11 @@
 }
 
 .card-content p {
+<<<<<<< HEAD
     text-align: left !important;
+=======
+    text-align: left ;
+>>>>>>> a3e2fa8 (updates)
     margin-bottom: 0;
 }
 
@@ -18,9 +22,18 @@
     width: 20rem;
     background: #FAEBD7;
     color: black;
+<<<<<<< HEAD
     border: solid 2px #7A8E97;
 }
 
+=======
+    border: solid 2px #a3940c;
+}
+.level1-card:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+}
+>>>>>>> a3e2fa8 (updates)
 .packageall {
     justify-content: space-around;
 }
@@ -39,6 +52,7 @@
     font-size: 2rem;
     font-weight: 550;
 }
+<<<<<<< HEAD
 
 .package-features {
     margin-top: 1rem;
@@ -47,6 +61,29 @@
     font-size: 1.1rem;
 }
 
+=======
+.level1-description{
+    font-family: "Teachers", sans-serif;
+    font-size: 1rem;
+    text-align: justify !important;
+    /* hyphens: auto; */
+}
+.package-features {
+    margin-top: 1rem;
+    line-height: 2.2rem;
+    text-align: left;
+    font-family: "Teachers", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 450;
+    list-style-type: none !important;
+    padding-left: .5rem !important;
+}
+.package-card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+>>>>>>> a3e2fa8 (updates)
 @media only screen and (max-width: 992px) {
 
     .level1-card {

@@ -11,6 +11,10 @@
 .package-button:hover {
     background-color: #a32525;
     border-color: #a32525;
+<<<<<<< HEAD
+=======
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+>>>>>>> a3e2fa8 (updates)
 }
 
 .package-button:active {

@@ -23,6 +23,11 @@ const Packages = () => {
           <meta name='robots' content='index,follow' />
           <meta name='keywords' content='self publishing, service, books, authors, reader ,free publishing, cover design, manuscript, ritera, publishing company, customized package ' />
           <meta id="og-title" property="og:title" content="Explore the Packages of Ritera for your Publishing needs." />
+<<<<<<< HEAD
+=======
+          <link rel="canonical" href="https://www.riterapublishing.com/packages" />
+
+>>>>>>> a3e2fa8 (updates)
        </Helmet>
              
          </HelmetProvider>

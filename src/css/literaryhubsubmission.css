@@ -75,6 +75,11 @@
 }
 .literaryhubSubmission-submit-button:hover{
   background-color: #a73030;
+<<<<<<< HEAD
+=======
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+>>>>>>> a3e2fa8 (updates)
 }
 
 .booking__form {
@@ -89,7 +94,13 @@
     border-radius: 4px;
 
   }
+<<<<<<< HEAD
   
+=======
+  .booking__form input:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  }
+>>>>>>> a3e2fa8 (updates)
   .booking__form select,
   .textarea {
     width: 100%;
@@ -98,7 +109,14 @@
     border: 1px solid #D4A373;
     border-radius: 4px;
   }
+<<<<<<< HEAD
   
+=======
+  .booking__form select:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+  }
+>>>>>>> a3e2fa8 (updates)
   /* .time__picker::before {
     content: "Journey Time";
     color: #7c8a97;

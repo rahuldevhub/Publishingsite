@@ -244,6 +244,7 @@
     padding-top: 2em;
 }
 
+<<<<<<< HEAD
 .swiperstar {
     width: fit-content;
     padding-top: 0;
@@ -254,6 +255,8 @@
 
 }
 
+=======
+>>>>>>> a3e2fa8 (updates)
 .swipercard {
     background-color: rgba(255, 255, 255, 0.801);
     text-align: center;
@@ -263,11 +266,15 @@
     width: fit-content;
 }
 
+<<<<<<< HEAD
 .swipercontent {
     /* font-family: 'Alata', sans-serif; */
     /* margin: 1.5em; */
     /* width: 24rem; */
 }
+=======
+
+>>>>>>> a3e2fa8 (updates)
 
 .swipercontent h1 {
     font-weight: 700;

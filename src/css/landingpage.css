@@ -90,7 +90,11 @@
 
 }
 
+<<<<<<< HEAD
 .landingpage-whywe h2 {
+=======
+.landingpage-whywe h1 {
+>>>>>>> a3e2fa8 (updates)
     font-family: "Merriweather", serif;
     font-weight: 600;
     font-size: 3rem;
@@ -130,7 +134,11 @@
 
     }
 
+<<<<<<< HEAD
     .landingpage-whywe h2 {
+=======
+    .landingpage-whywe h1 {
+>>>>>>> a3e2fa8 (updates)
         text-align: left;
         font-size: 1.6em;
         line-height: 2rem !important;
@@ -152,6 +160,10 @@
         padding-bottom: 10px;
         font-size: 1rem;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a3e2fa8 (updates)
     .landingpage-col-centering {
         text-align: center;
     }
@@ -167,7 +179,11 @@
     /* min-height: 100vh; */
 }
 
+<<<<<<< HEAD
 .landingpage-service h2 {
+=======
+.landingpage-service h1 {
+>>>>>>> a3e2fa8 (updates)
     font-family: "Merriweather", serif;
     font-weight: 600;
     font-size: 3rem;
@@ -190,7 +206,12 @@
         padding-bottom: 2rem;
 
     }
+<<<<<<< HEAD
     .landingpage-service h2 {
+=======
+
+    .landingpage-service h1 {
+>>>>>>> a3e2fa8 (updates)
         font-size: 2rem;
         padding-top: 2rem;
         padding-bottom: 1rem;
@@ -209,7 +230,11 @@
 
 }
 
+<<<<<<< HEAD
 .landingpage-package h2 {
+=======
+.landingpage-package h1 {
+>>>>>>> a3e2fa8 (updates)
     font-family: "Merriweather", serif;
     font-weight: 600;
     font-size: 3rem;
@@ -225,7 +250,11 @@
         padding-bottom: 2rem;
     }
 
+<<<<<<< HEAD
     .landingpage-package h2 {
+=======
+    .landingpage-package h1 {
+>>>>>>> a3e2fa8 (updates)
         font-size: 2rem;
         padding-top: 2rem;
         padding-bottom: .5rem;
@@ -270,7 +299,11 @@
     border-radius: 1rem;
 }
 
+<<<<<<< HEAD
 .landingpage-customizedroyalty h2 {
+=======
+.landingpage-customizedroyalty h1 {
+>>>>>>> a3e2fa8 (updates)
     font-family: "Merriweather", serif;
     color: white;
     font-size: 3.5rem;
@@ -292,6 +325,10 @@
     font-family: "Teachers", sans-serif;
     color: white;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a3e2fa8 (updates)
 .landingpage-customizedroyalty-button {
     background-color: #6A1B1B;
     color: white;
@@ -302,7 +339,11 @@
     width: 15rem;
 }
 
+<<<<<<< HEAD
 @media only screen and (max-width: 992px){
+=======
+@media only screen and (max-width: 992px) {
+>>>>>>> a3e2fa8 (updates)
     .landingpage-customizedroyalty-blackdrop {
 
         margin-left: 0rem;
@@ -311,26 +352,49 @@
         margin-bottom: 2rem;
         width: 100%;
         border-radius: 1rem;
+<<<<<<< HEAD
     
     }
+=======
+
+    }
+
+>>>>>>> a3e2fa8 (updates)
     .landingpage-customizedroyalty-insidecontent {
         padding: 1rem;
         border-radius: .4rem;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a3e2fa8 (updates)
     .landingpage-customizedroyalty-content {
         margin-left: 2rem;
         margin-right: 2rem;
     }
+<<<<<<< HEAD
     .landingpage-customizedroyalty h2 {
+=======
+
+    .landingpage-customizedroyalty h1 {
+>>>>>>> a3e2fa8 (updates)
         font-size: 1.5rem;
         padding-top: 1.5rem;
         padding-bottom: .4rem;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a3e2fa8 (updates)
     .landingpage-customizedroyalty p {
         font-size: .9rem;
         padding-bottom: 0rem;
         text-align: justify;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a3e2fa8 (updates)
     .landingpage-customizedroyalty-button {
         width: 100%;
         border-radius: .5rem;
@@ -356,19 +420,35 @@
     margin-right: 6rem;
     text-align: center;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a3e2fa8 (updates)
 .landingpage-article-container {
     border-radius: 1rem;
     border: solid 2px #D4A373;
     margin-left: 7rem;
     margin-right: 7rem;
+<<<<<<< HEAD
     padding-left:1rem;
+=======
+    padding-left: 1rem;
+>>>>>>> a3e2fa8 (updates)
     padding-right: 1rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
+<<<<<<< HEAD
 .landingpage-article a{
     text-decoration: none !important;
 }
+=======
+
+.landingpage-article a {
+    text-decoration: none !important;
+}
+
+>>>>>>> a3e2fa8 (updates)
 .landingpage-article h2 {
     font-family: "Merriweather", serif;
     font-weight: 600;
@@ -378,7 +458,11 @@
     padding-bottom: 2rem;
 }
 
+<<<<<<< HEAD
 .landingpage-article-container h2 {
+=======
+.landingpage-article-container h1 {
+>>>>>>> a3e2fa8 (updates)
     font-family: "Merriweather", serif;
     font-weight: 600;
     font-size: 2rem;
@@ -388,7 +472,11 @@
 }
 
 
+<<<<<<< HEAD
 .landingpage-article-img{
+=======
+.landingpage-article-img {
+>>>>>>> a3e2fa8 (updates)
     height: 8rem;
     width: 8rem;
     background-color: #6E7E4B;
@@ -396,63 +484,125 @@
     text-align: center;
     border-radius: .4rem;
     margin-bottom: 2rem;
+<<<<<<< HEAD
 
+=======
+    border: solid 2px #6E7E4B;
+
+
+}
+
+.landingpage-article-container:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: solid 2px #a3940c;
+}
+
+.landingpage-article-container:hover .landingpage-article-img {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border: solid 2px #a3940c;
+}
+
+.landingpage-article-container:hover h1 {
+    font-size: 2.4rem;
+>>>>>>> a3e2fa8 (updates)
 }
 
 
 
+<<<<<<< HEAD
 
 .service-card-icon{
+=======
+.service-card-icon {
+>>>>>>> a3e2fa8 (updates)
     height: 6rem;
     width: 6rem;
     padding: 1rem;
     margin-bottom: 1.5rem;
 }
 
+<<<<<<< HEAD
 @media only screen and (max-width: 992px){
+=======
+@media only screen and (max-width: 992px) {
+>>>>>>> a3e2fa8 (updates)
 
     .landingpage-article {
         padding-bottom: 3rem;
         padding-top: 3rem;
+<<<<<<< HEAD
     
     }
     
+=======
+
+    }
+
+>>>>>>> a3e2fa8 (updates)
     .landingpage-article-content {
         margin-left: 1rem;
         margin-right: 1rem;
         text-align: center;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a3e2fa8 (updates)
     .landingpage-article h2 {
         font-size: 1.7rem;
         text-align: center;
         padding-top: 0rem;
         padding-bottom: 2rem;
     }
+<<<<<<< HEAD
     .landingpage-article-container {
         margin-left: 2rem;
         margin-right: 2rem;
         padding-left:0rem;
+=======
+
+    .landingpage-article-container {
+        margin-left: 2rem;
+        margin-right: 2rem;
+        padding-left: 0rem;
+>>>>>>> a3e2fa8 (updates)
         padding-right: 0rem;
         padding-top: .5rem;
         padding-bottom: .5rem;
         margin-bottom: 1rem;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a3e2fa8 (updates)
     .landingpage-article-container h2 {
         font-size: 2rem;
         padding-top: .5rem;
         padding-bottom: 0rem;
     }
+<<<<<<< HEAD
     .landingpage-article-img{
+=======
+
+    .landingpage-article-img {
+>>>>>>> a3e2fa8 (updates)
         height: 7rem;
         width: 7rem;
         padding: 1.3rem;
         border-radius: .4rem;
         margin-bottom: 1rem;
+<<<<<<< HEAD
     
     }
     
 }
 
+=======
+
+    }
+
+}
+>>>>>>> a3e2fa8 (updates)
 
 
 
@@ -462,10 +612,17 @@
     margin-bottom: 6em;
     margin-bottom: 0rem !important;
     background-color: #000;
+<<<<<<< HEAD
     background-image: url("../Assets/imageredirect.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     /* background-attachment: fixed; */
+=======
+    background-image: url("../Assets/workspace.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+>>>>>>> a3e2fa8 (updates)
     background-position: center;
     /* border-radius: 2rem; */
     font-family: 'Alata', sans-serif;
@@ -480,8 +637,15 @@
     --bs-gutter-x: 0rem !important;
 }
 
+<<<<<<< HEAD
 .landingpage-hookredirect-content p {
     font-size: 3.5rem;
+=======
+.landingpage-hookredirect-content h1 {
+    font-size: 4rem;
+    /* padding-top: 1rem; */
+    padding-bottom: 2rem;
+>>>>>>> a3e2fa8 (updates)
     font-family: "Merriweather", serif;
     font-weight: 400;
     color: white;
@@ -526,10 +690,72 @@
         width: 100%;
         font-size: 1rem;
     }
+<<<<<<< HEAD
     
+=======
+    .landingpage-hookredirect-content h1 {
+        font-size: 2rem;
+    
+    }
+>>>>>>> a3e2fa8 (updates)
 }
 
 .landingpage-getintouch {
     background-color: #F5F1E0;
     min-height: 100vh;
+<<<<<<< HEAD
+=======
+}
+
+
+
+
+.landingpage-blog {
+    background: #FAEBD7;
+    /* min-height: 100vh; */
+}
+
+.landingpage-blog h1 {
+    font-family: "Merriweather", serif;
+    font-weight: 600;
+    font-size: 3rem;
+    text-align: center;
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+}
+
+.landingpage-blog-content {
+    margin-left: 6rem;
+    margin-right: 6rem;
+    padding-bottom: 6rem;
+
+}
+
+
+@media only screen and (max-width: 992px) {
+
+
+.landingpage-blog {
+    padding-bottom: 3rem;
+    padding-top: 3rem;
+
+}
+
+.landingpage-blog-content {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    text-align: center;
+    padding-bottom: 0rem;
+
+}
+
+.landingpage-blog h1 {
+    font-size: 1.7rem;
+    text-align: center;
+    padding-top: 0rem;
+    padding-bottom: 2rem;
+}
+
+
+>>>>>>> a3e2fa8 (updates)
 }

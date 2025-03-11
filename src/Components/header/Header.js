@@ -23,12 +23,21 @@ const Header = () => {
 
           <Nav className='Navbarcomponents'>
    
+<<<<<<< HEAD
           <Nav.Link href="/" data-aos="fade-down">Home</Nav.Link>
             <Nav.Link href="/aboutus" data-aos="fade-down">About</Nav.Link>
             <Nav.Link href="/customize-package" data-aos="fade-down">Customize</Nav.Link>
             {/* <Nav.Link href="#Testimonials"> Testimonials</Nav.Link> */}
             {/* <Nav.Link href="/careers"> Careers</Nav.Link> */}
             <Nav.Link href="/packages" data-aos="fade-down">Packages</Nav.Link>
+=======
+          <Nav.Link href="/" >Home</Nav.Link>
+            <Nav.Link href="/aboutus" >About</Nav.Link>
+            <Nav.Link href="/customize-package" >Customize</Nav.Link>
+            {/* <Nav.Link href="#Testimonials"> Testimonials</Nav.Link> */}
+            {/* <Nav.Link href="/careers"> Careers</Nav.Link> */}
+            <Nav.Link href="/packages" >Packages</Nav.Link>
+>>>>>>> a3e2fa8 (updates)
           
           </Nav>
         </Navbar.Collapse>
