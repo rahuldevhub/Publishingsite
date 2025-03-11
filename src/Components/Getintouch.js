@@ -18,10 +18,7 @@ const Getintouch = () => {
 
     const sendEmail = (e) => {
         e.preventDefault();
-<<<<<<< HEAD
-=======
         alert("Thank you! Your message has been sent.");
->>>>>>> a3e2fa8 (updates)
 
         emailjs.sendForm('service_ivsbffk', 'template_symmsej', form.current, {
             publicKey: 'EPw5IJ4VuRmSRdQZg',
@@ -29,10 +26,7 @@ const Getintouch = () => {
             .then(
                 () => {
                     console.log('SUCCESS!');
-<<<<<<< HEAD
-=======
                     e.target.reset();
->>>>>>> a3e2fa8 (updates)
                 },
                 (error) => {
                     console.log('FAILED...', error.text);
@@ -40,11 +34,7 @@ const Getintouch = () => {
             );
     };
 
-<<<<<<< HEAD
-
-=======
     
->>>>>>> a3e2fa8 (updates)
 
     return (
         <div className='Getintouch' id='Getintouch'>
@@ -56,17 +46,10 @@ const Getintouch = () => {
                         <h2>Get in Touch</h2>
 
 
-<<<<<<< HEAD
-                        <Link to={'https://www.instagram.com/ratix_infotech?igsh=Y2dtZWJ1djlqYTQ2&utm_source=qr'} target='_blank'> <img src={insta} alt='sample' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="1000" /> </Link>
-                        <Link to={'https://www.instagram.com/ratix_infotech?igsh=Y2dtZWJ1djlqYTQ2&utm_source=qr'} target='_blank'> <img src={whatsapp} alt='sample' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="1500" /></Link>
-                        {/* <Link to={'https://www.instagram.com/ratix_infotech?igsh=Y2dtZWJ1djlqYTQ2&utm_source=qr'} target='_blank'> <img src={facebook} alt='sample' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="2000" /></Link><br /> */}
-                        <Link to={'https://www.linkedin.com/company/ratix/'} target='_blank'> <img src={linkedin} alt='sample' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="2500" /></Link>
-=======
                         <Link to={'https://www.instagram.com/ritera_publishing/#/'} target='_blank'> <img src={insta} alt='sample' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="1000" /> </Link>
                         <Link to={'https://www.instagram.com/ritera_publishing/#/'} target='_blank'> <img src={whatsapp} alt='sample' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="1500" /></Link>
                         {/* <Link to={'https://www.instagram.com/ratix_infotech?igsh=Y2dtZWJ1djlqYTQ2&utm_source=qr'} target='_blank'> <img src={facebook} alt='sample' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="2000" /></Link><br /> */}
                         <Link to={'https://www.linkedin.com/company/ritera-publishing/?viewAsMember=true'} target='_blank'> <img src={linkedin} alt='sample' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="2500" /></Link>
->>>>>>> a3e2fa8 (updates)
 
 
 
@@ -74,17 +57,6 @@ const Getintouch = () => {
                             {/* <p className='contactform-title'>Contact Us</p> */}
 
                             <Form.Group className="mb-3" controlId="formBasicText">
-<<<<<<< HEAD
-                                <Form.Control type="text" name='user_name' placeholder="Your name" />
-                            </Form.Group>
-
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Control type="email" name="user_email" placeholder="Your email" />
-                            </Form.Group>
-
-                            <Form.Group className="mb-3"  >
-                                <Form.Control type="text" name="user_number" placeholder="Your number" />
-=======
                                 <Form.Control required type="text" name='user_name' placeholder="Full Name" className='landingpage-contact-label' />
                             </Form.Group>
 
@@ -94,36 +66,22 @@ const Getintouch = () => {
 
                             <Form.Group className="mb-3"  >
                                 <Form.Control required type="text" name="user_number" placeholder="Phone Number" className='landingpage-contact-label' />
->>>>>>> a3e2fa8 (updates)
 
                             </Form.Group>
 
                             <Form.Group className="mb-3">
-<<<<<<< HEAD
-                                <Form.Select aria-label="Default select example" name='user_selection'>
-=======
                                 <Form.Select required aria-label="Default select example" name='user_selection' className='landingpage-contact-label'>
->>>>>>> a3e2fa8 (updates)
                                     {/* <input onChange={(e) => setService(e.target.value)} /> */}
                                     <option>Select Reason for Contacting</option>
                                     <option value="Manuscript Submission">Manuscript Submission</option>
                                     <option value="Package Details">Package Details</option>
                                     <option value="Other Services">Other Services</option>
-<<<<<<< HEAD
-                                    
-                                </Form.Select>
-                                <Form.Text className="text-muted">Your details are in safe hands.</Form.Text>
-                            </Form.Group>
-
-
-=======
                                 </Form.Select>
                             </Form.Group>
 
 
                             <Form.Check type="checkbox" name='user_subscribe' label= "Subscribe to our Newsletter" className='landingpage-contact-label-2' />
 
->>>>>>> a3e2fa8 (updates)
                             <Button className='contactus' type="submit" value="Send">Submit</Button>
 
                         </Form>

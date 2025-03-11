@@ -103,14 +103,10 @@
     border: 1px solid #D4A373;
     border-radius: 4px;
   }
-<<<<<<< HEAD
-  
-=======
   .booking__form select:hover{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 
   }
->>>>>>> a3e2fa8 (updates)
   /* .time__picker::before {
     content: "Journey Time";
     color: #7c8a97;

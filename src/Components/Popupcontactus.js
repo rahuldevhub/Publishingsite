@@ -16,12 +16,8 @@ const Popupcontactus = () => {
   const form = useRef();
 
   const sendEmail = (e) => {
-<<<<<<< HEAD
-    
-=======
     e.preventDefault();
     alert("Thank you! Your message has been sent.");
->>>>>>> a3e2fa8 (updates)
 
     emailjs.sendForm('service_ivsbffk', 'template_symmsej', form.current, {
       publicKey: 'EPw5IJ4VuRmSRdQZg',
@@ -31,10 +27,7 @@ const Popupcontactus = () => {
           handleClose()
 
           console.log('SUCCESS!');
-<<<<<<< HEAD
-=======
           e.target.reset();
->>>>>>> a3e2fa8 (updates)
         },
         (error) => {
           console.log('FAILED...', error.text);

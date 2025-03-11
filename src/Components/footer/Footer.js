@@ -32,14 +32,9 @@ const Footer = () => {
 
                                 <h3>Quick Links</h3>
                                 {/* <a href='/aboutus'>Articles</a><br /> */}
-<<<<<<< HEAD
-                                <a href='/aboutus'>Why us ?</a><br />
-                                <a href='/packages'>Packages</a><br />
 
-=======
                                 <a href='/aboutus'>Why us</a><br />
                                 <a href='/packages'>Packages</a><br />
->>>>>>> a3e2fa8 (updates)
                                 <a href='/people-behind-ritera'>Our Team</a><br />
                                 <a href='/customize-package'>Customization </a><br />
 
@@ -56,11 +51,7 @@ const Footer = () => {
                                 <a href='#'>+91-948-948-1336</a><br />
                                 <a href='#'>riterapublishing@gmail.com</a><br />
                                 <a href='#'>Ig: ritera_publishing</a><br />
-<<<<<<< HEAD
-                                <a href='#Getintouch'>Any Quries ?</a><br />
-=======
                                 <a href='#Getintouch'>Any Quries</a><br />
->>>>>>> a3e2fa8 (updates)
 
                             </div>
 

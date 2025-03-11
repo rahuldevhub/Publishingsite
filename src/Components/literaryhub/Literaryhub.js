@@ -3,11 +3,7 @@ import { Row, Col } from 'react-bootstrap'
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 
-<<<<<<< HEAD
-import literaryicon from '../../Assets/study.png'
-=======
 // import literaryicon from '../../Assets/study.png'
->>>>>>> a3e2fa8 (updates)
 import articleicon from '../../Assets/otherimg/articles.png'
 import shorticon from '../../Assets/otherimg/shortstories.png'
 import poem from '../../Assets/otherimg/poem.png'
@@ -25,11 +21,7 @@ const Literaryhub = () => {
                 <Card className='landingpage-article-container' data-aos="zoom-in-right">
                   <Card.Body>
                     <Card.Img variant="top" src={poem} className='landingpage-article-img' />
-<<<<<<< HEAD
-                    <Card.Text><h2>Poems</h2></Card.Text>
-=======
                     <Card.Text><h1>Poems</h1></Card.Text>
->>>>>>> a3e2fa8 (updates)
                   </Card.Body>
                 </Card>
               </Link>
@@ -43,11 +35,7 @@ const Literaryhub = () => {
                 <Card className='landingpage-article-container' data-aos="zoom-in">
                   <Card.Body>
                     <Card.Img variant="top" src={articleicon} className='landingpage-article-img' />
-<<<<<<< HEAD
-                    <Card.Text><h2>Articles</h2></Card.Text>
-=======
                     <Card.Text><h1>Articles</h1></Card.Text>
->>>>>>> a3e2fa8 (updates)
                   </Card.Body>
                 </Card>
               </Link>
@@ -63,11 +51,7 @@ const Literaryhub = () => {
                 <Card className='landingpage-article-container' data-aos="zoom-in-left">
                   <Card.Body>
                     <Card.Img variant="top" src={shorticon} className='landingpage-article-img' />
-<<<<<<< HEAD
-                    <Card.Text><h2>Short Stories</h2></Card.Text>
-=======
                     <Card.Text><h1>Short Stories</h1></Card.Text>
->>>>>>> a3e2fa8 (updates)
                   </Card.Body>
                 </Card>
               </Link>

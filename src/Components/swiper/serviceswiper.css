@@ -54,13 +54,6 @@
     font-weight: 400;
     padding: 0 !important;
 }
-<<<<<<< HEAD
-.service-card-content p{
-    /* text-align: justify; */
-}
-=======
-
->>>>>>> a3e2fa8 (updates)
 .service-card-icon{
     height: 8rem;
     width: 8rem;
@@ -77,11 +70,7 @@
     font-size: .9rem;
     font-family: "Teachers", sans-serif;
     text-align: justify;
-<<<<<<< HEAD
-    /* text-justify: inter-word; */
-=======
     /* hyphens: auto; */
->>>>>>> a3e2fa8 (updates)
 
 }
 @media only screen and (max-width: 992px) {

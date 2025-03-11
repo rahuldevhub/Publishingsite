@@ -2,19 +2,11 @@ import React, { useEffect } from 'react'
 import '../css/pplbehind.css'
 import { Row, Col } from 'react-bootstrap'
 import Card from 'react-bootstrap/Card';
-<<<<<<< HEAD
-import prooficon from '../Assets/study.png'
-import { Link } from 'react-router-dom';
-// import Header from '../Components/header/Header'
-import sideimg from '../Assets/landingpagewhywe.jpg'
-import Getintouch from '../Components/Getintouch';
-=======
 // import prooficon from '../Assets/study.png'
 import { Link } from 'react-router-dom';
 // import Header from '../Components/header/Header'
 // import sideimg from '../Assets/landingpagewhywe.jpg'
 // import Getintouch from '../Components/Getintouch';
->>>>>>> a3e2fa8 (updates)
 import { useMediaQuery } from 'react-responsive';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
@@ -22,11 +14,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import char1 from '../Assets/pplbehind/char1.jpg'
-<<<<<<< HEAD
-import char2 from '../Assets/pplbehind/char2.png'
-=======
 // import char2 from '../Assets/pplbehind/char2.png'
->>>>>>> a3e2fa8 (updates)
 import char3 from '../Assets/pplbehind/char3.png'
 import char4 from '../Assets/pplbehind/char4.png'
 import char5 from '../Assets/pplbehind/char5.png'
@@ -52,11 +40,8 @@ const Pplbehind = () => {
           <meta name='robots' content='index,follow' />
           <meta name='keywords' content='self publishing, service, books, authors, reader ,free publishing, cover design, manuscript, ritera, publishing company, customized package ' />
           <meta id="og-title" property="og:title" content="Meet the Professional team behind Ritera Publishing for your needs" />
-<<<<<<< HEAD
-=======
           <link rel="canonical" href="https://www.riterapublishing.com/people-behind-ritera" />
 
->>>>>>> a3e2fa8 (updates)
          </Helmet>
               
           </HelmetProvider>
@@ -77,20 +62,12 @@ const Pplbehind = () => {
           <div className='Pplbehind-indivualcontent1'>
             <Row className='Pplbehind-subcontent-row'>
               <Col lg="6" md="6" sm="1" className='Pplbehind-subcontent-col1'>
-<<<<<<< HEAD
-                <img src={char1} className='Pplbehind-subcontent-img'></img>
-=======
                 <img src={char1} alt='Rahul | Chief Technology Officer' className='Pplbehind-subcontent-img'></img>
->>>>>>> a3e2fa8 (updates)
 
               </Col>
               <Col lg="6" md="6" sm="1" >
                 <p className='Pplbehind-subcontent-title'>Rahul</p>
-<<<<<<< HEAD
-                <p className='Pplbehind-subcontent-subtitle'>Co-Founder & CTO</p>
-=======
                 <p className='Pplbehind-subcontent-subtitle'>Chief Technology Officer</p>
->>>>>>> a3e2fa8 (updates)
                 <p className='Pplbehind-subcontent-description'>
                   Mr. Rahul, the esteemed co-founder of Ratix Info Tech, brings extensive global client experience to the table. Ratix Info Tech has now formed a strategic alliance with Ritera Publishing to offer seamless support to authors and streamline workflow management. With a highly skilled design and editing team, Ritera Publication &  Rahul and his Ratix Info Tech ensures that your work receives the finest designs.
                 </p>
@@ -119,11 +96,7 @@ const Pplbehind = () => {
           <div className='Pplbehind-indivualcontent'>
             <Row className='Pplbehind-subcontent-row'>
               <Col lg="6" md="6" sm="1" className='Pplbehind-subcontent-col1'>
-<<<<<<< HEAD
-                <img src={char3} className='Pplbehind-subcontent-img'></img>
-=======
                 <img src={char3} alt='Shahitha Fareen M | Reviewer & Writer' className='Pplbehind-subcontent-img'></img>
->>>>>>> a3e2fa8 (updates)
 
               </Col>
               <Col lg="6" md="6" sm="1" >
@@ -136,19 +109,11 @@ const Pplbehind = () => {
             </Row>
           </div>
 
-<<<<<<< HEAD
-
-          <div className='Pplbehind-indivualcontent'>
-            <Row className='Pplbehind-subcontent-row'>
-              <Col lg="6" md="6" sm="1" className='Pplbehind-subcontent-col1'>
-                <img src={char4} className='Pplbehind-subcontent-img'></img>
-=======
 {/* 
           <div className='Pplbehind-indivualcontent'>
             <Row className='Pplbehind-subcontent-row'>
               <Col lg="6" md="6" sm="1" className='Pplbehind-subcontent-col1'>
                 <img src={char4} alt='Saran Raj | Author' className='Pplbehind-subcontent-img'></img>
->>>>>>> a3e2fa8 (updates)
 
               </Col>
               <Col lg="6" md="6" sm="1" >
@@ -159,21 +124,13 @@ const Pplbehind = () => {
                 </p>
               </Col>
             </Row>
-<<<<<<< HEAD
-          </div>
-=======
           </div> */}
->>>>>>> a3e2fa8 (updates)
 
 
           <div className='Pplbehind-indivualcontent'>
             <Row className='Pplbehind-subcontent-row'>
               <Col lg="6" md="6" sm="1" className='Pplbehind-subcontent-col1'>
-<<<<<<< HEAD
-                <img src={char5} className='Pplbehind-subcontent-img'></img>
-=======
                 <img src={char5} alt='Gobika | Senior Designer' className='Pplbehind-subcontent-img'></img>
->>>>>>> a3e2fa8 (updates)
 
               </Col>
               <Col lg="6" md="6" sm="1" >
@@ -196,11 +153,7 @@ const Pplbehind = () => {
               <Card className='teamcard' >
                 <Card.Body >
                   <div className='card-content'>
-<<<<<<< HEAD
-                    <img src={marketingteam} className='team-card-icon'></img>
-=======
                     <img src={marketingteam} alt='MARKETING TEAM' className='team-card-icon'></img>
->>>>>>> a3e2fa8 (updates)
                     <p className='team-card-title'>Marketing Team </p>
                     <p className='team-card-description'>
                       The talented marketing minds at Ritera are dedicated to maximizing the reach and growth of books. They excel in both traditional and digital marketing, constantly experimenting with new strategies and applying proven success formulas to benefit authors and their works.
@@ -212,11 +165,7 @@ const Pplbehind = () => {
               <Card className='teamcard' >
                 <Card.Body>
                   <div className='card-content'>
-<<<<<<< HEAD
-                    <img src={supportteam} className='team-card-icon'></img>
-=======
                     <img src={supportteam} alt='SUPPORT TEAM' className='team-card-icon'></img>
->>>>>>> a3e2fa8 (updates)
                     <p className='team-card-title'>Support Team </p>
                     <p className='team-card-description'>
                       Ritera provides seamless support to authors via email, Whats App, and phone calls, both before and after publishing. Our dedicated team is always available to assist with any queries or concerns, ensuring a smooth and stress-free experience for authors at every stage of their publishing journey
@@ -228,11 +177,7 @@ const Pplbehind = () => {
               <Card className='teamcard' >
                 <Card.Body>
                   <div className='card-content'>
-<<<<<<< HEAD
-                    <img src={writingteam} className='team-card-icon'></img>
-=======
                     <img src={writingteam} alt='WRITING TEAM' className='team-card-icon'></img>
->>>>>>> a3e2fa8 (updates)
                     <p className='team-card-title'>Writing Team </p>
                     <p className='team-card-description'>
                       We take proactive steps by conducting seminars and virtual meetings between talented authors and our writing team. This team captures the literary visions of authors and applies them to every book they work on, ensuring the best version of each book is brought to life.
@@ -240,8 +185,6 @@ const Pplbehind = () => {
                   </div>
                 </Card.Body>
               </Card>
-<<<<<<< HEAD
-=======
               <Card className='teamcard' >
                 <Card.Body>
                   <div className='card-content'>
@@ -254,7 +197,6 @@ const Pplbehind = () => {
                 </Card.Body>
               </Card>
 
->>>>>>> a3e2fa8 (updates)
             </Row>
           </div>
         </div>}
@@ -277,11 +219,7 @@ const Pplbehind = () => {
                 <Card className='teamcard' >
                   <Card.Body >
                     <div className='card-content'>
-<<<<<<< HEAD
-                      <img src={marketingteam} className='team-card-icon'></img>
-=======
                       <img src={marketingteam} alt='MARKETING TEAM' className='team-card-icon'></img>
->>>>>>> a3e2fa8 (updates)
                       <p className='team-card-title'>Marketing Team </p>
                       <p className='team-card-description'>
                         The talented marketing minds at Ritera are dedicated to maximizing the reach and growth of books. They excel in both traditional and digital marketing, constantly experimenting with new strategies and applying proven success formulas to benefit authors and their works.
@@ -295,11 +233,7 @@ const Pplbehind = () => {
                 <Card className='teamcard' >
                   <Card.Body>
                     <div className='card-content'>
-<<<<<<< HEAD
-                      <img src={supportteam} className='team-card-icon'></img>
-=======
                       <img src={supportteam} alt='SUPPORT TEAM' className='team-card-icon'></img>
->>>>>>> a3e2fa8 (updates)
                       <p className='team-card-title'>Support Team </p>
                       <p className='team-card-description'>
                         Ritera provides seamless support to authors via email, Whats App, and phone calls, both before and after publishing. Our dedicated team is always available to assist with any queries or concerns, ensuring a smooth and stress-free experience for authors at every stage of their publishing journey
@@ -313,11 +247,7 @@ const Pplbehind = () => {
                 <Card className='teamcard' >
                   <Card.Body>
                     <div className='card-content'>
-<<<<<<< HEAD
-                      <img src={writingteam} className='team-card-icon'></img>
-=======
                       <img src={writingteam} alt='WRITING TEAM' className='team-card-icon'></img>
->>>>>>> a3e2fa8 (updates)
                       <p className='team-card-title'>Writing Team </p>
                       <p className='team-card-description'>
                         We take proactive steps by conducting seminars and virtual meetings between talented authors and our writing team. This team captures the literary visions of authors and applies them to every book they work on, ensuring the best version of each book is brought to life.

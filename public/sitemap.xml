@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
       xmlns="http://www.sitemaps.org/schemas/sitemap/1.0"
@@ -55,7 +54,6 @@
   <priority>0.80</priority>
 </url>
 
-=======
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
       xmlns="http://www.sitemaps.org/schemas/sitemap/1.0"
@@ -112,5 +110,4 @@
   <priority>0.80</priority>
 </url>
 
->>>>>>> a3e2fa8 (updates)
 </urlset>
