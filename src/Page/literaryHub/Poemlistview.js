@@ -12,6 +12,7 @@ import img07 from '../../Assets/literaryhub/poemcoverimg/cover7.webp';
 import img08 from '../../Assets/literaryhub/poemcoverimg/cover8.webp';
 import img09 from '../../Assets/literaryhub/poemcoverimg/cover9.webp';
 import img10 from '../../Assets/literaryhub/poemcoverimg/cover10.webp';
+import img11 from '../../Assets/literaryhub/poemcoverimg/cover11.webp';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -26,26 +27,35 @@ export const Poemlistview = () => {
     const newpoemdata = [
         {
             id: 1,
-            title: 'Price-less Art',
-            authorname: "Vishnu K. Prasanna",
-            img: img10,
-            description: "A poor artist, with a burning passion for his craft, finds solace in his artwork despite his financial struggles. His life takes a turn when he falls in love with a woman who becomes his muse. Together, they navigate life's hardships, finding strength in their love and art. Despite poverty, their bond and creativity remain unbroken. The poem celebrates the enduring power of love and artistic expression against all odds.",
-            posdate: "Feb 5th 2025",
+            title: "It's Better to Be Loved Than to Be Feared",
+            authorname: "Ashvi",
+            img: img11,
+            description: "This poem explores the contrast between love and fear, emphasizing that love is a powerful, nurturing force that dispels darkness and brings warmth, while fear only restricts and controls...",
+            posdate: "Feb 12th 2025",
         },
         {
             id: 2,
-            title: 'In the Park, A Father’s Prayer',
-            authorname: "Frank Gilmore",
-            img: img09,
-            description: "In the Park, a Father's Prayer by Frank Gilmore is a tender exploration of a father's love and the quiet anxieties that accompany parenthood. The poem captures a poignant moment in a park, where a father finds joy in his young son's innocent delight. However, amidst the laughter and play, the father’s mind drifts to the challenges his child will inevitably face in the chaotic world.",
-            posdate: "Jan 20th 2025",
+            title: 'Price-less Art',
+            authorname: "Vishnu K. Prasanna",
+            img: img10,
+            description: "A poor artist, with a burning passion for his craft, finds solace in his artwork despite his financial struggles. His life takes a turn when he falls in love with a woman who becomes his muse...",
+            posdate: "Feb 5th 2025",
         },
+        
 
     ]
 
     const poemdata = [
         {
             id: 1,
+            title: 'In the Park, A Father’s Prayer',
+            authorname: "Frank Gilmore",
+            img: img09,
+            description: "In the Park, a Father's Prayer by Frank Gilmore is a tender exploration of a father's love and the quiet anxieties that accompany parenthood. The poem captures a poignant moment in a park, where a father finds joy in his young son's innocent delight. However, amidst the laughter and play, the father’s mind drifts to the challenges his child will inevitably face in the chaotic world.",
+            posdate: "Jan 20th 2025",
+        },
+        {
+            id: 2,
             title: 'Echoes of the Harvest Gone',
             authorname: "Austin Flint",
             img: img08,
@@ -53,7 +63,7 @@ export const Poemlistview = () => {
             posdate: "Jan 3rd 2025",
         },
         {
-            id: 2,
+            id: 3,
             title: 'A Glimmer Of Hope',
             authorname: "Anshidha Jagadheesh",
             img: img07,
@@ -61,7 +71,7 @@ export const Poemlistview = () => {
             posdate: "Dec 28th 2024",
         },
         {
-            id: 3,
+            id: 4,
             title: 'Embrace the silence',
             authorname: "Julia Shade",
             img: img06,
@@ -70,7 +80,7 @@ export const Poemlistview = () => {
         },
 
         {
-            id: 4,
+            id: 5,
             title: 'Sun in Africa',
             authorname: "Zuri",
             img: img05,
@@ -78,7 +88,7 @@ export const Poemlistview = () => {
             posdate: "Dec 5th 2024",
         },
         {
-            id: 5,
+            id: 6,
             title: 'To someone who’s struggling in silence',
             authorname: "Shahitha Fareen M",
             img: img04,
@@ -86,7 +96,7 @@ export const Poemlistview = () => {
             posdate: "Dec 1st 2024",
         },
         {
-            id: 6,
+            id: 7,
             title: 'Invisible strokes',
             authorname: "Stan Miller",
             img: img03,
@@ -94,7 +104,7 @@ export const Poemlistview = () => {
             posdate: "Nov 25th 2024",
         },
         {
-            id: 7,
+            id: 8,
             title: "Daddy's little girl",
             authorname: "Zain Al Fikri",
             img: img02,
@@ -102,7 +112,7 @@ export const Poemlistview = () => {
             posdate: "Nov 12th 2024",
         },
         {
-            id: 8,
+            id: 9,
             title: 'Happily Ever After',
             authorname: "Saran Raj",
             img: img01,
