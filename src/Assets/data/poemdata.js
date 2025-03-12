@@ -447,7 +447,7 @@ const poemData = [
     },
     {
         id: 11,
-        title: "It's Better to Be Loved Than to Be Feared.",
+        title: "It's Better to Be Loved Than to Be Feared",
         authorname: "Ashvi",
         posteddate: "Feb 12th 2025",
         imgUrl: img11,
