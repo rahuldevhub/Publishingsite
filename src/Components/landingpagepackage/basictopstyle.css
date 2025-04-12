@@ -63,7 +63,16 @@
     flex-direction: column;
     justify-content: space-between;
 }
+.package-authorwebsite{
+    padding-left: 1rem;
+    /* padding: 1rem; */
+    border-radius: .5rem;
+    border: solid 2px #6a1b1bde;
+}
 @media only screen and (max-width: 992px) {
+    .level1-description{
+        font-size: .7rem;
+    }
 
     .level1-card {
         width: 16rem;
@@ -97,9 +106,9 @@
     }
 
     .package-features {
-        margin-top: .5rem;
+        margin-top: .3rem;
         text-align: left;
-        font-size: .8rem;
+        font-size: .9rem;
     }
 
     .swiper {

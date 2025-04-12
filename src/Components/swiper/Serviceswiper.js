@@ -40,7 +40,7 @@ const Serviceswiper = () => {
                                 <div className='service-card-content'>
                                     <img src={proofreading} className='service-card-icon'></img>
                                     <h3 className='service-card-title'>Proof Reading </h3>
-                                    <p className='service-card-description'>Having a well polished manuscript is crucial. Our team of expert proof readers is dedicated to enhancing your work by meticulously correcting grammatical, spelling, and punctuation errors. Additionally, we ensure that your document maintains consistent formatting and style. </p>
+                                    <p className='service-card-description'>Having a well polished manuscript is crucial. Our team of expert proof readers is dedicated to enhancing your work by meticulously correcting grammatical errors, punctuation errors and etc. Additionally, we ensure that your document maintains consistent formatting and style. </p>
                                 </div>
                             </Card.Body>
                         </Card>
@@ -63,7 +63,7 @@ const Serviceswiper = () => {
                                 <div className='service-card-content'>
                                     <img src={articles} className='service-card-icon'></img>
                                     <h3 className='service-card-title'>Free Publishing </h3>
-                                    <p className='service-card-description'>Ritera offers a free publishing platform for your poems,short stories, and articles. Share your creativity with the world at no cost!</p>
+                                    <p className='service-card-description'>Ritera offers a free publishing platform for your poems,short stories, and articles. We bring your work to the spotlight and make sure both you and your work reach worldwide. Share your creativity with the world at no cost!</p>
                                 </div>
                             </Card.Body>
                         </Card>
@@ -106,7 +106,7 @@ const Serviceswiper = () => {
                                 <div className='service-card-content'>
                                     <img src={International} className='service-card-icon'></img>
                                     <h3 className='service-card-title'>International </h3>
-                                    <p className='service-card-description'>By partnering with global distributors, Ritera guaranteesthatyour book reaches 30000+ online bookstores, libraries and retailers worldwide.</p>
+                                    <p className='service-card-description'>By partnering with well experienced global distributors, Ritera guarantees that your book reaches around 160 countries, 45000+ online bookstores, libraries and retailers worldwide.</p>
                                 </div>
                             </Card.Body>
                         </Card>
@@ -137,7 +137,7 @@ const Serviceswiper = () => {
                                     <div className='service-card-content'>
                                         <img src={proofreading} className='service-card-icon'></img>
                                         <h3 className='service-card-title'>Proof Reading </h3>
-                                        <p className='service-card-description'>Having a well-polished manuscript is crucial. Our team of expert proofreaders is dedicated to enhancing your work by meticulously correcting grammatical, spelling, and punctuation errors. Additionally, we ensure that your document maintains consistent formatting and style. </p>
+                                        <p className='service-card-description'>Having a well polished manuscript is crucial. Our team of expert proof readers is dedicated to enhancing your work by meticulously correcting grammatical errors, punctuation errors and etc. Additionally, we ensure that your document maintains consistent formatting and style.</p>
                                     </div>
                                 </Card.Body>
                             </Card>
@@ -163,7 +163,7 @@ const Serviceswiper = () => {
                                 <div className='service-card-content'>
                                     <img src={articles} className='service-card-icon'></img>
                                    <h3 className='service-card-title'>Free Publishing </h3>
-                                    <p className='service-card-description'>Ritera offers a free publishing platformfor your poems,short stories, and articles. Share your creativity with the world at no cost!</p>
+                                    <p className='service-card-description'>Ritera offers a free publishing platform for your poems,short stories, and articles. We bring your work to the spotlight and make sure both you and your work reach worldwide. Share your creativity with the world at no cost!</p>
                                 </div>
                             </Card.Body>
                         </Card>
@@ -209,7 +209,7 @@ const Serviceswiper = () => {
                                 <div className='service-card-content'>
                                     <img src={International} className='service-card-icon'></img>
                                     <h3 className='service-card-title'>International </h3>
-                                    <p className='service-card-description'>By partnering with global distributors, Ritera guaranteesthatyour book reaches 30000+ online bookstores, libraries and retailers worldwide.</p>
+                                    <p className='service-card-description'>By partnering with well experienced global distributors, Ritera guarantees that your book reaches around 160 countries, 45000+ online bookstores, libraries and retailers worldwide.</p>
                                 </div>
                             </Card.Body>
                         </Card>

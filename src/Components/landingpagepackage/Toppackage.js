@@ -70,11 +70,11 @@ const Toppackage = () => {
                                             <IoInformationCircleOutline /> </Tooltip>Amazon Prime</li>
                                         <li><Tooltip title={longText}>
                                             <IoInformationCircleOutline /> </Tooltip>Amazon Ads</li>
-                                            <li><Tooltip title={longText}>
+                                        <li><Tooltip title={longText}>
                                             <IoInformationCircleOutline /> </Tooltip>Book Reviews</li>
                                         <li><Tooltip title={longText}>
                                             <IoInformationCircleOutline /> </Tooltip>Kindle Promotions</li>
-                                        
+
 
                                     </ul>
                                 </div>
@@ -112,7 +112,10 @@ const Toppackage = () => {
                                             <li><Tooltip title={longText}>
                                                 <IoInformationCircleOutline /> </Tooltip>Author Copies</li>
                                             <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>Author Video</li>
+                                                <IoInformationCircleOutline /> </Tooltip>Author Video</li><br />
+
+                                            <li className='package-authorwebsite'><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>Exclusive: <br />Author Website</li>
                                             {/* <li>Book Reviews</li>
                                             <li>E-Book Placement</li>
                                             <li>Kindle Promotion</li>
@@ -121,12 +124,12 @@ const Toppackage = () => {
 
                                         </ul>
                                     </div>
-                                    </div>
-                                    <div className='flex-items'>
+                                </div>
+                                <div className='flex-items'>
 
-                                        <Popupcontactus /></div>
+                                    <Popupcontactus /></div>
 
-                                
+
                             </Card.Body>
                         </Card>
 
@@ -147,35 +150,37 @@ const Toppackage = () => {
                                         <ul className='package-features'>
                                             <li>Personal Publishing Manager</li>
                                             <li><Tooltip title={longText}>
-                                            <IoInformationCircleOutline /> </Tooltip>International Distribution</li>
+                                                <IoInformationCircleOutline /> </Tooltip>International Distribution</li>
                                             <li><Tooltip title={longText}>
-                                            <IoInformationCircleOutline /> </Tooltip>Customized Cover Design</li>
+                                                <IoInformationCircleOutline /> </Tooltip>Customized Cover Design</li>
                                             <li><Tooltip title={longText}>
-                                            <IoInformationCircleOutline /> </Tooltip>Proof Reading</li>
+                                                <IoInformationCircleOutline /> </Tooltip>Proof Reading</li>
                                             <li><Tooltip title={longText}>
-                                            <IoInformationCircleOutline /> </Tooltip>Copy Editing</li>
+                                                <IoInformationCircleOutline /> </Tooltip>Copy Editing</li>
                                             <li><Tooltip title={longText}>
 
-                                           
+                                                <li><Tooltip title={longText}>
+                                                    <IoInformationCircleOutline /> </Tooltip>Author Website</li>
 
-                                            <IoInformationCircleOutline /> </Tooltip>Author Video</li>
+                                                <IoInformationCircleOutline /> </Tooltip>Author Video</li>
                                             <li><Tooltip title={longText}>
-                                            <IoInformationCircleOutline /> </Tooltip>Kindle Promotion</li>
+                                                <IoInformationCircleOutline /> </Tooltip>Kindle Promotion</li>
                                             <li><Tooltip title={longText}>
-                                            <IoInformationCircleOutline /> </Tooltip>E-book Placements</li>
+                                                <IoInformationCircleOutline /> </Tooltip>E-book Placements</li>
                                             <li><Tooltip title={longText}>
-                                           
-                                            
-                                            <IoInformationCircleOutline /> </Tooltip>Print media Promotion</li>
+
+
+                                                <IoInformationCircleOutline /> </Tooltip>Print media Promotion</li>
                                             <li><Tooltip title={longText}>
-                                            <IoInformationCircleOutline /> </Tooltip>Social Media Promotion</li>
+                                                <IoInformationCircleOutline /> </Tooltip>Social Media Promotion</li>
                                             <li><Tooltip title={longText}>
-                                            <IoInformationCircleOutline /> </Tooltip>Marketing Plan suggestion</li>
+                                                <IoInformationCircleOutline /> </Tooltip>Marketing Plan suggestion</li>
                                             <li><Tooltip title={longText}>
-                                            <IoInformationCircleOutline /> </Tooltip>Publishing Event Handling</li>
+                                                <IoInformationCircleOutline /> </Tooltip>Publishing Event Handling</li>
 
                                         </ul>
                                     </div>
+
                                     <div className='flex-items'>
 
                                         <Popupcontactus /></div>
@@ -205,104 +210,149 @@ const Toppackage = () => {
                         <Row xs={1} md={2} lg={3} className="g-4  packageall">
 
                             <SwiperSlide> <Card className='level1-card'>
-                                <Card.Body >
-                                    <div className='card-content'>
-                                        <p className='level1-title'>Elite</p>
-                                        {/* <p className='level1-description'>Advanced cover & Interior design, extensive marketing
+                                <Card.Body className='package-card-body'>
+                                    <div className='flex-items'>
+                                        <div className='card-content'>
+                                            <p className='level1-title'>Elite</p>
+                                            {/* <p className='level1-description'>Advanced cover & Interior design, extensive marketing
                                             campaigns, early or post reviews, promotions and prime
                                             listing..</p> */}
-                                        <p className='level1-Price'>₹49,999</p>
+                                            <p className='level1-Price'>₹49,999</p>
 
-                                        {/* <Popupcontactus /> */}
+                                        </div>
 
+
+                                        <ul className='package-features'>
+                                            <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>All services in previous</li>
+                                            <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>Advanced Cover Design</li>
+                                            <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>Advanced Interior Design</li>
+                                            <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>International Distribution</li>
+                                            <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>E-Book Placement</li>
+                                            <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>Amazon A+ listing</li>
+                                            <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>Amazon Prime</li>
+                                            <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>Amazon Ads</li>
+                                            <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>Book Reviews</li>
+                                            <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>Kindle Promotions</li>
+
+
+                                        </ul>
                                     </div>
-                                    <ul className='package-features'>
-                                        <li>All services in previous</li>
-                                        <li>Advanced Cover Design</li>
-                                        <li>Advanced Interior Design</li>
-                                        <li>International PaperBack Distribution</li>
-                                        <li>E-Book Placement</li>
-                                        <li>Amazon A+ listing</li>
-                                        <li>Amazon Prime (6 Mon)</li>
-                                        <li>Amazon Ads (3 Mon)</li>
-                                        <li>Kindle Promotions</li>
-                                        <li>Book Reviews</li>
-
-
-                                    </ul>
-                                    <Popupcontactus />
-                                    {/* <Link to={'/packages'}><button className='seeallpackages'>See all Features</button></Link> */}
+                                    <div className='flex-items'>
+                                        <Popupcontactus /></div>
 
 
                                 </Card.Body>
                             </Card> </SwiperSlide>
 
                             <SwiperSlide>  <Card className='level1-card'>
-                                <Card.Body>
-                                    <div className='card-content'>
-                                        <p className='level1-title'>Premium</p>
-                                        {/* <p className='level1-description'>Spot light package including Author interviews,
+                                <Card.Body className='package-card-body'>
+                                    <div className='flex-items'>
+                                        <div className='card-content'>
+                                            <p className='level1-title'>Premium</p>
+                                            {/* <p className='level1-description'>Spot light package including Author interviews,
                                             Customised designs, proofreading or copy editing sercice,
                                             Review campaigns, and additional author copies</p> */}
-                                        <p className='level1-Price'>₹69,999</p>
+                                            <p className='level1-Price'>₹69,999</p>
 
-                                        {/* <Popupcontactus /> */}
-
+                                        </div>
 
                                         <ul className='package-features'>
                                             <li>All services in previous</li>
-                                            <li>Complimentry Proof reading or Copy editing</li>
-                                            <li>Customized Cover Design</li>
-                                            <li>Advanced interior Design</li>
-                                            <li>International Paperback distribution</li>
+                                            <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>Complimentry Services</li>
+                                            <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>Customized Cover Design</li>
+                                            {/* <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>Advanced interior Design</li> */}
+
+                                            <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>Social Media Promotion</li>
+
+                                            <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>Author Copies</li>
+                                            <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>Author Video</li><br />
+
+                                            <li className='package-authorwebsite'><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>Exclusive: <br />Author Website</li>
+                                            {/* <li>Book Reviews</li>
                                             <li>E-Book Placement</li>
                                             <li>Kindle Promotion</li>
-                                            <li>Social Media Promotion (Post Publishing)</li>
-                                            <li>Book Reviews</li>
-                                            <li>Author Copies</li>
-                                            <li>Author Video</li>
+                                            <li>International Distribution</li> */}
+
 
                                         </ul>
-                                        <Popupcontactus />
-                                        {/* <Link to={'/packages'}><button className='seeallpackages'>See all Features</button></Link> */}
-
                                     </div>
+                                    <div className='flex-items'>
+                                        <Popupcontactus /></div>
+
+
+
                                 </Card.Body>
                             </Card> </SwiperSlide>
 
 
                             <SwiperSlide> <Card className='level1-card'>
-                                <Card.Body>
-                                    <div className='card-content'>
-                                        <p className='level1-title'>Exclusive</p>
-                                        {/* <p className='level1-description'>Elite services including developmental editing,
+                                <Card.Body className='card-content'>
+                                    <div className='flex-items'>
+                                        <div className='card-content'>
+                                            <p className='level1-title'>Exclusive</p>
+                                            {/* <p className='level1-description'>Elite services including developmental editing,
                                             Proofreading & Copy editing, marketing support, Print
                                             media promotions and etc for seasoned authors.</p> */}
-                                        <p className='level1-Price'>₹1,19,999</p>
+                                            <p className='level1-Price'>₹1,19,999</p>
 
-                                        {/* <Popupcontactus /> */}
 
+                                        </div>
 
                                         <ul className='package-features'>
                                             <li>Personal Publishing Manager</li>
-                                            <li>Proof Reading (40k words)</li>
-                                            <li>Copy Editing (15k words)</li>
-                                            <li>Customized Cover Design</li>
-                                            <li>International Paperback distribution</li>
-                                            <li>E-book Placements</li>
-                                            <li>Author Video on website</li>
-                                            <li>Kindle Promotion</li>
-                                            <li>Print media Promotion</li>
-                                            <li>Social Media Promotion (Pre and Post Publishing)</li>
+                                            <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>International Distribution</li>
+                                            <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>Customized Cover Design</li>
+                                            <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>Proof Reading</li>
+                                            <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>Copy Editing</li>
+                                            <li><Tooltip title={longText}>
 
-                                            <li>Marketing Plan suggestion</li>
-                                            <li>Publishing Event Handling</li>
+                                                <li><Tooltip title={longText}>
+                                                    <IoInformationCircleOutline /> </Tooltip>Author Website</li>
+
+                                                <IoInformationCircleOutline /> </Tooltip>Author Video</li>
+                                            <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>Kindle Promotion</li>
+                                            <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>E-book Placements</li>
+                                            <li><Tooltip title={longText}>
+
+
+                                                <IoInformationCircleOutline /> </Tooltip>Print media Promotion</li>
+                                            <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>Social Media Promotion</li>
+                                            <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>Marketing Plan suggestion</li>
+                                            <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>Publishing Event Handling</li>
+
 
                                         </ul>
-                                        <Popupcontactus />
-                                        {/* <Link to={'/packages'}><button className='seeallpackages'>See all Features</button></Link> */}
-
                                     </div>
+                                    <div className='flex-items'>
+                                        <Popupcontactus /></div>
+
+
                                 </Card.Body>
                             </Card>
                             </SwiperSlide>

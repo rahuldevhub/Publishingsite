@@ -9,7 +9,7 @@ const articleData = [
         authorname:"Jessica miller",
         posteddate:"Nov 10th 2024",
         imgUrl: img01,
-        articleSynopsis:"Literature has always been a cornerstone of human culture, offering a windowintothedepths of human experience and the complexities of society",
+        articleSynopsis:"Literature has always been a cornerstone of human culture, offering a window into the depths of human experience and the complexities of society",
         authorBio:"Jessica Miller is a distinguished writer known for her insightful articles on literature’s impact on society. She has contributed to various literary magazines and online platforms. Her acclaimed piece, “The Importance of Literature in Our World,” highlights literature’s role in fostering empathy and preserving cultural heritage. Miller’s work inspires readers to appreciate the transformative power of the written word. She is a passionate advocate for diverse voices in literary discourse.",
         article: `The Importance of Literature in Our World
 
@@ -54,7 +54,7 @@ const articleData = [
         posteddate:"Nov 3rd 2024",
         imgUrl: img02,
         articleSynopsis:"In today’s rapidly evolving landscape, technology is a driving force reshaping everyaspect of our lives.",
-        authorBio:"Rahul, an accomplished author, weaves tales that resonate with readers. His passion for storytelling shines through in every word he pens. Partnering with Ritera, he offers author sessions, nurturing budding talents and engaging with avid readers. Join us today and get a free author session!",
+        authorBio:"Rahul is a passionate tech writer, full-stack developer, and digital innovator with a sharp eye for emerging technologies. With a solid foundation in software development and a flair for simplifying complex technical concepts, Rahul has become a trusted voice in the tech community. His writing bridges the gap between cutting-edge technology and everyday understanding, making innovation accessible to readers of all skill levels.",
         article: `The Dynamics of Technology in the Modern World
 
         In today’s rapidly evolving landscape, technology is a driving force reshaping everyaspect of our lives. From the way we communicate to how we work, learn, and entertain ourselves, technological advancements are creating profound changes. Here, we explore the key dynamics of technology in the modern world. 

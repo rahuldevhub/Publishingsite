@@ -11,6 +11,9 @@ import { Link } from 'react-router-dom';
 import Literaryhub from '../Components/literaryhub/Literaryhub'
 import Popuplanding from '../Components/Popups/Popuplanding'
 import { BlogSection } from '../Components/blog/BlogSection'
+import Newrelease from '../Components/newrealese/Newrelease'
+import Bookdaylandingpagetop from '../Components/bookday/Bookdaylandingpagetop'
+
 
 const Landingpage = () => {
   useEffect(() => {
@@ -18,6 +21,14 @@ const Landingpage = () => {
   }, []);
   return (
     <div className='Landingpage'>
+
+      <div className='landingpage-bookday'>
+        <div className='landingpage-bookday-content'>
+        <Bookdaylandingpagetop />
+        </div>
+       
+      
+      </div>
 
       <div className='landingpage-bgimg' >
         <div className='landingpage-blackdrop' data-aos="fade-down" >
@@ -36,12 +47,22 @@ const Landingpage = () => {
 
       </div>
 
+
+      <div className='landingpage-newrelease'>
+        <div className='landingpage-newrelease-content'>
+          <Newrelease />
+
+        </div>
+      </div>
+
+
+
       <div className='landingpage-whywe'>
         <div className='landingpage-whywe-content'>
           <Row>
             <Col lg="6" md="6" sm="1" className='landingpage-col-centering'>
 
-              <img src={whywebg}  alt='WHYUS' className='landingpage-whywe-leftimg' ></img>
+              <img src={whywebg} alt='WHYUS' className='landingpage-whywe-leftimg' ></img>
 
             </Col>
 
@@ -136,7 +157,7 @@ const Landingpage = () => {
       <div className='landingpage-blog'>
         <div className='landingpage-blog-content'>
           <h1>Recent Blogs</h1>
-          <BlogSection/>
+          <BlogSection />
         </div>
 
       </div>

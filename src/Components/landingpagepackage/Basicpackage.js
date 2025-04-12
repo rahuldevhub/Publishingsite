@@ -50,6 +50,9 @@ const Basicpackage = () => {
                                 <div className='flex-items'>
                                     <div className='card-content'>
                                         <p className='level1-title'>Essential </p>
+                                        <p className='level1-description'>Advanced cover & Interior design, extensive marketing
+                                            campaigns, early or post reviews, promotions and prime
+                                            listing..</p>
                                         <p className='level1-Price'>₹8,999</p>
                                     </div>
                                     <ul className='package-features'>
@@ -86,7 +89,10 @@ const Basicpackage = () => {
 
                                     <div className='card-content'>
                                         <p className='level1-title'>Standard </p>
-                                        <p className='level1-Price'>₹12,999</p>
+                                        <p className='level1-description'>Advanced cover & Interior design, extensive marketing
+                                            campaigns, early or post reviews, promotions and prime
+                                            listing..</p>
+                                        <p className='level1-Price'>₹16,999</p>
                                     </div>
 
                                     <ul className='package-features'>
@@ -101,8 +107,10 @@ const Basicpackage = () => {
                                             <IoInformationCircleOutline /> </Tooltip>Author Copies</li>
 
                                         <li><Tooltip title={longText}>
-                                            <IoInformationCircleOutline /> </Tooltip>Author Certificate</li>
+                                            <IoInformationCircleOutline /> </Tooltip>Author Certificate</li><br/>
 
+                                            <li className='package-authorwebsite'><Tooltip title={longText}>
+                                            <IoInformationCircleOutline /> </Tooltip>Exclusive: <br/>Author Website</li>
 
 
                                     </ul>
@@ -122,6 +130,9 @@ const Basicpackage = () => {
 
                                     <div className='card-content'>
                                         <p className='level1-title'>Advanced</p>
+                                        <p className='level1-description'>Advanced cover & Interior design, extensive marketing
+                                            campaigns, early or post reviews, promotions and prime
+                                            listing..</p>
                                         <p className='level1-Price'>₹29,999</p>
                                     </div>
                                     <ul className='package-features'>
@@ -185,20 +196,30 @@ const Basicpackage = () => {
                                         <div className='card-content'>
                                             <p className='level1-title'>Essential</p>
                                             <p className='level1-Price'>₹8,999</p>
-
+                                           
                                         </div>
                                         <ul className='package-features'>
-                                            <li>Personal Publishing Manager</li>
-                                            <li>Standard Cover Design</li>
-                                            <li>Standard Interior Design</li>
-                                            <li>Online PaperBack Distribution (India)</li>
-                                            <li>E-Book Placement (Google) </li>
-                                            <li>Copy Rights </li>
-                                            <li>ISBN + Barcode </li>
-                                            <li>Author Dashboard </li>
-                                            <li>Post Publishing Support </li>
-                                            <li>60% Royalty for Author</li>
-                                        </ul>
+                                        <li><Tooltip title={longText}>
+                                            <IoInformationCircleOutline /> </Tooltip>Personal Manager</li>
+
+                                        <li><Tooltip title={longText}>
+                                            <IoInformationCircleOutline /> </Tooltip>Standard Cover Design</li>
+
+                                        <li><Tooltip title={longText}>
+                                            <IoInformationCircleOutline /> </Tooltip>Standard Interior Design</li>
+
+                                        <li><Tooltip title={longText}>
+                                            <IoInformationCircleOutline /> </Tooltip>Online Distribution</li>
+                                            
+                                        <li>
+                                            <Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>
+                                            E-Book Placement</li>
+                                        <li>Copy Rights + ISBN </li>
+                                        <li>100% Royalty for Author</li>
+                                        <li>Post Publishing Support </li>
+
+                                    </ul>
                                         <Popupcontactus />
                                         {/* <Link to={'/packages'}><button className='seeallpackages'>See all Features</button></Link> */}
                                     </Card.Body>
@@ -212,17 +233,24 @@ const Basicpackage = () => {
                                             <p className='level1-Price'>₹12,999</p>
 
                                             <ul className='package-features'>
-                                                <li>All services in previous</li>
-                                                <li>80% Royalty for Author</li>
-                                                <li>Author Copies & Certificate</li>
-                                                <li>E-Book (Google, Kindle)</li>
-                                                <li>Standard cover design</li>
-                                                <li>Interior Design</li>
-                                                <li>Online Paperback distribution (India)</li>
-                                                <li>Publishing Plan</li>
-                                                <li>Digital Proof</li>
+                                        <li><Tooltip title={longText}>
+                                            <IoInformationCircleOutline /> </Tooltip>All services in previous</li>
 
-                                            </ul>
+
+                                        <li><Tooltip title={longText}>
+                                            <IoInformationCircleOutline /> </Tooltip>Kindle E-Book Placements</li>
+
+                                        <li><Tooltip title={longText}>
+                                            <IoInformationCircleOutline /> </Tooltip>Author Copies</li>
+
+                                        <li><Tooltip title={longText}>
+                                            <IoInformationCircleOutline /> </Tooltip>Author Certificate</li><br/>
+
+                                            <li className='package-authorwebsite'><Tooltip title={longText}>
+                                            <IoInformationCircleOutline /> </Tooltip>Exclusive: <br/>Author Website</li>
+
+
+                                    </ul>
                                             <Popupcontactus />
                                             {/* <Link to={'/packages'}><button className='seeallpackages'>See all Features</button></Link> */}
 
@@ -242,19 +270,32 @@ const Basicpackage = () => {
 
 
                                             <ul className='package-features'>
-                                                <li>All services in previous</li>
-                                                <li>100% Royalty for Author</li>
-                                                <li>Premium Cover Design</li>
-                                                <li>Premium Interior Design</li>
-                                                <li>International PaperBack Distribution</li>
-                                                <li>E-Book ( google, kindle, kobo)</li>
-                                                <li>Author copies (10)</li>
-                                                <li>Amazon Prime placement (3mon)</li>
-                                                <li>Kindle Promotion</li>
-                                                <li>Book Reviews</li>
-                                                <li>Free Author Session</li>
-                                                <li>Beta Reading</li>
-                                            </ul>
+                                        <li>All services in previous</li>
+                                        <li>100% Royalty for Author</li>
+                                        <li><Tooltip title={longText}>
+                                            <IoInformationCircleOutline /> </Tooltip>Premium Cover Design</li>
+                                        <li><Tooltip title={longText}>
+                                            <IoInformationCircleOutline /> </Tooltip>Premium Interior Design</li>
+                                        <li><Tooltip title={longText}>
+                                            <IoInformationCircleOutline /> </Tooltip>International Distribution</li>
+                                        <li><Tooltip title={longText}>
+                                            <IoInformationCircleOutline /> </Tooltip>E-Book Placements</li>
+                                        <li><Tooltip title={longText}>
+                                            <IoInformationCircleOutline /> </Tooltip>Author copies</li>
+
+
+                                        <li><Tooltip title={longText}>
+                                            <IoInformationCircleOutline /> </Tooltip>Book Reviews</li>
+
+                                        <li><Tooltip title={longText}>
+                                            <IoInformationCircleOutline /> </Tooltip>Beta Reading</li>
+                                        <li><Tooltip title={longText}>
+                                            <IoInformationCircleOutline /> </Tooltip>Kindle Promotion</li>
+                                        <li><Tooltip title={longText}>
+                                            <IoInformationCircleOutline /> </Tooltip>Free Author Session</li>
+                                        <li><Tooltip title={longText}>
+                                            <IoInformationCircleOutline /> </Tooltip>Amazon Prime Placement</li>
+                                    </ul>
                                             <Popupcontactus />
                                             {/* <Link to={'/packages'}><button className='seeallpackages'>See all Features</button></Link> */}
                                         </div>
