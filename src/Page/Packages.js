@@ -40,7 +40,7 @@ const Packages = () => {
       <div className='packages-content-bg '>
         <div className='packages-content'>
           <div className='whywe-subcontent-title'>Tailored Solutions for Every Author’s Journey.</div>
-          <p className='whywe-subcontent-description'>As an aspiring publishing house, Ritera stands apart with our unique approach and unwavering commitment to authors' satisfaction. While we hold respect for other publishers in the field, we embrace different ideologies and possess a talented crew with a distinct working style. At Ritera, we promise that you'll never be left with doubts or dissatisfaction.</p>
+          <p className='whywe-subcontent-description'>As a best self publishing house, Ritera stands apart with our unique approach and unwavering commitment to authors' satisfaction. While we hold respect for other publishers in the field, we embrace different ideologies and possess a talented crew with a distinct working style. At Ritera, we promise that you'll never be left with doubts or dissatisfaction.</p>
 
           <h3>Basic</h3>
           {/* <p className='whywe-subcontent-description'>As an aspiring publishing house, Ritera stands apart with our unique approach and unwavering commitment to authors' satisfaction. While we hold respect for other publishers in the field, we embrace different ideologies and possess a talented crew with a distinct working style. At Ritera, we promise that you'll never be left with doubts or dissatisfaction.</p> */}
@@ -69,7 +69,7 @@ const Packages = () => {
                     <li>60% Royalty for Author</li>
                   </ul>
                   <Popupcontactus />
-                  {/* <button className='seeallpackages'>See all Features</button> */}
+          
                 </Card.Body>
               </Card>
 
@@ -80,7 +80,7 @@ const Packages = () => {
                     <p className='level1-Price'>₹12,999</p>
                     <p className='packagepage-subtitle'>Comprehensive support for aspiring authors with free
                       Author copies, certificate, and and eBook placement on
-                      Google and Kobo /Online distribution in India</p>
+                      Google and Kobo /Online distribution in India.</p>
 
                     <ul className='package-features'>
                       <li>All service in previous</li>

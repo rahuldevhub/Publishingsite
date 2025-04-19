@@ -97,23 +97,23 @@ const Getintouch = () => {
                                 <Accordion.Header >What genres does Ritera Focuses on?</Accordion.Header>
                                 <Accordion.Body className='faq-description'>
                                     At Ritera, we publish a wide range of genres including fiction, non-fiction, poetry,
-                                    memoirs, and more. Our goal is to provide a platformfor diverse voices and stories that resonate with readers.
+                                    memoirs, and more. Our goal is to provide a platform for diverse voices and stories that resonate with readers.
                                 </Accordion.Body>
                             </Accordion.Item>
 
                             <Accordion.Item eventKey="1">
                                 <Accordion.Header>Does Ritera accept submissions from new authors?</Accordion.Header>
                                 <Accordion.Body className='faq-description'>
-                                    Absolutely! We welcome submissions from both new andexperienced authors. Our team is dedicated to
-                                    discovering andnurturing emerging talent, and we're excited to consider manuscriptsfrom writers of all backgrounds
+                                    Absolutely! We welcome submissions from both new and experienced authors. Our team is dedicated to
+                                    discovering and nurturing emerging talent, and we're excited to consider manuscripts from writers of all backgrounds
                                 </Accordion.Body>
                             </Accordion.Item>
 
                             <Accordion.Item eventKey="2">
                                 <Accordion.Header>How long does the publishing process take?</Accordion.Header>
                                 <Accordion.Body className='faq-description'>
-                                    The timeline for publishing can vary depending on the specific needsof each project. However, we strive to work efficiently whilemaintaining the highest quality standards. Generally,
-                                    the processtakes anywhere from a months to two from manuscript submissionto publication.
+                                    The timeline for publishing can vary depending on the specific needs of each project. However, we strive to work efficiently while maintaining the highest quality standards. Generally,
+                                    the process takes anywhere from a months to two from manuscript submission to publication.
                                 </Accordion.Body>
                             </Accordion.Item>
 
@@ -121,8 +121,8 @@ const Getintouch = () => {
                             <Accordion.Item eventKey="3">
                                 <Accordion.Header>What marketing support do you provide for authors?</Accordion.Header>
                                 <Accordion.Body className='faq-description'>
-                                    We offer a range of marketing support services to help authorspromote their books and
-                                    connect with readers. This includesassistance with book launch events, social media promotion, authorwebsite development, book reviews, and more. We work closely withauthors to develop personalized marketing strategies that align withtheir goals and target audience.
+                                    We offer a range of marketing support services to help authors promote their books and
+                                    connect with readers. This includes assistance with book launch events, social media promotion, author website development, book reviews, and more. We work closely withauthors to develop personalized marketing strategies that align with their goals and target audience.
                                 </Accordion.Body>
                             </Accordion.Item>
 
@@ -131,8 +131,8 @@ const Getintouch = () => {
                             <Accordion.Item eventKey="4">
                                 <Accordion.Header>What sets Ritera apart from other publishing houses?</Accordion.Header>
                                 <Accordion.Body className='faq-description'>
-                                    At Ritera, we pride ourselves on our personalized approach andcommitment to author satisfaction. We prioritize clearcommunication, timely delivery, and transparent collaborationthroughout the publishing journey. Our talented
-                                    team and uniqueworking style ensure that every book receives the attention and careit deserves.
+                                    At Ritera, we pride ourselves on our personalized approach and commitment to author satisfaction. We prioritize clear communication, timely delivery, and transparent collaboration throughout the publishing journey. Our talented
+                                    team and unique working style ensure that every book receives the attention and care it deserves.
                                 </Accordion.Body>
                             </Accordion.Item>
 
@@ -140,10 +140,19 @@ const Getintouch = () => {
                             <Accordion.Item eventKey="5">
                                 <Accordion.Header>How can I submit my manuscript to Ritera?</Accordion.Header>
                                 <Accordion.Body className='faq-description'>
-                                    You can submit your manuscript to us through our websitesubmission portal. Please review our submission guidelines carefullybefore sending in your manuscript to ensure that it meets ourrequirements.
+                                    You can submit your manuscript to us through our website submission portal. Please review our submission guidelines carefully before sending in your manuscript to ensure that it meets our requirements.
                                     Our editorial team will review your submission and getback to you with feedback and next steps.
                                 </Accordion.Body>
                             </Accordion.Item>
+
+                            <Accordion.Item eventKey="6">
+                                <Accordion.Header>Why ritera leads best in service compared to other self publishing houses?</Accordion.Header>
+                                <Accordion.Body className='faq-description'>
+                                Within the competitive publishing industry, becoming a top self publishing house is no easy feat. Ritera stands out as a leading self publishing house in India by assembling highly skilled and experienced professionals across key departments. This strategic approach ensures authors experience a seamless and smooth publishing journey. At every stage of the publishing process, Ritera prioritizes the value 
+                                of authors and their works, delivering exceptional service that harmonizes timeliness, precision, and remarkable results.
+                                </Accordion.Body>
+                            </Accordion.Item>
+
 
                         </Accordion>
                     </div>

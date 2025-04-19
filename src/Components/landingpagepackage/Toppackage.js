@@ -54,26 +54,20 @@ const Toppackage = () => {
 
                                     </div>
                                     <ul className='package-features'>
-                                        <li><Tooltip title={longText}>
-                                            <IoInformationCircleOutline /> </Tooltip>All services in previous</li>
-                                        <li><Tooltip title={longText}>
+                                        <li> All services in previous</li>
+                                        <li><Tooltip title='3 Concepts and 3 Revisions once the concept is fixed.'>
                                             <IoInformationCircleOutline /> </Tooltip>Advanced Cover Design</li>
-                                        <li><Tooltip title={longText}>
+                                        <li><Tooltip title='3 Design and 3 Revision once the concept is fixed.'>
                                             <IoInformationCircleOutline /> </Tooltip>Advanced Interior Design</li>
-                                        <li><Tooltip title={longText}>
-                                            <IoInformationCircleOutline /> </Tooltip>International Distribution</li>
-                                        <li><Tooltip title={longText}>
-                                            <IoInformationCircleOutline /> </Tooltip>E-Book Placement</li>
-                                        <li><Tooltip title={longText}>
-                                            <IoInformationCircleOutline /> </Tooltip>Amazon A+ listing</li>
-                                        <li><Tooltip title={longText}>
-                                            <IoInformationCircleOutline /> </Tooltip>Amazon Prime</li>
-                                        <li><Tooltip title={longText}>
-                                            <IoInformationCircleOutline /> </Tooltip>Amazon Ads</li>
-                                        <li><Tooltip title={longText}>
-                                            <IoInformationCircleOutline /> </Tooltip>Book Reviews</li>
-                                        <li><Tooltip title={longText}>
-                                            <IoInformationCircleOutline /> </Tooltip>Kindle Promotions</li>
+
+                                        <li> International Distribution</li>
+
+                                        <li>E-Book Placement</li>
+                                        <li>Amazon A+ listing</li>
+                                        <li>Amazon Prime</li>
+                                        <li>Amazon Ads</li>
+                                        <li>Book Reviews</li>
+                                        <li>Kindle Promotions</li>
 
 
                                     </ul>
@@ -99,22 +93,30 @@ const Toppackage = () => {
 
                                         <ul className='package-features'>
                                             <li>All services in previous</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>Complimentry Services</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>Customized Cover Design</li>
-                                            {/* <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>Advanced interior Design</li> */}
 
-                                            <li><Tooltip title={longText}>
+                                            {/* <li><Tooltip title={longText}>
+                                                <IoInformationCircleOutline /> </Tooltip>Complimentry Services</li> */}
+
+                                            <li><Tooltip title='3 Design and 6 Revision once the Concept is fixed.'>
+                                                <IoInformationCircleOutline /> </Tooltip>Customized Cover Design</li>
+                                            <li><Tooltip title='3 Designs and 5 Revisions pnce the Concept is fixed.'>
+                                                <IoInformationCircleOutline /> </Tooltip>Customized interior Design</li>
+
+                                            <li><Tooltip title='Complementry reviews (Pre or Post Publishing).'>
+                                                <IoInformationCircleOutline /> </Tooltip>Book Reviews</li>
+
+                                            <li><Tooltip title='3 Beta reviewer will be assigned and will share their opinion before publishing.'>
+                                                <IoInformationCircleOutline /> </Tooltip>Beta Reading</li>
+
+                                            <li><Tooltip title='Social media promotions for your book will be executed on Instagram, facebook, twitter, and a blog will be posted on Medium.'>
                                                 <IoInformationCircleOutline /> </Tooltip>Social Media Promotion</li>
 
-                                            <li><Tooltip title={longText}>
+                                            <li><Tooltip title='10 Author copies (B/W or Colour)'>
                                                 <IoInformationCircleOutline /> </Tooltip>Author Copies</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>Author Video</li><br />
+                                            <li> Proof Reading</li>
+                                            <li> Author Video</li><br />
 
-                                            <li className='package-authorwebsite'><Tooltip title={longText}>
+                                            <li className='package-authorwebsite'><Tooltip title='A dedicated website will be provided, within the package cost.'>
                                                 <IoInformationCircleOutline /> </Tooltip>Exclusive: <br />Author Website</li>
                                             {/* <li>Book Reviews</li>
                                             <li>E-Book Placement</li>
@@ -148,35 +150,35 @@ const Toppackage = () => {
 
 
                                         <ul className='package-features'>
-                                            <li>Personal Publishing Manager</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>International Distribution</li>
-                                            <li><Tooltip title={longText}>
+
+
+                                            <li><Tooltip title='3 Design and Unlimited revisions once the Concept is fixed'>
                                                 <IoInformationCircleOutline /> </Tooltip>Customized Cover Design</li>
-                                            <li><Tooltip title={longText}>
+
+                                            <li><Tooltip title='3 Design and Unlimited revisions once the Concept is fixed'>
+                                                <IoInformationCircleOutline /> </Tooltip>Customized Interior Design</li>
+
+                                            <li><Tooltip title='2 Proof readers will be assigned (Pre Publishing)'>
                                                 <IoInformationCircleOutline /> </Tooltip>Proof Reading</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>Copy Editing</li>
-                                            <li><Tooltip title={longText}>
-
-                                                <li><Tooltip title={longText}>
-                                                    <IoInformationCircleOutline /> </Tooltip>Author Website</li>
-
-                                                <IoInformationCircleOutline /> </Tooltip>Author Video</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>Kindle Promotion</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>E-book Placements</li>
-                                            <li><Tooltip title={longText}>
-
-
-                                                <IoInformationCircleOutline /> </Tooltip>Print media Promotion</li>
-                                            <li><Tooltip title={longText}>
+                                            <li><Tooltip title='Social media Promotions for your book will be executed on Instagram, facebook, twitter, and a blog will be posted on Medium.'>
                                                 <IoInformationCircleOutline /> </Tooltip>Social Media Promotion</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>Marketing Plan suggestion</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>Publishing Event Handling</li>
+
+
+                                            <li><Tooltip title='5 Beta reviewer will be assigned and will share their opinion before publishing.'>
+                                                <IoInformationCircleOutline /> </Tooltip>Beta Reading</li>
+                                            <li><Tooltip title='20 Author copies (B/W or Colour)'>
+                                                <IoInformationCircleOutline /> </Tooltip>Author Copies</li>
+
+                                            <li>Personal Publishing Manager</li>
+                                            <li>International Distribution</li>
+                                            <li>Copy Editing</li>
+                                            <li>Author Website</li>
+                                            <li>Author Video</li>
+                                            <li>Kindle Promotion</li>
+                                            <li>E-book Placements</li>
+                                            <li>Print media Promotion</li>
+                                            <li>Marketing Plan suggestion</li>
+                                            <li>Publishing Event Handling</li>
 
                                         </ul>
                                     </div>
@@ -223,26 +225,20 @@ const Toppackage = () => {
 
 
                                         <ul className='package-features'>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>All services in previous</li>
-                                            <li><Tooltip title={longText}>
+                                            <li> All services in previous</li>
+                                            <li><Tooltip title='3 Concepts and 3 Revisions once the concept is fixed.'>
                                                 <IoInformationCircleOutline /> </Tooltip>Advanced Cover Design</li>
-                                            <li><Tooltip title={longText}>
+                                            <li><Tooltip title='3 Design and 3 Revision once the concept is fixed.'>
                                                 <IoInformationCircleOutline /> </Tooltip>Advanced Interior Design</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>International Distribution</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>E-Book Placement</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>Amazon A+ listing</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>Amazon Prime</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>Amazon Ads</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>Book Reviews</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>Kindle Promotions</li>
+
+                                            <li> International Distribution</li>
+
+                                            <li>E-Book Placement</li>
+                                            <li>Amazon A+ listing</li>
+                                            <li>Amazon Prime</li>
+                                            <li>Amazon Ads</li>
+                                            <li>Book Reviews</li>
+                                            <li>Kindle Promotions</li>
 
 
                                         </ul>
@@ -268,22 +264,30 @@ const Toppackage = () => {
 
                                         <ul className='package-features'>
                                             <li>All services in previous</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>Complimentry Services</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>Customized Cover Design</li>
-                                            {/* <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>Advanced interior Design</li> */}
 
-                                            <li><Tooltip title={longText}>
+                                            {/* <li><Tooltip title={longText}>
+    <IoInformationCircleOutline /> </Tooltip>Complimentry Services</li> */}
+
+                                            <li><Tooltip title='3 Design and 6 Revision once the Concept is fixed.'>
+                                                <IoInformationCircleOutline /> </Tooltip>Customized Cover Design</li>
+                                            <li><Tooltip title='3 Designs and 5 Revisions pnce the Concept is fixed.'>
+                                                <IoInformationCircleOutline /> </Tooltip>Customized interior Design</li>
+
+                                            <li><Tooltip title='Complementry reviews (Pre or Post Publishing).'>
+                                                <IoInformationCircleOutline /> </Tooltip>Book Reviews</li>
+
+                                            <li><Tooltip title='3 Beta reviewer will be assigned and will share their opinion before publishing.'>
+                                                <IoInformationCircleOutline /> </Tooltip>Beta Reading</li>
+
+                                            <li><Tooltip title='Social media promotions for your book will be executed on Instagram, facebook, twitter, and a blog will be posted on Medium.'>
                                                 <IoInformationCircleOutline /> </Tooltip>Social Media Promotion</li>
 
-                                            <li><Tooltip title={longText}>
+                                            <li><Tooltip title='10 Author copies (B/W or Colour)'>
                                                 <IoInformationCircleOutline /> </Tooltip>Author Copies</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>Author Video</li><br />
+                                            <li> Proof Reading</li>
+                                            <li> Author Video</li><br />
 
-                                            <li className='package-authorwebsite'><Tooltip title={longText}>
+                                            <li className='package-authorwebsite'><Tooltip title='A dedicated website will be provided, within the package cost.'>
                                                 <IoInformationCircleOutline /> </Tooltip>Exclusive: <br />Author Website</li>
                                             {/* <li>Book Reviews</li>
                                             <li>E-Book Placement</li>
@@ -316,35 +320,33 @@ const Toppackage = () => {
                                         </div>
 
                                         <ul className='package-features'>
-                                            <li>Personal Publishing Manager</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>International Distribution</li>
-                                            <li><Tooltip title={longText}>
+                                        <li><Tooltip title='3 Design and Unlimited revisions once the Concept is fixed'>
                                                 <IoInformationCircleOutline /> </Tooltip>Customized Cover Design</li>
-                                            <li><Tooltip title={longText}>
+
+                                            <li><Tooltip title='3 Design and Unlimited revisions once the Concept is fixed'>
+                                                <IoInformationCircleOutline /> </Tooltip>Customized Interior Design</li>
+
+                                            <li><Tooltip title='2 Proof readers will be assigned (Pre Publishing)'>
                                                 <IoInformationCircleOutline /> </Tooltip>Proof Reading</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>Copy Editing</li>
-                                            <li><Tooltip title={longText}>
-
-                                                <li><Tooltip title={longText}>
-                                                    <IoInformationCircleOutline /> </Tooltip>Author Website</li>
-
-                                                <IoInformationCircleOutline /> </Tooltip>Author Video</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>Kindle Promotion</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>E-book Placements</li>
-                                            <li><Tooltip title={longText}>
-
-
-                                                <IoInformationCircleOutline /> </Tooltip>Print media Promotion</li>
-                                            <li><Tooltip title={longText}>
+                                            <li><Tooltip title='Social media Promotions for your book will be executed on Instagram, facebook, twitter, and a blog will be posted on Medium.'>
                                                 <IoInformationCircleOutline /> </Tooltip>Social Media Promotion</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>Marketing Plan suggestion</li>
-                                            <li><Tooltip title={longText}>
-                                                <IoInformationCircleOutline /> </Tooltip>Publishing Event Handling</li>
+
+
+                                            <li><Tooltip title='5 Beta reviewer will be assigned and will share their opinion before publishing.'>
+                                                <IoInformationCircleOutline /> </Tooltip>Beta Reading</li>
+                                            <li><Tooltip title='20 Author copies (B/W or Colour)'>
+                                                <IoInformationCircleOutline /> </Tooltip>Author Copies</li>
+
+                                            <li>Personal Publishing Manager</li>
+                                            <li>International Distribution</li>
+                                            <li>Copy Editing</li>
+                                            <li>Author Website</li>
+                                            <li>Author Video</li>
+                                            <li>Kindle Promotion</li>
+                                            <li>E-book Placements</li>
+                                            <li>Print media Promotion</li>
+                                            <li>Marketing Plan suggestion</li>
+                                            <li>Publishing Event Handling</li>
 
 
                                         </ul>

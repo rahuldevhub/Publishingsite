@@ -14,13 +14,13 @@ const Bookdaylandingpagetop = () => {
       <TypeAnimation
         sequence={[
           '📚 Celebrate the',
-          800,
+          600,
           () => setTextColor('black'),
           '📚 Celebrate the Magic of Book Day ',
-          800,
+          600,
           () => setTextColor('navy'),
           '📚 Celebrate the Magic of Book Day with Ritera!',
-          1000,
+          800,
           () => setTextColor('6A1B1B'),
           '',
         ]}

@@ -24,10 +24,10 @@ const Landingpage = () => {
 
       <div className='landingpage-bookday'>
         <div className='landingpage-bookday-content'>
-        <Bookdaylandingpagetop />
+          <Bookdaylandingpagetop />
         </div>
-       
-      
+
+
       </div>
 
       <div className='landingpage-bgimg' >
@@ -69,8 +69,9 @@ const Landingpage = () => {
             <Col lg="6" md="6" sm="1" className='landingpage-col-centering'>
               <div >
                 <h1 >Why us ?</h1>
-                <p ><b>Confused about choosing the best publishing house for your book?</b> Look no further! At Ritera Publishing, we offer an unparalleled publishing experience with exclusive services you won’t find anywhere else. Our complete motto is to make the publishing process smoother and comfortable for you. With the shared love we both have for literature,
-                  Ritera decided to offer some special services exclusively!</p>
+                <p ><b>Confused about choosing the best self publishing house for your book? </b> Look no further! At Ritera Publishing, we offer an unparalleled publishing experience with exclusive services you won’t find anywhere else. Our complete motto is to make the publishing process smoother and comfortable for you. With the shared love we both have
+                 for literature, Ritera decided to offer some special services exclusively!
+                </p>
                 <Link to={'/aboutus'}>
                   <button className='Whywe-button' data-aos="zoom-in"> Learn more</button>
                 </Link>

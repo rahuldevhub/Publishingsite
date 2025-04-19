@@ -1,7 +1,7 @@
 .Bookdaylandingpagetop {
     background: #F5F1E0;
     overflow: hidden;
-    height: 22vh;
+    height: 16vh;
 }
 
 .Bookdaylandingpagetop h1 {
@@ -58,7 +58,7 @@
 @media only screen and (max-width: 992px) {
     .Bookdaylandingpagetop {
 
-        height: 10vh;
+        height: 12vh;
     }
     .Bookdaylandingpagetop-button:hover {
         background-color: #aa2121;
