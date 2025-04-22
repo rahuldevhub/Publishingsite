@@ -387,7 +387,7 @@
     background: #F5F1E0;
     padding-bottom: 5rem;
     padding-top: 3rem;
-       /* height: 100vh; */
+       height: 85vh;
 
 }
 
@@ -399,8 +399,8 @@
 .landingpage-article-container {
     border-radius: 1rem;
     border: solid 2px #D4A373;
-    margin-left: 7rem;
-    margin-right: 7rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
     padding-left: 1rem;
     padding-right: 1rem;
     padding-top: 2rem;
@@ -423,7 +423,7 @@
 .landingpage-article-container h1 {
     font-family: "Merriweather", serif;
     font-weight: 600;
-    font-size: 2rem;
+    font-size: 1.6rem;
     text-align: center;
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -454,7 +454,7 @@
 }
 
 .landingpage-article-container:hover h1 {
-    font-size: 2.4rem;
+    font-size: 1.8rem;
 }
 
 
@@ -471,6 +471,7 @@
     .landingpage-article {
         padding-bottom: 3rem;
         padding-top: 3rem;
+        height: auto;
      
 
     }

@@ -2,13 +2,13 @@
 
     background: #000;
     background-image: url("../Assets/imagecustomized.jpg");
-    background-position: initial;
+    background-position: bottom;
     background-size: cover;
 }
 
 .customized-blackdrop {
     background-color: #000000ab;
-    height: 600px;
+    height: 300px;
 
 }
 
@@ -18,7 +18,7 @@
     font-family: "Merriweather", serif;
     font-weight: 400;
     color: white;
-    padding-top: 15rem;
+    padding-top: 7rem;
     text-align: center;
 }
 

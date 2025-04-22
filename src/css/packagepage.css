@@ -2,13 +2,13 @@
 
     background: #000;
     background-image: url("../Assets/imagepackagepage.jpg");
-    background-position: initial;
+    background-position: center;
     background-size: cover;
 }
 
 .Packages-blackdrop {
     background-color: #000000ab;
-    height: 500px;
+    height: 300px;
 
 }
 

@@ -17,6 +17,7 @@ const LiteraryhubSubmission = () => {
 
     const sendEmail = (e) => {
         e.preventDefault();
+        alert("Thank you! Your message has been sent.");
 
         emailjs.sendForm('service_s9ws3mb', 'template_qluhzm3', form.current, {
             publicKey: 'EPw5IJ4VuRmSRdQZg',
@@ -38,7 +39,7 @@ const LiteraryhubSubmission = () => {
             <div className='literaryhub-bgimg'>
                 <div className='literaryhub-blackdrop'>
 
-                    <div className='literaryhub-title'>Submission</div>
+                    <div className='literaryhub-title'>Submit Your Work</div>
                 </div>
             </div>
 
@@ -46,7 +47,7 @@ const LiteraryhubSubmission = () => {
             <div className='literaryhubSubmission-content-bg'>
                 <div className='literaryhubSubmission-content'>
 
-                    <div className='literaryhubSubmission-subcontent-description'>Have your own designer or editor? No problem! You can tailor your package by choosing the services you need. Once you submit your requirements, our consultant will reach out to discuss them with you. We’ll then provide a customized package fee, based on your selections.</div>
+                    <div className='literaryhubSubmission-subcontent-description'>Share your poem, short story, or article with us, and we’ll get it published within 2-3 days — all for free! Join our community of writers and let your voice be heard. It’s quick, simple, and completely free to showcase your creativity.</div>
 
 
 
@@ -135,21 +136,6 @@ const LiteraryhubSubmission = () => {
 
 
                     </Form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -128,19 +128,20 @@ export const Poemlistview = () => {
             <div className='literaryhub-bgimg'>
                 <div className='literaryhub-blackdrop'>
 
-                    <div className='literaryhub-title'>Poems</div>
+                    <h2 className='literaryhub-title'>The Poetry Corner</h2>
+                    <p className='literaryhub-subtitle'>You can also publish your poem for free!</p>
                 </div>
             </div>
 
 
 
             <div className='literaryhub-content' >
-                <h2>New Poems</h2>
+                <h2>Our New Collection of Poems</h2>
                 <div className='literaryhub-article-container1'>
                     <Row className='literaryhub-article-container1-row'>
                         {newpoemdata.map((data) => (
 
-                            <Col className='literaryhub-content-card' data-aos="zoom-in">
+                            <Col className='literaryhub-content-card' >
                                 <Link to={`/literaryhub-poems/${data.title}`}>
                                     <Row>
                                         <Col lg='4' sm='6'>
@@ -171,7 +172,7 @@ export const Poemlistview = () => {
             {/* start */}
 
             <div className='literaryhub-content2'>
-                <h2>Explore More</h2>
+                <h2>Let the Poetry Flow</h2>
 
                 <Swiper
                     slidesPerView={1}
@@ -274,12 +275,13 @@ export const Poemlistview = () => {
             <div className='literaryhub-hookredirect'>
                 <Row className='literaryhub-hookredirect-content'>
                     <Col lg="12" md='6' sm="4" >
-                        <p>Publish your work for free</p>
+                    <h2>Share Your Poem with the World — For Free!</h2>
+                        <p className='literaryhub-subtitle'>Let your verses be heard. Publish your poem with us at no cost and inspire others</p>
                     </Col>
 
                     <Col lg="12" md='6' sm="4" className=' literaryhub-hookredirect-button'>
                         <Link to={'/literayhub-submission'}>
-                            <button>See More</button>
+                            <button>Publish Your Poem</button>
                         </Link>
                     </Col  >
                 </Row>

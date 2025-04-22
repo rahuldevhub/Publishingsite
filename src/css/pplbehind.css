@@ -1,8 +1,8 @@
 .Pplbehind-bgimg {
 
     background: #000;
-    background-image: url("../Assets/pageheader/pplbehind.webp");
-    background-position: initial;
+    background-image: url("../Assets/pageheader/peoplebehind.webp");
+    background-position: center;
     background-size: cover;
 }
 
@@ -18,7 +18,7 @@
     font-family: "Merriweather", serif;
     font-weight: 400;
     color: white;
-    padding-top: 15rem;
+    padding-top: 25rem;
     text-align: center;
 }
 
@@ -98,15 +98,17 @@
     margin-right: 6rem;
     padding-bottom: 6rem;
 }
-
+.team-card{
+justify-content: center;
+}
 .teamcard {
 
     width: 18rem;
     background: white;
     color: black;
     justify-content: space-around;
-    margin-left: 4rem;
-    margin-right: 4rem;
+    margin-left: .5rem;
+    margin-right: .5rem;
     border: solid 2px ;
     border-color: #D4A373;
     padding-left: 1rem;
@@ -114,6 +116,7 @@
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     justify-content: center; 
+    text-align-last:center ;
 }
 
 /* .card-content {
@@ -137,7 +140,8 @@
 .team-card-description {
     font-size: 1rem;
     font-family: "Teachers", sans-serif;
-    text-align: justify;
+    text-align: justify !important;
+    hyphens: auto;
 
 }
 
@@ -182,7 +186,7 @@
     background-color: #6A1B1B;
     color: white;
     border: none;
-    border-radius: 1rem;
+    border-radius: .5rem;
     padding-top: 10px;
     padding-bottom: 10px;
     width: 15rem;

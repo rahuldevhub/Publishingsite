@@ -148,7 +148,7 @@ const Pplbehind = () => {
 
         {isDesktopOrLaptop && <div className='Pplbehind-teams'>
           <div className='Pplbehind-content'>
-            <Row xs={1} md={2} lg={3} className="g-4  team-card">
+            <Row xs={1} md={2} lg={3} className="g-4  team-card" >
 
               <Card className='teamcard' >
                 <Card.Body >
@@ -188,7 +188,7 @@ const Pplbehind = () => {
               <Card className='teamcard' >
                 <Card.Body>
                   <div className='card-content'>
-                    <img src={writingteam} alt='WRITING TEAM' className='team-card-icon'></img>
+                    <img src={marketingteam} alt='WRITING TEAM' className='team-card-icon'></img>
                     <p className='team-card-title'>HR Team </p>
                     <p className='team-card-description'>
                      At Ritera Publishing, our HR team is dedicated to building a supportive and creative work environment for our remote workforce. From recruiting passionate professionals to managing employee engagement, training, and well-being, they ensure our team thrives.

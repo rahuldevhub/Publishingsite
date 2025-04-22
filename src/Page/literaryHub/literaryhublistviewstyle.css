@@ -4,14 +4,14 @@
 .literaryhub-bgimg {
 
     background: #000;
-    background-image: url("../../Assets/pageheader/2150716538.jpg");
-    background-position: initial;
+    background-image: url("../../Assets/pageheader/poempage.webp");
+    background-position: center;
     background-size: cover;
 }
 
 .literaryhub-blackdrop {
     background-color: #000000ab;
-    height: 380px;
+    height: 280px;
 
 }
 
@@ -21,10 +21,15 @@
     font-family: "Merriweather", serif;
     font-weight: 400;
     color: white;
-    padding-top: 7rem;
+    padding-top: 5rem;
     text-align: center;
 }
-
+.literaryhub-subtitle {
+    font-size: 1.5rem;
+    font-family: "Teachers", sans-serif;
+    color: white;
+    text-align: center !important;
+}
 
 .literaryhub-content {
 
@@ -32,8 +37,8 @@
     margin-right: 0rem;
     padding-left: 2rem;
     padding-right: 2rem;
-    margin-top: 4rem;
-    margin-bottom: 4rem;
+    /* margin-top: 4rem; */
+    /* margin-bottom: 4rem; */
     padding-bottom: 2rem;
     background-color: #D4A373;
 }
@@ -112,7 +117,7 @@
     
 }
 .literaryhub-cover-img2 {
-    height: 13.5rem;
+    height: 10rem;
     width: 100%;
     /* padding: .5rem; */
     text-align: center;
@@ -147,7 +152,7 @@
 }
 
 .literaryhub-cardcontent-authorname {
-    font-size: 1.2rem;
+    font-size: .8rem;
     text-align: left;
     font-family: "Merriweather", serif;
     font-weight: 600;
@@ -158,14 +163,14 @@
 }
 
 .literaryhub-cardcontent-posteddate {
-    font-size: .9rem;
+    font-size: .7rem;
     text-align: left;
     font-family: "Teachers", sans-serif;
     font-weight: 500;
-    margin-bottom: .2;
-    margin-left: 1rem;
+    /* margin-bottom: .2; */
+    /* margin-left: 1rem; */
     float: right;
-    margin-right: 1.5rem;
+    /* margin-right: 1.5rem; */
     margin-top: 1rem;
 
 
@@ -196,7 +201,7 @@
     --bs-gutter-x: 0rem !important;
 }
 
-.literaryhub-hookredirect-content p {
+.literaryhub-hookredirect-content h2 {
     font-size: 3.5rem;
     font-family: "Merriweather", serif;
     font-weight: 400;
@@ -209,10 +214,11 @@
 }
 
 .literaryhub-hookredirect-button button {
+    margin-top: 1rem;
     background-color: #6A1B1B;
     color: white;
     border: none;
-    border-radius: 1rem;
+    border-radius: .5rem;
     padding-top: 10px;
     padding-bottom: 10px;
     width: 15rem;

@@ -55,12 +55,13 @@ export const Articleslistview = () => {
             <div className='literaryhub-bgimg'>
                 <div className='literaryhub-blackdrop'>
 
-                    <div className='literaryhub-title'>Articles</div>
+                    <h2 className='literaryhub-title'>The Article Avenue</h2>
+                    <p className='literaryhub-subtitle'>Join a growing space of writers and thinkers. Publish your article for free and get noticed!</p>
                 </div>
             </div>
 
             <div className='literaryhub-content' >
-                <h2>New Articles</h2>
+                <h2>Discover Our Latest Articles</h2>
                 <div className='literaryhub-article-container1'>
                     <Row>
                         {newarticledata.map((data) => (
@@ -133,12 +134,13 @@ export const Articleslistview = () => {
             <div className='literaryhub-hookredirect'>
                 <Row className='literaryhub-hookredirect-content'>
                     <Col lg="12" md='6' sm="4" >
-                        <p>Publish your work for free</p>
+                        <h2>Publish Your Article — For Free!</h2>
+                        <p className='literaryhub-subtitle'>Have an insight to share? Publish your article with us for free and reach an engaged audience.</p>
                     </Col>
 
                     <Col lg="12" md='6' sm="4" className=' literaryhub-hookredirect-button'>
                         <Link to={'/literayhub-submission'}>
-                            <button>See More</button>
+                            <button>Submit Your Article</button>
                         </Link>
                     </Col  >
                 </Row>

@@ -13,6 +13,7 @@ import whywe3 from '../Assets/whywe/whywe3.webp'
 import whywe4 from '../Assets/whywe/whywe4.webp'
 import whywe5 from '../Assets/whywe/whywe5.webp'
 import whywe6 from '../Assets/whywe/whywe6.webp'
+import whywe7 from '../Assets/whywe/whywe7.webp'
 
 
 const Whywe = () => {
@@ -51,6 +52,26 @@ const Whywe = () => {
 
 
         <div className='whywe-content'>
+
+        <div >
+            <p className='whywe-subcontent-title' >Free Publishing</p>
+            <Row className='whywe-subcontent-row'>
+              <Col lg="6" md="6" sm="1">
+                <img src={whywe7} alt='RED CARPET FOR YOUR WORK' className='whywe-subcontent-img1' data-aos="zoom-in"></img>
+
+              </Col>
+              <Col lg="6" md="6" sm="1" className='whywe-subcontent-col2' data-aos="fade-up">
+                <p className='whywe-subcontent-description'>
+                Ritera offers a unique self-publishing experience that sets us apart. On our platform, you can publish your short stories, poems, and articles for free, reaching a global audience. Even better—your poem will be featured in an anthology alongside 10 international authors, distributed across 160 countries and published on Amazon.
+
+<br/>This free opportunity lets you showcase your talent, connect with readers worldwide, and grow your community—without any hidden charges. With such innovative offerings, Ritera proudly stands as one of India's top self-publishing houses, making it easy to publish your book at zero cost.
+                </p>
+              </Col>
+            </Row>
+
+
+          </div>
+
 
           <div >
             <p className='whywe-subcontent-title'>KEEP YOUR BOOK ERROR FREE—FOR FREE!</p>

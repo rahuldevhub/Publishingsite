@@ -13,7 +13,7 @@
 
 .whywe-blackdrop {
     background-color: #000000ab;
-    height: 400px;
+    height: 300px;
 
 }
 
@@ -23,7 +23,7 @@
     font-family: "Merriweather", serif;
     font-weight: 400;
     color: white;
-    padding-top: 10rem;
+    padding-top: 7rem;
     text-align: center;
 }
 
@@ -60,7 +60,14 @@
     border-radius: 1rem;
     border: solid .4rem white;
 }
-
+.whywe-subcontent-img1 {
+    object-fit: cover;
+    height: 25rem;
+    width: 25rem;
+    border-radius: 1rem;
+    border: solid .4rem white;
+    object-position: top;
+}
 .whywe-subcontent-col2 {
     align-content: center;
 }
