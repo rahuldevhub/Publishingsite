@@ -64,10 +64,10 @@
 
     .Newrelease-container {
         text-align: center;
-          margin-left: 1rem;
-          margin-right: 1rem;
-          padding-left: 1rem;
-          padding-right: 1rem;
+          margin-left: .1rem;
+          margin-right: .1rem;
+          padding-left: 0rem;
+          padding-right: 0rem;
           padding-top: 0rem;
           padding-bottom: 0rem;
           border: none;
@@ -77,11 +77,12 @@
 
     .Newrelease-container h1{
         font-size: .9rem;
-        padding-top: 1rem;
-        padding-bottom: .4rem;
+        padding-top: .5rem;
+        padding-bottom: 0rem;
+        margin-bottom: 0rem;
     }
     .Newrelease-container p{
-        font-size: .7rem;
+        font-size: .8rem;
         text-align: center !important;
        
     }

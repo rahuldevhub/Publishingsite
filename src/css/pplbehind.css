@@ -203,13 +203,13 @@ justify-content: center;
     }
 
     .Pplbehind-blackdrop {
-        background-color: #000000ab;
+        background-color: #0000008f;
         height: 200px;
     }
 
     .Pplbehind-title {
-        font-size: 2rem;
-        padding-top: 4.5rem;
+        font-size: 1.7rem;
+        padding-top: 9rem;
     }
     .Pplbehind-indivualcontent1 {
         padding: 2rem;

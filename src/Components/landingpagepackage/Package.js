@@ -16,8 +16,8 @@ const Package = () => {
 
             <form className='package-form' onSubmit={(e) => e.preventDefault()}>
 
-                <button id='1' className={"Level1" === reqtype ? "selected" : null} type='button' onClick={() => (handelchange("Level1"))}  data-aos="fade-down">Basic</button>
-                <button id='1' className={"Level2" === reqtype ? "selected" : null} type='button' onClick={() => (handelchange("Level2"))}  data-aos="fade-down">Top-Tier </button>
+                <button id='1' className={"Level1" === reqtype ? "selected" : null} type='button' onClick={() => (handelchange("Level1"))}  >Basic</button>
+                <button id='1' className={"Level2" === reqtype ? "selected" : null} type='button' onClick={() => (handelchange("Level2"))}  >Top-Tier </button>
 
             </form>
 

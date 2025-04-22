@@ -11,24 +11,26 @@ const Newrelease = () => {
             <h1>Recently Published</h1>
 
             <div>
-                <Row>
-                    <Col>
-                        <div>
-                            <Link>
+                <Row xs='2'>
+                    <Col xs='6'>
+                       
+                           
                                 <Card className='Newrelease-container' data-aos="zoom-in-right">
+                            
                                     <Card.Body>
                                         <Card.Img variant="jade julep" src={jade} className='Newrelease-img' />
                                         <Card.Text><h1>Jade Julep</h1></Card.Text>
                                         <Card.Text><p>An Anthology</p></Card.Text>
                                     </Card.Body>
+                                   
                                 </Card>
-                            </Link>
-                        </div>
+                       
+                   
                     </Col>
 
-                    <Col>
-                        <div>
-                            <Link>
+                    <Col xs='6'>
+                       
+                        
                                 <Card className='Newrelease-container' data-aos="zoom-in-left">
                                     <Card.Body>
                                         <Card.Img variant="top" src={revelations} className='Newrelease-img' />
@@ -36,8 +38,8 @@ const Newrelease = () => {
                                         <Card.Text><p>Dr. Wesly Abraham</p></Card.Text>
                                     </Card.Body>
                                 </Card>
-                            </Link>
-                        </div>
+                   
+                        
                     </Col>
                 </Row>
             </div>

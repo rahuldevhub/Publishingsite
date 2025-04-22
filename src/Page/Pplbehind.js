@@ -188,7 +188,7 @@ const Pplbehind = () => {
               <Card className='teamcard' >
                 <Card.Body>
                   <div className='card-content'>
-                    <img src={marketingteam} alt='WRITING TEAM' className='team-card-icon'></img>
+                    <img src={marketingteam} alt='HR Team' className='team-card-icon'></img>
                     <p className='team-card-title'>HR Team </p>
                     <p className='team-card-description'>
                      At Ritera Publishing, our HR team is dedicated to building a supportive and creative work environment for our remote workforce. From recruiting passionate professionals to managing employee engagement, training, and well-being, they ensure our team thrives.
@@ -251,6 +251,21 @@ const Pplbehind = () => {
                       <p className='team-card-title'>Writing Team </p>
                       <p className='team-card-description'>
                         We take proactive steps by conducting seminars and virtual meetings between talented authors and our writing team. This team captures the literary visions of authors and applies them to every book they work on, ensuring the best version of each book is brought to life.
+                      </p>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </SwiperSlide>
+
+              
+              <SwiperSlide>
+                <Card className='teamcard' >
+                  <Card.Body>
+                    <div className='card-content'>
+                      <img src={marketingteam} alt='HR Team' className='team-card-icon'></img>
+                      <p className='team-card-title'>HR Team </p>
+                      <p className='team-card-description'>
+                      At Ritera Publishing, our HR team is dedicated to building a supportive and creative work environment for our remote workforce. From recruiting passionate professionals to managing employee engagement, training, and well-being, they ensure our team thrives.
                       </p>
                     </div>
                   </Card.Body>
