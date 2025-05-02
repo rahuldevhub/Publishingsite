@@ -320,7 +320,7 @@ const Toppackage = () => {
                                         </div>
 
                                         <ul className='package-features'>
-                                        <li><Tooltip title='3 Design and Unlimited revisions once the Concept is fixed'>
+                                            <li><Tooltip title='3 Design and Unlimited revisions once the Concept is fixed'>
                                                 <IoInformationCircleOutline /> </Tooltip>Customized Cover Design</li>
 
                                             <li><Tooltip title='3 Design and Unlimited revisions once the Concept is fixed'>

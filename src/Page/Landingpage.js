@@ -22,13 +22,13 @@ const Landingpage = () => {
   return (
     <div className='Landingpage'>
 
-      <div className='landingpage-bookday'>
+      {/* <div className='landingpage-bookday'>
         <div className='landingpage-bookday-content'>
           <Bookdaylandingpagetop />
         </div>
 
 
-      </div>
+      </div> */}
 
       <div className='landingpage-bgimg' >
         <div className='landingpage-blackdrop' data-aos="fade-down" >
