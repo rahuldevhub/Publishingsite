@@ -3,8 +3,9 @@ import './Newrelease.css'
 import { Row, Col } from 'react-bootstrap'
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
-import jade from '../../Assets/latestrelease/jade.jpg'
-import revelations from '../../Assets/latestrelease/revelations.jpg'
+// import jade from '../../Assets/latestrelease/jade.jpg'
+// import revelations from '../../Assets/latestrelease/revelations.jpg'
+import bookdata from '../../Assets/data/bookdata';
 const Newrelease = () => {
     return (
         <div className='Newrelease'>
@@ -12,24 +13,26 @@ const Newrelease = () => {
 
             <div>
                 <Row xs='2'>
-                    <Col xs='6'>
-                       
-                           
-                                <Card className='Newrelease-container' data-aos="zoom-in-right">
+      {bookdata.map((data)=>(
+                    <Col xs='6'>                   
+                           <Link to={`/books/${data.title}`}>
+                                <Card className='Newrelease-container' >
                             
                                     <Card.Body>
-                                        <Card.Img variant="jade julep" src={jade} className='Newrelease-img' />
-                                        <Card.Text><h1>Jade Julep</h1></Card.Text>
-                                        <Card.Text><p>An Anthology</p></Card.Text>
+                                        <Card.Img variant="jade julep" src={data.imgUrl} className='Newrelease-img' />
+                                        <Card.Text><h1>{data.title}</h1></Card.Text>
+                                        <Card.Text><p>{data.subtitle}</p></Card.Text>
                                     </Card.Body>
                                    
                                 </Card>
-                       
+                                </Link>
                    
                     </Col>
+                ))}
 
-                    <Col xs='6'>
+                    {/* <Col xs='6'>
                        
+                    <Link to={`/books/${'Revelations of Infinite Life'}`}>
                         
                                 <Card className='Newrelease-container' data-aos="zoom-in-left">
                                     <Card.Body>
@@ -38,9 +41,9 @@ const Newrelease = () => {
                                         <Card.Text><p>Dr. Wesly Abraham</p></Card.Text>
                                     </Card.Body>
                                 </Card>
-                   
+                                </Link>
                         
-                    </Col>
+                    </Col> */}
                 </Row>
             </div>
 

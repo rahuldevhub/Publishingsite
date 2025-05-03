@@ -77,12 +77,13 @@
 
     .Newrelease-container h1{
         font-size: .9rem;
-        padding-top: .5rem;
+        padding-top: .6rem;
         padding-bottom: 0rem;
         margin-bottom: 0rem;
     }
     .Newrelease-container p{
-        font-size: .8rem;
+        margin-top: -.8rem;
+        font-size: .6rem;
         text-align: center !important;
        
     }

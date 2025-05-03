@@ -19,6 +19,7 @@ import { Articleslistview } from './Page/literaryHub/Articleslistview';
 import SingleArticleView from './Page/literaryhubcontent/SingleArticleView';
 import Shortstorieslistview from './Page/literaryHub/Shortstorieslistview';
 import SingleStoryView from './Page/literaryhubcontent/SingleStoryView';
+import Newdetailpage from './Components/newrealese/Newdetailpage';
 
 
 
@@ -48,6 +49,7 @@ function App() {
 <Route path='/literayhub-submission' element={<LiteraryhubSubmission/>}></Route>
 
 
+<Route path='/books/:slug' element = {<Newdetailpage/>} ></Route>
 
 
 
