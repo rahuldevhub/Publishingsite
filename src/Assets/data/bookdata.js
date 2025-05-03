@@ -19,7 +19,7 @@ const bookdata = [
         rating:'0',
         url1:'https://amzn.in/d/j2AgUJS',
         url2:'https://www.flipkart.com/jade-julep/p/itm7631a4491f01c?pid=RBKHAY4GCBGWZTVF',
-        url3:'https://store.pothi.com/book/dr-s-wesley-abraham-revelations-infinite-life/',
+        url3:'https://store.pothi.com/book/shahitha-fareen-m-jade-julep/',
         authorbio: `"Jade Julep: An Anthology" is a remarkable collection of poems written by ten different authors around the world. This anthology explores unspoken struggles, the chaos of the world, the fighting spirit of African people, personal losses, the pain artists feel, and the lasting power of love. Each poem provides a look into the human soul, showing our shared experiences of resilience and hope.
                     The collection offers a variety of emotions and viewpoints, reflecting the diverse human experience. The authors' unique voices and backgrounds come together to create a powerful narrative that connects with readers from all walks of life. Through their words, we explore the complexities of life, the beauty of perseverance, and the power of compassion.
                     As you read through this moving journey, you'll find the healing power of poetry and the strength that comes from understanding each other. "Jade Julep: An Anthology" celebrates the enduring human spirit and the connections that unite us. Dive into this literary adventure and experience the profound impact of these powerful words.`,
@@ -28,7 +28,8 @@ const bookdata = [
                     The collection offers a variety of emotions and viewpoints, reflecting the diverse human experience. The authors' unique voices and backgrounds come together to create a powerful narrative that connects with readers from all walks of life. Through their words, we explore the complexities of life, the beauty of perseverance, and the power of compassion.
         
                     As you read through this moving journey, you'll find the healing power of poetry and the strength that comes from understanding each other. "Jade Julep: An Anthology" celebrates the enduring human spirit and the connections that unite us. Dive into this literary adventure and experience the profound impact of these powerful words.`
-    },
+             
+                },
     {
         id:2,
         title:"Revelations of Infinite Life",
@@ -42,7 +43,7 @@ const bookdata = [
         rating:'0',
         url1:'https://a.co/d/h0dSrKN',
         url2:'https://a.co/d/h0dSrKN',
-        url3:'https://store.pothi.com/book/shahitha-fareen-m-jade-julep/',
+        url3:'https://store.pothi.com/book/dr-s-wesley-abraham-revelations-infinite-life/',
         authorbio:`Dr. Wesley Abraham’s life is a remarkable journey of faith, service, and transformation. Born in India, he excelled in academics, earning a B.Tech in IT, an MBA in HR and Doctorate in Ministry. Dr. Wesley gained expertise working with global banking and healthcare clients. However, walking in spirit is his lifestyle and his heart is always anchored in ministry.
 
                 From delivering his first sermon at age five to becoming a songwriter, worship leader, youth leader and prophetic minister, Dr. Wesley has served in every sphere with passion and obedience to God’s call. His ministry is marked by impactful initiatives like founding Pillaigal Trust- a registered NGO, launching FM Kondattam-an online radio station.
