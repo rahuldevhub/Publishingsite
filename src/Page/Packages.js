@@ -25,7 +25,6 @@ const Packages = () => {
   // });
 
 
-
   // const longText = ``;
 
   return (
