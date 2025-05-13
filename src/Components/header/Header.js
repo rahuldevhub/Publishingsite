@@ -11,7 +11,7 @@ const Header = () => {
     <Navbar collapseOnSelect expand="lg" sticky="top" className="bg-body-tertiary navbar-just  color">
       <Container className='container '>
         <Navbar.Brand href="/" className='Brandlogo'>
-          <img src={logo} alt='logo image'  data-aos="flip-left"></img>
+          <img src={logo} alt='logoimage'  data-aos="flip-left"></img>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" className='toggle' />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -26,7 +26,7 @@ const Header = () => {
 
           <Nav.Link href="/" >Home</Nav.Link>
             <Nav.Link href="/aboutus" >About</Nav.Link>
-            <Nav.Link href="/customize-package" >Customize</Nav.Link>
+            <Nav.Link href="https://forms.gle/eP3HsWVbDRTjGN7Q7" target='blank' >Customize</Nav.Link>
             {/* <Nav.Link href="#Testimonials"> Testimonials</Nav.Link> */}
             {/* <Nav.Link href="/careers"> Careers</Nav.Link> */}
             <Nav.Link href="/packages" >Packages</Nav.Link>
