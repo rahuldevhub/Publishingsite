@@ -48,7 +48,7 @@ const Toppackage = () => {
                                         <p className='level1-title'>Elite </p>
                                         <p className='level1-description'>Advanced cover & Interior design, extensive marketing
                                             campaigns, early or post reviews, promotions and prime
-                                            listing..</p>
+                                            listing.</p>
                                         <p className='level1-Price'>₹49,999</p>
 
 
@@ -58,7 +58,7 @@ const Toppackage = () => {
                                         <li><Tooltip title='3 Concepts and 3 Revisions once the concept is fixed.'>
                                             <IoInformationCircleOutline /> </Tooltip>Advanced Cover Design</li>
                                         <li><Tooltip title='3 Design and 3 Revision once the concept is fixed.'>
-                                            <IoInformationCircleOutline /> </Tooltip>Advanced Interior Design</li>
+                                            <IoInformationCircleOutline /> </Tooltip>Advanced Interior formatting</li>
 
                                         <li> International Distribution</li>
 
@@ -87,8 +87,8 @@ const Toppackage = () => {
                                     <div className='card-content'>
                                         <p className='level1-title'>Premium </p>
                                         <p className='level1-description'>Spot light package including Author interviews,
-                                            Customised designs, proofreading or copy editing sercice,
-                                            Review campaigns, and additional author copies</p>
+                                            Customised designs, proofreading or copy editing service,
+                                            Review campaigns, and additional author copies.</p>
                                         <p className='level1-Price'>₹69,999</p>
 
                                         <ul className='package-features'>
@@ -100,7 +100,7 @@ const Toppackage = () => {
                                             <li><Tooltip title='3 Design and 6 Revision once the Concept is fixed.'>
                                                 <IoInformationCircleOutline /> </Tooltip>Customized Cover Design</li>
                                             <li><Tooltip title='3 Designs and 5 Revisions pnce the Concept is fixed.'>
-                                                <IoInformationCircleOutline /> </Tooltip>Customized interior Design</li>
+                                                <IoInformationCircleOutline /> </Tooltip>Customized Interior formatting</li>
 
                                             <li><Tooltip title='Complementry reviews (Pre or Post Publishing).'>
                                                 <IoInformationCircleOutline /> </Tooltip>Book Reviews</li>
@@ -156,7 +156,7 @@ const Toppackage = () => {
                                                 <IoInformationCircleOutline /> </Tooltip>Customized Cover Design</li>
 
                                             <li><Tooltip title='3 Design and Unlimited revisions once the Concept is fixed'>
-                                                <IoInformationCircleOutline /> </Tooltip>Customized Interior Design</li>
+                                                <IoInformationCircleOutline /> </Tooltip>Customized Interior formatting</li>
 
                                             <li><Tooltip title='2 Proof readers will be assigned (Pre Publishing)'>
                                                 <IoInformationCircleOutline /> </Tooltip>Proof Reading</li>
@@ -229,7 +229,7 @@ const Toppackage = () => {
                                             <li><Tooltip title='3 Concepts and 3 Revisions once the concept is fixed.'>
                                                 <IoInformationCircleOutline /> </Tooltip>Advanced Cover Design</li>
                                             <li><Tooltip title='3 Design and 3 Revision once the concept is fixed.'>
-                                                <IoInformationCircleOutline /> </Tooltip>Advanced Interior Design</li>
+                                                <IoInformationCircleOutline /> </Tooltip>Advanced Interior formatting</li>
 
                                             <li> International Distribution</li>
 
@@ -271,7 +271,7 @@ const Toppackage = () => {
                                             <li><Tooltip title='3 Design and 6 Revision once the Concept is fixed.'>
                                                 <IoInformationCircleOutline /> </Tooltip>Customized Cover Design</li>
                                             <li><Tooltip title='3 Designs and 5 Revisions pnce the Concept is fixed.'>
-                                                <IoInformationCircleOutline /> </Tooltip>Customized interior Design</li>
+                                                <IoInformationCircleOutline /> </Tooltip>Customized Interior formatting</li>
 
                                             <li><Tooltip title='Complementry reviews (Pre or Post Publishing).'>
                                                 <IoInformationCircleOutline /> </Tooltip>Book Reviews</li>
@@ -324,7 +324,7 @@ const Toppackage = () => {
                                                 <IoInformationCircleOutline /> </Tooltip>Customized Cover Design</li>
 
                                             <li><Tooltip title='3 Design and Unlimited revisions once the Concept is fixed'>
-                                                <IoInformationCircleOutline /> </Tooltip>Customized Interior Design</li>
+                                                <IoInformationCircleOutline /> </Tooltip>Customized Interior formatting</li>
 
                                             <li><Tooltip title='2 Proof readers will be assigned (Pre Publishing)'>
                                                 <IoInformationCircleOutline /> </Tooltip>Proof Reading</li>

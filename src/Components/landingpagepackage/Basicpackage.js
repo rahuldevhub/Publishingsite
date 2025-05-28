@@ -51,7 +51,7 @@ const Basicpackage = () => {
                                     <div className='card-content'>
                                         <p className='level1-title'>Essential </p>
                                         <p className='level1-description'>Essential services with standard cover and interior designs,
-                                            and eBook formatting for budding authors /Online
+                                            E-book formatting for budding authors & Online
                                             distribution in Indian stores.</p>
                                         <p className='level1-Price'>₹8,999</p>
                                     </div>
@@ -61,9 +61,9 @@ const Basicpackage = () => {
                                         <li><Tooltip title='Minimal art work with 1 Concept and 3 Revisions.'>
                                             <IoInformationCircleOutline /> </Tooltip>Standard Cover Design</li>
                                         <li><Tooltip title='2 Designs with 2 Revisions'>
-                                            <IoInformationCircleOutline /> </Tooltip>Standard Interior Design</li>
+                                            <IoInformationCircleOutline /> </Tooltip>Standard Interior formatting</li>
                                         <li><Tooltip title='Distributed in India through Amazon and Flipkart India'>
-                                            <IoInformationCircleOutline /> </Tooltip>Online Distribution</li>
+                                            <IoInformationCircleOutline /> </Tooltip>Local Distribution</li>
                                         <li><Tooltip title='E-Book will be placed on Google play books'>
                                             <IoInformationCircleOutline /> </Tooltip>E-Book Placement</li>
                                         <li>Copy Rights + ISBN </li>
@@ -84,8 +84,8 @@ const Basicpackage = () => {
                                     <div className='card-content'>
                                         <p className='level1-title'>Standard </p>
                                         <p className='level1-description'>Comprehensive support for aspiring authors with free
-                                            Author copies, certificate, and and E-Book placement on
-                                            Google and Kobo /Online distribution in India.</p>
+                                            Author copies, certificate, E-Book placement on
+                                            Google and Kobo & Online distribution in India.</p>
                                         <p className='level1-Price'>₹16,999</p>
                                     </div>
 
@@ -93,7 +93,7 @@ const Basicpackage = () => {
                                         <li>
                                             All services in previous</li>
                                         <li><Tooltip title="E-Book will be placed on Google Play & Kindle">
-                                            <IoInformationCircleOutline /> </Tooltip>Kindle E-Book Placements</li>
+                                            <IoInformationCircleOutline /> </Tooltip>E-Book Placements (Kindle)</li>
                                         <li><Tooltip title='5 Author copies (B/W)'>
                                             <IoInformationCircleOutline /> </Tooltip>Author Copies</li>
                                         <li> Author Certificate</li><br />
@@ -116,9 +116,9 @@ const Basicpackage = () => {
 
                                     <div className='card-content'>
                                         <p className='level1-title'>Advanced</p>
-                                        <p className='level1-description'>All-inclusive package with International Distribution
+                                        <p className='level1-description'>All-inclusive package with International Distribution,
                                             premium cover and interior design, Prime placement,
-                                            promotions, and free author session for ambitious authors</p>
+                                            promotions, and free author session for ambitious authors.</p>
                                         <p className='level1-Price'>₹29,999</p>
                                     </div>
                                     <ul className='package-features'>
@@ -126,8 +126,8 @@ const Basicpackage = () => {
                                         <li>100% Royalty for Author</li>
                                         <li><Tooltip title='2 Concepts and 3 Corrections once the concept is fixed'>
                                             <IoInformationCircleOutline /> </Tooltip>Premium Cover Design</li>
-                                        <li><Tooltip title='2 Design and 2 Revision'>
-                                            <IoInformationCircleOutline /> </Tooltip>Premium Interior Design</li>
+                                        <li><Tooltip title='2 Design and 3 Revision'>
+                                            <IoInformationCircleOutline /> </Tooltip>Premium Interior formatting</li>
                                         <li><Tooltip title='Distributed globally around 160 Countries and 40000+ Online Stories and Libraries'>
                                             <IoInformationCircleOutline /> </Tooltip>International Distribution</li>
                                         <li><Tooltip title='E-Book will be published on Kindle, Kobo and Google Play books.'>
@@ -189,9 +189,9 @@ const Basicpackage = () => {
                                             <li><Tooltip title='Minimal art work with 1 Concept and 3 Revisions.'>
                                                 <IoInformationCircleOutline /> </Tooltip>Standard Cover Design</li>
                                             <li><Tooltip title='2 Designs with 2 Revisions'>
-                                                <IoInformationCircleOutline /> </Tooltip>Standard Interior Design</li>
+                                                <IoInformationCircleOutline /> </Tooltip>Standard Interior formatting</li>
                                             <li><Tooltip title='Distributed in India through Amazon and Flipkart India'>
-                                                <IoInformationCircleOutline /> </Tooltip>Online Distribution</li>
+                                                <IoInformationCircleOutline /> </Tooltip>Local Distribution</li>
                                             <li><Tooltip title='E-Book will be placed on Google play books'>
                                                 <IoInformationCircleOutline /> </Tooltip>E-Book Placement</li>
                                             <li>Copy Rights + ISBN </li>
@@ -247,8 +247,8 @@ const Basicpackage = () => {
                                         <li>100% Royalty for Author</li>
                                         <li><Tooltip title='2 Concepts and 3 Corrections once the concept is fixed'>
                                             <IoInformationCircleOutline /> </Tooltip>Premium Cover Design</li>
-                                        <li><Tooltip title='2 Design and 2 Revision'>
-                                            <IoInformationCircleOutline /> </Tooltip>Premium Interior Design</li>
+                                        <li><Tooltip title='2 Design and 3 Revision'>
+                                            <IoInformationCircleOutline /> </Tooltip>Premium Interior formatting</li>
                                         <li><Tooltip title='Distributed globally around 160 Countries and 40000+ Online Stories and Libraries'>
                                             <IoInformationCircleOutline /> </Tooltip>International Distribution</li>
                                         <li><Tooltip title='E-Book will be published on Kindle, Kobo and Google Play books.'>
