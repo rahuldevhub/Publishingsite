@@ -152,7 +152,7 @@ const Landingpage = () => {
       </div>
 
 
-      <div className='landingpage-hookredirect'>
+      {/* <div className='landingpage-hookredirect'>
         <Row className='landingpage-hookredirect-content'>
           <Col lg="12" md='6' sm="4" >
             <h1>People Behind Ritera</h1>
@@ -164,7 +164,7 @@ const Landingpage = () => {
             </Link>
           </Col  >
         </Row>
-      </div>
+      </div> */}
 
       <div className='landingpage-blog'>
         <div className='landingpage-blog-content'>
