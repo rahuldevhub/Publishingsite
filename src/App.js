@@ -20,6 +20,7 @@ import SingleArticleView from './Page/literaryhubcontent/SingleArticleView';
 import Shortstorieslistview from './Page/literaryHub/Shortstorieslistview';
 import SingleStoryView from './Page/literaryhubcontent/SingleStoryView';
 import Newdetailpage from './Components/newrealese/Newdetailpage';
+import EmployeeId from './Components/idcards/EmployeeId';
 
 
 
@@ -50,6 +51,10 @@ function App() {
 
 
 <Route path='/books/:slug' element = {<Newdetailpage/>} ></Route>
+
+
+{/* id-cards */}
+<Route path='/employee/:slug' element = {<EmployeeId/>} ></Route>
 
 
 
