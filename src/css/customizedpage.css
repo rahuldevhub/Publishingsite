@@ -1,0 +1,239 @@
+.customized-bgimg {
+
+    background: #000;
+    background-image: url("../Assets/imagecustomized.jpg");
+    background-position: bottom;
+    background-size: cover;
+}
+
+.customized-blackdrop {
+    background-color: #000000ab;
+    height: 300px;
+
+}
+
+
+.customized-title {
+    font-size: 3.5rem;
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    color: white;
+    padding-top: 7rem;
+    text-align: center;
+}
+
+.Customized {
+    background: #F5F1E0;
+}
+
+.customized-content {
+    margin-left: 6rem;
+    margin-right: 6rem;
+    padding-bottom: 6rem;
+}
+
+.customized-content-bg {
+    background: #F5F1E0;
+}
+
+
+.Customized h3 {
+    font-family: "Merriweather", serif;
+    font-weight: 600;
+    font-size: 2.7rem;
+    text-align: center;
+    padding-top: 5rem;
+    padding-bottom: 1rem;
+}
+
+.customized-col {
+    padding-right: 6rem;
+}
+
+.customized-option-name {
+    font-size: 1.5rem;
+    font-family: "Teachers", sans-serif;
+    margin-bottom: .8rem;
+
+}
+
+.my-1 {
+    margin-left: 2rem;
+    width: 30rem;
+    padding: .5rem;
+    border-radius: .3rem;
+    /* text-align: right; */
+}
+
+.form-inline {
+    text-align: right;
+}
+
+.customized-content-bg2 {
+    background: #FAEBD7;
+
+}
+
+.customized-col3 {
+    text-align: justify;
+    margin-left: 30rem;
+}
+
+.customized-option-name3 {
+    font-size: 1.5rem;
+    font-family: "Teachers", sans-serif;
+    margin-bottom: .8rem;
+    padding-left: .8rem;
+}
+
+.customized-input-box {
+    /* font-size: 2rem !important; */
+    height: 1.2rem;
+    width: 1.2rem;
+}
+
+.customized-col4 {
+    text-align: justify;
+    margin-left: 10rem;
+}
+
+.customized-submit-button {
+    background-color: #6A1B1B;
+    color: white;
+    border: none;
+    border-radius: .5rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    /* text-align: center; */
+}
+
+.customized-content-bg2 {
+    text-align: center;
+}
+
+.customizecontactusform {
+    /* border: solid 0.1px rgba(102, 51, 153, 0.404); */
+    border-radius: 2rem;
+    padding-left: 30rem;
+    padding-right: 30rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 2rem;
+}
+
+.customized-subcontent-description {
+    font-size: 1.4rem;
+    text-align: center;
+    padding-top: 2rem;
+
+    font-family: "Teachers", sans-serif;
+}
+.form-check{
+    justify-self: center;
+}
+.booking__form{
+    justify-self: center;
+}
+
+@media only screen and (max-width: 992px) {
+    .customizecontactusform {
+        padding-left: 0rem;
+        padding-right: 0rem;
+        margin-top: 1.5rem;
+    }
+
+    .customized-subcontent-description {
+        padding-top: 1rem;
+        text-align: justify;
+
+        font-size: .9em;
+        margin-bottom: 0;
+        line-height: 1.4rem !important;
+        padding-bottom: 1rem;
+    }
+
+    .customized-bgimg {
+        object-fit: cover;
+        background-position: initial;
+        background-size: cover;
+        background-position-x: center;
+    }
+
+    .customized-blackdrop {
+        background-color: #000000ab;
+        height: 180px;
+    }
+
+    .customized-title {
+        font-size: 2rem;
+        padding-top: 3rem;
+    }
+
+    .customized-content {
+        margin-left: 2rem;
+        margin-right: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .Customized h3 {
+        font-size: 1.6rem;
+        text-align: center;
+        padding-top: 2rem;
+        padding-bottom: 1rem;
+    }
+
+    .customized-col {
+        padding-right: 1rem;
+    }
+
+    .customized-option-name {
+        font-size: 1rem;
+        margin-bottom: .4rem;
+    }
+
+    .my-1 {
+        margin-left: 1rem;
+        width: 12rem;
+        padding: .3rem;
+        border-radius: .2rem;
+    }
+
+    .customized-col3 {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+
+    .customized-col2 {
+        margin-left: 0rem;
+        margin-right: 0rem;
+    }
+
+    .customized-option-name3 {
+        font-size: 1.2rem;
+        padding-bottom: .8rem;
+        padding-left: .8rem;
+        margin-bottom: 0rem;
+    }
+
+    .customized-input-box {
+        height: 1.2rem;
+        width: 1.2rem;
+    }
+
+    .customized-col4 {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+
+    .customized-submit-button {
+        border-radius: .5rem;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        width: 100%;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+}

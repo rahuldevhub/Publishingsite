@@ -1,0 +1,190 @@
+.literaryhub-bgimg {
+
+    background: #000;
+    background-image: url("../Assets/imagecustomized.jpg");
+    background-position: initial;
+    background-size: cover;
+}
+
+.literaryhub-blackdrop {
+    background-color: #000000ab;
+    height: 250px;
+
+}
+
+.literaryhub-title {
+    font-size: 3.5rem;
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    color: white;
+    padding-top: 7rem;
+    text-align: center;
+}
+
+.literaryhubSubmission-content-bg {
+    background-color: #FAEBD7;
+}
+
+.literaryhubSubmission-content {
+    margin-left: 10rem;
+    margin-right: 10rem;
+    text-align: center;
+}
+
+.literaryhubSubmission-subcontent-description{
+
+        font-size: 1.4rem;
+        text-align: center;
+        padding-top: 2rem;
+        padding-bottom: 3rem;
+        font-family: "Teachers", sans-serif;
+    
+}
+.sub-label{
+  font-size: 1.5rem;
+  float: left;
+  font-family: "Teachers", sans-serif;
+
+}
+.form-selectsub{
+    width: 30rem;
+    line-height: 1.7rem;
+    float : inline-end;
+    border: solid 1px #D4A373; 
+    /* color: #D4A373; */
+}
+.form-controlsub{
+    width: 30rem;
+    line-height: 1.7rem;
+    float : inline-end;
+    border: solid 1px #D4A373; 
+
+
+}
+
+.literaryhubSubmission-submit-button {
+    background-color: #6A1B1B;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    /* text-align: center; */
+}
+.literaryhubSubmission-submit-button:hover{
+  background-color: #a73030;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+}
+
+.booking__form {
+    width: 47.5%;
+  }
+  
+  .booking__form input {
+    padding: 8px 15px;
+    border: 1px solid #D4A373;
+    color: #7c8a97;
+    width: 100%;
+    border-radius: 4px;
+
+  }
+  
+  .booking__form input:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  }
+  .booking__form select,
+  .textarea {
+    width: 100%;
+    padding: 10px 15px;
+    color: #7c8a97;
+    border: 1px solid #D4A373;
+    border-radius: 4px;
+  }
+  .booking__form select:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+  }
+  /* .time__picker::before {
+    content: "Journey Time";
+    color: #7c8a97;
+    margin-right: 0.5rem;
+  } */
+  
+  .textarea:focus,
+  .booking__form input:focus,
+  .booking__form select:focus {
+    outline: none;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .booking__form {
+      width: 100%;
+    }
+  
+    .booking__form input,
+    .textarea,
+    .booking__form select {
+      font-size: 0.8rem;
+    }
+  }
+  
+  
+
+@media only screen and (max-width: 992px) {
+
+    .literaryhub-bgimg {
+        background-position: top;
+        background-size: cover;
+    }
+    
+    .literaryhub-blackdrop {
+        background-color: #000000ab;
+        height: 200px;
+    }
+    
+    
+    .literaryhub-title {
+        font-size: 2rem;
+        padding-top: 4.5rem;
+    }
+
+
+    .literaryhubSubmission-content {
+        margin-left: 2rem;
+        margin-right: 2rem;
+        text-align: center;
+    }
+    
+    .literaryhubSubmission-subcontent-description{
+    
+            font-size: .8rem;
+            text-align: justify;
+            padding-top: 1rem;
+            padding-bottom: 2rem;
+    }
+    
+    .form-selectsub{
+        width: 12rem;
+        line-height: 1.5rem;
+        border: solid 1px #D4A373; 
+        /* color: #D4A373; */
+    }
+    .form-controlsub{
+        width: 12rem;
+        line-height: 1.7rem;
+        border: solid 1px #D4A373; 
+    }
+
+    .literaryhubSubmission-submit-button {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        width: 100%;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+        /* text-align: center; */
+    }
+    
+}

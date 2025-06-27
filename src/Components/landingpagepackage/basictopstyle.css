@@ -1,0 +1,147 @@
+.seeallpackages {
+    background: #6A1B1B;
+    color: white;
+    border: 2px solid white;
+    border-radius: .4rem;
+    width: 100%;
+    height: 3rem;
+    margin-top: .5rem;
+
+}
+
+.card-content p {
+    text-align: left ;
+    margin-bottom: 0;
+}
+
+.level1-card {
+    width: 20rem;
+    background: #FAEBD7;
+    color: black;
+    border: solid 2px #a3940c;
+}
+.level1-card:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+}
+.packageall {
+    justify-content: space-around;
+}
+
+.level1-title {
+    font-size: 1.5rem;
+    margin-bottom: 0 !important;
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+}
+
+.level1-Price {
+    padding-top: .2rem;
+    font-family: "Teachers", sans-serif;
+
+    font-size: 2rem;
+    font-weight: 550;
+}
+.level1-description{
+    font-family: "Teachers", sans-serif;
+    font-size: 1rem;
+    text-align: justify !important;
+    /* hyphens: auto; */
+}
+.package-features {
+    margin-top: 1rem;
+    line-height: 2.2rem;
+    text-align: left;
+    font-family: "Teachers", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 450;
+    list-style-type: none !important;
+    padding-left: .5rem !important;
+}
+.package-card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.package-authorwebsite{
+    padding-left: 1rem;
+    /* padding: 1rem; */
+    border-radius: .5rem;
+    border: solid 2px #6a1b1bde;
+}
+@media only screen and (max-width: 992px) {
+    .level1-description{
+        font-size: .7rem;
+    }
+
+    .level1-card {
+        width: 16rem;
+    }
+
+    .level1-title {
+        font-size: 1.5rem;
+    }
+
+    .level1-Price {
+        font-size: 2rem;
+    }
+
+    .level1-button {
+
+        font-size: 1rem;
+        border-radius: .5rem;
+        width: 100%;
+        height: 2.5rem;
+        margin-top: .7rem;
+        margin-bottom: 1rem;
+    }
+
+    .seeallpackages {
+        font-size: 1rem;
+        border-radius: .5rem;
+        width: 100%;
+        height: 2.5rem;
+        margin-top: .7rem;
+
+    }
+
+    .package-features {
+        margin-top: .3rem;
+        text-align: left;
+        font-size: .9rem;
+    }
+
+    .swiper {
+        /* width: 100%; */
+        height: 100%;
+    }
+
+    .mySwiper {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .swiper-slide {
+        text-align: center;
+        /* Center slide text vertically */
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .swiper-pagination-bullet-active {
+        background-color: #6A1B1B !important;
+        border: solid 1px #6A1B1B !important;
+    }
+
+    .swiper-pagination {
+        position: static !important;
+        margin-top: 1.5rem;
+    }
+
+    .swiper-pagination-bullet {
+        width: 8px !important;
+        height: 8px !important;
+        margin-right: 5px !important;
+    }
+}
