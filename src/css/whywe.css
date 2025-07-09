@@ -1,0 +1,196 @@
+.Whywe {
+    background: #F5F1E0;
+
+}
+
+.whywe-bgimg {
+
+    background: #000;
+    background-image: url("../Assets/pageheader/about.webp");
+    background-position: initial;
+    background-size: cover;
+}
+
+.whywe-blackdrop {
+    background-color: #000000ab;
+    height: 300px;
+
+}
+
+
+.whywe-title {
+    font-size: 3.5rem;
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    color: white;
+    padding-top: 7rem;
+    text-align: center;
+}
+
+.whywe-content {
+    margin-left: 6rem;
+    margin-right: 6rem;
+    padding-bottom: 6rem;
+}
+
+.whywe-subcontent-title {
+    font-size: 42px;
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    text-align: center;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+
+}
+
+.whywe-subcontent-description {
+    font-size: 1.5rem;
+    text-align: justify;
+    font-family: "Teachers", sans-serif;
+}
+
+.whywe-subcontent-row {
+    text-align: -webkit-center;
+}
+
+.whywe-subcontent-img {
+    object-fit: cover;
+    height: 15rem;
+    width: 25rem;
+    border-radius: 1rem;
+    border: solid .4rem white;
+}
+.whywe-subcontent-img1 {
+    object-fit: cover;
+    height: 25rem;
+    width: 25rem;
+    border-radius: 1rem;
+    border: solid .4rem white;
+    object-position: top;
+}
+.whywe-subcontent-col2 {
+    align-content: center;
+}
+
+.whywe-hookredirect {
+
+    margin-bottom: 6em;
+    margin-bottom: 0rem !important;
+    background-color: #000;
+    background-image: url("../Assets/imageredirect.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-attachment: fixed; */
+    background-position: center;
+    /* border-radius: 2rem; */
+    font-family: 'Alata', sans-serif;
+
+}
+
+.whywe-hookredirect-content {
+    background-color: #000000d0;
+    padding: 6em;
+    align-items: center;
+    width: 100%;
+    --bs-gutter-x: 0rem !important;
+}
+
+.whywe-hookredirect-content p {
+    font-size: 3.5rem;
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    color: white;
+    text-align: center;
+}
+
+.whywe-hookredirect-button {
+    text-align: center;
+}
+
+.whywe-hookredirect-button button {
+    background-color: #6A1B1B;
+    color: white;
+    border: none;
+    border-radius: 1rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 15rem;
+    text-align: center;
+
+}
+.whywe-hookredirect-button button:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+}
+
+@media only screen and (max-width: 992px) {
+    .whywe-bgimg {
+        object-fit: cover;
+        background-position: initial;
+        background-size: cover;
+    }
+
+    .whywe-blackdrop {
+        background-color: #000000ab;
+        height: 180px;
+    }
+
+    .whywe-title {
+        font-size: 2rem;
+        padding-top: 4rem;
+    }
+
+    .whywe-content {
+        margin-left: 2rem;
+        margin-right: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .whywe-subcontent-title {
+        font-size: 1.2rem;
+        padding-top: 2rem;
+        padding-bottom: .8rem;
+        margin-bottom: 0rem;
+
+    }
+
+    .whywe-subcontent-description {
+        font-size: .8rem;
+        padding-top: .6rem;
+    }
+
+    .whywe-subcontent-img {
+        height: 11rem;
+        width: 16rem;
+    }
+    .whywe-subcontent-img1 {
+        height: 18rem;
+        width: 16rem;
+    }
+    .whywe-hookredirect-content {
+        background-color: #000000d0;
+        padding: 2rem;
+        align-items: center;
+        width: 100%;
+        --bs-gutter-x: 0rem !important;
+    }
+
+    .whywe-hookredirect-content p {
+        font-size: 2.5rem;
+    }
+
+    .whywe-hookredirect-buttoncol button {
+        border-radius: .5rem;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        width: 18rem;
+        font-size: .8rem;
+    }
+
+    .whywe-hookredirect-button button {
+        
+        border-radius: .5rem;
+        
+    
+    }
+}
