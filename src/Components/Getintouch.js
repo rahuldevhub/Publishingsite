@@ -47,7 +47,7 @@ const Getintouch = () => {
 
 
                         <Link to={'https://www.instagram.com/ritera_publishing/#/'} target='_blank'> <img src={insta} alt='sample' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="1000" /> </Link>
-                        <Link to={'https://www.instagram.com/ritera_publishing/#/'} target='_blank'> <img src={whatsapp} alt='sample' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="1500" /></Link>
+                        <Link to={'https://wa.me/9488854787'} target='_blank'> <img src={whatsapp} alt='sample' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="1500" /></Link>
                         {/* <Link to={'https://www.instagram.com/ratix_infotech?igsh=Y2dtZWJ1djlqYTQ2&utm_source=qr'} target='_blank'> <img src={facebook} alt='sample' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="2000" /></Link><br /> */}
                         <Link to={'https://www.linkedin.com/company/ritera-publishing/?viewAsMember=true'} target='_blank'> <img src={linkedin} alt='sample' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="2500" /></Link>
 

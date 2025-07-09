@@ -8,6 +8,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import blogdata from '../../../Assets/data/blogdata.js';
 import { Link } from 'react-router-dom';
 import MediaQuery, { useMediaQuery } from "react-responsive";
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 const Selfpublishing = () => {
     useEffect(() => {
