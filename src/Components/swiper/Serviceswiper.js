@@ -9,7 +9,6 @@ import Card from 'react-bootstrap/Card';
 import { useMediaQuery } from 'react-responsive';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
-import prooficon from '../../Assets/study.png'
 import proofreading from '../../Assets/serviceicons/proofreading.webp'
 import marketing from '../../Assets/serviceicons/marketing.webp'
 import articles from '../../Assets/serviceicons/articles.webp'
@@ -38,7 +37,7 @@ const Serviceswiper = () => {
                         <Card className='servicecard'data-aos="zoom-in-right" >
                             <Card.Body >
                                 <div className='service-card-content'>
-                                    <img src={proofreading} className='service-card-icon'></img>
+                                    <img src={proofreading} className='service-card-icon' alt='Fountain pen editing a document, representing proofreading services by top self book publishing company in India'></img>
                                     <h3 className='service-card-title'>Proof Reading </h3>
                                     <p className='service-card-description'>Having a well polished manuscript is crucial. Our team of expert proof readers is dedicated to enhancing your work by meticulously correcting grammatical errors, punctuation errors and etc. Additionally, we ensure that your document maintains consistent formatting and style. </p>
                                 </div>
@@ -48,7 +47,7 @@ const Serviceswiper = () => {
                         <Card className='servicecard' data-aos="zoom-in" >
                             <Card.Body>
                                 <div className='service-card-content'>
-                                    <img src={marketing} className='service-card-icon'></img>
+                                    <img src={marketing} className='service-card-icon' alt='Hand holding icons of marketing tools, showing e publishing and book promotions by self publishing in India experts'></img>
                                     <h3 className='service-card-title'>Marketing </h3>
                                     <p className='service-card-description'>We excel in both traditional and digital marketing strategies, conducting thorough marketing analysis that considers your book’s genre and theme.
                                         A dedicated marketing consultant will be assigned to ensure your book receives the attention it deserves to shine.
@@ -61,7 +60,7 @@ const Serviceswiper = () => {
                         <Card className='servicecard'data-aos="zoom-in-left" >
                             <Card.Body>
                                 <div className='service-card-content'>
-                                    <img src={articles} className='service-card-icon'></img>
+                                    <img src={articles} className='service-card-icon' alt='Image of book representing free book Publishing at Ritera Publishing'></img>
                                     <h3 className='service-card-title'>Free Publishing </h3>
                                     <p className='service-card-description'>Ritera offers a free publishing platform for your poems,short stories, and articles. We bring your work to the spotlight and make sure both you and your work reach worldwide. Share your creativity with the world at no cost!</p>
                                 </div>
@@ -77,7 +76,7 @@ const Serviceswiper = () => {
                         <Card className='servicecard' >
                             <Card.Body >
                                 <div className='service-card-content'>
-                                    <img src={betareading} className='service-card-icon'></img>
+                                    <img src={betareading} className='service-card-icon' alt='Beta reading services offered by self publishing house in India for aspiring authors'></img>
                                     <h3 className='service-card-title'>Beta reading </h3>
                                     <p className='service-card-description'>Beta readers are mandatory in the assessment of manuscripts before publishing. Ritera's beta readers will provide feedback on the plot, pacing, and overall readability. Add, our beta readers will impart valuable insights, urging authors to consider their feedback thoughtfully.
                                         {/* and providing a report to facilitate any necessary revisions. */}
@@ -90,7 +89,7 @@ const Serviceswiper = () => {
                         <Card className='servicecard' >
                             <Card.Body>
                                 <div className='service-card-content'>
-                                    <img src={copywriting} className='service-card-icon'></img>
+                                    <img src={copywriting} className='service-card-icon' alt='Creative copywriting concept illustrated with typewriter, text elements, and artistic graphics.'></img>
                                     <h3 className='service-card-title'>Copy writing </h3>
                                     <p className='service-card-description'>Copywriters at Ritera bear significant responsibilities. They meticulously edit and proofread your manuscript to ensure clarity and accuracy. They craft compelling and engaging descriptions for various platforms. 
                                         {/* Additionally, they collaborate closely with designers, marketers, and authors to maintain a consistent voice and message across all materials.  */}
@@ -104,7 +103,7 @@ const Serviceswiper = () => {
                         <Card className='servicecard' >
                             <Card.Body>
                                 <div className='service-card-content'>
-                                    <img src={International} className='service-card-icon'></img>
+                                    <img src={International} className='service-card-icon' alt='globe representing international reach of books through International distribution'></img>
                                     <h3 className='service-card-title'>International </h3>
                                     <p className='service-card-description'>By partnering with well experienced global distributors, Ritera guarantees that your book reaches around 160 countries, 45000+ online bookstores, libraries and retailers worldwide.</p>
                                 </div>
@@ -135,7 +134,7 @@ const Serviceswiper = () => {
                             <Card className='servicecard'data-aos="zoom-in" >
                                 <Card.Body >
                                     <div className='service-card-content'>
-                                        <img src={proofreading} className='service-card-icon'></img>
+                                        <img src={proofreading} className='service-card-icon' alt='Fountain pen editing a document, representing proofreading services by top self book publishing company in India'></img>
                                         <h3 className='service-card-title'>Proof Reading </h3>
                                         <p className='service-card-description'>Having a well polished manuscript is crucial. Our team of expert proof readers is dedicated to enhancing your work by meticulously correcting grammatical errors, punctuation errors and etc. Additionally, we ensure that your document maintains consistent formatting and style.</p>
                                     </div>
@@ -147,7 +146,7 @@ const Serviceswiper = () => {
                         <Card className='servicecard' >
                             <Card.Body>
                                 <div className='service-card-content'>
-                                    <img src={marketing} className='service-card-icon'></img>
+                                    <img src={marketing} className='service-card-icon' alt='Hand holding icons of marketing tools, showing e publishing and book promotions by self publishing in India experts'></img>
                                     <h3 className='service-card-title'>Marketing </h3>
                                     <p className='service-card-description'>We excel in both traditional and digital marketing strategies, conducting thorough marketing analysis that considers your book’s genre and theme. A dedicated marketing consultant will be assigned to ensure your book receives the attention it deserves to shine.
 
@@ -161,7 +160,7 @@ const Serviceswiper = () => {
                         <Card className='servicecard' >
                             <Card.Body>
                                 <div className='service-card-content'>
-                                    <img src={articles} className='service-card-icon'></img>
+                                    <img src={articles} className='service-card-icon' alt='Image of book representing free book Publishing at Ritera Publishing'></img>
                                    <h3 className='service-card-title'>Free Publishing </h3>
                                     <p className='service-card-description'>Ritera offers a free publishing platform for your poems,short stories, and articles. We bring your work to the spotlight and make sure both you and your work reach worldwide. Share your creativity with the world at no cost!</p>
                                 </div>
@@ -175,7 +174,7 @@ const Serviceswiper = () => {
                         <Card className='servicecard' >
                             <Card.Body >
                                 <div className='service-card-content'>
-                                    <img src={betareading} className='service-card-icon'></img>
+                                    <img src={betareading} className='service-card-icon' alt='Beta reading services offered by self publishing house in India for aspiring authors'></img>
                                     <h3 className='service-card-title'>Beta reading </h3>
                                     <p className='service-card-description'>Beta readers are mandatory in the assessment of manuscripts before publishing. Ritera's beta readers will provide feedback on the plot, pacing, and overall readability. 
                                         Add, our beta readers will impart valuable insights, urging authors to consider their feedback thoughtfully.
@@ -191,7 +190,7 @@ const Serviceswiper = () => {
                         <Card className='servicecard' >
                             <Card.Body>
                                 <div className='service-card-content'>
-                                    <img src={copywriting} className='service-card-icon'></img>
+                                    <img src={copywriting} className='service-card-icon' alt='Creative copywriting concept illustrated with typewriter, text elements, and artistic graphics.'></img>
                                     <h3 className='service-card-title'>Copy writing </h3>
                                     <p className='service-card-description'>Copywriters at Ritera bear significant responsibilities. They meticulously edit and proofread your manuscript to ensure clarity and accuracy. They craft compelling and engaging descriptions for various platforms.
                                         {/* Additionally, they collaborate closely with designers, marketers, and authors to maintain a consistent voice and message across all materials. */}
@@ -207,7 +206,7 @@ const Serviceswiper = () => {
                         <Card className='servicecard' >
                             <Card.Body>
                                 <div className='service-card-content'>
-                                    <img src={International} className='service-card-icon'></img>
+                                    <img src={International} className='service-card-icon' alt='globe representing international reach of books through International distribution'></img>
                                     <h3 className='service-card-title'>International </h3>
                                     <p className='service-card-description'>By partnering with well experienced global distributors, Ritera guarantees that your book reaches around 160 countries, 45000+ online bookstores, libraries and retailers worldwide.</p>
                                 </div>

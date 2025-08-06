@@ -46,10 +46,13 @@ const Getintouch = () => {
                         <h2>Get in Touch</h2>
 
 
-                        <Link to={'https://www.instagram.com/ritera_publishing/#/'} target='_blank'> <img src={insta} alt='sample' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="1000" /> </Link>
-                        <Link to={'https://wa.me/9488854787'} target='_blank'> <img src={whatsapp} alt='sample' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="1500" /></Link>
+                        <Link to={'https://www.instagram.com/ritera_publishing/#/'} target='_blank'> <img src={insta} alt='Instagram branding icon for top book publishing house promoting self publishing in India' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="1000" /> </Link>
+
+
+                        <Link to={'https://wa.me/9488854787'} target='_blank'> <img src={whatsapp} alt='3D WhatsApp logo cube, indicating easy contact with book publishing company in India for self publishing support' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="1500" /></Link>
+
                         {/* <Link to={'https://www.instagram.com/ratix_infotech?igsh=Y2dtZWJ1djlqYTQ2&utm_source=qr'} target='_blank'> <img src={facebook} alt='sample' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="2000" /></Link><br /> */}
-                        <Link to={'https://www.linkedin.com/company/ritera-publishing/?viewAsMember=true'} target='_blank'> <img src={linkedin} alt='sample' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="2500" /></Link>
+                        <Link to={'https://www.linkedin.com/company/ritera-publishing/?viewAsMember=true'} target='_blank'> <img src={linkedin} alt='3D WhatsApp logo cube, indicating easy contact with book publishing company in India for self publishing support' className='socialmedia-img' data-aos="zoom-in-down" data-aos-duration="2500" /></Link>
 
 
 

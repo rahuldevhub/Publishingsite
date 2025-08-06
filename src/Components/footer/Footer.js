@@ -20,7 +20,7 @@ const Footer = () => {
                     <Row>
 
                         <Col lg="6" md="6" sm="4" >
-                            <img src={logo} alt='logo image' ></img>
+                            <img src={logo} alt='logo' ></img>
                             <p>Join Ritera's world of readers, where we act as your compass in the labyrinth of literature,
                                 helping you chart a course through the rich tapestry of stories waiting to be explored.
                             </p>
@@ -36,7 +36,7 @@ const Footer = () => {
                                 <a href='/aboutus'>Why us</a><br />
                                 <a href='/packages'>Packages</a><br />
                                 <a href='/people-behind-ritera'>Our Team</a><br />
-                                <a href='/customize-package'>Customization </a><br />
+                                <a href='https://forms.gle/eP3HsWVbDRTjGN7Q7'>Customization </a><br />
 
                                 {/* <a href='/contact'>Royalty Calculator</a><br /> */}
                                
@@ -48,9 +48,9 @@ const Footer = () => {
                             <div>
                               
                             <h3>Contact us</h3>
-                                <a href='#'>+91-94888-54787</a><br />
-                                <a href='#'>riterapublishing@gmail.com</a><br />
-                                <a href='#'>Ig: ritera_publishing</a><br />
+                                <a href='tel:+919488854787'>+91-94888-54787</a><br />
+                                <a href='mailto:riterapublishing@gmail.com'>riterapublishing@gmail.com</a><br />
+                                <a href='https://www.instagram.com/ritera_publishing/#/'>Ig: ritera_publishing</a><br />
                                 <a href='#Getintouch'>Any Quries</a><br />
 
                             </div>

@@ -63,7 +63,7 @@ const Landingpage = () => {
           <Row>
             <Col lg="6" md="6" sm="1" className='landingpage-col-centering'>
 
-              <img src={whywebg} alt='WHYUS' className='landingpage-whywe-leftimg' ></img>
+              <img src={whywebg} alt='Vintage sewing machine beside colorful fabric swatches, representing book cover materials by a self publishing house in India' className='landingpage-whywe-leftimg' ></img>
 
             </Col>
 
@@ -142,38 +142,7 @@ const Landingpage = () => {
       </div>
 
 
-      {/* <div className='landingpage-article'>
-        <div className='landingpage-article-content'>
-          <h2>Literary Hub</h2>
-
-          <Literaryhub />
-
-        </div>
-
-      </div> */}
-
-
-      {/* <div className='landingpage-hookredirect'>
-        <Row className='landingpage-hookredirect-content'>
-          <Col lg="12" md='6' sm="4" >
-            <h1>People Behind Ritera</h1>
-          </Col>
-
-          <Col lg="12" md='6' sm="4" className=' landingpage-hookredirect-buttoncol'>
-            <Link to={'/people-behind-ritera'}>
-              <button data-aos="zoom-in">Explore</button>
-            </Link>
-          </Col  >
-        </Row>
-      </div> */}
-
-      {/* <div className='landingpage-blog'>
-        <div className='landingpage-blog-content'>
-          <h1>Recent Blogs</h1>
-          <BlogSection />
-        </div>
-
-      </div> */}
+      
 
 
       <div className='landingpage-getintouch'>

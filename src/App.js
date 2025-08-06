@@ -20,6 +20,7 @@ import Ourbooks from './Components/blog/ourblogs/Ourbooks';
 import Poemwriteups from './Components/scribly/ourwriteups/Poemwriteups';
 import Storywriteups from './Components/scribly/ourwriteups/Storywriteups';
 import Articlewriteups from './Components/scribly/ourwriteups/Articlewriteups';
+import Notfound from './Page/Notfound';
 
 
 
@@ -29,6 +30,9 @@ function App() {
 <Header/>
 <BrowserRouter>
 <Routes>
+
+<Route path='*' element={<Notfound/>}></Route>
+
 
 <Route path='/' element={<Landingpage/>}></Route>
 <Route path='/aboutus' element={<Whywe/>}></Route>

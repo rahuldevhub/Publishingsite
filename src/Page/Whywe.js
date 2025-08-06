@@ -59,7 +59,7 @@ const Whywe = () => {
             <p className='whywe-subcontent-title' >Free Publishing</p>
             <Row className='whywe-subcontent-row'>
               <Col lg="6" md="6" sm="1">
-                <img src={whywe7} alt='RED CARPET FOR YOUR WORK' className='whywe-subcontent-img1' data-aos="zoom-in"></img>
+                <img src={whywe7} alt='A globe resting on books, symbolizing global knowledge and education through publishing.' className='whywe-subcontent-img1' data-aos="zoom-in"></img>
 
               </Col>
               <Col lg="6" md="6" sm="1" className='whywe-subcontent-col2' data-aos="fade-up">
@@ -197,7 +197,20 @@ const Whywe = () => {
 
 
 
-
+        <div className='landingpage-map'>
+<div style={{ width: '100%', height: '450px' }}>
+      <iframe
+        title="Ritera Publishing Location"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3910.6050875444093!2d77.66989667481518!3d11.436183188755573!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba96944f3520c3d%3A0x7a14b115e60a872!2sRitera%20Publishing!5e0!3m2!1sen!2sin!4v1754379579690!5m2!1sen!2sin"
+        width="100%"
+        height="100%"
+        style={{ border: 0 }}
+        allowFullScreen=""
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+</div>
 
 
       </div>

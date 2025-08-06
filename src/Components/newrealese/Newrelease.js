@@ -64,7 +64,7 @@ const Newrelease = () => {
                                         <Card className='Newrelease-container' >
 
                                             <Card.Body>
-                                                <Card.Img variant="jade julep" src={data.imgUrl} className='Newrelease-img' />
+                                                <Card.Img variant="jade julep" src={data.imgUrl} className='Newrelease-img' alt={data.imgalt} />
                                                 <Card.Text><h1>{data.title}</h1></Card.Text>
                                                 <Card.Text><p>{data.subtitle}</p></Card.Text>
                                             </Card.Body>
