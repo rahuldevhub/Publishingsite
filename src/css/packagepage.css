@@ -1,0 +1,71 @@
+.Packages-bgimg {
+
+    background: #000;
+    background-image: url("../Assets/imagepackagepage.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.Packages-blackdrop {
+    background-color: #000000ab;
+    height: 300px;
+
+}
+
+
+.Packages-title {
+    font-size: 3.5rem;
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    color: white;
+    padding-top: 10rem;
+    text-align: center;
+}
+.packages-content {
+    margin-left: 6rem;
+    margin-right: 6rem;
+    padding-bottom: 6rem;
+}
+.Packages h3 {
+    font-family: "Merriweather", serif;
+    font-weight: 600;
+    font-size: 2.7rem;
+    text-align: left;
+    padding-top: 5rem;
+    padding-bottom: 1rem;
+}
+.packages-content-bg{
+    background: #FAEBD7;
+}
+.packages-getintouch{
+    background: #F5F1E0;
+}
+@media only screen and (max-width: 992px) {
+    .Packages-bgimg {
+        /* object-fit: cover; */
+        background-position: top;
+        background-size: cover;
+    }
+
+    .Packages-blackdrop {
+        background-color: #000000ab;
+        height: 200px;
+    }
+
+    .Packages-title {
+        font-size: 2rem;
+        padding-top: 1.5rem;
+    }
+    .packages-content {
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+        padding-bottom: 2rem;
+    }
+    .Packages h3 {
+        font-size: 1.5rem;
+        text-align: left;
+        padding-top: 1rem;
+        padding-bottom: .1rem;
+    }
+
+}

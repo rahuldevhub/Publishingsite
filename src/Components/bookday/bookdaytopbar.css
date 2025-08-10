@@ -1,0 +1,96 @@
+.Bookdaylandingpagetop {
+    background: #F5F1E0;
+    overflow: hidden;
+    height: 20vh;
+}
+
+.Bookdaylandingpagetop h1 {
+    font-family: "Merriweather", serif;
+    font-weight: 600;
+    font-size: 2rem;
+    padding-top: 1rem;
+    padding-bottom: .6rem;
+    text-align: center;
+
+}
+
+.Bookdaylandingpagetoptitle {
+    font-family: "Merriweather", serif;
+    font-weight: 600;
+    font-size: 2rem;
+    padding-top: 1rem;
+    padding-bottom: .6rem;
+    text-align: center;
+}
+
+.Bookdaylandingpagetop p {
+    font-size: 1.2rem;
+    text-align: justify;
+    font-family: "Teachers", sans-serif;
+    text-align: center;
+    float: inline-end;
+    padding-top: .6rem;
+}
+
+.Bookdaylandingpagetop-button {
+    background-color: #6A1B1B;
+    color: white;
+    border: none;
+    border-radius: .5rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 18rem;
+    font-size: 1.1rem;
+}
+
+.Bookdaylandingpagetop-sub {
+    padding-bottom: 1rem;
+}
+
+.Bookdaylandingpagetop-button:hover {
+    background-color: #aa2121;
+    font-size: 2rem;
+    padding-top: 4px;
+    padding-bottom: 4px;
+
+}
+
+@media only screen and (max-width: 992px) {
+    .Bookdaylandingpagetop {
+
+        height: 12vh;
+    }
+    .Bookdaylandingpagetop-button:hover {
+        background-color: #aa2121;
+        font-size: 1rem;
+        padding-top: 1px;
+        padding-bottom: 1px;
+
+    }
+    .Bookdaylandingpagetoptitle{
+        font-size: .9rem;
+        padding-top: 1rem;
+        padding-bottom: .4rem;
+    }
+
+    .Bookdaylandingpagetop p {
+        font-size: .7rem;
+        text-align: center !important;
+
+    }
+
+    .Bookdaylandingpagetop-button {
+        font-size: .8rem;
+        border-radius: .5rem;
+        padding-top: 4px;
+        padding-left: 32px;
+        padding-right: 32px;
+        padding-bottom: 4px;
+        width: auto;
+    }
+
+    .Bookdaylandingpagetop-sub {
+        padding-bottom: 0rem;
+    }
+
+}

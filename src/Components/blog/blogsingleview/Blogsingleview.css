@@ -1,0 +1,58 @@
+.BlogSingleview{
+    padding-bottom: 4rem;
+}
+.BlogSingleview-right-col{
+    padding-left: 2.5rem;
+    padding-top: 1.5rem;
+
+}
+.breadcrumbs{
+    padding-bottom: 1.5rem !important; 
+}
+.Blogcontenttitle{
+    font-size: 1.625rem !important;
+    padding-bottom: 1.25rem;
+    font-weight: 600;
+}
+.Blogcontentsubtitle{
+    text-align: justify;
+}
+.Blogcontentimg{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    height: 20rem;
+    border-radius: .5rem;
+    object-fit: cover;
+}
+.Blogcontentdescription h2{
+    font-size: 1.625rem !important;
+    padding-bottom: 1.25rem;
+    padding-top: 2rem;
+    font-weight: 600;
+}
+.Blogcontentdescription p {
+    text-align: justify;
+    padding-bottom: 0rem;
+}
+@media only screen and (max-width: 992px) {
+    .BlogSingleview-right-col{
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        padding-top: 1.5rem;
+    }
+    .Blogcontenttitle{
+        font-size: 1.2rem !important;
+    }
+    .Blogcontentsubtitle{
+       font-size: .8rem;
+    }
+    .Blogcontentdescription h2{
+        font-size: 1.2rem !important;
+   
+    }
+    .Blogcontentimg{
+        margin-top: 0rem;
+      
+    }
+}

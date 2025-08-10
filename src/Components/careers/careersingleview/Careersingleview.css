@@ -1,0 +1,116 @@
+.Careersingleview {
+    background: #f7f7f7;
+
+}
+
+.Careersingleview-topportion {
+    padding-top: 4rem;
+    text-align: center;
+}
+
+.Careersingleview-title {
+    padding-top: 4rem;
+    margin-bottom: 10px;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    padding: 0 2rem;
+    font-weight: 400;
+    word-break: break-word;
+    font-family: "Teachers", sans-serif;
+
+}
+
+.Careersingleview-jobtitle {
+    font-size: 3rem;
+    line-height: 1.2;
+    position: relative;
+    font-weight: 500;
+    word-break: break-word;
+    font-family: "Merriweather", serif;
+    padding-bottom: .8rem;
+
+
+}
+
+.Careersingleview-button {
+    background-color: #6A1B1B;
+    color: white;
+    border: none;
+
+    width: 15rem;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.Careersingleview-bottomportion {
+    margin-left: 20rem;
+    margin-right: 20rem;
+    padding-bottom: 4rem;
+    margin-top: 5rem;
+}
+
+.Careersingleview-title2 {
+    font-size: 1.125rem;
+    line-height: 1.2;
+    position: relative;
+    font-weight: 500;
+    word-break: break-word;
+    font-family: "Merriweather", serif;
+    padding-bottom: 1rem;
+
+}
+
+.Careersingleview-subtitle2 {
+    font-size: .975rem
+}
+
+.Careersingleview-content {
+    color: #50566d;
+    font-weight: 500;
+}
+
+.jdwhhr {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.jdpoints {
+    padding-left: 24px;
+    position: relative;
+    margin-bottom: 10px;
+    line-height: 24px;
+    color: #50566d;
+
+}
+
+@media only screen and (max-width: 992px) {
+    .Careersingleview-bottomportion {
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+        padding-bottom: 4rem;
+        margin-top: 3rem;
+    }
+
+    .careers {
+        display: block;
+    }
+
+    .jdpoints {
+        font-size: .875rem;
+        padding-left: 12px;
+        margin-bottom: 4px;
+        line-height: 20px;
+    }
+
+    .vl {
+        border-right: none;
+        padding-bottom: 2rem;
+    }
+
+    .Careersingleview-topportion {
+        padding-top: 2.5rem;
+        text-align: center;
+    }
+}
