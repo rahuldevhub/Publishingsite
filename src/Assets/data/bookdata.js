@@ -5,8 +5,11 @@ import book2 from '../latestrelease/revelations.jpg'
 import authorbio1 from '../latestrelease/ritera.png'
 import authorbio2 from '../latestrelease/revelations.png'
 import nocover from '../latestrelease/nocover.png'
-import twinedechoes from '../latestrelease/twinedechoes.png'
+import saranraj from '../latestrelease/saranraj.png'
 import sanctum from '../latestrelease/sanctum.png'
+import twinedechoecover from '../latestrelease/twinedechoe.png'
+import somedaycover from '../latestrelease/somedayperhaps.png'
+
 
 
 const bookdata = [
@@ -87,7 +90,7 @@ const bookdata = [
         title: "Sanctum",
         subtitle: "The Cursed House",
         imgUrl: sanctum,
-        imgUrl2: twinedechoes,
+        imgUrl2: authorbio1,
         imgalt:'Coming soon Book from Ritera book publishing house',
         authorname: 'Emma Stone',
         format: 'Hardcover',
@@ -121,8 +124,8 @@ const bookdata = [
         id: 4,
         title: "Twined Echoes (2nd Edition)",
         subtitle: "The World of Twisted Fates",
-         imgUrl: nocover,
-        imgUrl2: twinedechoes,
+         imgUrl: twinedechoecover,
+        imgUrl2: saranraj,
         imgalt:'Coming soon Book from Ritera book publishing house',
         authorname: 'Saran Raj',
          badge: "Coming Soon",
@@ -188,7 +191,7 @@ const bookdata = [
         title: "Peace in Abandonment",
         subtitle: "",
         imgUrl: nocover,
-        imgUrl2: twinedechoes,
+        imgUrl2: saranraj,
         imgalt:'Coming soon Book from Ritera book publishing house',
         authorname: 'Saran Raj',
         format: 'Paperback',
@@ -225,8 +228,8 @@ const bookdata = [
         id: 7,
         title: "Someday Perhaps",
         subtitle: "Hoping For A Change",
-        imgUrl: nocover,
-        imgUrl2: twinedechoes,
+        imgUrl: somedaycover,
+        imgUrl2: saranraj,
         authorname: 'Saran Raj',
         format: 'Paperback',
         Genre: 'Contemporary Fiction, Mental Health & Discrimination.',
