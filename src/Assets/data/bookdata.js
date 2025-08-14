@@ -6,6 +6,7 @@ import authorbio1 from '../latestrelease/ritera.png'
 import authorbio2 from '../latestrelease/revelations.png'
 import nocover from '../latestrelease/nocover.png'
 import twinedechoes from '../latestrelease/twinedechoes.png'
+import sanctum from '../latestrelease/sanctum.png'
 
 
 const bookdata = [
@@ -85,7 +86,7 @@ const bookdata = [
         id: 3,
         title: "Sanctum",
         subtitle: "The Cursed House",
-        imgUrl: nocover,
+        imgUrl: sanctum,
         imgUrl2: twinedechoes,
         imgalt:'Coming soon Book from Ritera book publishing house',
         authorname: 'Emma Stone',

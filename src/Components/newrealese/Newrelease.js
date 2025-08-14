@@ -73,7 +73,7 @@ const Newrelease = () => {
                                 <SwiperSlide key={index}>
                                     <div className='flex justify-center object-contain mx-auto h-48 lg:h-96 bookswipercard' data-aos="zoom-in">
                                         <div className='bookswipercontent'>
-                                            <Link to={`/books/${data.title}`}>
+                                            <Link to={`/books/${data.title.toLocaleLowerCase().replace(/\s+/g, '-')}`}>
                                                 <Card className='Newrelease-container'>
                                                     <Card.Body>
                                                         <div className="Newrelease-img-container">
@@ -85,13 +85,13 @@ const Newrelease = () => {
                                                             />
                                                         </div>
                                                         <Card.Text>
-                                                            <h1>
+                                                            <h3 className="card-title-ellipsis" >
                                                                 {data.title}
                                                                 {data.badge && <span className="badge-new">{data.badge}</span>}
-                                                            </h1>
+                                                            </h3>
                                                         </Card.Text>
                                                         <Card.Text>
-                                                            <p>{data.subtitle}</p>
+                                                            <p className="card-subtitle-ellipsis">{data.subtitle}</p>
                                                         </Card.Text>
                                                     </Card.Body>
                                                 </Card>

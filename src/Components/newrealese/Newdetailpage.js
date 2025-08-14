@@ -56,7 +56,7 @@ const Newdetailpage = () => {
     }, []);
     const { slug } = useParams();
 
-    const singlebook = bookdata.find((item) => item.title === slug);
+    const singlebook = bookdata.find((item) => item.title.toLowerCase().replace(/\s+/g, '-') === slug);
 
 
 

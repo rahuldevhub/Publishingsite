@@ -50,7 +50,7 @@
 .Newrelease-content{
     align-content: center;
 }
-.Newrelease-container h1 {
+.Newrelease-container h3 {
     font-family: "Merriweather", serif;
     font-weight: 600;
     font-size: 1rem;
@@ -130,17 +130,33 @@
   /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); */
   z-index: 5;
 }
+.card-title-ellipsis {
+  white-space: nowrap;          /* Don't wrap text */
+  overflow: hidden;             /* Hide overflowing text */
+  text-overflow: ellipsis;      /* Add "..." when text overflows */
+  display: inline-block;        /* Required for ellipsis */
+  max-width: 100%;              /* Adjust as needed */
+  vertical-align: middle;       /* Keeps badge aligned */
+}
 
+/* For the subtitle */
+.card-subtitle-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  max-width: 100%;
+}
 @media only screen and (max-width: 992px) {
   .Newrelease-title::after {
 
   width: 70px;
   bottom: -6px;
-  left: 7px;
+  left: 52px;
   border-radius: 2px;
 }
 
-    .Newrelease h1 {
+    .Newrelease h3 {
         font-size: 1.6rem;
         padding-top: 1.2rem;
         padding-bottom: 0rem;
@@ -160,7 +176,7 @@
       
       }
 
-    .Newrelease-container h1{
+    .Newrelease-container h3{
        
         padding-top: .6rem;
         padding-bottom: 0rem;
@@ -205,9 +221,7 @@
   }
 
   .Newrelease-content::before {
-    width: 100vw;
-    left: 0;
-    top: -1rem;
+   background-image: none;
   }
 
   .Newrelease-img {
@@ -215,7 +229,7 @@
     margin-bottom: 0.8rem;
   }
 
-  .Newrelease-container h1 {
+  .Newrelease-container h3 {
     font-size: 0.75rem !important;
     -webkit-line-clamp: 2;
   }

@@ -30,7 +30,7 @@ const Scriblysingleview = () => {
     }, []);
 
     const { slug } = useParams();
-    const singlelitspace = litspace.find((item) => item.title === slug);
+    const singlelitspace = litspace.find((item) => item.title.toLowerCase().replace(/\s+/g, '-') === slug);
 
     const crumbs = [
         { label: "Home", path: "/" },
@@ -60,7 +60,7 @@ const Scriblysingleview = () => {
                                         <h3>Trending Blogs</h3>
                                         <div className='trendingblog'>
                                             {litspace.slice(0, 4).map((data) => (
-                                                < Link to={`/litspace/${data.title}`} >
+                                                < Link to={`/litspace/${data.title.toLowerCase().replace(/\s+/g, '-')}`} >
 
                                                     <Row className='trendingblog-card'>
                                                         <Col lg='4'>

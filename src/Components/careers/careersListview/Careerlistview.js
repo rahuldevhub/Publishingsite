@@ -42,7 +42,7 @@ const Careerlistview = () => {
 
             {careerdata.map((data, idx) => (
               <Col key={idx}>
-                <Link to={`/careers/${data.Jobtitle.toLowerCase().replace(/\s+/g, '-') }`}>
+                <Link to={`/careers/${data.Jobtitle.toLowerCase().replace(/\s+/g, '-')}`}>
                 <Card className='careers-card'>
                   <div className='careers-card-content'>
 

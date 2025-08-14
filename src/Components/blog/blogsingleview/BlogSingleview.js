@@ -29,20 +29,20 @@ const BlogSingleview = () => {
     return (
         <>
 
-         <HelmetProvider>
-        
+            <HelmetProvider>
+
                 <Helmet>
-        
-                  <title>{singleblog.title}</title>
-                  <meta id="meta-description" name="description" content={singleblog.metadescription} />
-                  <meta name='robots' content='index,follow' />
-                  <meta name='keywords' content='self publishing, service, books, authors, reader ,free publishing, cover design, manuscript, ritera, publishing company, customized package ' />
-                 
-             
-        
+
+                    <title>{singleblog.title}</title>
+                    <meta id="meta-description" name="description" content={singleblog.metadescription} />
+                    <meta name='robots' content='index,follow' />
+                    <meta name='keywords' content='self publishing, service, books, authors, reader ,free publishing, cover design, manuscript, ritera, publishing company, customized package ' />
+
+
+
                 </Helmet>
-        
-              </HelmetProvider>
+
+            </HelmetProvider>
             {isDesktopOrLaptop &&
                 <div className='BlogSingleview'>
                     <Container className='bloglistview-container'>
@@ -77,7 +77,7 @@ const BlogSingleview = () => {
 
                                     </div>
                                 </div>
-                                
+
                             </Col>
 
 
@@ -94,9 +94,16 @@ const BlogSingleview = () => {
 
                                     <img src={singleblog.imgUrl} className='Blogcontentimg' alt='Blogcontentimg'></img>
 
-                                    <div className='Blogcontentdescription'
-                                        dangerouslySetInnerHTML={{ __html: singleblog.content }}
-                                    >
+                                    <div className='Blogcontentdescription'>
+                                        {singleblog.content
+                                            .trim()
+                                            .split("\n\n")
+                                            .map((block, index) => {
+                                                if (block.startsWith("## ")) {
+                                                    return <h2 key={index}>{block.replace("## ", "")}</h2>;
+                                                }
+                                                return <p key={index}>{block}</p>;
+                                            })}
 
 
                                     </div>

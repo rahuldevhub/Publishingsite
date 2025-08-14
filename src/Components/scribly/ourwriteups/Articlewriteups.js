@@ -116,7 +116,7 @@ const Articlewriteups = () => {
                                 <h3>Trending Write-ups</h3>
                                 <div className='trendingblog'>
                                     {litspace.slice(0, 4).map((data) => (
-                                        < Link to={`/litspace/${data.title}`} >
+                                        < Link to={`/litspace/${data.title.toLowerCase().replace(/\s+/g, '-')}`} >
 
                                             <Row className='trendingblog-card'>
                                                 <Col lg='4'>
@@ -152,7 +152,7 @@ const Articlewriteups = () => {
 
 
                                             <Card className='litspacelistview-card' >
-                                                <Link to={`/litspace/${data.title}`} >
+                                                <Link to={`/litspace/${data.title.toLowerCase().replace(/\s+/g, '-')}`} >
                                                     <Card.Body className='Bloglistview-card-body'>
                                                         <Card.Img variant="jade julep" src={data.imgUrl} className='Bloglistview-img' />
                                                         <Card.Text><p className='litspacelistview-card-title'>{data.title} </p></Card.Text>
@@ -221,7 +221,7 @@ const Articlewriteups = () => {
 
 
                                     <Card className='litspacelistview-card' >
-                                        <Link to={`/litspace/${data.title}`} >
+                                        <Link to={`/litspace/${data.title.toLowerCase().replace(/\s+/g, '-')}`} >
                                             <Card.Body className='Bloglistview-card-body'>
                                                 <Card.Img variant="jade julep" src={data.imgUrl} className='Bloglistview-img' />
                                                 <Card.Text><p className='litspacelistview-card-title'>{data.title} </p></Card.Text>
