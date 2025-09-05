@@ -59,6 +59,9 @@
       "last 1 safari version"
     ]
   },
+  "engines": {
+  "node": "22.x"
+},
   "devDependencies": {
     "ajv": "^8.17.1"
   }
