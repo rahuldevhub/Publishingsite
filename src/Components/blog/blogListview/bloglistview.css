@@ -1,0 +1,202 @@
+.Bloglistview{
+    background: #f7f7f7;
+    padding-bottom: 5rem;
+
+}
+.Selfpublishing{
+    background: #f7f7f7;
+    padding-bottom: 5rem;
+
+}
+.Insideritera{
+    background: #f7f7f7;
+    padding-bottom: 5rem;
+
+}
+.Ourbooks{
+    background: #f7f7f7;
+    padding-bottom: 5rem;
+
+}
+
+
+.bloglistview-container{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    overflow: hidden;
+}
+.vl{
+    border-right: 1px solid rgb(192, 192, 192);
+    /* padding-top: 2rem; */
+  height: auto;
+}
+.Bloglistview-left-col{
+    padding-top: 3rem !important;
+}
+.Bloglistview-right-col{
+    padding-top: 3rem !important;
+}
+.Bloglistview-leftdiv{
+    padding-left: 2rem;
+    /* margin-right: 5rem; */
+}
+.Bloglistview-leftdiv h3{
+    /* text-align: ; */
+    font-size: 1.5rem;
+    padding-top: 0rem;
+    font-weight: 600;
+    font-family: "Teachers", sans-serif;
+    margin-top: 3rem;
+
+}
+
+.Bloglistview-rightdiv{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    /* overflow: hidden; */
+}
+.Bloglistview-rightdiv h1{
+    text-align: left;
+    font-size: 3rem;
+    
+    font-weight: 600;
+    font-family: "Merriweather", serif;
+
+}
+.Bloglistview-card{
+    width: 18rem;
+    margin-top: 3rem;
+    padding: 0rem;
+    border-radius: 1.2rem;
+}
+.Bloglistview-card:hover{
+    border: solid .5px black;
+}
+.Bloglistview-card-body{
+    padding: 0 !important;
+
+}
+.Bloglistview-img {
+    height: 16rem;
+    width: 17.9rem;
+    object-fit: cover;
+    /* padding: 0rem; */
+    text-align: center;
+    border-radius: 1.2rem 1.2rem 0px 0px;
+    margin-bottom: 1rem;
+}
+.Bloglistview-card p{
+    text-align: left;
+    font-size: 1.2rem;
+    padding: .5rem;
+    font-weight: 600;
+    font-family: "Teachers", sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+.Bloglistview-card-row{
+    justify-content: space-between;
+    padding: 0 !important;
+    /* width: 0rem; */
+}
+.Bloglistview-card-row a {
+    text-decoration: none;
+    color: black;
+}
+.Bloglistview-leftdiv-components{
+list-style: none;
+font-size: 1.125rem;
+/* padding-left: 1rem; */
+color: #5a5b75;
+display: block;
+font-weight: 500;
+text-decoration: none;
+padding: 0.25rem 0;
+margin-bottom: 2rem;
+}
+.Bloglistview-leftdiv-components li{
+    padding-top: 1rem;
+    font-weight: 300;
+    font-family: "Teachers", sans-serif;
+
+}
+.Bloglistview-leftdiv-components a{ 
+    color: #5a5b75;
+    text-decoration: none;
+    transition: color 0.25 ease-in-out;
+}
+.Bloglistview-leftdiv-components a:hover{ 
+    color: black;
+    text-decoration: none;
+}
+.trendingblog-img{
+    width: 100%;
+    height: 5rem;
+    object-fit: cover;
+    border-radius: .5rem;
+}
+.trendingblog-title{
+    margin-bottom: 0 !important;
+    font-weight: 500 !important;
+    font-family: "Merriweather", serif;
+    font-size: .9rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+    color: #000;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Number of lines */
+    -webkit-box-orient: vertical;
+
+}
+.trendingblog-subtitle{
+    color: #9e9fb4;
+    font-weight: 300;
+    font-family: "Teachers", sans-serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Number of lines */
+    -webkit-box-orient: vertical;
+    /* white-space: nowrap; */
+
+}
+.trendingblog-card{
+    padding-top: 2rem;
+}
+.trendingblog a{
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 992px) {
+    .Bloglistview-card-row{
+        justify-content: center !important;
+        justify-items: anchor-center !important;
+        padding: 0 !important;
+        /* width: 0rem; */
+    }
+    .Bloglistview-card p{
+        font-size: 1rem;
+        padding: .4rem;
+    }
+    .Bloglistview-right-col{
+        padding-top: 2rem !important;
+    }
+    .Bloglistview-leftdiv{
+        padding-left: 2rem;
+        padding-right:2rem;
+
+    }
+
+    .Bloglistview-leftdiv h3{
+        margin-top: 2rem;
+    
+    }
+}

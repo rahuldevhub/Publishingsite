@@ -1,0 +1,19 @@
+.Notfound{
+    background: #f7f7f7;
+    height: 80vh;
+    text-align: center;
+
+
+}
+.Notfound-title {
+    font-size: 55px;
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    padding-top: 12rem;
+    padding-bottom: 2rem;
+}
+
+.Notfound-subtitle {
+    font-size: 1.5rem;
+    font-family: "Teachers", sans-serif;
+}

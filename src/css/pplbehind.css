@@ -1,0 +1,286 @@
+.Pplbehind-bgimg {
+
+    background: #000;
+    background-image: url("../Assets/pageheader/peoplebehind.webp");
+    background-position: center;
+    background-size: cover;
+}
+
+.Pplbehind-blackdrop {
+    background-color: #000000ab;
+    height: 500px;
+
+}
+
+
+.Pplbehind-title {
+    font-size: 3.5rem;
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    color: white;
+    padding-top: 25rem;
+    text-align: center;
+}
+
+.Pplbehind-contents {
+    background: #FAEBD7;
+}
+
+.Pplbehind-indivualcontent1 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    padding-left: 6rem;
+    padding-right: 6rem;
+    background: #fff7ec !important;
+}
+
+.Pplbehind-indivualcontent {
+    padding-top: 4rem;
+    margin-left: 6rem;
+    margin-right: 6rem;
+    padding-bottom: 4rem;
+}
+
+.Pplbehind-indivualcontent2 {
+    background: #A57A5B;
+    color: white;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    padding-left: 6rem;
+    padding-right: 6rem;
+}
+
+.Pplbehind-subcontent-title {
+    font-size: 3rem;
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    text-align: left;
+    margin-bottom: 0 !important;
+}
+
+.Pplbehind-subcontent-subtitle {
+    font-size: 1.5rem;
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    text-align: left;
+    padding-bottom: .5rem;
+
+}
+
+.Pplbehind-subcontent-description {
+    font-size: 1.4rem;
+    text-align: justify;
+    font-family: "Teachers", sans-serif;
+}
+
+.Pplbehind-subcontent-row {
+    text-align: -webkit-center;
+}
+
+.Pplbehind-subcontent-img {
+
+    object-fit: cover;
+    border: solid .4rem #D4A373;
+    border-radius: 1.5rem;
+}
+
+.Pplbehind-subcontent-col1 {
+    align-content: center;
+}
+
+.Pplbehind-teams{
+    background: #F5F1E0;
+    
+}
+.Pplbehind-content{
+    padding-top: 2.5rem;
+    margin-left: 6rem;
+    margin-right: 6rem;
+    padding-bottom: 6rem;
+}
+.team-card{
+justify-content: center;
+}
+.teamcard {
+
+    width: 18rem;
+    background: white;
+    color: black;
+    justify-content: space-around;
+    margin-left: .5rem;
+    margin-right: .5rem;
+    border: solid 2px ;
+    border-color: #D4A373;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    justify-content: center; 
+    text-align-last:center ;
+}
+
+/* .card-content {
+    text-align-last: center;
+} */
+.team-card-icon{
+    height: 8rem;
+    width: 8rem;
+    background-color: #6E7E4B;
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: .4rem;
+    margin-bottom: 2rem;
+
+}
+.team-card-title {
+    margin-bottom: .5rem;
+    font-size: 1.5rem;
+    font-family: "Merriweather", serif;
+}
+.team-card-description {
+    font-size: 1rem;
+    font-family: "Teachers", sans-serif;
+    text-align: justify !important;
+    hyphens: auto;
+
+}
+
+
+.Pplbehind-hookredirect{
+
+    margin-bottom: 6em;
+    margin-bottom: 0rem !important;
+    background-color: #000;
+    background-image: url("../Assets/imagepplbehindredirect.jpg");
+    background-repeat: no-repeat;
+    background-size:cover ;
+    /* background-attachment: fixed; */
+    background-position: center;
+    /* border-radius: 2rem; */
+    font-family: 'Alata', sans-serif;
+
+}
+
+
+.Pplbehind-hookredirect-content {
+    background-color: #000000d0;
+    padding: 6em;
+    align-items: center;
+    width: 100%;
+    --bs-gutter-x: 0rem !important;
+}
+
+.Pplbehind-hookredirect-content p {
+    font-size: 3.5rem;
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    color: white;
+    text-align: center;
+}
+
+.Pplbehind-hookredirect-button {
+    text-align: center;
+}
+
+.Pplbehind-hookredirect-button button {
+    background-color: #6A1B1B;
+    color: white;
+    border: none;
+    border-radius: .5rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 15rem;
+    text-align: center;
+
+}
+
+
+@media only screen and (max-width: 992px) {
+    .Pplbehind-bgimg {
+        /* object-fit: cover; */
+        background-position: top;
+        background-size: cover;
+    }
+
+    .Pplbehind-blackdrop {
+        background-color: #0000008f;
+        height: 200px;
+    }
+
+    .Pplbehind-title {
+        font-size: 1.7rem;
+        padding-top: 9rem;
+    }
+    .Pplbehind-indivualcontent1 {
+        padding: 2rem;
+    }
+    
+    .Pplbehind-indivualcontent {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+    
+    .Pplbehind-indivualcontent2 {
+       padding: 2rem;
+    }
+    .Pplbehind-subcontent-title {
+        padding-top: 1rem;
+        font-size: 1.9rem;
+        text-align: center;
+    }
+    
+    .Pplbehind-subcontent-subtitle {
+        font-size: 1rem;
+        text-align: center;
+        padding-bottom: .5rem;
+        margin-bottom: 0rem;
+    
+    }
+    
+    .Pplbehind-subcontent-description {
+        font-size: .8rem;
+    }
+    .Pplbehind-subcontent-img {
+
+        height: 20rem;
+        width: 16rem;
+    }
+    .Pplbehind-content{
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        margin-left: 2rem;
+        margin-right: 2rem;
+        
+    }
+    .teamcard {
+
+        width: 18rem;
+       margin: 2rem;
+       margin-bottom: 0 !important;
+        border: solid 2px ;
+        border-color: #D4A373;
+      padding: 1rem;
+        justify-content: center; 
+    }
+    .Pplbehind-hookredirect-content {
+        background-color: #000000d0;
+        padding: 2rem;
+        align-items: center;
+        width: 100%;
+        --bs-gutter-x: 0rem !important;
+    }
+
+    .Pplbehind-hookredirect-content p {
+        font-size: 2.5rem;
+    }
+
+    .Pplbehind-hookredirect-button button {
+        border-radius: .5rem;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        width: 100%;
+        font-size: 1rem;
+    }
+}
