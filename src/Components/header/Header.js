@@ -23,7 +23,7 @@ const Header = () => {
 
           <Nav className='Navbarcomponents'>
 
-            <Nav.Link href="https://forms.gle/agd3LmmwyTAU1fBcA" target="blank"> Virtual Meet <span className="nav-badge">Register now</span> </Nav.Link>
+            <Nav.Link href="https://docs.google.com/forms/d/e/1FAIpQLScvf3Vkm_YONnMwFCLFHo4JhilIMt8Fu07c1cfS3okxD6xhgQ/viewform?usp=sharing&ouid=106583229284592543694" target="blank"> Virtual Meet <span className="nav-badge">Register now</span> </Nav.Link>
 
             <Nav.Link href="/" >Home</Nav.Link>
             <Nav.Link href="/aboutus" >About</Nav.Link>
