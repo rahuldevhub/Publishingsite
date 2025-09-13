@@ -36,7 +36,7 @@ const Bookdaylandingpagetop = () => {
         <p>For Authors. For Literature. For the World.</p></Col>
         <Col>
         <button  className='Bookdaylandingpagetop-button' 
-         onClick={() => window.open('https://forms.gle/agd3LmmwyTAU1fBcA', '_blank')}
+         onClick={() => window.open('https://docs.google.com/forms/d/e/1FAIpQLScvf3Vkm_YONnMwFCLFHo4JhilIMt8Fu07c1cfS3okxD6xhgQ/viewform?usp=sharing&ouid=106583229284592543694', '_blank')}
         > Register Now</button>
         </Col>
 
