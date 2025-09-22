@@ -1,0 +1,161 @@
+@font-face {
+  font-family: 'Brittany Signature';
+  src: url('../../Assets/BrittanySignature.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/* Swiper Container */
+.mySwiper-testimonial {
+ width: 100%;
+  height: auto;
+  overflow: visible
+}
+
+/* Card Style */
+.swipercard {
+  position: relative;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: auto;
+}
+
+.swipercard.expanded {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+/* Swiper Card Content */
+.swipercontent {
+  margin: 1rem;
+  text-align: left !important;
+}
+
+.swipercontent h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: 'Alata', sans-serif;
+  text-align: left;
+}
+
+.swipercontent p {
+  font-size: 0.95rem;
+  padding-top: 0rem;
+  font-style: italic;
+  text-align: justify;
+  font-family: "Teachers", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Testimonials Text Styling */
+.Testimonials-name {
+  font-size: 18px;
+  margin-top: 2.5rem;
+  font-family: 'Brittany Signature', cursive;
+}
+.Testimonials-designation {
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 500;
+  color: #50566d;
+}
+.Testimonials-text {
+  font-size: 14px;
+  margin-top: 10px;
+  transition: max-height 0.3s ease-in-out;
+}
+
+/* Avatar */
+.testimonial-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: none;
+  margin-bottom: 1rem;
+}
+
+/* Section Title & Subtitle */
+.testimonial-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-family: 'Brittany Signature', cursive;
+}
+
+.testimonial-subtitle {
+  text-align: center;
+  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+  font-family: "Teachers", sans-serif;
+
+}
+
+@media (max-width: 768px) {
+  .Testimonials {
+    padding: 2rem 1rem;
+     max-width: 1200px;
+  margin: 0 auto;
+  }
+
+  .testimonial-title {
+    font-size: 2rem;
+  }
+
+  .testimonial-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+
+  .swipercard {
+    padding: 15px;
+  }
+
+  .swipercontent p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .testimonial-avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .Testimonials-name {
+    font-size: 16px;
+    margin-top: 1.5rem;
+  }
+
+  .Testimonials-designation {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonial-title {
+    font-size: 1.7rem;
+  }
+
+  .testimonial-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .swipercontent p {
+    font-size: 0.85rem;
+  }
+
+  .swipercard.expanded {
+    transform: none;
+  }
+}

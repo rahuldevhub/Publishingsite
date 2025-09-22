@@ -1,0 +1,101 @@
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    /* background: #fff; */
+
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    /* display: block; */
+    /* width: 100%;
+    height: 100%; */
+    object-fit: cover;
+}
+.swiper-button-next{
+    color: #6A1B1B;
+    font-weight: 600;
+}
+.swiper-button-prev{
+    color: #6A1B1B;
+    font-weight: 600;
+}
+.servicecard {
+
+    width: 20rem;
+    background: white;
+    color: black;
+    justify-content: space-around;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+    border: solid 2px ;
+    border-color: #D4A373;
+}
+
+.servicecard {
+    /* justify-content: space-around; */
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    
+}
+.service-card-content h3{
+    font-size: 2rem;
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    padding: 0 !important;
+}
+.service-card-icon{
+    height: 8rem;
+    width: 8rem;
+    background-color: #6E7E4B;
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: .4rem;
+    margin-bottom: 2rem;
+
+}
+
+.service-card-description {
+    
+    font-size: .9rem;
+    font-family: "Teachers", sans-serif;
+    text-align: justify;
+    /* hyphens: auto; */
+
+}
+@media only screen and (max-width: 992px) {
+    .servicecard {
+
+        width: 18rem;
+        margin-left: .5rem;
+        margin-right: .5rem;
+        padding-left: .5rem;
+        padding-right: .5rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+    
+    .service-card-content h3{
+        font-size: 1.6rem;
+    }
+    
+    .service-card-icon{
+        height: 6rem;
+        width: 6rem;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    .service-card-content p{
+      font-size: .9rem;
+    }
+}
