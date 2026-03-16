@@ -1,0 +1,179 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Admin Users for authentication
+model Admin {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("admin")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("admins")
+}
+
+// Employees Table
+model Employee {
+  id               String   @id @default(uuid())
+  name             String
+  slug             String   @unique
+  role             String
+  department       String
+  bio              String?  @db.Text
+  profilePhoto     String?  @map("profile_photo")
+  linkedin         String?
+  employmentType   String   @map("employment_type")
+  joinedDate       DateTime @map("joined_date")
+  active           Boolean  @default(true)
+  displayOrder     Int      @map("display_order")
+  createdAt        DateTime @default(now()) @map("created_at")
+
+  @@map("employees")
+}
+
+// Blog Categories
+model BlogCategory {
+  id         String     @id @default(uuid())
+  name       String
+  slug       String     @unique
+  createdAt  DateTime   @default(now()) @map("created_at")
+  posts      BlogPost[]
+
+  @@map("blog_categories")
+}
+
+// Blog Posts
+model BlogPost {
+  id              String        @id @default(uuid())
+  title           String
+  slug            String        @unique
+  excerpt         String?       @db.Text
+  content         String        @db.Text
+  featuredImage   String?       @map("featured_image")
+  categoryId      String        @map("category_id")
+  authorId        String        @map("author_id")
+  readingTime     Int           @map("reading_time")
+  metaTitle       String?       @map("meta_title")
+  metaDescription String?       @map("meta_description") @db.Text
+  featured        Boolean       @default(false)
+  published       Boolean       @default(false)
+  createdAt       DateTime      @default(now()) @map("created_at")
+  updatedAt       DateTime      @updatedAt @map("updated_at")
+  
+  category        BlogCategory  @relation(fields: [categoryId], references: [id])
+  author          Author        @relation(fields: [authorId], references: [id])
+
+  @@map("blog_posts")
+}
+
+// Authors
+model Author {
+  id         String     @id @default(uuid())
+  name       String
+  slug       String     @unique
+  bio        String?    @db.Text
+  imageUrl   String?    @map("image_url")
+  instagram  String?
+  twitter    String?
+  createdAt  DateTime   @default(now()) @map("created_at")
+  
+  blogPosts  BlogPost[]
+  books      Book[]
+
+  @@map("authors")
+}
+
+// Books
+model Book {
+  id               String   @id @default(uuid())
+  title            String
+  subtitle         String?
+  slug             String   @unique
+  shortDescription String?  @map("short_description") @db.Text
+  description      String?  @db.Text
+  coverImage       String?  @map("cover_image")
+  galleryImages    String[] @map("gallery_images")
+  isbn             String?
+  language         String
+  pageCount        Int      @map("page_count")
+  genre            String
+  format           String
+  amazonLink       String?  @map("amazon_link")
+  flipkartLink     String?  @map("flipkart_link")
+  publisherLink    String?  @map("publisher_link")
+  publishedDate    DateTime @map("published_date")
+  authorId         String   @map("author_id")
+  featured         Boolean  @default(false)
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
+  
+  author           Author   @relation(fields: [authorId], references: [id])
+
+  @@map("books")
+}
+
+// Litspace Categories
+model LitspaceCategory {
+  id        String          @id @default(uuid())
+  name      String
+  slug      String          @unique
+  createdAt DateTime        @default(now()) @map("created_at")
+  posts     LitspacePost[]
+
+  @@map("litspace_categories")
+}
+
+// Litspace Posts
+model LitspacePost {
+  id           String            @id @default(uuid())
+  title        String
+  slug         String            @unique
+  excerpt      String?           @db.Text
+  content      String            @db.Text
+  writerName   String            @map("writer_name")
+  writerEmail  String            @map("writer_email")
+  categoryId   String            @map("category_id")
+  approved     Boolean           @default(false)
+  featured     Boolean           @default(false)
+  metaTitle    String?           @map("meta_title")
+  metaDescription String?        @map("meta_description") @db.Text
+  createdAt    DateTime          @default(now()) @map("created_at")
+  updatedAt    DateTime          @updatedAt @map("updated_at")
+  
+  category     LitspaceCategory  @relation(fields: [categoryId], references: [id])
+
+  @@map("litspace_posts")
+}
+
+// Careers
+model Career {
+  id                String   @id @default(uuid())
+  title             String
+  slug              String   @unique
+  shortDescription  String?  @map("short_description") @db.Text
+  description       String   @db.Text
+  responsibilities  String   @db.Text
+  requirements      String   @db.Text
+  skills            String   @db.Text
+  location          String
+  jobType           String   @map("job_type")
+  experienceLevel   String   @map("experience_level")
+  salaryRange       String?  @map("salary_range")
+  applicationEmail  String   @map("application_email")
+  applicationLink   String?  @map("application_link")
+  metaTitle         String?  @map("meta_title")
+  metaDescription   String?  @map("meta_description") @db.Text
+  status            String   @default("active")
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  @@map("careers")
+}

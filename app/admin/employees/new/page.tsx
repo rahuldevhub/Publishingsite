@@ -1,0 +1,316 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { createClient } from "@supabase/supabase-js";
+import ImageUpload from "@/app/admin/components/ImageUpload";
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
+
+function generateSlug(name: string) {
+  return name.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
+const EMPLOYEE_ID_RE = /^[A-Z0-9]+$/;
+
+const emptyForm = {
+  name: "",
+  slug: "",
+  employee_id: "",
+  role: "",
+  department: "",
+  bio: "",
+  profile_photo: "",
+  linkedin: "",
+  employment_type: "Full-time",
+  joined_date: "",
+  active: true,
+  display_order: 0,
+  reporting_manager_id: "",
+};
+
+type Manager = { id: string; name: string; role: string };
+
+export default function NewEmployeePage() {
+  const router = useRouter();
+  const [form, setForm] = useState(emptyForm);
+  const [managers, setManagers] = useState<Manager[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    supabase
+      .from("employees")
+      .select("id, name, role")
+      .eq("active", true)
+      .order("name")
+      .then(({ data }) => setManagers((data as Manager[]) ?? []));
+  }, []);
+
+  function handleNameChange(value: string) {
+    setForm((f) => ({ ...f, name: value, slug: generateSlug(value) }));
+  }
+
+  function handleChange(field: string, value: string | boolean | number) {
+    setForm((f) => ({ ...f, [field]: value }));
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setError("");
+
+    if (!EMPLOYEE_ID_RE.test(form.employee_id)) {
+      setError("Employee ID must be uppercase letters and numbers only (e.g. EMP001).");
+      return;
+    }
+
+    setLoading(true);
+
+    const { error: insertError } = await supabase.from("employees").insert({
+      name: form.name,
+      slug: form.slug,
+      employee_id: form.employee_id,
+      role: form.role,
+      department: form.department,
+      bio: form.bio || null,
+      profile_photo: form.profile_photo || null,
+      linkedin: form.linkedin || null,
+      employment_type: form.employment_type,
+      joined_date: form.joined_date,
+      active: form.active,
+      display_order: Number(form.display_order),
+      reporting_manager_id: form.reporting_manager_id || null,
+    });
+
+    setLoading(false);
+
+    if (insertError) {
+      setError(insertError.message);
+      return;
+    }
+
+    setSuccess(true);
+    setTimeout(() => router.push("/admin/employees"), 1200);
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <header className="bg-white border-b border-gray-200">
+        <div className="max-w-3xl mx-auto px-6 py-4 flex items-center gap-3">
+          <Link href="/admin/employees" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
+            ← Employees
+          </Link>
+          <span className="text-gray-300">/</span>
+          <h1 className="text-lg font-semibold text-gray-900">New Employee</h1>
+        </div>
+      </header>
+
+      <main className="max-w-3xl mx-auto px-6 py-8">
+        <div className="bg-white rounded-xl border border-gray-200 px-8 py-8">
+          {success && (
+            <div className="mb-6 bg-green-50 border border-green-200 text-green-700 text-sm rounded-lg px-4 py-3">
+              Employee created successfully! Redirecting…
+            </div>
+          )}
+
+          {error && (
+            <div className="mb-6 bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg px-4 py-3">
+              {error}
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Name + Slug */}
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">Name <span className="text-red-500">*</span></label>
+                <input
+                  type="text"
+                  required
+                  value={form.name}
+                  onChange={(e) => handleNameChange(e.target.value)}
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                  placeholder="Jane Smith"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">Slug <span className="text-red-500">*</span></label>
+                <input
+                  type="text"
+                  required
+                  value={form.slug}
+                  onChange={(e) => handleChange("slug", e.target.value)}
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                  placeholder="jane-smith"
+                />
+              </div>
+            </div>
+
+            {/* Employee ID + Reporting Manager */}
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  Employee ID <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={form.employee_id}
+                  onChange={(e) => handleChange("employee_id", e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, ""))}
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent font-mono"
+                  placeholder="e.g., EMP001, EMP002"
+                />
+                <p className="mt-1 text-xs text-gray-400">Uppercase letters and numbers only. Must be unique.</p>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">Reporting Manager</label>
+                <select
+                  value={form.reporting_manager_id}
+                  onChange={(e) => handleChange("reporting_manager_id", e.target.value)}
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent bg-white"
+                >
+                  <option value="">— None —</option>
+                  {managers.map((m) => (
+                    <option key={m.id} value={m.id}>{m.name} – {m.role}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            {/* Role + Department */}
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">Role <span className="text-red-500">*</span></label>
+                <input
+                  type="text"
+                  required
+                  value={form.role}
+                  onChange={(e) => handleChange("role", e.target.value)}
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                  placeholder="Senior Editor"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">Department <span className="text-red-500">*</span></label>
+                <input
+                  type="text"
+                  required
+                  value={form.department}
+                  onChange={(e) => handleChange("department", e.target.value)}
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                  placeholder="Editorial"
+                />
+              </div>
+            </div>
+
+            {/* Bio */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Bio</label>
+              <textarea
+                rows={4}
+                value={form.bio}
+                onChange={(e) => handleChange("bio", e.target.value)}
+                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent resize-none"
+                placeholder="A short bio about the employee…"
+              />
+            </div>
+
+            {/* Profile Photo + LinkedIn */}
+            <div className="grid grid-cols-2 gap-4">
+              <ImageUpload
+                label="Profile Photo"
+                value={form.profile_photo}
+                onChange={(url) => handleChange("profile_photo", url)}
+                folder="employees"
+              />
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">LinkedIn URL</label>
+                <input
+                  type="url"
+                  value={form.linkedin}
+                  onChange={(e) => handleChange("linkedin", e.target.value)}
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                  placeholder="https://linkedin.com/in/…"
+                />
+              </div>
+            </div>
+
+            {/* Employment Type + Joined Date */}
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">Employment Type <span className="text-red-500">*</span></label>
+                <select
+                  required
+                  value={form.employment_type}
+                  onChange={(e) => handleChange("employment_type", e.target.value)}
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent bg-white"
+                >
+                  <option>Full-time</option>
+                  <option>Part-time</option>
+                  <option>Contract</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">Joined Date <span className="text-red-500">*</span></label>
+                <input
+                  type="date"
+                  required
+                  value={form.joined_date}
+                  onChange={(e) => handleChange("joined_date", e.target.value)}
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                />
+              </div>
+            </div>
+
+            {/* Display Order + Active */}
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">Display Order</label>
+                <input
+                  type="number"
+                  min={0}
+                  value={form.display_order}
+                  onChange={(e) => handleChange("display_order", e.target.value)}
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                />
+              </div>
+              <div className="flex items-end pb-2.5">
+                <label className="flex items-center gap-2.5 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={form.active}
+                    onChange={(e) => handleChange("active", e.target.checked)}
+                    className="w-4 h-4 rounded border-gray-300 text-gray-900 focus:ring-gray-900"
+                  />
+                  <span className="text-sm font-medium text-gray-700">Active</span>
+                </label>
+              </div>
+            </div>
+
+            {/* Actions */}
+            <div className="flex items-center justify-end gap-3 pt-2 border-t border-gray-100">
+              <Link
+                href="/admin/employees"
+                className="px-4 py-2.5 rounded-lg border border-gray-300 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+              >
+                Cancel
+              </Link>
+              <button
+                type="submit"
+                disabled={loading || success}
+                className="px-4 py-2.5 rounded-lg bg-gray-900 text-white text-sm font-medium hover:bg-gray-700 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {loading ? "Saving…" : "Create Employee"}
+              </button>
+            </div>
+          </form>
+        </div>
+      </main>
+    </div>
+  );
+}
