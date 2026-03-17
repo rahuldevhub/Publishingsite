@@ -1,14 +1,9 @@
 import { Metadata } from "next";
-import { createClient } from "@supabase/supabase-js";
 import Link from "next/link";
 import Image from "next/image";
+import { createServerClient } from "@/lib/supabase";
 
 export const dynamic = "force-dynamic";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 const BOOKS_PER_PAGE = 16;
@@ -60,6 +55,7 @@ const selectClass =
   "px-3 py-2 rounded-lg border border-gray-200 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent";
 
 export default async function BooksPage({ searchParams }: PageProps) {
+  const supabase = createServerClient();
   const { genre, format, language, sort, q, page: pageParam } = await searchParams;
   const page = Math.max(1, Number(pageParam) || 1);
   const from = (page - 1) * BOOKS_PER_PAGE;

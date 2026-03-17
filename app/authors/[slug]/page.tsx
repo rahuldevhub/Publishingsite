@@ -1,17 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { createClient } from "@supabase/supabase-js";
+import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
 import Image from "next/image";
 import FadeIn from "../../components/FadeIn";
 import ShareButtons from "./ShareButtons";
 
 export const dynamic = "force-dynamic";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
@@ -49,6 +44,7 @@ type Book = {
 // ── generateMetadata ────────────────────────────────────────────────────────
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const supabase = createServerClient();
   const { slug } = await params;
   const { data } = await supabase
     .from("authors")
@@ -89,6 +85,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 // ── Page ────────────────────────────────────────────────────────────────────
 
 export default async function AuthorPortfolioPage({ params }: PageProps) {
+  const supabase = createServerClient();
   const { slug } = await params;
 
   const { data: authorData, error: authorError } = await supabase

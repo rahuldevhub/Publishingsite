@@ -724,7 +724,7 @@ Choose the right plan and publish your book worldwide with expert support.
         </section>
 
         {/* ── 11. COUNTER STATS ── */}
-        <section className="bg-gray-50 border-t border-gray-100">
+        {/* <section className="bg-gray-50 border-t border-gray-100">
           <div className="max-w-7xl mx-auto px-6 py-16 lg:py-20">
             <FadeIn>
               <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase text-center mb-10">
@@ -733,7 +733,7 @@ Choose the right plan and publish your book worldwide with expert support.
             </FadeIn>
             <CounterStats />
           </div>
-        </section>
+        </section> */}
 
         {/* ── 12. FINAL CTA ── */}
         <section className="relative overflow-hidden">

@@ -1,14 +1,9 @@
-import { createClient } from "@supabase/supabase-js";
+import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 export const metadata: Metadata = {
   title: "Our Team | Ritera Publishing",
@@ -29,6 +24,7 @@ type Employee = {
 };
 
 export default async function EmployeeDirectoryPage() {
+  const supabase = createServerClient();
   const { data: employees, error } = await supabase
     .from("employees")
     .select(

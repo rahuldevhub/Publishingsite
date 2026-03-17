@@ -1,13 +1,8 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { createClient } from "@supabase/supabase-js";
+import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
 import CommentActions from "./CommentActions";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 const selectClass =
   "px-3 py-2 rounded-lg border border-gray-300 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent";
@@ -25,6 +20,7 @@ export default async function CommentsPage({
 }: {
   searchParams: Promise<{ status?: string }>;
 }) {
+  const supabase = createServerClient();
   const cookieStore = await cookies();
   if (!cookieStore.get("admin_session")) {
     redirect("/admin/login");

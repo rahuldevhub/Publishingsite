@@ -1,14 +1,9 @@
 import { Metadata } from "next";
-import { createClient } from "@supabase/supabase-js";
 import Link from "next/link";
 import Image from "next/image";
+import { createServerClient } from "@/lib/supabase";
 
 export const dynamic = "force-dynamic";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
@@ -58,6 +53,7 @@ type Category = {
 };
 
 export default async function BlogPage() {
+  const supabase = createServerClient();
   const [{ data: categories }, { data: posts }, { data: publishedPosts }] = await Promise.all([
     supabase.from("blog_categories").select("id, name, slug").order("name"),
     supabase

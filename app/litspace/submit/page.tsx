@@ -1,12 +1,7 @@
 import { Metadata } from "next";
-import { createClient } from "@supabase/supabase-js";
+import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
 import SubmitForm from "./SubmitForm";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
@@ -25,6 +20,7 @@ export const metadata: Metadata = {
 };
 
 export default async function SubmitPage() {
+  const supabase = createServerClient();
   const { data: categories } = await supabase
     .from("litspace_categories")
     .select("id, name")

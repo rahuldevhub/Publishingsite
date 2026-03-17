@@ -1,15 +1,11 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { createClient } from "@supabase/supabase-js";
+import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
 import AuthorActions from "./AuthorActions";
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
-
 export default async function AuthorsPage() {
+  const supabase = createServerClient();
   const cookieStore = await cookies();
   if (!cookieStore.get("admin_session")) {
     redirect("/admin/login");

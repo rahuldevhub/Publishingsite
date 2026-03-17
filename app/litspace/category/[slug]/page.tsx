@@ -1,14 +1,9 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { createClient } from "@supabase/supabase-js";
+import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
 
 export const dynamic = "force-dynamic";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 const POSTS_PER_PAGE = 12;
@@ -40,6 +35,7 @@ type Post = {
 type Category = { id: string; name: string; slug: string };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const supabase = createServerClient();
   const { slug } = await params;
   const { data: category } = await supabase
     .from("litspace_categories")
@@ -62,6 +58,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function LitspaceCategoryPage({ params, searchParams }: PageProps) {
+  const supabase = createServerClient();
   const { slug } = await params;
   const { page: pageParam } = await searchParams;
   const page = Math.max(1, Number(pageParam) || 1);

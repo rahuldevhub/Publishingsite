@@ -1,10 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+import { createServerClient } from "@/lib/supabase";
 
 function getIp(request: NextRequest): string {
   return (
@@ -15,6 +10,7 @@ function getIp(request: NextRequest): string {
 }
 
 export async function GET(request: NextRequest) {
+  const supabase = createServerClient();
   const postId = request.nextUrl.searchParams.get("postId");
   if (!postId) return NextResponse.json({ error: "Missing postId" }, { status: 400 });
 
@@ -37,6 +33,7 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
+  const supabase = createServerClient();
   const { postId } = await request.json();
   if (!postId) return NextResponse.json({ error: "Missing postId" }, { status: 400 });
 

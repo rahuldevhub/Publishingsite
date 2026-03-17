@@ -1,13 +1,8 @@
-import { createClient } from "@supabase/supabase-js";
+import { createServerClient } from "@/lib/supabase";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
@@ -31,6 +26,7 @@ type Employee = {
 };
 
 async function getEmployee(employee_id: string): Promise<Employee | null> {
+  const supabase = createServerClient();
   const { data, error } = await supabase
     .from("employees")
     .select(

@@ -1,15 +1,10 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { createClient } from "@supabase/supabase-js";
+import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
 import Image from "next/image";
 
 export const dynamic = "force-dynamic";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
@@ -26,6 +21,7 @@ function formatDate(dateStr: string) {
 // ── generateMetadata ──────────────────────────────────────────────────────────
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const supabase = createServerClient();
   const { slug } = await params;
   const { data: book } = await supabase
     .from("books")
@@ -68,6 +64,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 // ── Page ─────────────────────────────────────────────────────────────────────
 
 export default async function BookDetailPage({ params }: PageProps) {
+  const supabase = createServerClient();
   const { slug } = await params;
 
   const { data: book } = await supabase

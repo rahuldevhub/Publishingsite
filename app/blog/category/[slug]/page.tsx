@@ -1,15 +1,10 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { createClient } from "@supabase/supabase-js";
+import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
 import Image from "next/image";
 
 export const dynamic = "force-dynamic";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 const POSTS_PER_PAGE = 12;
@@ -28,6 +23,7 @@ type PageProps = {
 };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const supabase = createServerClient();
   const { slug } = await params;
   const { data: category } = await supabase
     .from("blog_categories")
@@ -61,6 +57,7 @@ type Post = {
 };
 
 export default async function CategoryPage({ params, searchParams }: PageProps) {
+  const supabase = createServerClient();
   const { slug } = await params;
   const { page: pageParam } = await searchParams;
   const page = Math.max(1, Number(pageParam) || 1);

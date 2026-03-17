@@ -1,16 +1,11 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { createClient } from "@supabase/supabase-js";
+import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
 import LikeButton from "./LikeButton";
 import CommentForm from "./CommentForm";
 
 export const dynamic = "force-dynamic";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
@@ -25,6 +20,7 @@ function formatDate(dateStr: string) {
 type PageProps = { params: Promise<{ slug: string }> };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const supabase = createServerClient();
   const { slug } = await params;
   const { data: post } = await supabase
     .from("litspace_posts")
@@ -82,6 +78,7 @@ function renderContent(content: string) {
 // ── Page ─────────────────────────────────────────────────────────────────────
 
 export default async function LitspacePostPage({ params }: PageProps) {
+  const supabase = createServerClient();
   const { slug } = await params;
 
   const { data: post } = await supabase

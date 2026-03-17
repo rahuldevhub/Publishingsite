@@ -1,13 +1,8 @@
 import { Metadata } from "next";
-import { createClient } from "@supabase/supabase-js";
+import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
 
 export const dynamic = "force-dynamic";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
@@ -60,6 +55,7 @@ const EXPERIENCE_COLORS: Record<string, string> = {
 };
 
 export default async function CareersPage({ searchParams }: PageProps) {
+  const supabase = createServerClient();
   const { job_type, location, experience } = await searchParams;
 
   // Fetch all active careers (for filters + listing)
