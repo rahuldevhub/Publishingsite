@@ -1,12 +1,6 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 interface ImageUploadProps {
   value: string;           // current URL (stored in form state)
@@ -34,22 +28,25 @@ export default function ImageUpload({
     setUploadError("");
     setUploading(true);
 
-    const ext = file.name.split(".").pop();
-    const filename = `${folder}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("bucket", bucket);
+    formData.append("folder", folder);
 
-    const { error } = await supabase.storage.from(bucket).upload(filename, file, {
-      cacheControl: "3600",
-      upsert: false,
+    const res = await fetch("/api/admin/upload", {
+      method: "POST",
+      body: formData,
     });
 
-    if (error) {
-      setUploadError(error.message);
+    const json = await res.json();
+
+    if (!res.ok || json.error) {
+      setUploadError(json.error ?? "Upload failed");
       setUploading(false);
       return;
     }
 
-    const { data } = supabase.storage.from(bucket).getPublicUrl(filename);
-    onChange(data.publicUrl);
+    onChange(json.url);
     setUploading(false);
   }
 
