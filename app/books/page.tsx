@@ -107,8 +107,7 @@ export default async function BooksPage({ searchParams }: PageProps) {
             Discover Our Published Books
           </h1>
           <p className="mt-5 text-lg text-gray-300 max-w-2xl leading-relaxed">
-            A curated collection of stories, poems, and ideas from talented authors across India.
-            Every book represents a journey — find yours.
+            A curated collection of novels, stories, poems, and ideas from talented authors published through our self-publishing platform. Every book represents a journey discover what’s possible when you publish your book in India and beyond.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             {genres.slice(0, 5).map((g) => (

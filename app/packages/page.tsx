@@ -29,9 +29,9 @@ export const metadata: Metadata = {
 type Val = true | false | "add-on" | string;
 
 const PACKAGES = [
-  { id: "essential",  name: "Essential",  price: 8999,   popular: false, badge: "" },
-  { id: "standard",  name: "Standard",   price: 19999,  popular: false, badge: "" },
-  { id: "advanced",  name: "Advanced",   price: 34999,  popular: true,  badge: "Most Popular" },
+  { id: "essential",  name: "Essential",  price: 11999,   popular: false, badge: "" },
+  { id: "standard",  name: "Standard",   price: 18999,  popular: false, badge: "" },
+  { id: "advanced",  name: "Advanced",   price: 29999,  popular: true,  badge: "Most Popular" },
   { id: "elite",     name: "Elite",      price: 54999,  popular: false, badge: "" },
   { id: "premium",   name: "Premium",    price: 84999,  popular: false, badge: "" },
   { id: "exclusive", name: "Exclusive",  price: 119999, popular: false, badge: "Best Value" },
@@ -42,38 +42,56 @@ const FEATURES: { category: string; label: string; highlight?: boolean; values: 
   { category: "Publishing Essentials", label: "Dedicated Publishing Manager",      values: [true, true, true, true, true, true] },
   { category: "Publishing Essentials", label: "ISBN Registration",                  values: [true, true, true, true, true, true] },
   { category: "Publishing Essentials", label: "Copyright Registration",             values: [true, true, true, true, true, true] },
-  { category: "Publishing Essentials", label: "100% Royalties to Author",           values: [true, true, true, true, true, true] },
-  { category: "Publishing Essentials", label: "Distribution (Amazon, Flipkart…)",  values: [true, true, true, true, true, true] },
+  { category: "Publishing Essentials", label: " Royalty",           values: ["100%", "100%", "100%", "100%", "100%", "100%"] },
+  { category: "Publishing Essentials", label: " Author Dashboard",          values: [true, true, true, true, true, true] },
+  { category: "Publishing Essentials", label: "Indian Distribution",                values: [true, true, true, true, true, true] },
   { category: "Publishing Essentials", label: "International Distribution",         values: [false, true, true, true, true, true] },
   { category: "Publishing Essentials", label: "E-Book Publishing",                  values: [false, true, true, true, true, true] },
   { category: "Publishing Essentials", label: "Certificate of Publication",         values: [true, true, true, true, true, true] },
-  { category: "Publishing Essentials", label: "Author Copies",                      values: ["2", "5", "10", "15", "25", "50"] },
-  { category: "Publishing Essentials", label: "WhatsApp Support",                   values: [false, true, true, true, true, true] },
+  { category: "Publishing Essentials", label: "Digital Proof",         values: [true, true, true, true, true, true] },
+  { category: "Publishing Essentials", label: "Author Copies",                      values: ["5", "5", "10", "15", "25", "50"] },
+  { category: "Publishing Essentials", label: "Profit Payout",                      values: ["On demand", "On demand", "On demand", "On demand", "On demand", "On demand"] },
+  { category: "Publishing Essentials", label: "Post Publishing Support",            values: [true, true, true, true, true, true] },
   // Design & Formatting
-  { category: "Design & Formatting", label: "Cover Design",                         values: ["Basic", "Standard", "Premium", "Premium+", "Custom", "Custom+"] },
-  { category: "Design & Formatting", label: "Interior Formatting",                  values: [true, true, true, true, true, true] },
-  { category: "Design & Formatting", label: "Spine & Back Cover",                   values: [true, true, true, true, true, true] },
-  { category: "Design & Formatting", label: "Author Photo on Cover",                values: [false, false, true, true, true, true] },
-  { category: "Design & Formatting", label: "Hardcover Edition",                    values: [false, false, false, false, "add-on", true] },
+  { category: "Design & Formatting", label: "Cover Design",                         values: ["Basic", "Standard", "Premium", "Premium", "Premium", "Premium"] },
+  { category: "Design & Formatting", label: "Interior Formatting",                  values: ["Basic", "Standard", "Premium", "Premium", "Premium", "Premium"] },
+  { category: "Design & Formatting", label: "Design Samples",                      values: ["1", "1", "2", "3", "3", "3"] },
+  { category: "Design & Formatting", label: "Design Revisions",                            values: ["1", "2", "3", "5", "Unlimited", "Unlimited"] },
+  { category: "Design & Formatting", label: "Hardcover Edition",                    values: [false, false, false, false, true, true] },
+  { category: "Design & Formatting", label: "Post Publishing Revision",          values: ["add-on", "add-on", "add-on", "add-on", "add-on", "add-on"] },
+
   // Editing Services
-  { category: "Editing Services",    label: "Proofreading",                         values: [false, true, true, true, true, true] },
-  { category: "Editing Services",    label: "Copy Editing",                          values: [false, false, true, true, true, true] },
-  { category: "Editing Services",    label: "Developmental Editing",                values: [false, false, false, true, true, true] },
   { category: "Editing Services",    label: "Beta Reading",                          values: [false, false, true, true, true, true] },
+  { category: "Editing Services",    label: "Proofreading",                         values: [false, false, false, false, true, true] },
+  { category: "Editing Services",    label: "Copy Editing",                          values: ["add-on", "add-on", "add-on", "add-on", "add-on", "add-on"] },
+  { category: "Editing Services",    label: "Developmental Editing",                values: ["add-on", "add-on", "add-on", "add-on", "add-on", "add-on"] },
+  { category: "Editing Services",    label: "Rewriting",                          values: ["add-on", "add-on", "add-on", "add-on", "add-on", "add-on"] },
   { category: "Editing Services",    label: "Revision Rounds",                       values: ["1", "2", "3", "5", "Unlimited", "Unlimited"] },
+
+
+
+
   // Marketing & Promotion
-  { category: "Marketing & Promotion", label: "Book Reviews",                       values: [false, "5", "10", "15", "20", "25"] },
-  { category: "Marketing & Promotion", label: "Author Website",                     values: [false, false, true, true, true, true] },
-  { category: "Marketing & Promotion", label: "Author Profile Page",                values: [false, false, true, true, true, true] },
-  { category: "Marketing & Promotion", label: "Social Media Promotion",             values: [false, false, true, true, true, true] },
+  { category: "Marketing & Promotion", label: "Author Profile Page",                values: [true, true, true, true, true, true] },
+  { category: "Marketing & Promotion", label: "Author Website",                     values: [false, true, false, false, true, false] },
+  { category: "Marketing & Promotion", label: "Book Reviews",                       values: [false, false, true, true, true, true] },
+  { category: "Marketing & Promotion", label: "Social Media Promotion",             values: [false, false, true, true, true ,true] },
   { category: "Marketing & Promotion", label: "Kindle Promotions",                  values: [false, false, true, true, true, true] },
-  { category: "Marketing & Promotion", label: "Amazon Ads Management",              values: [false, false, false, true, true, true] },
-  { category: "Marketing & Promotion", label: "Press Release",                      values: [false, false, false, true, true, true] },
-  { category: "Marketing & Promotion", label: "Author Branding Kit",                values: [false, false, false, true, true, true] },
-  { category: "Marketing & Promotion", label: "Book Launch Event",                  values: [false, false, false, false, true, true] },
-  { category: "Marketing & Promotion", label: "Video Book Trailer",                 values: [false, false, false, "add-on", true, true] },
+  
+  { category: "Marketing & Promotion", label: "Author Branding Kit",                values: [false, false, "Basic", "Strandard", "Premium" ,"Exclusive"] },
+  { category: "Marketing & Promotion", label: "Author Awards",                      values: [false, false, false, true, true, true] },
+  { category: "Marketing & Promotion", label: "Book Trailer",                       values: [false, false, true, true, true, true] },
+  { category: "Marketing & Promotion", label: "Amazon Prime Placement",             values: [false, false, true, true, true, true] },
+  { category: "Marketing & Promotion", label: "Amazon Sponsored Ads Setup ",        values: [false, false, true, true, true, true] },
+  { category: "Marketing & Promotion", label: "Amazon Sponsored Ads",              values: ["add-on", "add-on", "add-on", "add-on", "add-on", "add-on"] },
+  { category: "Marketing & Promotion", label: "Amazon A+ Listing",              values: ["add-on", "add-on", "add-on", "add-on", "add-on", "add-on"] },
+  { category: "Marketing & Promotion", label: "Book Launch Event",                  values: ["add-on", "add-on", "add-on", "add-on", "add-on", "add-on"] },
+  { category: "Marketing & Promotion", label: "Press Release",                      values: ["add-on", "add-on", "add-on", "add-on", "add-on", "add-on"] },
+
   // Additional Services
-  { category: "Additional Services", label: "Audio Book Production", highlight: true, values: [false, false, "add-on", "add-on", true, true] },
+  { category: "Additional Services", label: "Audio Book Production", highlight: true, values: [false, false, "add-on", "add-on", "add-on", true] },
+  { category: "Additional Services", label: "Additional Copies",          values: ["add-on", "add-on", "add-on", "add-on", "add-on", "add-on"] },
+  { category: "Additional Services", label: "Bulk Printing",  values: ["add-on", "add-on", "add-on", "add-on", "add-on", "add-on"] },
   { category: "Additional Services", label: "Priority Support",                     values: [false, false, false, true, true, true] },
   { category: "Additional Services", label: "Dedicated Account Manager",            values: [false, false, false, false, true, true] },
 ];
@@ -157,7 +175,7 @@ export default function PackagesPage() {
             Ritera&apos;s Packages — Crafted for Every Author
           </h1>
           <p className="mt-6 text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            From first-time writers to seasoned authors — we&apos;ve got the right package for you. Flexible, transparent pricing with no hidden fees.
+            From first-time author publishing in India to experienced writers looking to scale, we offer flexible self publishing packages tailored to your goals. 
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <a
@@ -176,10 +194,10 @@ export default function PackagesPage() {
           {/* Stats */}
           <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto">
             {[
-              { stat: "500+", label: "Books Published" },
-              { stat: "100%", label: "Royalties to Author" },
-              { stat: "50+", label: "Platform Distribution" },
-              { stat: "24h", label: "Expert Support" },
+              { stat: "24/7", label: "Expert Support" },
+              { stat: "100%", label: "Author Royalties" },
+              { stat: "160+", label: "Countries Reached" },
+              { stat: "4.9/5", label: "Author Satisfaction" },
             ].map((item) => (
               <div key={item.stat} className="text-center">
                 <div className="text-3xl font-bold text-white">{item.stat}</div>
@@ -383,7 +401,7 @@ export default function PackagesPage() {
                   </svg>
                 ),
                 title: "International Distribution",
-                body: "Your book available on Amazon, Flipkart, and 50+ global platforms — reaching readers across India and worldwide.",
+                body: "Your book wil be available on Amazon, Flipkart, and 40000+ global platforms — reaching readers across India and worldwide.",
               },
               {
                 icon: (
@@ -392,7 +410,7 @@ export default function PackagesPage() {
                   </svg>
                 ),
                 title: "Personalised Author Care",
-                body: "A dedicated publishing manager works with you from day one. You&apos;re never just a ticket number — you're a partner.",
+                body: "A dedicated publishing manager works with you from day one. You're never just a ticket number — you're a partner.",
               },
             ].map((card) => (
               <div key={card.title} className="bg-white rounded-2xl border border-gray-200 p-6">

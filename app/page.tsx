@@ -38,16 +38,17 @@ const orgSchema = {
 
 const STATS_BAR = [
   { value: "100%", label: "Author Royalties" },
-  { value: "30", suffix: " Days", label: "Avg. Publishing Time" },
+  { value: "", suffix: " Tailored", label: " Publishing Timeline" },
   { value: "160+", label: "Countries Reached" },
+  { value: "40000+", label: "Online Stores" },
+
   { value: "4.9/5", label: "Author Satisfaction" },
-  { value: "500+", label: "Books Published" },
 ];
 
 const SERVICES = [
   {
     title: "Fast Publishing",
-    desc: "From manuscript to global shelves in just 30 days. We move at your pace, no unnecessary delays, no chasing updates.",
+    desc: "From manuscript to global shelves in just 30 days. Our self-publishing services in India move at your pace. No delays, no chasing updates.",
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
@@ -56,7 +57,7 @@ const SERVICES = [
   },
   {
     title: "Global Distribution",
-    desc: "Your book on Amazon, Flipkart, and in 160+ countries through our worldwide distribution network. Because great stories belong everywhere.",
+    desc: "Your book on Amazon, Flipkart, and in 160+ countries through our book printing and publishing network, because great stories belong everywhere.",
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
@@ -65,7 +66,7 @@ const SERVICES = [
   },
   {
     title: "100% Royalties",
-    desc: "Every rupee you earn is yours. No hidden fees, no deductions, no surprises; just complete transparency from day one",
+    desc: "Every rupee you earn is yours. Built for authors who choose self-publishing in India with complete transparency and no hidden fees.",
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -74,7 +75,7 @@ const SERVICES = [
   },
   {
     title: "Professional Editing",
-    desc: "From proofreading to developmental editing, our experienced literary professionals make sure your manuscript is publish-ready and polished.",
+    desc: "From proofreading to developmental editing, our experts provide manuscript editing services to make your book publish-ready and polished.",
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
@@ -83,7 +84,7 @@ const SERVICES = [
   },
   {
     title: "Marketing Support",
-    desc: "Specialized marketing, Amazon Ads, social media campaigns, press releases, and author branding. We amplify your reach and put your book in front of the right readers.",
+    desc: "Strategic campaigns, Amazon Ads, and branding support to help you publish your book in India and reach the right readers globally..",
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 110-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 01-1.44-4.282m3.102.069a18.03 18.03 0 01-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 018.835 2.535M10.34 6.66a23.847 23.847 0 008.835-2.535m0 0A23.74 23.74 0 0018.795 3m.38 1.125a23.91 23.91 0 011.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 001.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 010 3.46" />
@@ -92,7 +93,7 @@ const SERVICES = [
   },
   {
     title: "24/7 Author Support",
-    desc: "Email, WhatsApp, and phone support, available around the clock, because you should never feel alone in your publishing journey.",
+    desc: "Email, WhatsApp, and phone support, ideal for first-time authors publishing in India, so you’re never alone in your journey.",
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
@@ -171,7 +172,7 @@ const TESTIMONIALS = [
 const PACKAGES = [
   {
     name: "Essential",
-    price: "₹8,999",
+    price: "₹11,999",
     highlight: false,
     features: [
       "ISBN & Copyright Registration",
@@ -194,7 +195,7 @@ const PACKAGES = [
   },
   {
     name: "Premium",
-    price: "₹69,999",
+    price: "₹84,999",
     highlight: false,
     features: [
       "Everything in Advanced",
@@ -255,9 +256,9 @@ export default function HomePage() {
               </p>
 
               <p className="mt-5 text-base lg:text-lg text-gray-400 max-w-xl leading-relaxed">
-            Ritera is a global self-publishing platform helping authors publish with confidence.
-Get complete support — from professional editing and cover design to worldwide distribution.
-Keep 100% royalties and full creative freedom while your story reaches readers everywhere.
+            Ritera is a global self-publishing platform helping authors publish their book in India and worldwide. 
+            Get complete support from manuscript editing and book cover design to e-book publishing and global distribution. 
+
               </p>
 
               {/* CTAs */}
@@ -348,6 +349,8 @@ Keep 100% royalties and full creative freedom while your story reaches readers e
           </div>
         </section>
 
+        
+
         {/* ── 3. ABOUT US ── */}
         <section className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
           <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
@@ -409,6 +412,115 @@ Keep 100% royalties and full creative freedom while your story reaches readers e
           </div>
         </section>
 
+        {/* ── 7. BOOKS CAROUSEL ── */}
+        <section className="bg-gray-50 border-t border-gray-100">
+          <div className="max-w-7xl mx-auto px-6 py-20 lg:py-24">
+            <FadeIn>
+              <div className="flex items-end justify-between mb-10">
+                <div>
+                  <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-2">
+                    Our Catalogue
+                  </p>
+                  <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
+                    Recent Publications
+                  </h2>
+                </div>
+                <Link
+                  href="/books"
+                  className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-gray-900 transition-colors"
+                >
+                  View All Books →
+                </Link>
+              </div>
+            </FadeIn>
+
+            <FadeIn delay={80}>
+              <BooksCarousel />
+            </FadeIn>
+
+            <div className="mt-8 text-center sm:hidden">
+              <Link href="/books" className="text-sm font-semibold text-gray-700 underline underline-offset-2">
+                View All Books →
+              </Link>
+            </div>
+          </div>
+        </section>
+
+         {/* ── 8. PACKAGES PREVIEW ── */}
+        <section className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
+          <FadeIn>
+            <div className="text-center mb-14">
+              <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-3">
+                Pricing
+              </p>
+              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                Choose Your Publishing Package
+              </h2>
+              <p className="text-gray-500 text-base lg:text-lg max-w-xl mx-auto">
+         Simple, transparent self publishing packages designed for every author. Choose the right plan and publish your book in India and worldwide.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="grid sm:grid-cols-3 gap-5 items-start">
+            {PACKAGES.map((pkg, i) => (
+              <FadeIn key={pkg.name} delay={i * 80}>
+                <div
+                  className={`rounded-2xl border overflow-hidden ${
+                    pkg.highlight
+                      ? "bg-gray-900 border-gray-900 shadow-2xl shadow-gray-900/20 sm:-mt-4 sm:mb-4"
+                      : "bg-white border-gray-200 shadow-sm"
+                  }`}
+                >
+                  {pkg.highlight && (
+                    <div className="bg-amber-400 text-gray-900 text-center text-xs font-bold py-2 tracking-wide uppercase">
+                      {pkg.badge}
+                    </div>
+                  )}
+                  <div className="p-7">
+                    <p className={`text-xs font-semibold tracking-widest uppercase mb-2 ${pkg.highlight ? "text-gray-400" : "text-gray-500"}`}>
+                      {pkg.name}
+                    </p>
+                    <p className={`text-4xl font-black mb-1 ${pkg.highlight ? "text-white" : "text-gray-900"}`}>
+                      {pkg.price}
+                    </p>
+                    <p className={`text-xs mb-6 ${pkg.highlight ? "text-gray-500" : "text-gray-400"}`}>
+                      one-time | No hidden fees
+                    </p>
+
+                    <ul className="space-y-3 mb-8">
+                      {pkg.features.map((f) => (
+                        <li key={f} className="flex items-start gap-2.5">
+                          <svg
+                            className={`w-4 h-4 mt-0.5 shrink-0 ${pkg.highlight ? "text-amber-400" : "text-gray-400"}`}
+                            viewBox="0 0 20 20" fill="currentColor"
+                          >
+                            <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                          </svg>
+                          <span className={`text-sm leading-snug ${pkg.highlight ? "text-gray-300" : "text-gray-600"}`}>
+                            {f}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <Link
+                      href="/packages"
+                      className={`block w-full text-center py-3 rounded-xl font-semibold text-sm transition-colors ${
+                        pkg.highlight
+                          ? "bg-amber-400 text-gray-900 hover:bg-amber-300"
+                          : "border border-gray-300 text-gray-700 hover:border-gray-900 hover:text-gray-900"
+                      }`}
+                    >
+                      View Details →
+                    </Link>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </section>
+
         {/* ── 4. WHAT SETS US APART ── */}
         <section className="bg-gray-50 border-t border-b border-gray-100">
           <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
@@ -421,7 +533,7 @@ Keep 100% royalties and full creative freedom while your story reaches readers e
                   What Sets Us Apart
                 </h2>
                 <p className="text-gray-500 text-base lg:text-lg max-w-2xl mx-auto">
-                  Every feature is built around one goal : making your publishing journey
+                  Every feature is built around one goal: making your publishing journey
                   smooth, profitable, and unforgettable.
                 </p>
               </div>
@@ -559,115 +671,9 @@ Keep 100% royalties and full creative freedom while your story reaches readers e
           </div>
         </section>
 
-        {/* ── 7. BOOKS CAROUSEL ── */}
-        <section className="bg-gray-50 border-t border-gray-100">
-          <div className="max-w-7xl mx-auto px-6 py-20 lg:py-24">
-            <FadeIn>
-              <div className="flex items-end justify-between mb-10">
-                <div>
-                  <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-2">
-                    Our Catalogue
-                  </p>
-                  <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
-                    Recent Publications
-                  </h2>
-                </div>
-                <Link
-                  href="/books"
-                  className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-gray-900 transition-colors"
-                >
-                  View All Books →
-                </Link>
-              </div>
-            </FadeIn>
+        
 
-            <FadeIn delay={80}>
-              <BooksCarousel />
-            </FadeIn>
-
-            <div className="mt-8 text-center sm:hidden">
-              <Link href="/books" className="text-sm font-semibold text-gray-700 underline underline-offset-2">
-                View All Books →
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* ── 8. PACKAGES PREVIEW ── */}
-        <section className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
-          <FadeIn>
-            <div className="text-center mb-14">
-              <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-3">
-                Pricing
-              </p>
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                Choose Your Publishing Package
-              </h2>
-              <p className="text-gray-500 text-base lg:text-lg max-w-xl mx-auto">
-          Simple, transparent publishing packages for every author.
-Choose the right plan and publish your book worldwide with expert support.
-              </p>
-            </div>
-          </FadeIn>
-
-          <div className="grid sm:grid-cols-3 gap-5 items-start">
-            {PACKAGES.map((pkg, i) => (
-              <FadeIn key={pkg.name} delay={i * 80}>
-                <div
-                  className={`rounded-2xl border overflow-hidden ${
-                    pkg.highlight
-                      ? "bg-gray-900 border-gray-900 shadow-2xl shadow-gray-900/20 sm:-mt-4 sm:mb-4"
-                      : "bg-white border-gray-200 shadow-sm"
-                  }`}
-                >
-                  {pkg.highlight && (
-                    <div className="bg-amber-400 text-gray-900 text-center text-xs font-bold py-2 tracking-wide uppercase">
-                      {pkg.badge}
-                    </div>
-                  )}
-                  <div className="p-7">
-                    <p className={`text-xs font-semibold tracking-widest uppercase mb-2 ${pkg.highlight ? "text-gray-400" : "text-gray-500"}`}>
-                      {pkg.name}
-                    </p>
-                    <p className={`text-4xl font-black mb-1 ${pkg.highlight ? "text-white" : "text-gray-900"}`}>
-                      {pkg.price}
-                    </p>
-                    <p className={`text-xs mb-6 ${pkg.highlight ? "text-gray-500" : "text-gray-400"}`}>
-                      one-time | No hidden fees
-                    </p>
-
-                    <ul className="space-y-3 mb-8">
-                      {pkg.features.map((f) => (
-                        <li key={f} className="flex items-start gap-2.5">
-                          <svg
-                            className={`w-4 h-4 mt-0.5 shrink-0 ${pkg.highlight ? "text-amber-400" : "text-gray-400"}`}
-                            viewBox="0 0 20 20" fill="currentColor"
-                          >
-                            <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-                          </svg>
-                          <span className={`text-sm leading-snug ${pkg.highlight ? "text-gray-300" : "text-gray-600"}`}>
-                            {f}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <Link
-                      href="/packages"
-                      className={`block w-full text-center py-3 rounded-xl font-semibold text-sm transition-colors ${
-                        pkg.highlight
-                          ? "bg-amber-400 text-gray-900 hover:bg-amber-300"
-                          : "border border-gray-300 text-gray-700 hover:border-gray-900 hover:text-gray-900"
-                      }`}
-                    >
-                      View Details →
-                    </Link>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </section>
+       
 
         {/* ── 9. IMPACT QUOTE ── */}
         <section className="bg-gray-900 text-white relative overflow-hidden">
@@ -748,7 +754,7 @@ Choose the right plan and publish your book worldwide with expert support.
                 Story to Life?
               </h2>
               <p className="text-white/80 text-base lg:text-lg mb-10 max-w-xl mx-auto leading-relaxed">
-                Join 500+ authors who chose Ritera to share their voice with the world.
+                Join a communinty of authors who chose Ritera to share their voice with the world.
                 Your manuscript is waiting.
               </p>
 

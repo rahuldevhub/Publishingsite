@@ -92,8 +92,7 @@ export default async function BlogPage() {
             Stories, Insights &amp; Publishing News
           </h1>
           <p className="mt-6 text-lg text-gray-300 max-w-2xl leading-relaxed">
-            Expert advice for self-publishing authors, insider knowledge on the publishing industry,
-            literary inspiration, and creative guidance — all from the Ritera Publishing team.
+            Expert advice for authors using self publishing services, insights into the publishing industry, literary inspiration, and practical guidance to help you publish your book in India and worldwide, all from the Ritera Publishing team.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
             {typedCategories.slice(0, 5).map((cat) => (

@@ -7,7 +7,7 @@ import NewsletterForm from "./NewsletterForm";
 const QUICK_LINKS = [
   { label: "Home",                 href: "/" },
   { label: "About Us",             href: "/aboutus" },
-  { label: "People Behind Ritera", href: "/people-behind-ritera" },
+  // { label: "People Behind Ritera", href: "/people-behind-ritera" },
   { label: "Packages",             href: "/packages" },
   { label: "Books",                href: "/books" },
 ];

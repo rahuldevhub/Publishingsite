@@ -73,9 +73,7 @@ export default function AboutPage() {
                 RITERA Brings it to Life
               </p>
               <p className="mt-6 text-base lg:text-lg text-gray-400 leading-relaxed max-w-xl">
-               Publish with confidence and expert support.
-Reach readers globally across 160+ countries.
-Keep full creative control and 100% royalties.
+               Publish with confidence through professional self publishing services. Reach readers globally across 160+ countries with full creative control and 100% royalties.
               </p>
               <a
                 href="#virtual-meet"
@@ -138,11 +136,13 @@ Keep full creative control and 100% royalties.
                 Virtual Meet
               </h2>
               <p className="text-gray-600 leading-relaxed text-base lg:text-lg">
-               Our Annual Virtual Literary Meet brings together authors, readers, and creators from around the world.
-              </p>
+               Our Annual Virtual Literary Meet brings together authors, readers, and creators from around the world. Connect with writers and learn from experts in self-publishing services. Grow your readership after you publish your book in India and worldwide.
+
+
+              </p><br/>
                <p className="text-gray-600 leading-relaxed text-base lg:text-lg">
               
-              Because at Ritera, publishing a book is just the beginning — building a community around it is where the magic truly happens.
+              Because at Ritera, self publishing a book is just the beginning — building a community around your work is where the magic truly happens.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 {["Writers", "Readers", "Reviewers", "Critics"].map((tag) => (
@@ -331,7 +331,7 @@ Keep full creative control and 100% royalties.
                       </div>
                       <div>
                         <p className="font-bold text-white text-sm">{story.author}</p>
-                        <p className="text-xs text-gray-400 italic">&ldquo;{story.book}&rdquo;</p>
+                        {/* <p className="text-xs text-gray-400 italic">&ldquo;{story.book}&rdquo;</p> */}
                       </div>
                     </div>
                   </div>
@@ -522,7 +522,7 @@ Keep full creative control and 100% royalties.
                     supported every step of the way.&rdquo;
                   </blockquote>
                   <p className="text-xs font-semibold text-amber-400 uppercase tracking-wide">
-                    Loe Markdo, Author
+                    Shahitha Fareen, Writer, Physiotherapist
                   </p>
                 </div>
               </div>

@@ -123,8 +123,7 @@ export default async function LitspacePage() {
             Welcome to LitSpace
           </h1>
           <p className="mt-5 text-lg text-gray-300 max-w-2xl leading-relaxed">
-            A community platform for poets, writers, and storytellers. Share your work, discover new
-            voices, and connect with readers who love words as much as you do.
+            A community platform for poets, writers, and storytellers. Share your work, discover new voices, and connect with readers while you begin your journey in self publishing.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             {typedCategories.slice(0, 5).map((cat) => (
