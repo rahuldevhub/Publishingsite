@@ -132,28 +132,24 @@ function groupFeatures(features: typeof FEATURES) {
 
 const FAQ_ITEMS = [
   {
-    q: "What's included in each package?",
-    a: "Every package includes a dedicated publishing manager, ISBN & copyright registration, cover design, interior formatting, distribution on major platforms (Amazon, Flipkart, and more), and 100% royalties to you as the author. Higher packages add editing, marketing, and promotional services.",
+    q: "How do I choose the right book publishing package in India?",
+    a: "Choose a package based on your needs — editing, design, and distribution. The right book publishing package in India should match your goals and budget.",
   },
   {
-    q: "Can I upgrade my package later?",
-    a: "Yes! You can upgrade to a higher package at any time by paying the difference in price. Contact your publishing manager or reach out to us and we'll make the transition seamless.",
+    q: "Are there affordable options for book publishing in India?",
+    a: "Yes, many platforms offer affordable book publishing in India with flexible pricing based on the services you select.",
   },
   {
-    q: "What payment options are available?",
-    a: "We accept all major payment methods including UPI, net banking, credit/debit cards, and EMI options. We also offer flexible payment plans for higher packages. Contact us to discuss a plan that works for you.",
+    q: "Does a publishing package include book printing and distribution?",
+    a: "Most packages include book printing and publishing in India, along with online distribution across major platforms.",
   },
   {
-    q: "How long does the publishing process take?",
-    a: "Timeline depends on the package and the scope of work. Essential packages typically take 4–6 weeks. Packages with editing and marketing services take 8–16 weeks. Your publishing manager will give you a detailed timeline after onboarding.",
+    q: "Will I get help with e-book publishing in a package?",
+    a: "Yes, many packages include e-book publishing services, allowing your book to reach readers on digital platforms worldwide.",
   },
   {
-    q: "Do I retain full rights to my book?",
-    a: "Absolutely. You retain 100% ownership and intellectual property rights to your book. We are a service provider — your book is entirely yours.",
-  },
-  {
-    q: "What is an 'Add-on' service?",
-    a: "Add-on services are optional extras you can purchase alongside your package for an additional fee. For example, Audio Book Production can be added to the Advanced or Elite packages. Contact us for add-on pricing.",
+    q: "Do publishing packages include manuscript editing and formatting?",
+    a: "Yes, most professional packages include manuscript editing services and formatting to prepare your book for publishing.",
   },
 ];
 

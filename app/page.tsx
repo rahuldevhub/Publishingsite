@@ -3,6 +3,7 @@ import Link from "next/link";
 import FadeIn from "@/app/components/FadeIn";
 import BooksCarousel from "@/app/components/BooksCarousel";
 import CounterStats from "@/app/aboutus/CounterStats";
+import FAQSection from "@/app/components/FAQSection";
 import aboutimg1 from "../public/landingaboutus1.jpg"
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
@@ -217,7 +218,7 @@ export default function HomePage() {
       <main className="bg-white overflow-x-hidden">
 
         {/* ── 1. HERO ── */}
-        <section className="relative min-h-screen flex items-center bg-gray-900 text-white overflow-hidden">
+        <section className="relative min-h-screen bg-gray-900 text-white overflow-hidden">
           {/* Background texture layers */}
           <div
             className="absolute inset-0 opacity-[0.04]"
@@ -234,90 +235,78 @@ export default function HomePage() {
           <div className="absolute top-32 right-32 w-48 h-48 rounded-full border border-amber-400/10" />
           <div className="absolute bottom-16 left-16 w-40 h-40 rounded-full border border-white/5" />
 
-          <div className="relative max-w-7xl mx-auto px-6 py-24 w-full">
-            <div className="max-w-3xl">
-              {/* Eyebrow */}
-              <div className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-4 py-2 mb-8">
-                <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                <span className="text-xs font-semibold text-gray-200 tracking-wide">
-                  India&apos;s Favourite Self-Publishing Platform
-                </span>
-              </div>
+          {/* ── Right: Mood board video grid — absolute, fills full hero height, flush to edges ── */}
+          <div className="absolute inset-0 hidden lg:flex pointer-events-none">
+            {/* Left spacer — matches the left content column */}
+            <div className="flex-1" />
+            {/* Right grid panel — flush right, top, bottom; only left gap */}
+          
 
-              {/* H1 — only one on the page */}
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight">
-                Empower
-                <br />
-                <span className="text-amber-400">Your Story.</span>
-              </h1>
 
-              <p className="mt-5 text-xl lg:text-2xl font-light text-gray-300">
-                Self-Publish with Confidence
-              </p>
 
-              <p className="mt-5 text-base lg:text-lg text-gray-400 max-w-xl leading-relaxed">
-            Ritera is a global self-publishing platform helping authors publish their book in India and worldwide. 
-            Get complete support from manuscript editing and book cover design to e-book publishing and global distribution. 
 
-              </p>
 
-              {/* CTAs */}
-              <div className="mt-10 flex flex-wrap gap-4">
-                <Link
-                  href="/packages"
-                  className="inline-flex items-center gap-2 px-7 py-4 bg-amber-400 text-gray-900 font-bold rounded-xl hover:bg-amber-300 transition-colors text-sm shadow-lg shadow-amber-400/20"
-                >
-                  Start Publishing
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
-                </Link>
-                <Link
-                  href="/aboutus"
-                  className="inline-flex items-center gap-2 px-7 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-xl border border-white/20 hover:bg-white/20 transition-colors text-sm"
-                >
-                  Learn More
-                </Link>
-              </div>
 
-              {/* Trust mini row */}
-              <div className="mt-12 flex flex-wrap gap-6">
-                {["100% Royalties", "160+ Countries","End-to-End Support"].map((t) => (
-                  <div key={t} className="flex items-center gap-2 text-sm text-gray-400">
-                    <svg className="w-4 h-4 text-amber-400 shrink-0" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+          
+          </div>
+
+          {/* ── Left: text content — vertically centered ── */}
+          <div className="relative flex items-center min-h-screen">
+            <div className="max-w-7xl mx-auto px-6 py-24 w-full">
+              <div className="lg:w-1/2 lg:pr-10">
+                {/* Eyebrow */}
+                <div className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-4 py-2 mb-8">
+                  <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                  <span className="text-xs font-semibold text-gray-200 tracking-wide">
+                    India&apos;s Favourite Self-Publishing Platform
+                  </span>
+                </div>
+
+                {/* H1 — only one on the page */}
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight">
+                  Empower
+                  <br />
+                  <span className="text-amber-400">Your Story.</span>
+                </h1>
+
+                <p className="mt-5 text-xl lg:text-2xl font-light text-gray-300">
+                  Self-Publish with Confidence
+                </p>
+
+                <p className="mt-5 text-base lg:text-lg text-gray-400 max-w-xl leading-relaxed">
+                  Ritera is a global self-publishing platform helping authors publish their book in India and worldwide.
+                  Get complete support from manuscript editing and book cover design to e-book publishing and global distribution.
+                </p>
+
+                {/* CTAs */}
+                <div className="mt-10 flex flex-wrap gap-4">
+                  <Link
+                    href="/packages"
+                    className="inline-flex items-center gap-2 px-7 py-4 bg-amber-400 text-gray-900 font-bold rounded-xl hover:bg-amber-300 transition-colors text-sm shadow-lg shadow-amber-400/20"
+                  >
+                    Start Publishing
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                     </svg>
-                    {t}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right decorative book stack */}
-            <div className="hidden lg:block absolute right-12 top-1/2 -translate-y-1/2">
-              <div className="relative w-80 h-96">
-                {/* Left card */}
-                <div
-                  className="absolute w-48 h-64 rounded-2xl bg-gradient-to-br from-amber-900/60 to-amber-800/40 border border-white/10 shadow-2xl overflow-hidden z-10"
-                  style={{ left: "0%", top: "50%", transform: "translateY(-50%) rotate(-12deg)" }}
-                >
-                  <img src="/landingaboutus1.jpg" alt="Book Cover" className="w-full h-full object-cover rounded-2xl opacity-60" />
+                  </Link>
+                  <Link
+                    href="/aboutus"
+                    className="inline-flex items-center gap-2 px-7 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-xl border border-white/20 hover:bg-white/20 transition-colors text-sm"
+                  >
+                    Learn More
+                  </Link>
                 </div>
 
-                {/* Center card — focal point */}
-                <div
-                  className="absolute w-56 h-72 rounded-2xl bg-gradient-to-br from-gray-700 to-gray-600 border border-amber-400/60 shadow-[0_0_40px_rgba(251,191,36,0.25)] overflow-hidden z-20"
-                  style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%) rotate(0deg)" }}
-                >
-                  <img src="/landingaboutus1.jpg" alt="Book Cover" className="w-full h-full object-cover rounded-2xl opacity-60" />
-                </div>
-
-                {/* Right card */}
-                <div
-                  className="absolute w-48 h-64 rounded-2xl bg-gradient-to-br from-indigo-900/60 to-indigo-800/40 border border-white/10 shadow-2xl overflow-hidden z-10"
-                  style={{ right: "0%", top: "50%", transform: "translateY(-50%) rotate(12deg)" }}
-                >
-                  <img src="/landingaboutus1.jpg" alt="Book Cover" className="w-full h-full object-cover rounded-2xl opacity-60" />
+                {/* Trust mini row */}
+                <div className="mt-12 flex flex-wrap gap-6">
+                  {["100% Royalties", "160+ Countries", "End-to-End Support"].map((t) => (
+                    <div key={t} className="flex items-center gap-2 text-sm text-gray-400">
+                      <svg className="w-4 h-4 text-amber-400 shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                      </svg>
+                      {t}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -356,31 +345,41 @@ export default function HomePage() {
           <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
             {/* Left: image collage */}
             <FadeIn>
-              <div className="relative h-[420px] lg:h-[500px] mb-12 lg:mb-0">
-                {/* Main image block */}
-                <div className="absolute left-0 top-0 w-3/5 h-4/5 rounded-3xl bg-gradient-to-br from-gray-200 to-gray-300 overflow-hidden shadow-xl">
+              <div className="relative mb-12 lg:mb-0" style={{ minHeight: '560px' }}>
+                {/* Card 1: top-left, taller */}
+                <div className="absolute left-0 top-0 w-[52%] h-[75%] overflow-hidden shadow-xl" style={{ borderRadius: '20px' }}>
                   <img src="/landingaboutus1.jpg" alt="Stack of books" className="w-full h-full object-cover" />
                 </div>
 
-                {/* Secondary image */}
-                <div className="absolute right-0 bottom-0 w-2/5 h-3/5 rounded-2xl bg-gradient-to-br from-gray-700 to-gray-800 overflow-hidden shadow-xl">
-                  <img src="/landingaboutus1.jpg" alt="Publishing workspace" className="w-full h-full object-cover" />
+                {/* Card 2: bottom-right, smaller, overlapping card 1 — shifted up so it stays within bounds */}
+                <div className="absolute right-0 w-[44%] h-[58%] overflow-hidden shadow-xl" style={{ borderRadius: '20px', bottom: '60px' }}>
+                  <img src="/images/Jadejulep3.webp" alt="Publishing workspace" className="w-full h-full object-cover" />
                 </div>
 
-                {/* Floating stat card 1 */}
-                <div className="absolute right-4 top-4 bg-white border border-gray-200 rounded-xl shadow-lg px-4 py-3 max-w-[160px] z-10">
-                  <p className="text-xl font-black text-gray-900">12 Days</p>
-                  <p className="text-[10px] text-gray-500 leading-tight mt-0.5">Average time from manuscript to global launch</p>
+                {/* Floating stat card: upper-right, between the two image cards */}
+                <div className="absolute right-2 z-10" style={{ top: '48px', backgroundColor: 'white', borderRadius: '16px', boxShadow: '0 4px 24px rgba(0,0,0,0.08)', padding: '26px 20px', maxWidth: '250px' }}>
+                  <div className="flex items-start justify-between gap-2">
+                    <p className="text-xl font-black text-gray-900 leading-tight">12 Days</p>
+                    <span className="text-green-500 text-base font-bold leading-tight">↗</span>
+                  </div>
+                  <p className="text-[10px] text-gray-500 leading-tight mt-1">Average time from manuscript to global launch</p>
                 </div>
 
-                {/* Floating stat card 2 */}
-                <div className="absolute left-4 bottom-8 bg-gray-900 text-white rounded-xl shadow-xl px-4 py-3 max-w-[160px] z-10">
-                  <p className="text-xl font-black text-amber-400">4.9 / 5</p>
-                  <p className="text-[10px] text-gray-300 leading-tight mt-0.5">Author Satisfaction Score</p>
+                {/* Floating ratings card: bottom-left, fully visible, slightly overlapping card 1 */}
+                <div className="absolute z-10" style={{ left: '0px', bottom: '0px', backgroundColor: 'white', borderRadius: '16px', boxShadow: '0 4px 24px rgba(0,0,0,0.08)', padding: '16px 20px', maxWidth: '300px' }}>
+                  <p className="text-sm font-bold text-gray-900 mb-0.5">Best ratings</p>
+                  <p className="text-[10px] text-gray-500 leading-tight mb-2">4.9/5 Average Author Satisfaction Score. Based on post-publishing surveys.</p>
+                  <div className="flex items-center" style={{ gap: '8px', fontSize: '20px' }}>
+                    <span>😡</span>
+                    <span>😐</span>
+                    <span>🙂</span>
+                    <span>😊</span>
+                    <span>🤩</span>
+                  </div>
                 </div>
 
-                {/* Amber accent */}
-                <div className="absolute -bottom-4 left-1/3 w-20 h-1 bg-amber-400 rounded-full" />
+                {/* Decorative accent bar — bottom-left */}
+                <div className="absolute z-10" style={{ left: '12px', bottom: '-16px', width: '40px', height: '3px', backgroundColor: '#f5a623', borderRadius: '2px' }} />
               </div>
             </FadeIn>
 
@@ -740,6 +739,9 @@ export default function HomePage() {
             <CounterStats />
           </div>
         </section> */}
+
+        {/* ── FAQ ── */}
+        <FAQSection />
 
         {/* ── 12. FINAL CTA ── */}
         <section className="relative overflow-hidden">
