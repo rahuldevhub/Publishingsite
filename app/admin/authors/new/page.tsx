@@ -27,6 +27,7 @@ export default function NewAuthorPage() {
     image_url: "",
     instagram: "",
     twitter: "",
+    linkedin: "",
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -52,6 +53,7 @@ export default function NewAuthorPage() {
       image_url: form.image_url || null,
       instagram: form.instagram || null,
       twitter: form.twitter || null,
+      linkedin: form.linkedin || null,
     });
 
     setLoading(false);
@@ -137,8 +139,8 @@ export default function NewAuthorPage() {
               />
             </div>
 
-            {/* Instagram + Twitter */}
-            <div className="grid grid-cols-2 gap-4">
+            {/* Instagram + Twitter + LinkedIn */}
+            <div className="grid grid-cols-3 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">Instagram URL</label>
                 <input
@@ -157,6 +159,16 @@ export default function NewAuthorPage() {
                   onChange={(e) => handleChange("twitter", e.target.value)}
                   className={inputClass}
                   placeholder="https://x.com/…"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">LinkedIn URL</label>
+                <input
+                  type="url"
+                  value={form.linkedin}
+                  onChange={(e) => handleChange("linkedin", e.target.value)}
+                  className={inputClass}
+                  placeholder="https://linkedin.com/in/…"
                 />
               </div>
             </div>

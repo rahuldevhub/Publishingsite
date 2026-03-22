@@ -84,7 +84,7 @@ export default async function LitspacePostPage({ params }: PageProps) {
   const { data: post } = await supabase
     .from("litspace_posts")
     .select(
-      "id, title, slug, content, excerpt, writer_name, created_at, featured, meta_title, meta_description, category:litspace_categories(id, name, slug)"
+      "id, title, slug, subtitle, content, excerpt, writer_name, author_bio, created_at, featured, meta_title, meta_description, category:litspace_categories(id, name, slug)"
     )
     .eq("slug", slug)
     .eq("approved", true)
@@ -189,11 +189,11 @@ export default async function LitspacePostPage({ params }: PageProps) {
               {category.name}
             </Link>
           )}
-          <h1 className="text-3xl lg:text-5xl font-bold text-gray-900 leading-tight mb-5">
+          <h1 className="text-3xl lg:text-5xl font-bold text-gray-900 leading-tight mb-3">
             {post.title}
           </h1>
-          {post.excerpt && (
-            <p className="text-xl text-gray-600 leading-relaxed mb-6">{post.excerpt}</p>
+          {post.subtitle && (
+            <p className="text-xl text-gray-500 italic mb-4">{post.subtitle}</p>
           )}
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-gray-500 border-t border-gray-100 pt-5">
             <span className="font-medium text-gray-700">{post.writer_name}</span>
@@ -214,6 +214,20 @@ export default async function LitspacePostPage({ params }: PageProps) {
           <div className="prose-content">
             {renderContent(post.content)}
           </div>
+
+          {/* ── Excerpt / Description ── */}
+          {post.excerpt && post.excerpt.trim() !== "" && (
+            <p className="text-xl text-gray-600 leading-relaxed mt-8 mb-2">{post.excerpt}</p>
+          )}
+
+          {/* ── Author Bio ── */}
+          {post.author_bio && (
+            <div className="mt-10 bg-gray-50 rounded-2xl border border-gray-200 p-6">
+              <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-2">About the Writer</p>
+              <p className="font-semibold text-gray-900 text-sm mb-2">{post.writer_name}</p>
+              <p className="text-gray-600 text-sm leading-relaxed">{post.author_bio}</p>
+            </div>
+          )}
 
           {/* ── Like + Share ── */}
           <div className="mt-10 pt-8 border-t border-gray-200">

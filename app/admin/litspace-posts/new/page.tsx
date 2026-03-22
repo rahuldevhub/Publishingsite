@@ -22,10 +22,12 @@ type Category = { id: string; name: string };
 const emptyForm = {
   title: "",
   slug: "",
+  subtitle: "",
   excerpt: "",
   content: "",
   writer_name: "",
   writer_email: "",
+  author_bio: "",
   category_id: "",
   meta_title: "",
   meta_description: "",
@@ -63,10 +65,12 @@ export default function NewLitspacePostPage() {
     const { error: insertError } = await supabase.from("litspace_posts").insert({
       title: form.title,
       slug: form.slug,
+      subtitle: form.subtitle || null,
       excerpt: form.excerpt || null,
       content: form.content,
       writer_name: form.writer_name,
-      writer_email: form.writer_email,
+      writer_email: form.writer_email || null,
+      author_bio: form.author_bio || null,
       category_id: form.category_id,
       meta_title: form.meta_title || null,
       meta_description: form.meta_description || null,
@@ -151,16 +155,39 @@ export default function NewLitspacePostPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Writer Email <span className="text-red-500">*</span></label>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">Writer Email</label>
                 <input
                   type="email"
-                  required
                   value={form.writer_email}
                   onChange={(e) => handleChange("writer_email", e.target.value)}
                   className={inputClass}
                   placeholder="jane@example.com"
                 />
               </div>
+            </div>
+
+            {/* Subtitle */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Subtitle</label>
+              <input
+                type="text"
+                value={form.subtitle}
+                onChange={(e) => handleChange("subtitle", e.target.value)}
+                className={inputClass}
+                placeholder="An optional subtitle for the post"
+              />
+            </div>
+
+            {/* Author Bio */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Author Bio</label>
+              <textarea
+                rows={3}
+                value={form.author_bio}
+                onChange={(e) => handleChange("author_bio", e.target.value)}
+                className={`${inputClass} resize-none`}
+                placeholder="A short bio about the writer…"
+              />
             </div>
 
             {/* Category */}

@@ -21,6 +21,7 @@ type AuthorForm = {
   image_url: string;
   instagram: string;
   twitter: string;
+  linkedin: string;
 };
 
 export default function EditAuthorPage() {
@@ -55,6 +56,7 @@ export default function EditAuthorPage() {
         image_url: data.image_url ?? "",
         instagram: data.instagram ?? "",
         twitter: data.twitter ?? "",
+        linkedin: data.linkedin ?? "",
       });
       setLoading(false);
     }
@@ -81,6 +83,7 @@ export default function EditAuthorPage() {
         image_url: form.image_url || null,
         instagram: form.instagram || null,
         twitter: form.twitter || null,
+        linkedin: form.linkedin || null,
       })
       .eq("id", id);
 
@@ -202,8 +205,8 @@ export default function EditAuthorPage() {
               />
             </div>
 
-            {/* Instagram + Twitter */}
-            <div className="grid grid-cols-2 gap-4">
+            {/* Instagram + Twitter + LinkedIn */}
+            <div className="grid grid-cols-3 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">Instagram URL</label>
                 <input
@@ -222,6 +225,16 @@ export default function EditAuthorPage() {
                   onChange={(e) => handleChange("twitter", e.target.value)}
                   className={inputClass}
                   placeholder="https://x.com/…"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">LinkedIn URL</label>
+                <input
+                  type="url"
+                  value={form.linkedin}
+                  onChange={(e) => handleChange("linkedin", e.target.value)}
+                  className={inputClass}
+                  placeholder="https://linkedin.com/in/…"
                 />
               </div>
             </div>

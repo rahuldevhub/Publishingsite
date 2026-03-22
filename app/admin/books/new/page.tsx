@@ -33,6 +33,9 @@ const emptyForm = {
   amazon_link: "",
   flipkart_link: "",
   publisher_link: "",
+  purchase_link_international: "",
+  purchase_link_pothi: "",
+  purchase_link_library: "",
   published_date: "",
   author_id: "",
   featured: false,
@@ -77,13 +80,16 @@ export default function NewBookPage() {
       gallery_images: [],
       isbn: form.isbn || null,
       language: form.language,
-      page_count: Number(form.page_count),
+      page_count: form.page_count ? Number(form.page_count) : null,
       genre: form.genre,
       format: form.format,
       amazon_link: form.amazon_link || null,
       flipkart_link: form.flipkart_link || null,
       publisher_link: form.publisher_link || null,
-      published_date: form.published_date,
+      purchase_link_international: form.purchase_link_international || null,
+      purchase_link_pothi: form.purchase_link_pothi || null,
+      purchase_link_library: form.purchase_link_library || null,
+      published_date: form.published_date || null,
       author_id: form.author_id,
       featured: form.featured,
     });
@@ -180,10 +186,9 @@ export default function NewBookPage() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Published Date <span className="text-red-500">*</span></label>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">Published Date</label>
                 <input
                   type="date"
-                  required
                   value={form.published_date}
                   onChange={(e) => handleChange("published_date", e.target.value)}
                   className={inputClass}
@@ -275,11 +280,9 @@ export default function NewBookPage() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Page Count <span className="text-red-500">*</span></label>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">Page Count</label>
                 <input
                   type="number"
-                  required
-                  min={1}
                   value={form.page_count}
                   onChange={(e) => handleChange("page_count", e.target.value)}
                   className={inputClass}
@@ -330,6 +333,36 @@ export default function NewBookPage() {
                     type="url"
                     value={form.publisher_link}
                     onChange={(e) => handleChange("publisher_link", e.target.value)}
+                    className={inputClass}
+                    placeholder="https://…"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs text-gray-500 mb-1.5">International</label>
+                  <input
+                    type="url"
+                    value={form.purchase_link_international}
+                    onChange={(e) => handleChange("purchase_link_international", e.target.value)}
+                    className={inputClass}
+                    placeholder="https://…"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs text-gray-500 mb-1.5">Pothi</label>
+                  <input
+                    type="url"
+                    value={form.purchase_link_pothi}
+                    onChange={(e) => handleChange("purchase_link_pothi", e.target.value)}
+                    className={inputClass}
+                    placeholder="https://pothi.com/…"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs text-gray-500 mb-1.5">Library</label>
+                  <input
+                    type="url"
+                    value={form.purchase_link_library}
+                    onChange={(e) => handleChange("purchase_link_library", e.target.value)}
                     className={inputClass}
                     placeholder="https://…"
                   />
