@@ -796,7 +796,7 @@ export default function ReviewerPageContent({ displayName }: { displayName: stri
           position: "relative",
           zIndex: 1,
           overflow: "visible",
-          paddingTop: "60px",
+          paddingTop: "100px",
           paddingBottom: "60px",
           paddingLeft: "24px",
           paddingRight: "24px",
