@@ -472,7 +472,6 @@ function StatsRow() {
 export default function ReviewerPageContent({ displayName }: { displayName: string }) {
   const containerRef  = useRef<HTMLDivElement>(null);
   const heroRef       = useRef<HTMLDivElement>(null);
-  const inkFillRef    = useRef<HTMLDivElement>(null);
   const aurora1Ref    = useRef<HTMLDivElement>(null);
   const aurora2Ref    = useRef<HTMLDivElement>(null);
   const progressRef   = useRef<HTMLDivElement>(null);
@@ -542,10 +541,10 @@ export default function ReviewerPageContent({ displayName }: { displayName: stri
     if (a2) a2.style.transform = `translateX(${-mx * 0.015}px) translateY(${-my * 0.015 + sy * 0.08}px)`;
   }
 
-  // 4 — scroll listener: progress + ink fill + parallax + para opacity + auroras
+  // 4 — scroll listener: progress + parallax + para opacity + auroras
   useEffect(() => {
     const progress = progressRef.current;
-    const inkFill  = inkFillRef.current;
+    console.log("[ReviewerPage] scroll listener attached");
 
     function onScroll() {
       const y    = window.scrollY;
@@ -556,8 +555,9 @@ export default function ReviewerPageContent({ displayName }: { displayName: stri
 
       if (window.innerWidth <= 768) return;
 
-      // Ink fill — tied to first 100vh of scroll
-      if (inkFill) inkFill.style.height = `${Math.min((y / window.innerHeight) * 100, 100)}%`;
+      // Hero parallax — content lags at 0.5x scroll speed
+      const hero = heroRef.current;
+      if (hero) hero.style.transform = `translateY(${y * 0.5}px)`;
 
       // Auroras
       scrollYVal.current = y;
@@ -789,50 +789,19 @@ export default function ReviewerPageContent({ displayName }: { displayName: stri
       ))}
 
       {/* ══════════════════════════════════════════════════════════════
-          HERO — sticky on desktop, normal on mobile
+          HERO — normal flow with 0.5x parallax on heroRef content
       ══════════════════════════════════════════════════════════════ */}
       <div
-        style={
-          isMobile
-            ? {
-                position: "relative",
-                zIndex: 1,
-                paddingTop: "80px",
-                paddingBottom: "40px",
-                paddingLeft: "24px",
-                paddingRight: "24px",
-              }
-            : {
-                position: "sticky",
-                top: 0,
-                height: "100vh",
-                display: "flex",
-                alignItems: "center",
-                overflow: "hidden",
-                zIndex: 1,
-                paddingLeft: "24px",
-                paddingRight: "24px",
-              }
-        }
+        style={{
+          position: "relative",
+          zIndex: 1,
+          overflow: "visible",
+          paddingTop: "60px",
+          paddingBottom: "60px",
+          paddingLeft: "24px",
+          paddingRight: "24px",
+        }}
       >
-        {/* Ink fill — "page being written" as user scrolls (desktop only) */}
-        {!isMobile && (
-          <div
-            ref={inkFillRef}
-            aria-hidden
-            style={{
-              position: "absolute",
-              bottom: 0,
-              left: 0,
-              width: "100%",
-              height: "0%",
-              background: "linear-gradient(to top, rgba(201,168,76,0.08), transparent)",
-              pointerEvents: "none",
-              transition: "height 0.1s ease",
-            }}
-          />
-        )}
-
         <div
           ref={heroRef}
           style={{
@@ -840,6 +809,7 @@ export default function ReviewerPageContent({ displayName }: { displayName: stri
             margin: "0 auto",
             width: "100%",
             position: "relative",
+            willChange: "transform",
           }}
         >
           {/* Ink drop */}
@@ -956,12 +926,16 @@ export default function ReviewerPageContent({ displayName }: { displayName: stri
       </div>
 
       {/* ══════════════════════════════════════════════════════════════
-          CONTENT — solid background (zIndex 2) slides over sticky hero
+          CONTENT — solid background (zIndex 5) covers hero on scroll
       ══════════════════════════════════════════════════════════════ */}
       <div
         style={{
-          position: "relative", zIndex: 2, background: PAGE_BG,
-          paddingLeft: "24px", paddingRight: "24px", paddingBottom: "120px",
+          position: "relative",
+          zIndex: 5,
+          backgroundColor: PAGE_BG,
+          paddingLeft: "24px",
+          paddingRight: "24px",
+          paddingBottom: "120px",
         }}
       >
         <div style={{ maxWidth: "720px", margin: "0 auto" }}>

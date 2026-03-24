@@ -24,7 +24,7 @@ function FloatingButton({ onClick }: { onClick: () => void }) {
         transform: visible
           ? "translateX(-50%) translateY(0)"
           : "translateX(-50%) translateY(80px)",
-        zIndex: 999,
+        zIndex: 9999,
         background: "linear-gradient(135deg, #c9a84c, #b5873a)",
         color: "white",
         fontWeight: 600,
@@ -71,7 +71,12 @@ export default function WelcomePopup() {
       process.env.NODE_ENV !== "development" &&
       localStorage.getItem(POPUP_KEY)
     ) {
-      return;
+      // Popup was previously dismissed — show floating button instead
+      const t = setTimeout(() => {
+        setShowFloatingBtn(true);
+        console.log("[WelcomePopup] popup suppressed by localStorage → showFloatingBtn true");
+      }, 1000);
+      return () => clearTimeout(t);
     }
 
     const t = setTimeout(() => {
@@ -90,6 +95,7 @@ export default function WelcomePopup() {
       setIsVisible(false);
       localStorage.setItem(POPUP_KEY, "1");
       setShowFloatingBtn(true);
+      console.log("[WelcomePopup] showFloatingBtn → true");
     }, 380);
   }
 
