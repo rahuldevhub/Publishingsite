@@ -3,16 +3,16 @@ import ReviewerPageContent from "../components/ReviewerPageContent";
 import WelcomePopup from "../components/WelcomePopup";
 
 const ALLOWED_SLUGS = [
-  "rahul",
+  "shahithafareen",
   "priya",
-  "saran",
-  "meera",
-  "arjun",
-  "kavya",
-  "deepa",
-  "vikram",
+  "diptisha",
+  "gopika",
+  "shree",
+  "hema",
+  "bookmist",
   "ananya",
-  "rohan",
+  "khyati",
+  "rahul",
 ];
 
 type Props = { params: Promise<{ name: string }> };
