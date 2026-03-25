@@ -184,7 +184,7 @@ const PACKAGES = [
   },
   {
     name: "Advanced",
-    price: "₹29,999",
+    price: "₹32,999",
     highlight: true,
     badge: "Most Popular",
     features: [

@@ -31,7 +31,7 @@ type Val = true | false | "add-on" | string;
 const PACKAGES = [
   { id: "essential",  name: "Essential",  price: 11999,   popular: false, badge: "" },
   { id: "standard",  name: "Standard",   price: 18999,  popular: false, badge: "" },
-  { id: "advanced",  name: "Advanced",   price: 29999,  popular: true,  badge: "Most Popular" },
+  { id: "advanced",  name: "Advanced",   price: 32999,  popular: true,  badge: "Most Popular" },
   { id: "elite",     name: "Elite",      price: 54999,  popular: false, badge: "" },
   { id: "premium",   name: "Premium",    price: 84999,  popular: false, badge: "" },
   { id: "exclusive", name: "Exclusive",  price: 119999, popular: false, badge: "Best Value" },
@@ -45,7 +45,7 @@ const FEATURES: { category: string; label: string; highlight?: boolean; values: 
   { category: "Publishing Essentials", label: " Royalty",           values: ["100%", "100%", "100%", "100%", "100%", "100%"] },
   { category: "Publishing Essentials", label: " Author Dashboard",          values: [true, true, true, true, true, true] },
   { category: "Publishing Essentials", label: "Indian Distribution",                values: [true, true, true, true, true, true] },
-  { category: "Publishing Essentials", label: "International Distribution",         values: [false, true, true, true, true, true] },
+  { category: "Publishing Essentials", label: "International Distribution",         values: [false, false, true, true, true, true] },
   { category: "Publishing Essentials", label: "E-Book Publishing",                  values: [false, true, true, true, true, true] },
   { category: "Publishing Essentials", label: "Certificate of Publication",         values: [true, true, true, true, true, true] },
   { category: "Publishing Essentials", label: "Digital Proof",         values: [true, true, true, true, true, true] },
