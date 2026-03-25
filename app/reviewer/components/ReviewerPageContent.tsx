@@ -117,11 +117,11 @@ const CONFETTI_PIECES = [
   { x: 20,  color: "#e8b4a0", rotate: "-90deg" },
 ];
 
-const STATS = [
-  { target: 500,  suffix: "+", label: "Books Published"  },
-  { target: 1200, suffix: "+", label: "Happy Authors"    },
-  { target: 12,   suffix: "+", label: "Years of Stories" },
-];
+// const STATS = [
+//   { target: 500,  suffix: "+", label: "Books Published"  },
+//   { target: 1200, suffix: "+", label: "Happy Authors"    },
+//   { target: 12,   suffix: "+", label: "Years of Stories" },
+// ];
 
 const SUBTITLE = "If you are here, this page was meant only for you.";
 
@@ -446,7 +446,7 @@ function StatsRow() {
         transition: "opacity 0.7s ease, transform 0.7s ease",
       }}
     >
-      {STATS.map((stat, i) => (
+      {/* {STATS.map((stat, i) => (
         <div
           key={i}
           style={{
@@ -463,7 +463,7 @@ function StatsRow() {
             {stat.label}
           </div>
         </div>
-      ))}
+      ))} */}
     </div>
   );
 }
@@ -1072,7 +1072,7 @@ export default function ReviewerPageContent({ displayName }: { displayName: stri
           <StatsRow />
 
           {/* ── Dot divider ── */}
-          <DotDivider />
+          {/* <DotDivider /> */}
 
           {/* ── Let the story continue — slides up ── */}
           <SectionCard animDelay={40} slideFrom="up">

@@ -53,7 +53,7 @@ export default function NewAuthorPage() {
       image_url: form.image_url || null,
       instagram: form.instagram || null,
       twitter: form.twitter || null,
-      linkedin: form.linkedin || null,
+      linkedin_url: form.linkedin || null,
     });
 
     setLoading(false);

@@ -56,7 +56,7 @@ export default function EditAuthorPage() {
         image_url: data.image_url ?? "",
         instagram: data.instagram ?? "",
         twitter: data.twitter ?? "",
-        linkedin: data.linkedin ?? "",
+        linkedin: data.linkedin_url ?? "",
       });
       setLoading(false);
     }
@@ -83,7 +83,7 @@ export default function EditAuthorPage() {
         image_url: form.image_url || null,
         instagram: form.instagram || null,
         twitter: form.twitter || null,
-        linkedin: form.linkedin || null,
+        linkedin_url: form.linkedin || null,
       })
       .eq("id", id);
 
