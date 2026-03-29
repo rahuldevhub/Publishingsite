@@ -3,13 +3,8 @@
 import { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
-import { createClient } from "@supabase/supabase-js";
+import { getSupabaseBrowserClient } from "@/lib/supabase-browser";
 import ImageUpload from "@/app/admin/components/ImageUpload";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 const EMPLOYEE_ID_RE = /^[A-Z0-9]+$/;
 
@@ -32,6 +27,7 @@ type EmployeeForm = {
 };
 
 export default function EditEmployeePage() {
+  const supabase = getSupabaseBrowserClient();
   const router = useRouter();
   const { id } = useParams<{ id: string }>();
 

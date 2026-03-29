@@ -2,15 +2,11 @@
 
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { createClient } from "@supabase/supabase-js";
+import { getSupabaseBrowserClient } from "@/lib/supabase-browser";
 import { useState } from "react";
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
-
 export default function BlogPostActions({ id, title }: { id: string; title: string }) {
+  const supabase = getSupabaseBrowserClient();
   const router = useRouter();
   const [deleting, setDeleting] = useState(false);
 

@@ -2,12 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+import { getSupabaseBrowserClient } from "@/lib/supabase-browser";
 
 const inputClass =
   "w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent";
@@ -27,6 +22,7 @@ function generateSlug(title: string): string {
 type Category = { id: string; name: string };
 
 export default function SubmitForm({ categories }: { categories: Category[] }) {
+  const supabase = getSupabaseBrowserClient();
   const [form, setForm] = useState({
     title: "",
     category_id: "",

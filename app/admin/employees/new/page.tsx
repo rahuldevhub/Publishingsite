@@ -3,13 +3,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { createClient } from "@supabase/supabase-js";
+import { getSupabaseBrowserClient } from "@/lib/supabase-browser";
 import ImageUpload from "@/app/admin/components/ImageUpload";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 function generateSlug(name: string) {
   return name.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
@@ -36,6 +31,7 @@ const emptyForm = {
 type Manager = { id: string; name: string; role: string };
 
 export default function NewEmployeePage() {
+  const supabase = getSupabaseBrowserClient();
   const router = useRouter();
   const [form, setForm] = useState(emptyForm);
   const [managers, setManagers] = useState<Manager[]>([]);

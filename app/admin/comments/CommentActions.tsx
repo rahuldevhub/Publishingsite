@@ -2,12 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
+import { getSupabaseBrowserClient } from "@/lib/supabase-browser";
 
 type Props = {
   id: string;
@@ -28,6 +23,7 @@ export default function CommentActions({
   renderInline,
   renderActions,
 }: Props) {
+  const supabase = getSupabaseBrowserClient();
   const router = useRouter();
   const [toggling, setToggling] = useState(false);
   const [deleting, setDeleting] = useState(false);

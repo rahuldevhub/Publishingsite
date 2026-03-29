@@ -1,14 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
+import { getSupabaseBrowserClient } from "@/lib/supabase-browser";
 import Image from "next/image";
 import Link from "next/link";
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 type Book = {
   id: string;
@@ -26,6 +21,7 @@ export default function BooksCarousel() {
   const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const supabase = getSupabaseBrowserClient();
     supabase
       .from("books")
       .select("id, title, slug, cover_image, author:authors(name)")
