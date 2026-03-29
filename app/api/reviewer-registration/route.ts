@@ -2,12 +2,31 @@ import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { createServerClient } from "@/lib/supabase";
 
-export async function POST(request: NextRequest) {
-  const { name, email, phone } = await request.json();
+/** Escape HTML special characters to prevent HTML injection in email content. */
+function esc(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
 
-  if (!name || !email) {
+export async function POST(request: NextRequest) {
+  const body = await request.json().catch(() => null);
+  if (!body) {
+    return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
+  }
+
+  const { name, email, phone } = body as { name?: string; email?: string; phone?: string };
+
+  if (!name?.trim() || !email?.trim()) {
     return NextResponse.json({ error: "Name and email are required" }, { status: 400 });
   }
+
+  const safeName  = esc(name.trim());
+  const safeEmail = esc(email.trim());
+  const safePhone = phone?.trim() ? esc(phone.trim()) : "Not provided";
 
   // Send email notification
   try {
@@ -24,12 +43,12 @@ export async function POST(request: NextRequest) {
     await transporter.sendMail({
       from: process.env.GMAIL_USER,
       to: "riterapublishing@gmail.com",
-      subject: `New Reviewer Registration — ${name}`,
+      subject: `New Reviewer Registration — ${safeName}`,
       html: `
         <h2>New Reviewer Registration</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone || "Not provided"}</p>
+        <p><strong>Name:</strong> ${safeName}</p>
+        <p><strong>Email:</strong> ${safeEmail}</p>
+        <p><strong>Phone:</strong> ${safePhone}</p>
         <p><em>Submitted from the reviewer page</em></p>
       `,
     });
@@ -43,7 +62,7 @@ export async function POST(request: NextRequest) {
     const supabase = createServerClient();
     const { error } = await supabase
       .from("reviewer_registrations")
-      .insert({ name, email, phone: phone || null });
+      .insert({ name: name.trim(), email: email.trim(), phone: phone?.trim() || null });
 
     if (error) {
       console.error("Supabase insert failed:", error);

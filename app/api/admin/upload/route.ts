@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@/lib/supabase";
+import { getAdminSession, unauthorized } from "@/lib/admin-session";
 
 export async function POST(request: NextRequest) {
+  if (!(await getAdminSession())) return unauthorized();
+
   const formData = await request.formData();
   const file = formData.get("file") as File | null;
   const bucket = (formData.get("bucket") as string | null) ?? "images";

@@ -4,7 +4,7 @@ import FadeIn from "@/app/components/FadeIn";
 import BooksCarousel from "@/app/components/BooksCarousel";
 import CounterStats from "@/app/aboutus/CounterStats";
 import FAQSection from "@/app/components/FAQSection";
-import aboutimg1 from "../public/landingaboutus1.jpg"
+import HeroBentoGrid, { HeroBentoGridMobile } from "@/app/components/HeroBentoGrid";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
@@ -235,25 +235,23 @@ export default function HomePage() {
           <div className="absolute top-32 right-32 w-48 h-48 rounded-full border border-amber-400/10" />
           <div className="absolute bottom-16 left-16 w-40 h-40 rounded-full border border-white/5" />
 
-          {/* ── Right: Mood board video grid — absolute, fills full hero height, flush to edges ── */}
+          {/* ── Right: Bento grid — desktop only, absolute positioned ── */}
           <div className="absolute inset-0 hidden lg:flex pointer-events-none">
             {/* Left spacer — matches the left content column */}
             <div className="flex-1" />
-            {/* Right grid panel — flush right, top, bottom; only left gap */}
-          
-
-
-
-
-
-
-          
+            {/* Right grid panel — fills right half, vertically centered */}
+            <div className="w-[52%] flex items-center pointer-events-auto" style={{paddingTop: '104px', paddingBottom: '64px', paddingRight: '40px', paddingLeft: '56px'}}>
+              <HeroBentoGrid />
+            </div>
           </div>
 
           {/* ── Left: text content — vertically centered ── */}
-          <div className="relative flex items-center min-h-screen">
+          {/* pointer-events-none on the full-width wrappers so the right-half empty space
+              doesn't block mouse events on the absolute-positioned bento grid behind it.
+              pointer-events-auto is restored on the actual text column. */}
+          <div className="relative flex items-center min-h-screen pointer-events-none">
             <div className="max-w-7xl mx-auto px-6 py-24 w-full">
-              <div className="lg:w-1/2 lg:pr-10">
+              <div className="lg:w-1/2 lg:pr-10 pointer-events-auto">
                 {/* Eyebrow */}
                 <div className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full px-4 py-2 mb-8">
                   <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
@@ -308,6 +306,16 @@ export default function HomePage() {
                     </div>
                   ))}
                 </div>
+              </div>
+
+              {/* Tablet: compact 3-col grid below hero text — hidden on desktop */}
+              <div className="hidden sm:block lg:hidden mt-10 pb-4 pointer-events-auto">
+                <HeroBentoGrid compact />
+              </div>
+
+              {/* Mobile: horizontal scroll row — hidden on sm+ */}
+              <div className="sm:hidden mt-10 pb-4 pointer-events-auto">
+                <HeroBentoGridMobile />
               </div>
             </div>
           </div>

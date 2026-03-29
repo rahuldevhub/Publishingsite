@@ -1,7 +1,7 @@
 import { NextAuthOptions, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { createClient } from "@supabase/supabase-js";
 import bcrypt from "bcryptjs";
+import { createServerClient } from "@/lib/supabase";
 
 interface AdminUser extends User {
   id: string;
@@ -9,11 +9,6 @@ interface AdminUser extends User {
   name: string;
   role: string;
 }
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-);
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -29,6 +24,7 @@ export const authOptions: NextAuthOptions = {
         }
 
         try {
+          const supabase = createServerClient();
           const { data: admin, error } = await supabase
             .from("admins")
             .select()

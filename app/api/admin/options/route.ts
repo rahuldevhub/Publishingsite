@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@/lib/supabase";
+import { getAdminSession, unauthorized } from "@/lib/admin-session";
 
 export async function GET(request: NextRequest) {
+  if (!(await getAdminSession())) return unauthorized();
+
   const types = request.nextUrl.searchParams.get("types")?.split(",") ?? [];
   const supabase = createServerClient();
   const result: Record<string, unknown[]> = {};
@@ -18,7 +21,11 @@ export async function GET(request: NextRequest) {
         const { data } = await supabase.from("litspace_categories").select("id, name").order("name");
         result["litspace-categories"] = data ?? [];
       } else if (type === "employees") {
-        const { data } = await supabase.from("employees").select("id, name, role").eq("active", true).order("name");
+        const { data } = await supabase
+          .from("employees")
+          .select("id, name, role")
+          .eq("active", true)
+          .order("name");
         result.employees = data ?? [];
       }
     })
