@@ -60,7 +60,7 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/admin/login",
   },
-  useSecureCookies: false,
+  useSecureCookies: process.env.NODE_ENV === "production",
   debug: process.env.NODE_ENV === "development",
   callbacks: {
     async jwt({ token, user }) {
