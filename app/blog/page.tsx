@@ -171,7 +171,7 @@ function PostCard({ post }: { post: Post }) {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
-          <img src="https://placehold.co/600x400" alt="Placeholder Image" className="absolute inset-0 w-full h-full object-cover" />
+          <img src="https://placehold.co/600x400" alt="Placeholder Image" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
         )}
       </Link>
 

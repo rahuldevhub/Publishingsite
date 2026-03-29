@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { createServerClient } from "@/lib/supabase";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 /** Escape HTML special characters to prevent HTML injection in email content. */
 function esc(str: string): string {
@@ -13,6 +14,16 @@ function esc(str: string): string {
 }
 
 export async function POST(request: NextRequest) {
+  // Rate limit: 3 submissions per 15 minutes per IP
+  const ip =
+    request.headers.get("x-forwarded-for")?.split(",")[0].trim() ?? "unknown";
+  if (!checkRateLimit(`reviewer-reg:${ip}`, 3)) {
+    return NextResponse.json(
+      { error: "Too many submissions. Try again later." },
+      { status: 429 }
+    );
+  }
+
   const body = await request.json().catch(() => null);
   if (!body) {
     return NextResponse.json({ error: "Invalid request body" }, { status: 400 });

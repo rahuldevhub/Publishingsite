@@ -1,55 +1,55 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@/lib/supabase";
 import bcrypt from "bcryptjs";
-import { cookies } from "next/headers";
+import { createSession } from "@/lib/admin-session";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 export async function POST(request: NextRequest) {
+  // Rate limit by IP: 5 attempts per 15 minutes
+  const ip =
+    request.headers.get("x-forwarded-for")?.split(",")[0].trim() ?? "unknown";
+  if (!checkRateLimit(`login:${ip}`)) {
+    return NextResponse.json(
+      { error: "Too many login attempts. Try again in 15 minutes." },
+      { status: 429 }
+    );
+  }
+
   try {
     const body = await request.json().catch(() => null);
     if (!body) {
       return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
     }
 
-    const { email, password } = body as { email?: string; password?: string };
+    const { username, password } = body as {
+      username?: string;
+      password?: string;
+    };
 
-    if (!email || !password) {
-      return NextResponse.json({ error: "Email and password are required" }, { status: 400 });
+    if (!username?.trim() || !password) {
+      return NextResponse.json(
+        { error: "Username and password are required" },
+        { status: 400 }
+      );
     }
 
     const supabase = createServerClient();
     const { data: admin, error } = await supabase
       .from("admins")
-      .select()
-      .eq("email", email)
+      .select("id, username, name, password")
+      .eq("username", username.trim())
       .single();
 
     if (error || !admin) {
-      // Use a constant-time response to avoid email enumeration
-      return NextResponse.json({ error: "Invalid email or password" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
     }
 
     const isValid = await bcrypt.compare(password, admin.password);
-
     if (!isValid) {
-      return NextResponse.json({ error: "Invalid email or password" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
     }
 
-    const sessionData = JSON.stringify({
-      id: admin.id,
-      email: admin.email,
-      name: admin.name,
-      role: admin.role,
-    });
-
-    const cookieStore = await cookies();
-    cookieStore.set("admin_session", sessionData, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      maxAge: 60 * 60 * 24 * 7, // 7 days
-      path: "/",
-    });
-
+    await createSession(admin.id, admin.name);
     return NextResponse.json({ success: true, name: admin.name });
   } catch (err) {
     console.error("[admin/login] Unexpected error:", err);

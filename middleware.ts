@@ -1,21 +1,33 @@
+import { jwtVerify } from "jose";
 import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(request: NextRequest) {
+const COOKIE_NAME = "admin_session";
+
+async function verifyToken(token: string): Promise<boolean> {
+  try {
+    const secret = new TextEncoder().encode(process.env.ADMIN_JWT_SECRET);
+    await jwtVerify(token, secret);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const session = request.cookies.get("admin_session");
+  const token = request.cookies.get(COOKIE_NAME)?.value;
 
   // Login page: let through, but redirect already-authenticated admins to dashboard
   if (pathname === "/admin/login") {
-    if (session) {
+    if (token && (await verifyToken(token))) {
       return NextResponse.redirect(new URL("/admin/dashboard", request.url));
     }
     return NextResponse.next();
   }
 
-  // All other /admin/* routes: require a valid session cookie
-  if (!session) {
+  // All other /admin/* routes: require a valid, cryptographically verified session
+  if (!token || !(await verifyToken(token))) {
     const loginUrl = new URL("/admin/login", request.url);
-    // Preserve the intended destination so we can redirect back after login
     loginUrl.searchParams.set("from", pathname);
     return NextResponse.redirect(loginUrl);
   }
@@ -24,6 +36,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Only run on admin routes — public pages are unaffected
   matcher: ["/admin/:path*"],
 };

@@ -419,7 +419,7 @@ export default async function AuthorPortfolioPage({ params }: PageProps) {
                             loading={i < 4 ? "eager" : "lazy"}
                           />
                         ) : (
-                          <img src="https://placehold.co/400x600" alt="Placeholder Image" className="absolute inset-0 w-full h-full object-cover" />
+                          <img src="https://placehold.co/400x600" alt="Placeholder Image" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
                         )}
 
                         {/* Genre badge */}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import CounterStats from "./CounterStats";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
@@ -87,15 +88,15 @@ export default function AboutPage() {
             <div className="grid grid-cols-2 gap-3 lg:gap-4 h-[420px] lg:h-[480px]">
               {/* Tall left image */}
               <div className="row-span-2 rounded-2xl overflow-hidden bg-gray-700 relative">
-                <img src="/images/aboutus3.jpg" alt="Author photo" className="w-full h-full object-cover absolute inset-0" />
+                <Image src="/images/aboutus3.webp" alt="Author during a publishing event" fill className="object-cover" priority sizes="(max-width: 1024px) 50vw, 25vw" />
               </div>
               {/* Top-right image */}
               <div className="rounded-2xl overflow-hidden bg-gray-600 relative">
-                <img src="/images/aboutus2.jpg" alt="Book launch" className="w-full h-full object-cover absolute inset-0" />
+                <Image src="/images/aboutus2.webp" alt="Book launch event" fill className="object-cover" loading="lazy" sizes="(max-width: 1024px) 50vw, 25vw" />
               </div>
               {/* Bottom-right image */}
               <div className="rounded-2xl overflow-hidden bg-gray-700 relative">
-                <img src="/images/aboutus1.jpg" alt="Team at work" className="w-full h-full object-cover absolute inset-0" />
+                <Image src="/images/aboutus1.webp" alt="Ritera team at work" fill className="object-cover" loading="lazy" sizes="(max-width: 1024px) 50vw, 25vw" />
               </div>
             </div>
           </div>
@@ -120,7 +121,7 @@ export default function AboutPage() {
             
             {/* Image */}
             <div className="relative rounded-3xl overflow-hidden bg-gray-100 aspect-[4/3] mb-10 lg:mb-0 shadow-lg">
-              <img src="images/virtualmeet.jpg" alt="Virtual meet" className="w-full h-full object-cover absolute inset-0" />
+              <Image src="/images/virtualmeet.webp" alt="Ritera Publishing annual virtual literary meet" fill className="object-cover" loading="lazy" sizes="(max-width: 1024px) 100vw, 50vw" />
 
               <div className="absolute top-4 left-4 bg-amber-400 text-gray-900 text-xs font-bold px-3 py-1 rounded-full">
                 Annual Event
@@ -435,7 +436,7 @@ export default function AboutPage() {
             {/* Book cover collage (right) */}
             <div className="mt-10 lg:mt-0 grid grid-cols-3 gap-3">
               {[
-                { i: 1, src: "/images/Jadejulep1.png" },
+                { i: 1, src: "/images/Jadejulep1.webp" },
                 { i: 2, src: "/images/Jadejulep2.webp" },
                 { i: 3, src: "/images/Jadejulep3.webp" },
               ].map(({ i, src }) => (
@@ -446,7 +447,8 @@ export default function AboutPage() {
                   }`}
                   style={{ aspectRatio: "2/3" }}
                 >
-                  <img src={src} alt="Book cover" className="w-full h-full object-cover" />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={src} alt="Published book cover" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                 </div>
               ))}
             </div>
@@ -499,7 +501,7 @@ export default function AboutPage() {
               <div className="mt-10 lg:mt-0 space-y-6">
                 {/* Team photo placeholder with clipped shape */}
                 <div className="relative rounded-3xl overflow-hidden bg-gray-700 aspect-[4/3] shadow-xl">
-                  <img src="/images/ourteam.jpg" alt="Team photo" className="w-full h-full object-cover absolute inset-0" />
+                  <Image src="/images/ourteam.webp" alt="Ritera Publishing team" fill className="object-cover" loading="lazy" sizes="(max-width: 1024px) 100vw, 50vw" />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent" />
                 </div>
 

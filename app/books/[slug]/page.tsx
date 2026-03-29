@@ -186,7 +186,7 @@ export default async function BookDetailPage({ params }: PageProps) {
                       sizes="(max-width: 1024px) 100vw, 40vw"
                     />
                   ) : (
-                    <img src="https://placehold.co/400x600" alt="Placeholder Image" className="absolute inset-0 w-full h-full object-cover" />
+                    <img src="https://placehold.co/400x600" alt="Placeholder Image" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
                   )}
                   {book.featured && (
                     <span className="absolute top-3 left-3 bg-gray-900 text-white text-xs font-semibold px-2.5 py-1 rounded-full">
@@ -388,7 +388,7 @@ export default async function BookDetailPage({ params }: PageProps) {
                           loading="lazy"
                         />
                       ) : (
-                        <img src="https://placehold.co/300x450" alt="Placeholder Image" className="absolute inset-0 w-full h-full object-cover" />
+                        <img src="https://placehold.co/300x450" alt="Placeholder Image" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
                       )}
                     </div>
                     <h3 className="font-semibold text-gray-900 text-sm leading-snug line-clamp-2 group-hover:text-gray-600 transition-colors">

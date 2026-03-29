@@ -306,7 +306,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                           loading="lazy"
                         />
                       ) : (
-                        <img src="https://placehold.co/400x300" alt="Placeholder Image" className="absolute inset-0 w-full h-full object-cover" />
+                        <img src="https://placehold.co/400x300" alt="Placeholder Image" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
                       )}
                     </Link>
                     <div className="p-4">

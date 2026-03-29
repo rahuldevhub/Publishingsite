@@ -110,7 +110,7 @@ export default function BooksCarousel() {
                     loading="lazy"
                   />
                 ) : (
-                  <img src="https://placehold.co/150x220" alt="Placeholder Image" className="absolute inset-0 w-full h-full object-cover" />
+                  <img src="https://placehold.co/150x220" alt="Placeholder Image" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
                 )}
               </div>
               <p className="mt-2 text-xs font-semibold text-gray-900 line-clamp-1 group-hover:text-gray-600 transition-colors">

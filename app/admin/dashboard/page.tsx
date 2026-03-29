@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { cookies } from "next/headers";
+import { getAdminSession } from "@/lib/admin-session";
 import LogoutButton from "./LogoutButton";
 
 const contentItems = [
@@ -79,15 +79,10 @@ const communityItems = [
 ];
 
 export default async function DashboardPage() {
-  const cookieStore = await cookies();
-  const sessionCookie = cookieStore.get("admin_session");
+  const session = await getAdminSession();
+  if (!session) redirect("/admin/login");
 
-  if (!sessionCookie) {
-    redirect("/admin/login");
-  }
-
-  const admin = JSON.parse(sessionCookie.value) as { name: string; email: string; role: string };
-  const adminName = admin.name ?? "Admin";
+  const adminName = session.name;
 
   return (
     <div className="min-h-screen bg-gray-50">

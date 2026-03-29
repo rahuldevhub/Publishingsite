@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import FadeIn from "@/app/components/FadeIn";
-import BooksCarousel from "@/app/components/BooksCarousel";
-import CounterStats from "@/app/aboutus/CounterStats";
-import FAQSection from "@/app/components/FAQSection";
 import HeroBentoGrid, { HeroBentoGridMobile } from "@/app/components/HeroBentoGrid";
+
+// Below-fold components — lazy-loaded to reduce initial JS bundle
+const BooksCarousel = dynamic(() => import("@/app/components/BooksCarousel"), { ssr: true });
+const CounterStats  = dynamic(() => import("@/app/aboutus/CounterStats"), { ssr: true });
+const FAQSection    = dynamic(() => import("@/app/components/FAQSection"), { ssr: true });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 export const metadata: Metadata = {
-  title: "Ritera Publishing — Self-Publish with Confidence | 100% Royalties",
+  title: "Ritera Publishing — Self-Publish Your Book in India",
   description:
     "Ritera Publishing helps Indian authors self-publish professionally. 500+ books published, 100% royalties, global distribution to 50+ countries. Start your publishing journey today.",
   openGraph: {
@@ -356,12 +359,14 @@ export default function HomePage() {
               <div className="relative mb-12 lg:mb-0" style={{ minHeight: '560px' }}>
                 {/* Card 1: top-left, taller */}
                 <div className="absolute left-0 top-0 w-[52%] h-[75%] overflow-hidden shadow-xl" style={{ borderRadius: '20px' }}>
-                  <img src="/landingaboutus1.jpg" alt="Stack of books" className="w-full h-full object-cover" />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/images/landingabout.webp" alt="Stack of books" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                 </div>
 
                 {/* Card 2: bottom-right, smaller, overlapping card 1 — shifted up so it stays within bounds */}
                 <div className="absolute right-0 w-[44%] h-[58%] overflow-hidden shadow-xl" style={{ borderRadius: '20px', bottom: '60px' }}>
-                  <img src="/images/Jadejulep3.webp" alt="Publishing workspace" className="w-full h-full object-cover" />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/images/Jadejulep3.webp" alt="Publishing workspace" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                 </div>
 
                 {/* Floating stat card: upper-right, between the two image cards */}

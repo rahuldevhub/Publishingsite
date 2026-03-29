@@ -1,7 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@/lib/supabase";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 export async function POST(request: NextRequest) {
+  // Rate limit: 5 comments per 15 minutes per IP
+  const ip =
+    request.headers.get("x-forwarded-for")?.split(",")[0].trim() ?? "unknown";
+  if (!checkRateLimit(`comment:${ip}`, 5)) {
+    return NextResponse.json(
+      { error: "Too many submissions. Try again later." },
+      { status: 429 }
+    );
+  }
+
   const supabase = createServerClient();
   let body: unknown;
   try {
@@ -29,7 +40,7 @@ export async function POST(request: NextRequest) {
 
   if (error) {
     console.error("[comment API] Supabase insert error:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: "Failed to submit comment" }, { status: 500 });
   }
 
   return NextResponse.json({ success: true });

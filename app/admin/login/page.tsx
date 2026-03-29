@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 export default function AdminLoginPage() {
   const router = useRouter();
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -18,13 +18,15 @@ export default function AdminLoginPage() {
     const res = await fetch("/api/admin/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ username, password }),
     });
 
     setLoading(false);
 
-    if (!res.ok) {
-      setError("Invalid email or password. Please try again.");
+    if (res.status === 429) {
+      setError("Too many login attempts. Try again in 15 minutes.");
+    } else if (!res.ok) {
+      setError("Invalid credentials. Please try again.");
     } else {
       router.push("/admin/dashboard");
     }
@@ -41,18 +43,18 @@ export default function AdminLoginPage() {
         <div className="bg-white rounded-2xl shadow-sm border border-gray-200 px-8 py-10">
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1.5">
-                Email address
+              <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1.5">
+                Username
               </label>
               <input
-                id="email"
-                type="email"
-                autoComplete="email"
+                id="username"
+                type="text"
+                autoComplete="username"
                 required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 className="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent transition text-sm"
-                placeholder="admin@example.com"
+                placeholder="admin"
               />
             </div>
 

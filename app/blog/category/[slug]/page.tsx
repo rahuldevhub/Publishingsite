@@ -137,7 +137,7 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
                         loading="lazy"
                       />
                     ) : (
-                      <img src="https://placehold.co/600x400" alt="Placeholder Image" className="absolute inset-0 w-full h-full object-cover" />
+                      <img src="https://placehold.co/600x400" alt="Placeholder Image" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
                     )}
                   </Link>
 

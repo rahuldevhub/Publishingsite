@@ -16,6 +16,9 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // Enable gzip/brotli compression
+  compress: true,
+
   images: {
     remotePatterns: [
       {
@@ -24,12 +27,30 @@ const nextConfig: NextConfig = {
         pathname: "/storage/v1/object/public/**",
       },
     ],
+    // Serve optimized WebP/AVIF automatically for Next.js <Image> components
+    formats: ["image/avif", "image/webp"],
   },
+
   async headers() {
     return [
+      // Security headers on all routes
       {
         source: "/(.*)",
         headers: securityHeaders,
+      },
+      // Long-lived cache for static images (content-hashed by filename after optimization)
+      {
+        source: "/images/:path*",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        ],
+      },
+      // Long-lived cache for videos
+      {
+        source: "/landingvideo/:path*",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        ],
       },
     ];
   },

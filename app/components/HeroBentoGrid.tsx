@@ -1,43 +1,43 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const cards = [
   {
     id: "author-story",
-    category: "AUTHOR STORY",
-    title: "How I published my first book with Ritera",
+    category: "AUTHOR CORNER",
+    title: "Listen to what Shahitha says",
     emoji: "📚",
     area: "author",
     image: undefined as string | undefined,
-    video: "/landingvideo/v1.mp4",
+    video: "/landingvideo/shahithavideo.mp4",
     hoverGradient: "linear-gradient(135deg,#0f766e 0%,#134e4a 100%)",
   },
   {
     id: "testimonial",
     category: "TESTIMONIAL",
-    title: "Worth every penny",
+    title: "Author Signing Event",
     emoji: "⭐",
     area: "testimonial",
-    image: "/images/aboutus1.jpg",
+    image: "/images/aboutus1.webp",
     video: undefined as string | undefined,
     hoverGradient: "linear-gradient(135deg,#7c3aed 0%,#4c1d95 100%)",
   },
   {
     id: "launch",
-    category: "LAUNCH",
-    title: "Amazon US launch day",
+    category: "VIRTUAL MEET",
+    title: "Monthly author virtual meetup — March 2026",
     emoji: "🚀",
     area: "launch",
-    image: "/images/aboutus2.jpg",
+    image: "/landingvideo/virtualmeet.webp",
     video: undefined as string | undefined,
     hoverGradient: "linear-gradient(135deg,#d97706 0%,#92400e 100%)",
-    live: true,
+    live: false,
   },
   {
     id: "community",
-    category: "COMMUNITY",
-    title: "Monthly author virtual meetup — March 2026",
+    category: "AUTHOR INTERVIEW",
+    title: "Listen to what the Industrial Expert says",
     emoji: "🎙️",
     area: "community",
     image: undefined as string | undefined,
@@ -46,18 +46,18 @@ const cards = [
   },
   {
     id: "process",
-    category: "PROCESS",
-    title: "Cover design walkthrough",
+    category: "WORKSPACE",
+    title: "Our Workspace walkthrough",
     emoji: "🎨",
     area: "process",
-    image: "/images/Jadejulep1.png",
+    image: "/images/Jadejulep1.webp",
     video: undefined as string | undefined,
     hoverGradient: "linear-gradient(135deg,#be185d 0%,#831843 100%)",
   },
   {
     id: "milestone",
     category: "MILESTONE",
-    title: "500 copies sold!",
+    title: "4500 copies sold!",
     emoji: "🏆",
     area: "milestone",
     image: "/images/Jadejulep2.webp",
@@ -65,6 +65,44 @@ const cards = [
     hoverGradient: "linear-gradient(135deg,#b45309 0%,#78350f 100%)",
   },
 ];
+
+/** Loads video only when it scrolls into view — prevents loading 8MB of video on page load. */
+function LazyVideo({
+  src,
+  poster,
+  style,
+}: {
+  src: string;
+  poster?: string;
+  style?: React.CSSProperties;
+}) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setLoaded(true); io.disconnect(); } },
+      { threshold: 0.05, rootMargin: "300px 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!loaded || !el) return;
+    el.load();
+    el.play().catch(() => {});
+  }, [loaded]);
+
+  return (
+    <video ref={ref} poster={poster} preload="none" loop muted playsInline style={style}>
+      {loaded && <source src={src} type="video/mp4" />}
+    </video>
+  );
+}
 
 export default function HeroBentoGrid({ compact = false }: { compact?: boolean }) {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
@@ -209,13 +247,9 @@ export default function HeroBentoGrid({ compact = false }: { compact?: boolean }
 
               {/* Layer 1: media */}
               {card.video ? (
-                <video
+                <LazyVideo
                   src={card.video}
                   poster={card.image}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
                   style={{
                     position: "absolute",
                     inset: 0,
@@ -233,6 +267,8 @@ export default function HeroBentoGrid({ compact = false }: { compact?: boolean }
                 <img
                   src={card.image}
                   alt=""
+                  loading="lazy"
+                  decoding="async"
                   style={{
                     position: "absolute",
                     inset: 0,
@@ -415,13 +451,9 @@ export function HeroBentoGridMobile() {
 
             {/* Media */}
             {card.video ? (
-              <video
+              <LazyVideo
                 src={card.video}
                 poster={card.image}
-                autoPlay
-                loop
-                muted
-                playsInline
                 style={{
                   position: "absolute",
                   inset: 0,
@@ -437,6 +469,8 @@ export function HeroBentoGridMobile() {
               <img
                 src={card.image}
                 alt=""
+                loading="lazy"
+                decoding="async"
                 style={{
                   position: "absolute",
                   inset: 0,
