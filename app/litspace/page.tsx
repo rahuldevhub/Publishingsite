@@ -102,7 +102,7 @@ export default async function LitspacePage() {
       <div className="bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto px-6 py-3 flex flex-wrap items-center justify-between gap-3">
           <p className="text-sm text-gray-300">
-            Share your creativity on LitSpace — publish your poems, stories and articles for the world to see!
+            Writers are publishing free on Litspace right now — your story is next.
           </p>
           <Link
             href="/litspace/submit"
@@ -120,10 +120,13 @@ export default async function LitspacePage() {
             Ritera Publishing · LitSpace
           </p>
           <h1 className="text-4xl lg:text-6xl font-bold leading-tight max-w-3xl text-white">
-            Welcome to LitSpace
+            Your writing deserves to be read.
           </h1>
           <p className="mt-5 text-lg text-gray-300 max-w-2xl leading-relaxed">
-            A community platform for poets, writers, and storytellers. Share your work, discover new voices, and connect with readers while you begin your journey in self publishing.
+            Post your poems, short stories and articles on a global publishing platform. Get your own author profile. Share your published work anywhere. Free forever.
+          </p>
+          <p className="mt-3 text-sm text-gray-500 italic">
+            {totalPosts} writers already published · Free to join
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             {typedCategories.slice(0, 5).map((cat) => (
@@ -137,7 +140,7 @@ export default async function LitspacePage() {
             ))}
             <Link
               href="/litspace/submit"
-              className="px-4 py-1.5 rounded-full bg-white text-gray-900 text-sm font-semibold hover:bg-gray-100 transition-colors"
+              className="litspace-submit-btn w-full sm:w-auto rounded-full text-white font-semibold transition-colors"
             >
               + Submit Your Work
             </Link>
