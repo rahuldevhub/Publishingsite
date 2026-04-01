@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { createServerClient } from "@/lib/supabase";
+import { LitspacePixelPageView, SubmitWorkButton } from "./LitspacePixelEvents";
 
 export const dynamic = "force-dynamic";
 
@@ -98,6 +99,7 @@ export default async function LitspacePage() {
 
   return (
     <main className="bg-white pt-16">
+      <LitspacePixelPageView />
       {/* ── Submit Banner ── */}
       <div className="bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto px-6 py-3 flex flex-wrap items-center justify-between gap-3">
@@ -138,12 +140,9 @@ export default async function LitspacePage() {
                 {cat.name}
               </Link>
             ))}
-            <Link
-              href="/litspace/submit"
-              className="litspace-submit-btn w-full sm:w-auto rounded-full text-white font-semibold transition-colors"
-            >
+            <SubmitWorkButton className="litspace-submit-btn w-full sm:w-auto rounded-full text-white font-semibold transition-colors">
               + Submit Your Work
-            </Link>
+            </SubmitWorkButton>
           </div>
         </div>
       </section>
@@ -222,12 +221,9 @@ export default async function LitspacePage() {
                 <p className="text-xs text-gray-300 leading-relaxed mb-4">
                   Have a poem, story, or article to share? Submit it for review and get published on LitSpace.
                 </p>
-                <Link
-                  href="/litspace/submit"
-                  className="block text-center bg-white text-gray-900 text-sm font-semibold px-4 py-2.5 rounded-xl hover:bg-gray-100 transition-colors"
-                >
+                <SubmitWorkButton className="block text-center bg-white text-gray-900 text-sm font-semibold px-4 py-2.5 rounded-xl hover:bg-gray-100 transition-colors">
                   Submit Your Work →
-                </Link>
+                </SubmitWorkButton>
               </div>
             </div>
           </aside>
@@ -356,12 +352,9 @@ export default async function LitspacePage() {
           <p className="text-sm text-gray-600 mb-6 max-w-sm mx-auto">
             Have a poem, story, or article? Submit it for review and get published on LitSpace.
           </p>
-          <Link
-            href="/litspace/submit"
-            className="inline-block bg-gray-900 text-white font-semibold px-6 py-3 rounded-xl hover:bg-gray-700 transition-colors"
-          >
+          <SubmitWorkButton className="inline-block bg-gray-900 text-white font-semibold px-6 py-3 rounded-xl hover:bg-gray-700 transition-colors">
             Submit Your Work →
-          </Link>
+          </SubmitWorkButton>
         </div>
       </section>
     </main>
