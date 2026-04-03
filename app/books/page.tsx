@@ -86,8 +86,17 @@ export default async function BooksPage({ searchParams }: PageProps) {
     title_az: { col: "title", asc: true },
     title_za: { col: "title", asc: false },
   };
-  const { col, asc } = sortMap[sort ?? "latest"] ?? sortMap.latest;
-  query = query.order(col, { ascending: asc }).range(from, to);
+
+  if (!sort || sort === "display") {
+    // Default: respect admin-defined display_order
+    query = query
+      .order("display_order", { ascending: true })
+      .order("created_at", { ascending: true })
+      .range(from, to);
+  } else {
+    const { col, asc } = sortMap[sort] ?? sortMap.latest;
+    query = query.order(col, { ascending: asc }).range(from, to);
+  }
 
   const { data: books, count } = await query;
   const typedBooks = (books ?? []) as unknown as Book[];
@@ -166,7 +175,8 @@ export default async function BooksPage({ searchParams }: PageProps) {
               </select>
             )}
 
-            <select name="sort" defaultValue={sort ?? "latest"} className={selectClass}>
+            <select name="sort" defaultValue={sort ?? "display"} className={selectClass}>
+              <option value="display">Featured Order</option>
               <option value="latest">Latest First</option>
               <option value="oldest">Oldest First</option>
               <option value="title_az">Title A–Z</option>

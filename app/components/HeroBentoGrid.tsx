@@ -19,7 +19,7 @@ const cards = [
     title: "Author Signing Event",
     emoji: "⭐",
     area: "testimonial",
-    image: "/landingvideo/authorsign.webp",
+    image: "/landingvideo/sign.jpg",
     video: undefined as string | undefined,
     hoverGradient: "linear-gradient(135deg,#7c3aed 0%,#4c1d95 100%)",
   },

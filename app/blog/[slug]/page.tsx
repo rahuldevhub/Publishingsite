@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const { data: post } = await supabase
     .from("blog_posts")
-    .select("title, meta_title, meta_description, excerpt, featured_image")
+    .select("title, meta_title, meta_description, excerpt, featured_image, keywords, author:authors(name)")
     .eq("slug", slug)
     .eq("published", true)
     .single();
@@ -36,16 +36,30 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const description = post.meta_description || post.excerpt || "";
   const url = `${SITE_URL}/blog/${slug}`;
   const image = post.featured_image;
+  const authorName = (post.author as unknown as { name: string } | null)?.name ?? "Ritera Publishing";
+
+  const imageObj = image
+    ? [{
+        url: image.startsWith("http") ? image : `${SITE_URL}${image}`,
+        width: 1200,
+        height: 630,
+        alt: title,
+      }]
+    : undefined;
 
   return {
-    title: `${title} | Ritera Publishing Blog`,
+    title,
     description,
+    keywords: post.keywords || "self publishing India, Ritera Publishing",
+    authors: [{ name: authorName }],
+    publisher: "Ritera Publishing",
+    robots: { index: true, follow: true },
     openGraph: {
       title,
       description,
       url,
       type: "article",
-      ...(image && { images: [{ url: image, width: 1200, height: 630, alt: title }] }),
+      ...(imageObj && { images: imageObj }),
     },
     twitter: {
       card: "summary_large_image",
@@ -66,13 +80,16 @@ export default async function BlogPostPage({ params }: PageProps) {
   const { data: post } = await supabase
     .from("blog_posts")
     .select(
-      "id, title, slug, excerpt, content, featured_image, reading_time, created_at, updated_at, featured, category:blog_categories(id, name, slug), author:authors(id, name, slug, bio, image_url, instagram, twitter)"
+      "id, title, slug, excerpt, content, featured_image, reading_time, created_at, updated_at, featured, faq_data, category:blog_categories(id, name, slug), author:authors(id, name, slug, bio, image_url, instagram, twitter)"
     )
     .eq("slug", slug)
     .eq("published", true)
     .single();
 
   if (!post) notFound();
+
+  type FaqItem = { question: string; answer: string };
+  const faqItems = (post.faq_data as unknown as FaqItem[] | null) ?? null;
 
   const category = post.category as unknown as { id: string; name: string; slug: string } | null;
   const author = post.author as unknown as {
@@ -117,17 +134,36 @@ export default async function BlogPostPage({ params }: PageProps) {
     },
   };
 
+  const faqJsonLd = faqItems && faqItems.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqItems.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: { "@type": "Answer", text: item.answer },
+        })),
+      }
+    : null;
+
   const postUrl = `${SITE_URL}/blog/${slug}`;
   const shareTitle = encodeURIComponent(post.title);
   const shareUrl = encodeURIComponent(postUrl);
 
   return (
     <>
-      {/* JSON-LD */}
+      {/* JSON-LD — Article */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {/* JSON-LD — FAQPage */}
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
 
       <main className="bg-white text-gray-900">
         {/* ── Breadcrumbs ── */}
@@ -214,6 +250,21 @@ export default async function BlogPostPage({ params }: PageProps) {
           <div className="prose-content">
             {renderContent(post.content)}
           </div>
+
+          {/* ── FAQ Section ── */}
+          {faqItems && faqItems.length > 0 && (
+            <div className="mt-12 pt-8 border-t border-gray-200">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                {faqItems.map((item, i) => (
+                  <div key={i} className="rounded-xl border border-gray-200 bg-gray-50 px-6 py-5">
+                    <h3 className="text-base font-semibold text-gray-900 mb-2">{item.question}</h3>
+                    <p className="text-sm text-gray-600 leading-relaxed">{item.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* ── Share Buttons ── */}
           <div className="mt-12 pt-8 border-t border-gray-200">

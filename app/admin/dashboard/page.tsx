@@ -1,6 +1,51 @@
 import { redirect } from "next/navigation";
 import { getAdminSession } from "@/lib/admin-session";
+import { createServerClient } from "@/lib/supabase";
 import LogoutButton from "./LogoutButton";
+
+// ── Badge helpers ────────────────────────────────────────────────────────────
+
+function AmberBadge({ label }: { label: string }) {
+  return (
+    <span style={{ background: "#fef3c7", color: "#92400e", borderRadius: 9999, padding: "2px 8px", fontSize: 11, fontWeight: 600, display: "inline-flex", alignItems: "center" }}>
+      {label}
+    </span>
+  );
+}
+
+function RedBadge({ label }: { label: string }) {
+  return (
+    <span style={{ background: "#fee2e2", color: "#991b1b", borderRadius: 9999, padding: "2px 8px", fontSize: 11, fontWeight: 600, display: "inline-flex", alignItems: "center" }}>
+      {label}
+    </span>
+  );
+}
+
+function GreenBadge({ label }: { label: string }) {
+  return (
+    <span style={{ background: "#dcfce7", color: "#166534", borderRadius: 9999, padding: "2px 8px", fontSize: 11, fontWeight: 600, display: "inline-flex", alignItems: "center" }}>
+      {label}
+    </span>
+  );
+}
+
+function StatsLine({ children }: { children: React.ReactNode }) {
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 8 }}>
+      {children}
+    </div>
+  );
+}
+
+function Count({ n, label }: { n: number; label: string }) {
+  return (
+    <span style={{ fontSize: 12, color: "#6b7280" }}>
+      {n} {label}
+    </span>
+  );
+}
+
+// ── Static card definitions ──────────────────────────────────────────────────
 
 const contentItems = [
   {
@@ -78,11 +123,43 @@ const communityItems = [
   },
 ];
 
+// ── Page ─────────────────────────────────────────────────────────────────────
+
 export default async function DashboardPage() {
   const session = await getAdminSession();
   if (!session) redirect("/admin/login");
 
   const adminName = session.name;
+  const supabase = createServerClient();
+
+  // Fetch all counts in parallel — default to 0 on error
+  const results = await Promise.all([
+    supabase.from("blog_posts").select("*", { count: "exact", head: true }),
+    supabase.from("blog_posts").select("*", { count: "exact", head: true }).eq("published", false),
+    supabase.from("authors").select("*", { count: "exact", head: true }),
+    supabase.from("books").select("*", { count: "exact", head: true }),
+    supabase.from("careers").select("*", { count: "exact", head: true }),
+    supabase.from("careers").select("*", { count: "exact", head: true }).eq("status", "active"),
+    supabase.from("employees").select("*", { count: "exact", head: true }),
+    supabase.from("litspace_posts").select("*", { count: "exact", head: true }),
+    supabase.from("litspace_posts").select("*", { count: "exact", head: true }).eq("approved", false),
+    supabase.from("comments").select("*", { count: "exact", head: true }),
+    supabase.from("comments").select("*", { count: "exact", head: true }).eq("approved", false),
+  ]);
+
+  const [
+    blogTotal,
+    blogUnpublished,
+    authorsTotal,
+    booksTotal,
+    careersTotal,
+    careersActive,
+    employeesTotal,
+    litspaceTotal,
+    litspacePending,
+    commentsTotal,
+    commentsPending,
+  ] = results.map((r) => r.count ?? 0);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -103,6 +180,7 @@ export default async function DashboardPage() {
 
       {/* Main content */}
       <main className="max-w-6xl mx-auto px-6 py-10 space-y-12">
+
         {/* Content Management */}
         <div>
           <div className="mb-6">
@@ -110,23 +188,89 @@ export default async function DashboardPage() {
             <p className="mt-1 text-sm text-gray-500">Select a section to manage your content.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {contentItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="group bg-white rounded-xl border border-gray-200 p-6 hover:border-gray-400 hover:shadow-sm transition-all"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="p-2.5 rounded-lg bg-gray-100 text-gray-600 group-hover:bg-gray-900 group-hover:text-white transition-colors">
-                    {item.icon}
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 group-hover:text-gray-700">{item.label}</h3>
-                    <p className="mt-0.5 text-sm text-gray-500">{item.description}</p>
-                  </div>
+
+            {/* Employees */}
+            <a href="/admin/employees" className="group bg-white rounded-xl border border-gray-200 p-6 hover:border-gray-400 hover:shadow-sm transition-all">
+              <div className="flex items-start gap-4">
+                <div className="p-2.5 rounded-lg bg-gray-100 text-gray-600 group-hover:bg-gray-900 group-hover:text-white transition-colors">
+                  {contentItems[0].icon}
                 </div>
-              </a>
-            ))}
+                <div>
+                  <h3 className="font-semibold text-gray-900 group-hover:text-gray-700">Employees</h3>
+                  <p className="mt-0.5 text-sm text-gray-500">Manage team members and profiles</p>
+                  <StatsLine>
+                    <Count n={employeesTotal} label="employees" />
+                  </StatsLine>
+                </div>
+              </div>
+            </a>
+
+            {/* Blog Posts */}
+            <a href="/admin/blog-posts" className="group bg-white rounded-xl border border-gray-200 p-6 hover:border-gray-400 hover:shadow-sm transition-all">
+              <div className="flex items-start gap-4">
+                <div className="p-2.5 rounded-lg bg-gray-100 text-gray-600 group-hover:bg-gray-900 group-hover:text-white transition-colors">
+                  {contentItems[1].icon}
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 group-hover:text-gray-700">Blog Posts</h3>
+                  <p className="mt-0.5 text-sm text-gray-500">Create and publish blog articles</p>
+                  <StatsLine>
+                    <Count n={blogTotal} label="posts" />
+                    {blogUnpublished > 0 && <AmberBadge label={`${blogUnpublished} drafts`} />}
+                  </StatsLine>
+                </div>
+              </div>
+            </a>
+
+            {/* Authors */}
+            <a href="/admin/authors" className="group bg-white rounded-xl border border-gray-200 p-6 hover:border-gray-400 hover:shadow-sm transition-all">
+              <div className="flex items-start gap-4">
+                <div className="p-2.5 rounded-lg bg-gray-100 text-gray-600 group-hover:bg-gray-900 group-hover:text-white transition-colors">
+                  {contentItems[2].icon}
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 group-hover:text-gray-700">Authors</h3>
+                  <p className="mt-0.5 text-sm text-gray-500">Manage author profiles and bios</p>
+                  <StatsLine>
+                    <Count n={authorsTotal} label="authors" />
+                  </StatsLine>
+                </div>
+              </div>
+            </a>
+
+            {/* Books */}
+            <a href="/admin/books" className="group bg-white rounded-xl border border-gray-200 p-6 hover:border-gray-400 hover:shadow-sm transition-all">
+              <div className="flex items-start gap-4">
+                <div className="p-2.5 rounded-lg bg-gray-100 text-gray-600 group-hover:bg-gray-900 group-hover:text-white transition-colors">
+                  {contentItems[3].icon}
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 group-hover:text-gray-700">Books</h3>
+                  <p className="mt-0.5 text-sm text-gray-500">Add and update book listings</p>
+                  <StatsLine>
+                    <Count n={booksTotal} label="books" />
+                  </StatsLine>
+                </div>
+              </div>
+            </a>
+
+            {/* Careers */}
+            <a href="/admin/careers" className="group bg-white rounded-xl border border-gray-200 p-6 hover:border-gray-400 hover:shadow-sm transition-all">
+              <div className="flex items-start gap-4">
+                <div className="p-2.5 rounded-lg bg-gray-100 text-gray-600 group-hover:bg-gray-900 group-hover:text-white transition-colors">
+                  {contentItems[4].icon}
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 group-hover:text-gray-700">Careers</h3>
+                  <p className="mt-0.5 text-sm text-gray-500">Post and manage job openings</p>
+                  <StatsLine>
+                    <Count n={careersTotal} label="listings" />
+                    {careersActive > 0 && <GreenBadge label={`${careersActive} active`} />}
+                  </StatsLine>
+                </div>
+              </div>
+            </a>
+
           </div>
         </div>
 
@@ -137,25 +281,44 @@ export default async function DashboardPage() {
             <p className="mt-1 text-sm text-gray-500">Manage user-generated content and engagement.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {communityItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="group bg-white rounded-xl border border-gray-200 p-6 hover:border-gray-400 hover:shadow-sm transition-all"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="p-2.5 rounded-lg bg-gray-100 text-gray-600 group-hover:bg-gray-900 group-hover:text-white transition-colors">
-                    {item.icon}
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 group-hover:text-gray-700">{item.label}</h3>
-                    <p className="mt-0.5 text-sm text-gray-500">{item.description}</p>
-                  </div>
+
+            {/* Litspace Posts */}
+            <a href="/admin/litspace-posts" className="group bg-white rounded-xl border border-gray-200 p-6 hover:border-gray-400 hover:shadow-sm transition-all">
+              <div className="flex items-start gap-4">
+                <div className="p-2.5 rounded-lg bg-gray-100 text-gray-600 group-hover:bg-gray-900 group-hover:text-white transition-colors">
+                  {communityItems[0].icon}
                 </div>
-              </a>
-            ))}
+                <div>
+                  <h3 className="font-semibold text-gray-900 group-hover:text-gray-700">Litspace Posts</h3>
+                  <p className="mt-0.5 text-sm text-gray-500">Review and approve community submissions</p>
+                  <StatsLine>
+                    <Count n={litspaceTotal} label="posts" />
+                    {litspacePending > 0 && <AmberBadge label={`${litspacePending} pending`} />}
+                  </StatsLine>
+                </div>
+              </div>
+            </a>
+
+            {/* Comments */}
+            <a href="/admin/comments" className="group bg-white rounded-xl border border-gray-200 p-6 hover:border-gray-400 hover:shadow-sm transition-all">
+              <div className="flex items-start gap-4">
+                <div className="p-2.5 rounded-lg bg-gray-100 text-gray-600 group-hover:bg-gray-900 group-hover:text-white transition-colors">
+                  {communityItems[1].icon}
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 group-hover:text-gray-700">Comments</h3>
+                  <p className="mt-0.5 text-sm text-gray-500">Moderate and manage user comments</p>
+                  <StatsLine>
+                    <Count n={commentsTotal} label="comments" />
+                    {commentsPending > 0 && <RedBadge label={`${commentsPending} pending`} />}
+                  </StatsLine>
+                </div>
+              </div>
+            </a>
+
           </div>
         </div>
+
       </main>
     </div>
   );

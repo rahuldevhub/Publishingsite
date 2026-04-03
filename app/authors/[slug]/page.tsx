@@ -230,7 +230,7 @@ export default async function AuthorPortfolioPage({ params }: PageProps) {
                     <div className="w-px h-10 bg-gray-700 hidden sm:block" />
                   )}
                   <div className="text-center">
-                    <p className="text-3xl font-bold text-amber-400 leading-none mb-1">50+</p>
+                    <p className="text-3xl font-bold text-amber-400 leading-none mb-1">160+</p>
                     <p className="text-gray-400 text-xs uppercase tracking-wide">Countries Reached</p>
                   </div>
                   {publishedYear && (

@@ -282,7 +282,7 @@ export default function HomePage() {
                 {/* CTAs */}
                 <div className="mt-10 flex flex-wrap gap-4">
                   <Link
-                    href="/packages"
+                    href="/contact"
                     className="inline-flex items-center gap-2 px-7 py-4 bg-amber-400 text-gray-900 font-bold rounded-xl hover:bg-amber-300 transition-colors text-sm shadow-lg shadow-amber-400/20"
                   >
                     Start Publishing

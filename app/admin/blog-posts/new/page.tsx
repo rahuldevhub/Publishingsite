@@ -24,6 +24,8 @@ const emptyForm = {
   reading_time: 5,
   meta_title: "",
   meta_description: "",
+  keywords: "",
+  faq_data: "",
   featured: false,
   published: false,
 };
@@ -65,6 +67,17 @@ export default function NewBlogPostPage() {
     setError("");
     setLoading(true);
 
+    let parsedFaq = null;
+    if (form.faq_data.trim()) {
+      try {
+        parsedFaq = JSON.parse(form.faq_data);
+      } catch {
+        setError("FAQ data is not valid JSON. Please fix the format and try again.");
+        setLoading(false);
+        return;
+      }
+    }
+
     const { error: insertError } = await supabase.from("blog_posts").insert({
       title: form.title,
       slug: form.slug,
@@ -76,6 +89,8 @@ export default function NewBlogPostPage() {
       reading_time: Number(form.reading_time),
       meta_title: form.meta_title || null,
       meta_description: form.meta_description || null,
+      keywords: form.keywords || null,
+      faq_data: parsedFaq,
       featured: form.featured,
       published: form.published,
     });
@@ -243,6 +258,32 @@ export default function NewBlogPostPage() {
                 className={`${inputClass} resize-none`}
                 placeholder="SEO description…"
               />
+            </div>
+
+            {/* SEO Keywords */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">SEO Keywords</label>
+              <input
+                type="text"
+                value={form.keywords}
+                onChange={(e) => handleChange("keywords", e.target.value)}
+                className={inputClass}
+                placeholder="self publishing India, book publishing cost, first time author"
+              />
+              <p className="mt-1 text-xs text-gray-400">Comma-separated keywords for meta tags</p>
+            </div>
+
+            {/* FAQ Data */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">FAQ (JSON format)</label>
+              <textarea
+                rows={5}
+                value={form.faq_data}
+                onChange={(e) => handleChange("faq_data", e.target.value)}
+                className={`${inputClass} resize-y font-mono text-xs`}
+                placeholder={`[{"question": "How much does it cost?", "answer": "The cost ranges from..."}]`}
+              />
+              <p className="mt-1 text-xs text-gray-400">Used to generate FAQ schema (JSON-LD) and an FAQ section on the post page. Must be valid JSON.</p>
             </div>
 
             {/* Featured + Published */}

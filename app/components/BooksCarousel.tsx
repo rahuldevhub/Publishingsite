@@ -25,6 +25,7 @@ export default function BooksCarousel() {
     supabase
       .from("books")
       .select("id, title, slug, cover_image, author:authors(name)")
+      .order("display_order", { ascending: true })
       .order("created_at", { ascending: false })
       .limit(16)
       .then(({ data, error }) => {

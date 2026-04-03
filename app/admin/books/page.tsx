@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
-import BookActions from "./BookActions";
+import BooksTable from "./BooksTableClient";
 
 const selectClass =
   "px-3 py-2 rounded-lg border border-gray-300 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent";
@@ -28,7 +28,8 @@ export default async function BooksPage({
   let query = supabase
     .from("books")
     .select("id, title, slug, cover_image, genre, format, featured, published_date, author:authors(id, name)")
-    .order("created_at", { ascending: false });
+    .order("display_order", { ascending: true })
+    .order("created_at", { ascending: true });
 
   if (genre) query = query.eq("genre", genre);
   if (featured === "true") query = query.eq("featured", true);
@@ -100,63 +101,7 @@ export default async function BooksPage({
             </Link>
           </div>
         ) : (
-          <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-gray-200 bg-gray-50">
-                  <th className="text-left px-6 py-3 font-medium text-gray-600">Cover</th>
-                  <th className="text-left px-6 py-3 font-medium text-gray-600">Title</th>
-                  <th className="text-left px-6 py-3 font-medium text-gray-600">Author</th>
-                  <th className="text-left px-6 py-3 font-medium text-gray-600">Genre</th>
-                  <th className="text-left px-6 py-3 font-medium text-gray-600">Format</th>
-                  <th className="text-left px-6 py-3 font-medium text-gray-600">Featured</th>
-                  <th className="text-right px-6 py-3 font-medium text-gray-600">Actions</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-100">
-                {books.map((book) => {
-                  const author = book.author as unknown as { name: string } | null;
-                  return (
-                    <tr key={book.id} className="hover:bg-gray-50 transition-colors">
-                      <td className="px-6 py-3">
-                        {book.cover_image ? (
-                          <img
-                            src={book.cover_image}
-                            alt={book.title}
-                            className="w-10 h-14 object-cover rounded shadow-sm"
-                          />
-                        ) : (
-                          <div className="w-10 h-14 rounded bg-gray-100 border border-gray-200 flex items-center justify-center">
-                            <svg className="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-                            </svg>
-                          </div>
-                        )}
-                      </td>
-                      <td className="px-6 py-3 font-medium text-gray-900 max-w-xs">
-                        <div className="truncate">{book.title}</div>
-                      </td>
-                      <td className="px-6 py-3 text-gray-600">{author?.name ?? "—"}</td>
-                      <td className="px-6 py-3 text-gray-600">{book.genre}</td>
-                      <td className="px-6 py-3 text-gray-600">{book.format}</td>
-                      <td className="px-6 py-3">
-                        {book.featured ? (
-                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-700">
-                            Featured
-                          </span>
-                        ) : (
-                          <span className="text-gray-400">—</span>
-                        )}
-                      </td>
-                      <td className="px-6 py-3 text-right">
-                        <BookActions id={book.id} title={book.title} />
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+          <BooksTable initialBooks={books as any} />
         )}
       </main>
     </div>
