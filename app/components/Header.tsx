@@ -6,11 +6,12 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const NAV_LINKS: { label: string; href: string; badge?: string }[] = [
-  { label: "Home",      href: "/" },
-  { label: "About",     href: "/aboutus" },
-  { label: "Packages",  href: "/packages", badge: "NEW" },
-  { label: "Books",     href: "/books" },
-  { label: "Litspace",  href: "/litspace", badge: "Popular" },
+  { label: "Home",          href: "/" },
+  { label: "About",         href: "/aboutus" },
+  { label: "Packages",      href: "/packages", badge: "NEW" },
+  { label: "Books",         href: "/books" },
+  { label: "Litspace",      href: "/litspace", badge: "Popular" },
+  { label: "Case Studies",  href: "/case-studies" },
   // { label: "Blog",     href: "/blog",     badge: "3" },
   // { label: "Careers",  href: "/careers" },
   // { label: "Contact",  href: "/contact" },

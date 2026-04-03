@@ -21,6 +21,8 @@ type EmployeeForm = {
   linkedin: string;
   employment_type: string;
   joined_date: string;
+  end_date: string;
+  employment_status: string;
   active: boolean;
   display_order: number;
   reporting_manager_id: string;
@@ -64,6 +66,8 @@ export default function EditEmployeePage() {
         linkedin: data.linkedin ?? "",
         employment_type: data.employment_type,
         joined_date: data.joined_date?.split("T")[0] ?? "",
+        end_date: data.end_date?.split("T")[0] ?? "",
+        employment_status: data.employment_status ?? "Currently Working",
         active: data.active,
         display_order: data.display_order,
         reporting_manager_id: data.reporting_manager_id ?? "",
@@ -103,6 +107,8 @@ export default function EditEmployeePage() {
         linkedin: form.linkedin || null,
         employment_type: form.employment_type,
         joined_date: form.joined_date,
+        end_date: form.end_date || null,
+        employment_status: form.employment_status,
         active: form.active,
         display_order: Number(form.display_order),
         reporting_manager_id: form.reporting_manager_id || null,
@@ -320,6 +326,37 @@ export default function EditEmployeePage() {
                   onChange={(e) => handleChange("joined_date", e.target.value)}
                   className="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
                 />
+              </div>
+            </div>
+
+            {/* End Date + Employment Status */}
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">End Date</label>
+                <input
+                  type="date"
+                  value={form.end_date}
+                  onChange={(e) => handleChange("end_date", e.target.value)}
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+                />
+                <p className="mt-1 text-xs text-gray-400">Leave blank if currently employed.</p>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">Employment Status <span className="text-red-500">*</span></label>
+                <select
+                  required
+                  value={form.employment_status}
+                  onChange={(e) => handleChange("employment_status", e.target.value)}
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent bg-white"
+                >
+                  <option>Currently Working</option>
+                  <option>Resigned</option>
+                  <option>Absconded</option>
+                  <option>Internship Completed</option>
+                  <option>Internship Discontinued</option>
+                  <option>Contract Ended</option>
+                  <option>Terminated</option>
+                </select>
               </div>
             </div>
 

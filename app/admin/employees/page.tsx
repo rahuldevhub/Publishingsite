@@ -4,6 +4,25 @@ import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
 import EmployeeActions from "./EmployeeActions";
 
+const STATUS_STYLES: Record<string, string> = {
+  "Currently Working":       "bg-green-100 text-green-700",
+  "Resigned":                "bg-gray-100 text-gray-600",
+  "Absconded":               "bg-red-100 text-red-700",
+  "Internship Completed":    "bg-blue-100 text-blue-700",
+  "Internship Discontinued": "bg-orange-100 text-orange-700",
+  "Contract Ended":          "bg-gray-100 text-gray-600",
+  "Terminated":              "bg-red-100 text-red-700",
+};
+
+function EmploymentStatusBadge({ status }: { status: string }) {
+  const cls = STATUS_STYLES[status] ?? "bg-gray-100 text-gray-600";
+  return (
+    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${cls}`}>
+      {status}
+    </span>
+  );
+}
+
 export default async function EmployeesPage() {
   const supabase = createServerClient();
   const cookieStore = await cookies();
@@ -13,7 +32,7 @@ export default async function EmployeesPage() {
 
   const { data: employees, error } = await supabase
     .from("employees")
-    .select("id, name, employee_id, role, department, employment_type, active, display_order")
+    .select("id, name, employee_id, role, department, employment_type, active, employment_status, display_order")
     .order("display_order", { ascending: true });
 
   return (
@@ -81,13 +100,7 @@ export default async function EmployeesPage() {
                     <td className="px-6 py-4 text-gray-600">{emp.department}</td>
                     <td className="px-6 py-4 text-gray-600">{emp.employment_type}</td>
                     <td className="px-6 py-4">
-                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                        emp.active
-                          ? "bg-green-100 text-green-700"
-                          : "bg-gray-100 text-gray-600"
-                      }`}>
-                        {emp.active ? "Active" : "Inactive"}
-                      </span>
+                      <EmploymentStatusBadge status={emp.employment_status ?? "Currently Working"} />
                     </td>
                     <td className="px-6 py-4 text-right">
                       <EmployeeActions id={emp.id} name={emp.name} />

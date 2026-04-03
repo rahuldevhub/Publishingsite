@@ -6,7 +6,7 @@ const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const supabase = createServerClient();
 
-  const [books, authors, litspace, blog, careers] = await Promise.all([
+  const [books, authors, litspace, blog, careers, caseStudies] = await Promise.all([
     supabase.from("books").select("slug, updated_at").eq("published", true),
     supabase.from("authors").select("slug, updated_at"),
     supabase
@@ -18,6 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .select("slug, updated_at")
       .eq("published", true),
     supabase.from("careers").select("slug, updated_at").eq("active", true),
+    supabase.from("case_studies").select("slug, updated_at").eq("published", true),
   ]);
 
   const toDate = (v: string | null | undefined) =>
@@ -31,6 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE}/authors`,                      lastModified: new Date(), changeFrequency: "weekly",  priority: 0.8 },
     { url: `${SITE}/litspace`,                     lastModified: new Date(), changeFrequency: "daily",   priority: 0.8 },
     { url: `${SITE}/blog`,                         lastModified: new Date(), changeFrequency: "daily",   priority: 0.8 },
+    { url: `${SITE}/case-studies`,                 lastModified: new Date(), changeFrequency: "weekly",  priority: 0.8 },
     { url: `${SITE}/careers`,                      lastModified: new Date(), changeFrequency: "weekly",  priority: 0.7 },
     { url: `${SITE}/contact`,                      lastModified: new Date(), changeFrequency: "yearly",  priority: 0.6 },
     { url: `${SITE}/people-behind-ritera`,         lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
@@ -73,6 +75,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.5,
   }));
 
+  const caseStudyRoutes: MetadataRoute.Sitemap = (caseStudies.data ?? []).map((cs) => ({
+    url: `${SITE}/case-studies/${cs.slug}`,
+    lastModified: toDate(cs.updated_at),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
   return [
     ...staticRoutes,
     ...bookRoutes,
@@ -80,5 +89,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...litspaceRoutes,
     ...blogRoutes,
     ...careerRoutes,
+    ...caseStudyRoutes,
   ];
 }

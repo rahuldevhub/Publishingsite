@@ -31,6 +31,7 @@ export default async function EmployeeDirectoryPage() {
       "id, employee_id, name, role, department, profile_photo, employment_type, active, display_order, reporting_manager:reporting_manager_id(name)"
     )
     .eq("active", true)
+    .eq("employment_status", "Currently Working")
     .order("display_order", { ascending: true });
 
   const typedEmployees = (employees ?? []) as unknown as Employee[];
