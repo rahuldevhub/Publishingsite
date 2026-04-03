@@ -31,17 +31,6 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
   },
 
-  async redirects() {
-    return [
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "www.riterapublishing.com" }],
-        destination: "https://riterapublishing.com/:path*",
-        permanent: true,
-      },
-    ];
-  },
-
   async headers() {
     return [
       // Security headers on all routes
