@@ -1,17 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { getSupabaseBrowserClient } from "@/lib/supabase-browser";
 
 const inputClass =
   "w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent";
 
 export default function ContactForm() {
-  const supabase = getSupabaseBrowserClient();
-  const [form, setForm]       = useState({ name: "", email: "", phone: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
-  const [done, setDone]       = useState(false);
-  const [error, setError]     = useState("");
+  const [done, setDone] = useState(false);
+  const [error, setError] = useState("");
 
   function set(field: string, value: string) {
     setForm((f) => ({ ...f, [field]: value }));
@@ -22,14 +20,20 @@ export default function ContactForm() {
     setError("");
     setSubmitting(true);
 
-    const { error: err } = await supabase.from("contact_enquiries").insert({
-      name:    form.name.trim(),
-      email:   form.email.trim(),
-      phone:   form.phone.trim() || null,
-      message: form.message.trim(),
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
     });
 
-    if (err) console.error("[ContactForm]", err);
+    const data = await res.json();
+
+    if (!res.ok) {
+      setError(data.error || "Something went wrong. Please try again.");
+      setSubmitting(false);
+      return;
+    }
+
     setDone(true);
     setSubmitting(false);
   }
