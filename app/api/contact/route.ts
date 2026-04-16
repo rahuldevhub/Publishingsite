@@ -17,10 +17,10 @@ export async function POST(req: NextRequest) {
       message: String(message).trim().slice(0, 2000),
     });
 
-    if (error) {
-      console.error("[contact API]", error);
-      return NextResponse.json({ error: "Failed to save. Please try again." }, { status: 500 });
-    }
+  if (error) {
+  console.error("[contact API FULL ERROR]", error);
+  return NextResponse.json({ error: error.message }, { status: 500 });
+}
 
     return NextResponse.json({ success: true });
   } catch {

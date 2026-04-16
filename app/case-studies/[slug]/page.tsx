@@ -54,7 +54,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
   const { data: cs } = await supabase
     .from("case_studies")
-    .select("id, title, slug, author_name, content, pdf_url, faq_data, keywords, meta_title, meta_description, created_at, updated_at")
+    .select("id, title, slug, author_name, book_title, content, pdf_url, faq_data, keywords, meta_title, meta_description, created_at, updated_at")
     .eq("slug", slug)
     .eq("published", true)
     .single();
@@ -119,7 +119,10 @@ export default async function CaseStudyPage({ params }: PageProps) {
             <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight mb-3">
               {cs.title}
             </h1>
-            <p className="text-base text-gray-500 font-medium mb-8">{cs.author_name}</p>
+            <p className="text-base text-gray-500 font-medium mb-1">{cs.author_name}</p>
+            {cs.book_title && (
+              <p className="text-sm text-gray-400 italic mb-8">{cs.book_title}</p>
+            )}
 
             {cs.pdf_url && (
               <div className="p-6 bg-amber-50 border border-amber-200 rounded-2xl flex flex-col sm:flex-row items-start sm:items-center gap-4">

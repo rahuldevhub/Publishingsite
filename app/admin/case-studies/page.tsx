@@ -13,7 +13,7 @@ export default async function AdminCaseStudiesPage() {
 
   const { data: caseStudies, error } = await supabase
     .from("case_studies")
-    .select("id, title, slug, author_name, book_title, category, featured, published, created_at")
+    .select("id, title, slug, author_name, book_title, featured, published, created_at")
     .order("created_at", { ascending: false });
 
   return (
@@ -57,7 +57,6 @@ export default async function AdminCaseStudiesPage() {
                 <tr className="border-b border-gray-200 bg-gray-50">
                   <th className="text-left px-6 py-3 font-medium text-gray-600">Title</th>
                   <th className="text-left px-6 py-3 font-medium text-gray-600">Author</th>
-                  <th className="text-left px-6 py-3 font-medium text-gray-600">Category</th>
                   <th className="text-left px-6 py-3 font-medium text-gray-600">Status</th>
                   <th className="text-right px-6 py-3 font-medium text-gray-600">Actions</th>
                 </tr>
@@ -73,7 +72,6 @@ export default async function AdminCaseStudiesPage() {
                       <div>{cs.author_name}</div>
                       {cs.book_title && <div className="text-xs text-gray-400 italic truncate max-w-[160px]">{cs.book_title}</div>}
                     </td>
-                    <td className="px-6 py-3 text-gray-600">{cs.category ?? "—"}</td>
                     <td className="px-6 py-3">
                       <div className="flex items-center gap-2">
                         {cs.published ? (

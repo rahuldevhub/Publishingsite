@@ -15,6 +15,7 @@ const emptyForm = {
   title: "",
   slug: "",
   author_name: "",
+  book_title: "",
   content: "",
   pdf_url: "",
   meta_title: "",
@@ -58,6 +59,7 @@ export default function NewCaseStudyPage() {
         title: form.title,
         slug: form.slug,
         author_name: form.author_name,
+        book_title: form.book_title,
         content: form.content || null,
         pdf_url: form.pdf_url || null,
         meta_title: form.meta_title || null,
@@ -112,6 +114,12 @@ export default function NewCaseStudyPage() {
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1.5">Author Name <span className="text-red-500">*</span></label>
               <input type="text" required value={form.author_name} onChange={(e) => handleChange("author_name", e.target.value)} className={inputClass} placeholder="Priya Sharma" />
+            </div>
+
+            {/* Book Title */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Book Title <span className="text-red-500">*</span></label>
+              <input type="text" required value={form.book_title} onChange={(e) => handleChange("book_title", e.target.value)} className={inputClass} placeholder="My Publishing Journey" />
             </div>
 
             {/* Content */}

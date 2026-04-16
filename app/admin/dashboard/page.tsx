@@ -145,6 +145,10 @@ export default async function DashboardPage() {
     supabase.from("litspace_posts").select("*", { count: "exact", head: true }).eq("approved", false),
     supabase.from("comments").select("*", { count: "exact", head: true }),
     supabase.from("comments").select("*", { count: "exact", head: true }).eq("approved", false),
+    supabase.from("contact_enquiries").select("*", { count: "exact", head: true }),
+    supabase.from("newsletter_subscribers").select("*", { count: "exact", head: true }),
+    supabase.from("lead_captures").select("*", { count: "exact", head: true }),
+    supabase.from("package_inquiries").select("*", { count: "exact", head: true }),
   ]);
 
   const [
@@ -159,6 +163,10 @@ export default async function DashboardPage() {
     litspacePending,
     commentsTotal,
     commentsPending,
+    contactEnquiriesTotal,
+    newsletterSubscribersTotal,
+    leadCapturesTotal,
+    packageInquiriesTotal,
   ] = results.map((r) => r.count ?? 0);
 
   return (
@@ -326,6 +334,89 @@ export default async function DashboardPage() {
                   <StatsLine>
                     <Count n={commentsTotal} label="comments" />
                     {commentsPending > 0 && <RedBadge label={`${commentsPending} pending`} />}
+                  </StatsLine>
+                </div>
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+        {/* Leads & Enquiries */}
+        <div>
+          <div className="mb-6">
+            <h2 className="text-2xl font-bold text-gray-900">Leads &amp; Enquiries</h2>
+            <p className="mt-1 text-sm text-gray-500">View and manage inbound leads and contact submissions.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+            {/* Contact Enquiries */}
+            <a href="/admin/contact-enquiries" className="group bg-white rounded-xl border border-gray-200 p-6 hover:border-gray-400 hover:shadow-sm transition-all">
+              <div className="flex items-start gap-4">
+                <div className="p-2.5 rounded-lg bg-gray-100 text-gray-600 group-hover:bg-gray-900 group-hover:text-white transition-colors">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 group-hover:text-gray-700">Contact Enquiries</h3>
+                  <p className="mt-0.5 text-sm text-gray-500">General contact form submissions</p>
+                  <StatsLine>
+                    <Count n={contactEnquiriesTotal} label="enquiries" />
+                  </StatsLine>
+                </div>
+              </div>
+            </a>
+
+            {/* Newsletter Subscribers */}
+            <a href="/admin/newsletter-subscribers" className="group bg-white rounded-xl border border-gray-200 p-6 hover:border-gray-400 hover:shadow-sm transition-all">
+              <div className="flex items-start gap-4">
+                <div className="p-2.5 rounded-lg bg-gray-100 text-gray-600 group-hover:bg-gray-900 group-hover:text-white transition-colors">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 group-hover:text-gray-700">Newsletter Subscribers</h3>
+                  <p className="mt-0.5 text-sm text-gray-500">Email subscription list</p>
+                  <StatsLine>
+                    <Count n={newsletterSubscribersTotal} label="subscribers" />
+                  </StatsLine>
+                </div>
+              </div>
+            </a>
+
+            {/* Lead Captures */}
+            <a href="/admin/lead-captures" className="group bg-white rounded-xl border border-gray-200 p-6 hover:border-gray-400 hover:shadow-sm transition-all">
+              <div className="flex items-start gap-4">
+                <div className="p-2.5 rounded-lg bg-gray-100 text-gray-600 group-hover:bg-gray-900 group-hover:text-white transition-colors">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 group-hover:text-gray-700">Lead Captures</h3>
+                  <p className="mt-0.5 text-sm text-gray-500">Case study PDF download leads</p>
+                  <StatsLine>
+                    <Count n={leadCapturesTotal} label="leads" />
+                  </StatsLine>
+                </div>
+              </div>
+            </a>
+
+            {/* Package Inquiries */}
+            <a href="/admin/package-inquiries" className="group bg-white rounded-xl border border-gray-200 p-6 hover:border-gray-400 hover:shadow-sm transition-all">
+              <div className="flex items-start gap-4">
+                <div className="p-2.5 rounded-lg bg-gray-100 text-gray-600 group-hover:bg-gray-900 group-hover:text-white transition-colors">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 group-hover:text-gray-700">Package Inquiries</h3>
+                  <p className="mt-0.5 text-sm text-gray-500">Custom publishing quote requests</p>
+                  <StatsLine>
+                    <Count n={packageInquiriesTotal} label="inquiries" />
                   </StatsLine>
                 </div>
               </div>
