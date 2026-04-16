@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
 import SubmitForm from "./SubmitForm";
+import TestimonialCarousel from "./TestimonialCarousel";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
@@ -50,7 +51,7 @@ export default async function SubmitPage() {
           </h1>
           <p className="mt-5 text-lg text-gray-300 max-w-xl leading-relaxed">
             LitSpace is a home for poets, storytellers, and essayists. Submit your work and, once
-            approved, it will be published for readers across India to discover and enjoy.
+            it will be published for readers across India to discover and enjoy.
           </p>
         </div>
       </section>
@@ -67,66 +68,56 @@ export default async function SubmitPage() {
             </div>
           </div>
 
-          {/* ── Guidelines Sidebar ── */}
+          {/* ── Right Sidebar ── */}
           <aside className="mt-8 lg:mt-0">
             <div className="sticky top-8 space-y-6">
 
-              {/* What We Accept */}
-              <div className="bg-gray-50 rounded-2xl border border-gray-200 p-6">
-                <h2 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <span className="text-lg">✍️</span> What We Accept
-                </h2>
-                <ul className="space-y-3">
-                  {[
-                    { type: "Poetry", desc: "Original poems in any form — free verse, haiku, sonnets, ghazals, and more." },
-                    { type: "Short Stories", desc: "Fiction up to 3,000 words. Any genre welcome — literary, fantasy, romance, thriller." },
-                    { type: "Personal Essays", desc: "Non-fiction narratives, memoirs, and opinion pieces on any topic." },
-                    { type: "Articles", desc: "Informative writing on books, writing craft, literature, and culture." },
-                  ].map((item) => (
-                    <li key={item.type} className="text-sm">
-                      <span className="font-semibold text-gray-900">{item.type}</span>
-                      <p className="text-gray-600 mt-0.5 leading-relaxed">{item.desc}</p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Content Policy */}
-              <div className="bg-gray-50 rounded-2xl border border-gray-200 p-6">
-                <h2 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <span className="text-lg">📋</span> Content Guidelines
-                </h2>
-                <ul className="space-y-2">
-                  {[
-                    "Your work must be original and previously unpublished",
-                    "No hate speech, harassment, or discriminatory content",
-                    "No plagiarism — all submissions are reviewed",
-                    "Keep it respectful and suitable for all audiences",
-                    "By submitting, you grant LitSpace publishing rights",
-                  ].map((rule) => (
-                    <li key={rule} className="flex items-start gap-2 text-sm text-gray-700">
-                      <span className="text-green-500 mt-0.5 shrink-0">✓</span>
-                      <span>{rule}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Review Process */}
-              <div className="bg-gray-900 rounded-2xl p-6 text-white">
-                <h2 className="font-bold text-white mb-3 flex items-center gap-2">
-                  <span className="text-lg">⏱️</span> Review Process
-                </h2>
-                <p className="text-sm text-gray-300 leading-relaxed mb-4">
-                  All submissions are reviewed by our editorial team within <strong className="text-white">3–5 business days</strong>. You&apos;ll receive an email notification once a decision is made.
+              {/* Section 1 — Published Example Card */}
+              <div className="bg-gray-900 rounded-2xl p-5 text-white">
+                <div className="flex items-center justify-between mb-3">
+                  <span
+                    className="text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wide"
+                    style={{ backgroundColor: "#F26522", color: "#fff" }}
+                  >
+                    Featured
+                  </span>
+                  <span className="text-xs text-gray-400">Short Story</span>
+                </div>
+                <h3 className="text-base font-bold text-white leading-snug mb-1">
+                  The Weight of Staying
+                </h3>
+                <p className="text-xs text-gray-400 mb-2">Arjun Mehta · Mumbai</p>
+                <p className="text-sm text-gray-300 leading-relaxed italic mb-3">
+                  &ldquo;A quiet story about belonging, told in the spaces between words.&rdquo;
                 </p>
-                <Link
-                  href="/litspace"
-                  className="block text-center bg-white text-gray-900 text-sm font-semibold px-4 py-2.5 rounded-xl hover:bg-gray-100 transition-colors"
-                >
-                  Browse Published Work
-                </Link>
+                <p className="text-xs text-gray-500">Published 2 days ago</p>
               </div>
+
+              {/* Section 2 — Writer Testimonials */}
+              <TestimonialCarousel />
+
+              {/* Section 3 — How It Works */}
+              <div className="bg-gray-50 rounded-2xl border border-gray-200 p-5">
+                <h2 className="font-bold text-gray-900 mb-4 text-sm">How it works</h2>
+                <ol className="space-y-3">
+                  {[
+                    "Fill the form — takes 2 minutes",
+                    "We review within 24 hours",
+                    "Your work goes live with your author profile",
+                  ].map((step, i) => (
+                    <li key={i} className="flex items-start gap-3 text-sm text-gray-700">
+                      <span
+                        className="shrink-0 w-5 h-5 rounded-full text-white text-xs font-bold flex items-center justify-center mt-0.5"
+                        style={{ backgroundColor: "#F26522" }}
+                      >
+                        {i + 1}
+                      </span>
+                      <span>{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
             </div>
           </aside>
         </div>

@@ -217,9 +217,12 @@ export default function SubmitForm({ categories }: { categories: Category[] }) {
       <button
         type="submit"
         disabled={submitting}
-        className="w-full bg-gray-900 text-white font-semibold py-3.5 rounded-xl hover:bg-gray-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full text-white font-semibold py-3.5 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        style={{ backgroundColor: submitting ? "#d4581e" : "#F26522" }}
+        onMouseEnter={(e) => { if (!submitting) (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#d4581e"; }}
+        onMouseLeave={(e) => { if (!submitting) (e.currentTarget as HTMLButtonElement).style.backgroundColor = "#F26522"; }}
       >
-        {submitting ? "Submitting…" : "Submit for Review →"}
+        {submitting ? "Submitting…" : "Publish My Work →"}
       </button>
     </form>
   );
