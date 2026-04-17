@@ -10,6 +10,7 @@ export async function PATCH(
   if (!(await getAdminSession())) return unauthorized();
   const { id } = await params;
   const body = await request.json();
+  console.log('PATCH body:', { id, approved: body.approved });
   const supabase = createServerClient();
 
   const { data, error } = await supabase
@@ -19,11 +20,15 @@ export async function PATCH(
     .select("writer_email, writer_name, title, slug")
     .single();
 
+  console.log('Updated post:', data, 'Error:', error);
+
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
   // Only send email when approving
   if (body.approved === true && data?.writer_email) {
     const { writer_email, writer_name, title, slug } = data;
+    console.log('Gmail user:', process.env.GMAIL_USER ? 'SET' : 'NOT SET');
+    console.log('Sending email to:', writer_email);
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 587,
@@ -63,8 +68,9 @@ export async function PATCH(
   </p>
 </div>`,
       });
+      console.log('Email sent successfully');
     } catch (err) {
-      console.error("Approval email failed:", err);
+      console.error('Email error:', err);
     }
   }
 
