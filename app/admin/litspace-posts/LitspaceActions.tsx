@@ -21,7 +21,17 @@ export default function LitspaceActions({
 
   async function handleToggleApproval() {
     setToggling(true);
-    await supabase.from("litspace_posts").update({ approved: !approved }).eq("id", id);
+    if (!approved) {
+      // Approving — go through API so the approval email is sent
+      await fetch(`/api/admin/litspace-posts/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ approved: true }),
+      });
+    } else {
+      // Rejecting — no email needed
+      await supabase.from("litspace_posts").update({ approved: false }).eq("id", id);
+    }
     router.refresh();
     setToggling(false);
   }
