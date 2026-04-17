@@ -18,6 +18,11 @@ export default async function NewsletterSubscribersPage() {
     redirect("/admin/login");
   }
 
+  await supabase
+    .from("admin_section_views")
+    .update({ last_viewed_at: new Date().toISOString() })
+    .eq("section_key", "newsletter_subscribers");
+
   const { data: subscribers, error } = await supabase
     .from("newsletter_subscribers")
     .select("id, email, created_at")

@@ -132,6 +132,17 @@ export default async function DashboardPage() {
   const adminName = session.name;
   const supabase = createServerClient();
 
+  // Fetch last-viewed timestamps for leads sections (needed before count queries)
+  const { data: sectionViews } = await supabase
+    .from("admin_section_views")
+    .select("section_key, last_viewed_at")
+    .in("section_key", ["contact_enquiries", "newsletter_subscribers", "lead_captures", "package_inquiries"]);
+
+  const viewedAt = Object.fromEntries(
+    (sectionViews ?? []).map((s) => [s.section_key, s.last_viewed_at as string])
+  );
+  const fallback = "1970-01-01T00:00:00Z";
+
   // Fetch all counts in parallel — default to 0 on error
   const results = await Promise.all([
     supabase.from("blog_posts").select("*", { count: "exact", head: true }),
@@ -149,6 +160,10 @@ export default async function DashboardPage() {
     supabase.from("newsletter_subscribers").select("*", { count: "exact", head: true }),
     supabase.from("lead_captures").select("*", { count: "exact", head: true }),
     supabase.from("package_inquiries").select("*", { count: "exact", head: true }),
+    supabase.from("contact_enquiries").select("*", { count: "exact", head: true }).gt("created_at", viewedAt["contact_enquiries"] ?? fallback),
+    supabase.from("newsletter_subscribers").select("*", { count: "exact", head: true }).gt("created_at", viewedAt["newsletter_subscribers"] ?? fallback),
+    supabase.from("lead_captures").select("*", { count: "exact", head: true }).gt("created_at", viewedAt["lead_captures"] ?? fallback),
+    supabase.from("package_inquiries").select("*", { count: "exact", head: true }).gt("created_at", viewedAt["package_inquiries"] ?? fallback),
   ]);
 
   const [
@@ -167,6 +182,10 @@ export default async function DashboardPage() {
     newsletterSubscribersTotal,
     leadCapturesTotal,
     packageInquiriesTotal,
+    contactEnquiriesNew,
+    newsletterSubscribersNew,
+    leadCapturesNew,
+    packageInquiriesNew,
   ] = results.map((r) => r.count ?? 0);
 
   return (
@@ -363,6 +382,7 @@ export default async function DashboardPage() {
                   <p className="mt-0.5 text-sm text-gray-500">General contact form submissions</p>
                   <StatsLine>
                     <Count n={contactEnquiriesTotal} label="enquiries" />
+                    {contactEnquiriesNew > 0 && <AmberBadge label={`${contactEnquiriesNew} new`} />}
                   </StatsLine>
                 </div>
               </div>
@@ -381,6 +401,7 @@ export default async function DashboardPage() {
                   <p className="mt-0.5 text-sm text-gray-500">Email subscription list</p>
                   <StatsLine>
                     <Count n={newsletterSubscribersTotal} label="subscribers" />
+                    {newsletterSubscribersNew > 0 && <AmberBadge label={`${newsletterSubscribersNew} new`} />}
                   </StatsLine>
                 </div>
               </div>
@@ -399,6 +420,7 @@ export default async function DashboardPage() {
                   <p className="mt-0.5 text-sm text-gray-500">Case study PDF download leads</p>
                   <StatsLine>
                     <Count n={leadCapturesTotal} label="leads" />
+                    {leadCapturesNew > 0 && <AmberBadge label={`${leadCapturesNew} new`} />}
                   </StatsLine>
                 </div>
               </div>
@@ -417,6 +439,7 @@ export default async function DashboardPage() {
                   <p className="mt-0.5 text-sm text-gray-500">Custom publishing quote requests</p>
                   <StatsLine>
                     <Count n={packageInquiriesTotal} label="inquiries" />
+                    {packageInquiriesNew > 0 && <AmberBadge label={`${packageInquiriesNew} new`} />}
                   </StatsLine>
                 </div>
               </div>

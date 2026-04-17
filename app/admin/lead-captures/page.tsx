@@ -18,6 +18,11 @@ export default async function LeadCapturesPage() {
     redirect("/admin/login");
   }
 
+  await supabase
+    .from("admin_section_views")
+    .update({ last_viewed_at: new Date().toISOString() })
+    .eq("section_key", "lead_captures");
+
   const { data: leads, error } = await supabase
     .from("lead_captures")
     .select("id, name, email, phone, source, source_slug, created_at")

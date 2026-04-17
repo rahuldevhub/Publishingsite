@@ -11,6 +11,11 @@ export default async function PackageInquiriesPage() {
     redirect("/admin/login");
   }
 
+  await supabase
+    .from("admin_section_views")
+    .update({ last_viewed_at: new Date().toISOString() })
+    .eq("section_key", "package_inquiries");
+
   const { data: inquiries, error } = await supabase
     .from("package_inquiries")
     .select("id, name, email, phone, message, selected_services, created_at")

@@ -23,6 +23,11 @@ export default async function ContactEnquiriesPage() {
     redirect("/admin/login");
   }
 
+  await supabase
+    .from("admin_section_views")
+    .update({ last_viewed_at: new Date().toISOString() })
+    .eq("section_key", "contact_enquiries");
+
   const { data: enquiries, error } = await supabase
     .from("contact_enquiries")
     .select("id, name, email, phone, message, created_at")
