@@ -125,7 +125,7 @@ export async function PATCH(
       <table align="center" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td style="padding: 0 8px;">
-            <a href="https://www.instagram.com/ritera.publishing" style="display: inline-block; background: #1a1a1a; border: 1px solid #333; color: #e8e0d0; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-size: 13px; font-weight: 700; font-family: Arial, sans-serif;">
+            <a href="https://www.instagram.com/ritera_publishing" style="display: inline-block; background: #1a1a1a; border: 1px solid #333; color: #e8e0d0; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-size: 13px; font-weight: 700; font-family: Arial, sans-serif;">
               📸 Instagram
             </a>
           </td>
