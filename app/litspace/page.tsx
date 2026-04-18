@@ -259,7 +259,7 @@ export default async function LitspacePage() {
                   <div className="flex items-center gap-3 text-xs text-gray-400">
                     <span>By {featuredPost.writer_name} · {formatDate(featuredPost.created_at)}</span>
                     {(featuredPost.post_likes?.[0]?.count ?? 0) > 0 && (
-                      <span>❤️ {featuredPost.post_likes[0].count}</span>
+                      <span>❤️ {featuredPost.post_likes?.[0]?.count ?? 0}</span>
                     )}
                   </div>
                 </Link>
