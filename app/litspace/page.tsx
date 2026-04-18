@@ -43,6 +43,7 @@ type Post = {
   created_at: string;
   featured: boolean;
   category: { id: string; name: string; slug: string } | null;
+  post_likes: [{ count: number }] | [];
 };
 
 type Category = {
@@ -63,7 +64,7 @@ export default async function LitspacePage() {
     supabase
       .from("litspace_posts")
       .select(
-        "id, title, slug, excerpt, writer_name, created_at, featured, category:litspace_categories(id, name, slug)"
+        "id, title, slug, excerpt, writer_name, created_at, featured, category:litspace_categories(id, name, slug), post_likes(count)"
       )
       .eq("approved", true)
       .order("created_at", { ascending: false })
@@ -255,9 +256,12 @@ export default async function LitspacePage() {
                       {featuredPost.excerpt}
                     </p>
                   )}
-                  <p className="text-xs text-gray-400">
-                    By {featuredPost.writer_name} · {formatDate(featuredPost.created_at)}
-                  </p>
+                  <div className="flex items-center gap-3 text-xs text-gray-400">
+                    <span>By {featuredPost.writer_name} · {formatDate(featuredPost.created_at)}</span>
+                    {(featuredPost.post_likes?.[0]?.count ?? 0) > 0 && (
+                      <span>❤️ {featuredPost.post_likes[0].count}</span>
+                    )}
+                  </div>
                 </Link>
               );
             })()}
@@ -321,7 +325,12 @@ export default async function LitspacePage() {
                         )}
                         <div className="mt-auto flex items-center justify-between text-xs text-gray-500">
                           <span className="font-medium">{post.writer_name}</span>
-                          <span>{formatDate(post.created_at)}</span>
+                          <div className="flex items-center gap-2">
+                            {(post.post_likes?.[0]?.count ?? 0) > 0 && (
+                              <span className="text-gray-400">❤️ {post.post_likes[0]?.count}</span>
+                            )}
+                            <span>{formatDate(post.created_at)}</span>
+                          </div>
                         </div>
                       </Link>
                     </article>
