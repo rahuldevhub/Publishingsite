@@ -14,7 +14,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.c
 export const metadata: Metadata = {
   title: "Ritera Publishing — Self-Publish Your Book in India",
   description:
-    "Ritera Publishing helps Indian authors self-publish professionally. 500+ books published, 100% royalties, global distribution to 50+ countries. Start your publishing journey today.",
+    "Ritera Publishing is a Tamil Nadu-based self-publishing platform that provides editing, cover design, formatting, ISBN registration, and global distribution. Indian authors retain 100% of their royalties. Over 500 books published and distributed to 50+ countries.",
   openGraph: {
     title: "Ritera Publishing — Empower Your Story",
     description:
@@ -28,16 +28,6 @@ export const metadata: Metadata = {
     description: "500+ books published. 100% royalties. Global distribution. Start today.",
   },
   alternates: { canonical: SITE_URL },
-};
-
-const orgSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Ritera Publishing",
-  url: SITE_URL,
-  description:
-    "Ritera Publishing is a self-publishing platform helping Indian authors publish professionally with 100% royalties and global distribution.",
-  sameAs: ["https://instagram.com/riterapublishing"],
 };
 
 const STATS_BAR = [
@@ -210,14 +200,61 @@ const PACKAGES = [
   },
 ];
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "How can I publish my book in India as a first-time author?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Prepare your manuscript, choose self publishing services in India, and complete editing, cover design, ISBN registration, and distribution.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What are the best self publishing services in India for new authors?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The best self publishing services in India offer editing, design, ISBN registration, e-book publishing, and global distribution with transparent pricing.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How much does it cost to publish a book in India?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "The cost depends on services like editing, design, and distribution. Most self publishing packages in India are flexible and affordable.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do I need ISBN registration to publish my book in India?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, ISBN registration in India is required for distribution, sales tracking, and listing your book globally.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can I publish my book in India and sell it worldwide?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, with self publishing platforms, you can publish your book in India and distribute it globally through e-book and print channels.",
+      },
+    },
+  ],
+};
+
 export default function HomePage() {
   return (
     <>
+      {/* FAQPage JSON-LD */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-
       <main className="bg-white overflow-x-hidden">
 
         {/* ── 1. HERO ── */}

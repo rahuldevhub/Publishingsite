@@ -8,7 +8,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.c
 export const metadata: Metadata = {
   title: "About Us | Ritera Publishing — Your Story Matters",
   description:
-    "Learn about Ritera Publishing — a team dedicated to helping Indian authors get published, earn 100% royalties, and reach readers in 50+ countries. Your story matters.",
+    "Ritera Publishing is a self-publishing company based in Tamil Nadu, India, founded to help Indian authors publish professionally without surrendering royalties. The team handles editing, design, formatting, and global distribution across 50+ countries.",
   openGraph: {
     title: "About Ritera Publishing",
     description:
@@ -38,12 +38,25 @@ const aboutPageSchema = {
   },
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
+    { "@type": "ListItem", position: 2, name: "About Us", item: "https://riterapublishing.com/aboutus" },
+  ],
+};
+
 export default function AboutPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       <main className="bg-white">

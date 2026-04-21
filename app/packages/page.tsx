@@ -8,7 +8,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.c
 export const metadata: Metadata = {
   title: "Publishing Packages & Pricing | Ritera Publishing",
   description:
-    "Choose from 6 transparent self-publishing packages — Essential to Exclusive. 100% royalties, professional editing, cover design, distribution, and marketing support. Starting ₹8,999.",
+    "Ritera Publishing offers 6 self-publishing packages starting at ₹8,999, ranging from Essential to Exclusive. Each package includes professional editing, cover design, ISBN registration, and global distribution. Authors keep 100% of royalties across all tiers.",
   openGraph: {
     title: "Self-Publishing Packages | Ritera Publishing",
     description:
@@ -153,13 +153,60 @@ const FAQ_ITEMS = [
   },
 ];
 
+// ── Schema ───────────────────────────────────────────────────────────────────
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Self-Publishing Services",
+  provider: {
+    "@type": "Organization",
+    "@id": "https://riterapublishing.com/#organization",
+    name: "Ritera Publishing",
+  },
+  areaServed: "IN",
+  description:
+    "End-to-end self-publishing services including manuscript editing, book cover design, interior formatting, ISBN registration, and global distribution through major platforms.",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Publishing Packages",
+    itemListElement: PACKAGES.map((pkg) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: `${pkg.name} Publishing Package`,
+      },
+    })),
+  },
+};
+
 // ── Page ─────────────────────────────────────────────────────────────────────
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
+    { "@type": "ListItem", position: 2, name: "Packages", item: "https://riterapublishing.com/packages" },
+  ],
+};
 
 export default function PackagesPage() {
   const grouped = groupFeatures(FEATURES);
 
   return (
-    <main className="bg-white">
+    <>
+      {/* Service JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      {/* BreadcrumbList JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <main className="bg-white">
 
       {/* ── Hero ── */}
       <section className="bg-gray-900 text-white">
@@ -507,5 +554,6 @@ export default function PackagesPage() {
       </section>
 
     </main>
+    </>
   );
 }

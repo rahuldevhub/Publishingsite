@@ -40,8 +40,23 @@ export default async function CaseStudiesPage() {
 
   const caseStudies = (data ?? []) as unknown as CaseStudy[];
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
+      { "@type": "ListItem", position: 2, name: "Case Studies", item: "https://riterapublishing.com/case-studies" },
+    ],
+  };
+
   return (
-    <main>
+    <>
+      {/* BreadcrumbList JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <main>
       {/* ── Hero ── */}
       <section className="bg-gray-900 text-white">
         <div className="max-w-6xl mx-auto px-6 py-24 lg:py-32">
@@ -70,6 +85,7 @@ export default async function CaseStudiesPage() {
         )}
       </section>
     </main>
+    </>
   );
 }
 

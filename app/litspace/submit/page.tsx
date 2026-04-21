@@ -20,6 +20,16 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE_URL}/litspace/submit` },
 };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
+    { "@type": "ListItem", position: 2, name: "LitSpace", item: "https://riterapublishing.com/litspace" },
+    { "@type": "ListItem", position: 3, name: "Submit", item: "https://riterapublishing.com/litspace/submit" },
+  ],
+};
+
 export default async function SubmitPage() {
   const supabase = createServerClient();
   const { data: categories } = await supabase
@@ -28,7 +38,13 @@ export default async function SubmitPage() {
     .order("name");
 
   return (
-    <main className="bg-white">
+    <>
+      {/* JSON-LD — BreadcrumbList */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <main className="bg-white">
       {/* ── Breadcrumbs ── */}
       <nav aria-label="Breadcrumb" className="bg-gray-50 border-b border-gray-200">
         <ol className="max-w-4xl mx-auto px-6 py-3 flex items-center gap-2 text-sm text-gray-600">
@@ -123,5 +139,6 @@ export default async function SubmitPage() {
         </div>
       </div>
     </main>
+    </>
   );
 }

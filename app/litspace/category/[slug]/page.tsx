@@ -100,8 +100,24 @@ export default async function LitspaceCategoryPage({ params, searchParams }: Pag
 
   const totalPosts = allPostCategoryIds?.length ?? 0;
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
+      { "@type": "ListItem", position: 2, name: "LitSpace", item: "https://riterapublishing.com/litspace" },
+      { "@type": "ListItem", position: 3, name: category.name, item: `https://riterapublishing.com/litspace/category/${slug}` },
+    ],
+  };
+
   return (
-    <main className="bg-white">
+    <>
+      {/* JSON-LD — BreadcrumbList */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <main className="bg-white">
       {/* ── Breadcrumbs ── */}
       <nav aria-label="Breadcrumb" className="bg-gray-50 border-b border-gray-200">
         <ol className="max-w-7xl mx-auto px-6 py-3 flex items-center gap-2 text-sm text-gray-600">
@@ -275,5 +291,6 @@ export default async function LitspaceCategoryPage({ params, searchParams }: Pag
         </div>
       </div>
     </main>
+    </>
   );
 }

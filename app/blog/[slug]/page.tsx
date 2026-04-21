@@ -146,6 +146,16 @@ export default async function BlogPostPage({ params }: PageProps) {
       }
     : null;
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://riterapublishing.com/blog" },
+      { "@type": "ListItem", position: 3, name: post.title, item: `https://riterapublishing.com/blog/${post.slug}` },
+    ],
+  };
+
   const postUrl = `${SITE_URL}/blog/${slug}`;
   const shareTitle = encodeURIComponent(post.title);
   const shareUrl = encodeURIComponent(postUrl);
@@ -164,6 +174,11 @@ export default async function BlogPostPage({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       )}
+      {/* JSON-LD — BreadcrumbList */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
 
       <main className="bg-white text-gray-900">
         {/* ── Breadcrumbs ── */}

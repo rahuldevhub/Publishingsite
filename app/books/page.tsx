@@ -104,8 +104,23 @@ export default async function BooksPage({ searchParams }: PageProps) {
 
   const hasFilters = genre || format || language || q;
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
+      { "@type": "ListItem", position: 2, name: "Books", item: "https://riterapublishing.com/books" },
+    ],
+  };
+
   return (
-    <main className="bg-white">
+    <>
+      {/* BreadcrumbList JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <main className="bg-white">
       {/* ── Hero ── */}
       <section className="bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
@@ -317,5 +332,6 @@ export default async function BooksPage({ searchParams }: PageProps) {
         )}
       </div>
     </main>
+    </>
   );
 }

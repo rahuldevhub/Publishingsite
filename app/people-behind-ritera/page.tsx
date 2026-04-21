@@ -131,12 +131,25 @@ const TEAMS = [
   },
 ];
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
+    { "@type": "ListItem", position: 2, name: "People Behind Ritera", item: "https://riterapublishing.com/people-behind-ritera" },
+  ],
+};
+
 export default function PeopleBehindRiteraPage() {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       <main className="bg-white">

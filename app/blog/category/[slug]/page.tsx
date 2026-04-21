@@ -85,8 +85,24 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
   const typedPosts = (posts ?? []) as unknown as Post[];
   const totalPages = Math.ceil((count ?? 0) / POSTS_PER_PAGE);
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://riterapublishing.com/blog" },
+      { "@type": "ListItem", position: 3, name: category.name, item: `https://riterapublishing.com/blog/category/${slug}` },
+    ],
+  };
+
   return (
-    <main className="min-h-screen bg-white">
+    <>
+      {/* JSON-LD — BreadcrumbList */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <main className="min-h-screen bg-white">
       {/* ── Breadcrumbs ── */}
       <nav aria-label="Breadcrumb" className="bg-gray-50 border-b border-gray-200">
         <ol className="max-w-6xl mx-auto px-6 py-3 flex items-center gap-2 text-sm text-gray-500">
@@ -203,5 +219,6 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
         )}
       </section>
     </main>
+    </>
   );
 }

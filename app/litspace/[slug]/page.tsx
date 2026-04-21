@@ -144,12 +144,27 @@ export default async function LitspacePostPage({ params }: PageProps) {
   const shareTitle = encodeURIComponent(post.title);
   const shareUrl = encodeURIComponent(postUrl);
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
+      { "@type": "ListItem", position: 2, name: "LitSpace", item: "https://riterapublishing.com/litspace" },
+      { "@type": "ListItem", position: 3, name: post.title, item: `https://riterapublishing.com/litspace/${post.slug}` },
+    ],
+  };
+
   return (
     <>
       {/* JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {/* JSON-LD — BreadcrumbList */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       <main className="bg-white pt-16">

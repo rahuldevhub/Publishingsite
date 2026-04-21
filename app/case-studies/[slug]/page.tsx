@@ -96,10 +96,22 @@ export default async function CaseStudyPage({ params }: PageProps) {
       }
     : null;
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
+      { "@type": "ListItem", position: 2, name: "Case Studies", item: "https://riterapublishing.com/case-studies" },
+      { "@type": "ListItem", position: 3, name: cs.title, item: `https://riterapublishing.com/case-studies/${cs.slug}` },
+    ],
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       {faqLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />}
+      {/* JSON-LD — BreadcrumbList */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       <main className="bg-white text-gray-900">
         {/* ── Breadcrumb ── */}

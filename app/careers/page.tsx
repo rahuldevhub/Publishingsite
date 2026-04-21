@@ -85,8 +85,23 @@ export default async function CareersPage({ searchParams }: PageProps) {
   const selectClass =
     "px-3 py-2 rounded-lg border border-gray-300 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent";
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
+      { "@type": "ListItem", position: 2, name: "Careers", item: "https://riterapublishing.com/careers" },
+    ],
+  };
+
   return (
-    <main className="bg-white">
+    <>
+      {/* BreadcrumbList JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <main className="bg-white">
       {/* ── Hero ── */}
       <section className="bg-gray-900 text-white">
         <div className="max-w-6xl mx-auto px-6 py-24 lg:py-32">
@@ -267,5 +282,6 @@ export default async function CareersPage({ searchParams }: PageProps) {
         </div>
       </section>
     </main>
+    </>
   );
 }

@@ -10,7 +10,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.c
 export const metadata: Metadata = {
   title: "LitSpace | Community Writing Platform — Ritera Publishing",
   description:
-    "LitSpace is a community for poets, writers, and storytellers. Share your work, discover new voices, and connect with readers on Ritera Publishing's creative platform.",
+    "LitSpace is Ritera Publishing's curated literary community where poets, fiction writers, and storytellers submit creative work for review and publication. Readers can discover new Indian voices and authors receive direct feedback through likes and comments.",
   openGraph: {
     title: "LitSpace — Share Your Story with the World",
     description:
@@ -98,8 +98,23 @@ export default async function LitspacePage() {
   const featuredPost = typedPosts.find((p) => p.featured) ?? null;
   const regularPosts = typedPosts.filter((p) => p !== featuredPost);
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
+      { "@type": "ListItem", position: 2, name: "LitSpace", item: "https://riterapublishing.com/litspace" },
+    ],
+  };
+
   return (
-    <main className="bg-white pt-16">
+    <>
+      {/* BreadcrumbList JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <main className="bg-white pt-16">
       <LitspacePixelPageView />
       {/* ── Submit Banner ── */}
       <div className="bg-gray-900 text-white">
@@ -367,5 +382,6 @@ export default async function LitspacePage() {
         </div>
       </section>
     </main>
+    </>
   );
 }

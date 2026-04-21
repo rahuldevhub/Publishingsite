@@ -137,12 +137,27 @@ export default async function BookDetailPage({ params }: PageProps) {
 
   const hasPurchaseLinks = book.amazon_link || book.flipkart_link || book.publisher_link || book.purchase_link_international || book.purchase_link_pothi || book.purchase_link_library;
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
+      { "@type": "ListItem", position: 2, name: "Books", item: "https://riterapublishing.com/books" },
+      { "@type": "ListItem", position: 3, name: book.title, item: `https://riterapublishing.com/books/${book.slug}` },
+    ],
+  };
+
   return (
     <>
       {/* JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {/* JSON-LD — BreadcrumbList */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
       <main className="bg-white">

@@ -10,7 +10,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.c
 export const metadata: Metadata = {
   title: "Blog | Ritera Publishing — Insights, Tips & Publishing News",
   description:
-    "Expert insights on self-publishing, author tips, industry trends, and creative inspiration from the Ritera Publishing team.",
+    "Ritera Publishing's blog covers self-publishing in India, manuscript editing tips, book cover design guidance, ISBN registration steps, and author success stories. Updated regularly to help Indian authors navigate every stage of the publishing process.",
   openGraph: {
     title: "Ritera Publishing Blog",
     description:
@@ -80,8 +80,23 @@ export default async function BlogPage() {
   const typedPosts = (posts ?? []) as unknown as Post[];
   const typedCategories = (categories ?? []) as Category[];
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://riterapublishing.com/blog" },
+    ],
+  };
+
   return (
-    <main>
+    <>
+      {/* BreadcrumbList JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <main>
       {/* ── Hero ── */}
       <section className="bg-gray-900 text-white">
         <div className="max-w-6xl mx-auto px-6 py-24 lg:py-32">
@@ -154,6 +169,7 @@ export default async function BlogPage() {
         )}
       </section>
     </main>
+    </>
   );
 }
 
