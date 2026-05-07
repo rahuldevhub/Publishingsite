@@ -15,7 +15,6 @@ const SERVICE_GROUPS = [
       "Distribution (Amazon, Flipkart)",
       "International Distribution",
       "E-Book Publishing",
-      "100% Royalties",
       "Certificate of Publication",
       "Author Copies",
     ],

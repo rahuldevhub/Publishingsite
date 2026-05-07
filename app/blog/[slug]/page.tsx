@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
 import Image from "next/image";
+import ReadingProgress from "@/app/components/ReadingProgress";
 
 export const dynamic = "force-dynamic";
 
@@ -162,6 +163,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   return (
     <>
+      <ReadingProgress />
       {/* JSON-LD — Article */}
       <script
         type="application/ld+json"
@@ -212,11 +214,11 @@ export default async function BlogPostPage({ params }: PageProps) {
               {category.name}
             </Link>
           )}
-          <h1 className="text-3xl lg:text-5xl font-bold text-gray-900 leading-tight mb-5">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight tracking-tight mb-6">
             {post.title}
           </h1>
           {post.excerpt && (
-            <p className="text-xl text-gray-600 leading-relaxed mb-6">{post.excerpt}</p>
+            <p className="text-xl text-gray-500 leading-relaxed mb-8 max-w-2xl">{post.excerpt}</p>
           )}
 
           {/* Meta row */}
@@ -246,8 +248,8 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         {/* ── Featured Image ── */}
         {post.featured_image && (
-          <div className="max-w-5xl mx-auto px-6 pb-10">
-            <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-100">
+          <div className="max-w-5xl mx-auto px-6 my-8">
+            <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-100 shadow-sm">
               <Image
                 src={post.featured_image}
                 alt={post.title}
@@ -261,8 +263,8 @@ export default async function BlogPostPage({ params }: PageProps) {
         )}
 
         {/* ── Article Content ── */}
-        <article className="max-w-2xl mx-auto px-6 pb-16">
-          <div className="prose-content">
+        <article className="max-w-3xl mx-auto px-6 pb-16">
+          <div className="prose-content space-y-1">
             {renderContent(post.content)}
           </div>
 
@@ -281,15 +283,37 @@ export default async function BlogPostPage({ params }: PageProps) {
             </div>
           )}
 
+          {/* ── Mid-post CTA ── */}
+          <div className="my-12 rounded-2xl bg-gray-900 text-white px-8 py-10 text-center">
+            <p className="text-xs font-semibold tracking-widest text-yellow-400 uppercase mb-2">
+              Ready to Publish?
+            </p>
+            <h3 className="text-2xl font-bold mb-3">
+              Turn Your Manuscript Into a Published Book
+            </h3>
+            <p className="text-gray-300 text-base mb-6 max-w-md mx-auto">
+              Ritera Publishing handles everything — editing, cover design,
+              ISBN, and global distribution. You keep 100% of your royalties.
+            </p>
+            <a
+              href="/packages"
+              className="inline-block bg-yellow-400 text-gray-900 font-bold px-8 py-3 rounded-full hover:bg-yellow-300 transition-colors text-sm"
+            >
+              View Publishing Packages →
+            </a>
+          </div>
+
           {/* ── Share Buttons ── */}
           <div className="mt-12 pt-8 border-t border-gray-200">
-            <p className="text-sm font-semibold text-gray-700 mb-3">Share this article</p>
-            <div className="flex items-center gap-3">
+            <p className="text-sm font-semibold text-gray-700 mb-4">
+              Found this helpful? Share it with other authors
+            </p>
+            <div className="flex items-center gap-3 flex-wrap">
               <a
                 href={`https://x.com/intent/tweet?text=${shareTitle}&url=${shareUrl}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gray-900 text-white text-sm font-medium hover:bg-gray-700 transition-colors"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -300,12 +324,23 @@ export default async function BlogPostPage({ params }: PageProps) {
                 href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-colors"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                 </svg>
                 Share on LinkedIn
+              </a>
+              <a
+                href={`https://wa.me/?text=${shareTitle}%20${shareUrl}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-green-500 text-white text-sm font-medium hover:bg-green-600 transition-colors"
+              >
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                Share on WhatsApp
               </a>
             </div>
           </div>
@@ -313,36 +348,44 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         {/* ── Author Bio ── */}
         {author && (author.bio || author.image_url) && (
-          <aside className="max-w-2xl mx-auto px-6 pb-16">
-            <div className="bg-gray-50 rounded-2xl border border-gray-200 p-8">
-              <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-5">About the Author</p>
-              <div className="flex items-start gap-5">
-                {author.image_url ? (
-                  <Image
-                    src={author.image_url}
-                    alt={author.name}
-                    width={72}
-                    height={72}
-                    className="rounded-full object-cover shrink-0"
-                  />
-                ) : (
-                  <div className="w-18 h-18 rounded-full bg-gray-200 flex items-center justify-center shrink-0">
-                    <span className="text-2xl font-bold text-gray-400">{author.name.charAt(0)}</span>
-                  </div>
+          <aside className="max-w-3xl mx-auto px-6 pb-12">
+            <div className="flex items-start gap-6 bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+              {author.image_url ? (
+                <Image
+                  src={author.image_url}
+                  alt={author.name}
+                  width={80}
+                  height={80}
+                  className="rounded-full object-cover shrink-0 ring-2 ring-yellow-400"
+                />
+              ) : (
+                <div className="w-20 h-20 rounded-full bg-gray-900 flex items-center justify-center shrink-0 ring-2 ring-yellow-400">
+                  <span className="text-2xl font-bold text-white">{author.name.charAt(0)}</span>
+                </div>
+              )}
+              <div className="flex-1 min-w-0">
+                <p className="text-xs font-semibold tracking-widest text-yellow-500 uppercase mb-1">
+                  Written by
+                </p>
+                <h3 className="text-lg font-bold text-gray-900">{author.name}</h3>
+                {author.bio && (
+                  <p className="mt-1 text-sm text-gray-600 leading-relaxed line-clamp-3">
+                    {author.bio}
+                  </p>
                 )}
-                <div>
-                  <h2 className="text-lg font-bold text-gray-900">{author.name}</h2>
-                  {author.bio && (
-                    <p className="mt-1 text-sm text-gray-600 leading-relaxed">{author.bio}</p>
+                <div className="mt-3 flex items-center gap-4">
+                  {author.instagram && (
+                    <a href={author.instagram} target="_blank" rel="noopener noreferrer"
+                      className="text-xs font-medium text-gray-500 hover:text-pink-500 transition-colors flex items-center gap-1">
+                      Instagram ↗
+                    </a>
                   )}
-                  <div className="mt-3 flex items-center gap-3">
-                    {author.instagram && (
-                      <a href={author.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-500 transition-colors text-xs">Instagram</a>
-                    )}
-                    {author.twitter && (
-                      <a href={author.twitter} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-sky-500 transition-colors text-xs">Twitter / X</a>
-                    )}
-                  </div>
+                  {author.twitter && (
+                    <a href={author.twitter} target="_blank" rel="noopener noreferrer"
+                      className="text-xs font-medium text-gray-500 hover:text-sky-500 transition-colors flex items-center gap-1">
+                      Twitter / X ↗
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
@@ -353,37 +396,56 @@ export default async function BlogPostPage({ params }: PageProps) {
         {relatedPosts && relatedPosts.length > 0 && (
           <section className="bg-gray-50 border-t border-gray-200">
             <div className="max-w-6xl mx-auto px-6 py-16">
-              <h2 className="text-2xl font-bold text-gray-900 mb-8">Related Articles</h2>
+              <div className="flex items-center justify-between mb-8">
+                <h2 className="text-2xl font-bold text-gray-900">Related Articles</h2>
+                <Link href="/blog" className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">
+                  View all posts →
+                </Link>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {(relatedPosts as unknown as Array<{
                   id: string; title: string; slug: string;
                   excerpt: string | null; featured_image: string | null;
                   reading_time: number; created_at: string;
                 }>).map((related) => (
-                  <article key={related.id} className="group bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
-                    <Link href={`/blog/${related.slug}`} className="block relative aspect-video bg-gray-100 overflow-hidden">
+                  <article key={related.id}
+                    className="group bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                    <Link href={`/blog/${related.slug}`}
+                      className="block relative aspect-video bg-gray-100 overflow-hidden">
                       {related.featured_image ? (
                         <Image
                           src={related.featured_image}
                           alt={related.title}
                           fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
                           sizes="(max-width: 768px) 100vw, 25vw"
                           loading="lazy"
                         />
                       ) : (
-                        <img src="https://placehold.co/400x300" alt="Placeholder Image" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                          <span className="text-4xl">📖</span>
+                        </div>
                       )}
                     </Link>
-                    <div className="p-4">
+                    <div className="p-5">
                       <Link href={`/blog/${related.slug}`}>
-                        <h3 className="font-semibold text-gray-900 text-sm leading-snug line-clamp-2 group-hover:text-gray-600 transition-colors">
+                        <h3 className="font-bold text-gray-900 text-sm leading-snug line-clamp-2 group-hover:text-yellow-600 transition-colors mb-2">
                           {related.title}
                         </h3>
                       </Link>
-                      <p className="mt-2 text-xs text-gray-400">
-                        {formatDate(related.created_at)} · {related.reading_time} min read
-                      </p>
+                      {related.excerpt && (
+                        <p className="text-xs text-gray-500 line-clamp-2 mb-3">
+                          {related.excerpt}
+                        </p>
+                      )}
+                      <div className="flex items-center justify-between">
+                        <p className="text-xs text-gray-400">
+                          {formatDate(related.created_at)} · {related.reading_time} min read
+                        </p>
+                        <span className="text-xs font-semibold text-yellow-600 group-hover:translate-x-1 transition-transform inline-block">
+                          Read →
+                        </span>
+                      </div>
                     </div>
                   </article>
                 ))}
@@ -401,26 +463,99 @@ export default async function BlogPostPage({ params }: PageProps) {
 function renderContent(content: string) {
   const paragraphs = content.split(/\n\n+/);
   return paragraphs.map((para, i) => {
-    // Basic markdown heading support
+
+    // H2 heading
     if (para.startsWith("## ")) {
       return (
-        <h2 key={i} className="text-2xl font-bold text-gray-900 mt-10 mb-4">
+        <h2 key={i} className="text-2xl md:text-3xl font-bold text-gray-900 mt-14 mb-5 leading-snug border-l-4 border-yellow-400 pl-4">
           {para.slice(3)}
         </h2>
       );
     }
+
+    // H3 heading
     if (para.startsWith("### ")) {
       return (
-        <h3 key={i} className="text-xl font-bold text-gray-900 mt-8 mb-3">
+        <h3 key={i} className="text-xl font-bold text-gray-800 mt-10 mb-4 leading-snug">
           {para.slice(4)}
         </h3>
       );
     }
+
+    // Bullet list — lines starting with "- "
+    if (para.split("\n").every(line => line.trim().startsWith("- ") || line.trim() === "")) {
+      const items = para.split("\n").filter(line => line.trim().startsWith("- "));
+      return (
+        <ul key={i} className="my-6 space-y-3">
+          {items.map((item, j) => (
+            <li key={j} className="flex items-start gap-3 text-gray-700 text-lg leading-relaxed">
+              <span className="mt-1.5 w-2 h-2 rounded-full bg-yellow-400 shrink-0" />
+              <span>{item.replace(/^- /, "")}</span>
+            </li>
+          ))}
+        </ul>
+      );
+    }
+
+    // Numbered list — lines starting with "1. ", "2. " etc
+    if (para.split("\n").every(line => /^\d+\.\s/.test(line.trim()) || line.trim() === "")) {
+      const items = para.split("\n").filter(line => /^\d+\.\s/.test(line.trim()));
+      return (
+        <ol key={i} className="my-6 space-y-3 counter-reset-list">
+          {items.map((item, j) => (
+            <li key={j} className="flex items-start gap-3 text-gray-700 text-lg leading-relaxed">
+              <span className="shrink-0 w-7 h-7 rounded-full bg-gray-900 text-white text-sm font-bold flex items-center justify-center mt-0.5">
+                {j + 1}
+              </span>
+              <span>{item.replace(/^\d+\.\s/, "")}</span>
+            </li>
+          ))}
+        </ol>
+      );
+    }
+
+    // Blockquote — lines starting with "> "
+    if (para.startsWith("> ")) {
+      return (
+        <blockquote key={i} className="my-8 border-l-4 border-yellow-400 bg-yellow-50 rounded-r-xl px-6 py-5">
+          <p className="text-gray-800 text-lg italic leading-relaxed">
+            {para.slice(2)}
+          </p>
+        </blockquote>
+      );
+    }
+
+    // Emoji header — single line starting with an emoji
+    const emojiRegex = /^(\p{Emoji_Presentation}|\p{Extended_Pictographic})\s+(.+)$/u;
+    const emojiMatch = para.trim().match(emojiRegex);
+    if (emojiMatch && !para.includes('\n')) {
+      return (
+        <div key={i} className="flex items-center gap-3 mt-12 mb-5">
+          <span className="text-2xl">{emojiMatch[1]}</span>
+          <h2 className="text-2xl font-bold text-gray-900 leading-snug">
+            {emojiMatch[2]}
+          </h2>
+        </div>
+      );
+    }
+
+    // Handle inline bold within paragraphs
+    const renderInline = (text: string) => {
+      const parts = text.split(/(\*\*[^*]+\*\*)/g);
+      return parts.map((part, idx) => {
+        if (part.startsWith("**") && part.endsWith("**")) {
+          return <strong key={idx} className="font-bold text-gray-900">{part.slice(2, -2)}</strong>;
+        }
+        return part;
+      });
+    };
+
+    // Default paragraph
     return (
       <p key={i} className="text-gray-700 leading-relaxed text-lg mb-6">
         {para.split("\n").map((line, j, arr) => (
           <span key={j}>
-            {line}
+            {renderInline(line)}
             {j < arr.length - 1 && <br />}
           </span>
         ))}
