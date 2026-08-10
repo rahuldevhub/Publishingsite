@@ -243,14 +243,16 @@ export default async function BooksPage({ searchParams }: PageProps) {
                   {/* Cover */}
                   <Link href={`/books/${book.slug}`} className="block relative aspect-[2/3] bg-gray-100 rounded-xl overflow-hidden mb-3 shadow-sm group-hover:shadow-md transition-shadow">
                     {book.cover_image ? (
-                      <Image
-                        src={book.cover_image}
-                        alt={book.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                        loading="lazy"
-                      />
+                      <div className="absolute inset-[7%]">
+                        <Image
+                          src={book.cover_image}
+                          alt={book.title}
+                          fill
+                          className="object-contain object-bottom group-hover:scale-105 transition-transform duration-300"
+                          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                          loading="lazy"
+                        />
+                      </div>
                     ) : (
                       <>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
