@@ -76,7 +76,7 @@ export default function EditEmployeePage() {
     }
 
     fetchData();
-  }, [id]);
+  }, [id, supabase]);
 
   function handleChange(field: string, value: string | boolean | number) {
     setForm((f) => f ? { ...f, [field]: value } : f);

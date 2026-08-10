@@ -12,7 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     supabase
       .from("litspace_posts")
       .select("slug, updated_at")
-      .eq("status", "published"),
+      .eq("approved", true),
     supabase
       .from("blog_posts")
       .select("slug, updated_at")
@@ -29,8 +29,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE}/aboutus`,                      lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE}/packages`,                     lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${SITE}/books`,                        lastModified: new Date(), changeFrequency: "weekly",  priority: 0.9 },
-    { url: `${SITE}/authors`,                      lastModified: new Date(), changeFrequency: "weekly",  priority: 0.8 },
     { url: `${SITE}/litspace`,                     lastModified: new Date(), changeFrequency: "daily",   priority: 0.8 },
+    { url: `${SITE}/litspace/submit`,              lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE}/blog`,                         lastModified: new Date(), changeFrequency: "daily",   priority: 0.8 },
     { url: `${SITE}/case-studies`,                 lastModified: new Date(), changeFrequency: "weekly",  priority: 0.8 },
     { url: `${SITE}/careers`,                      lastModified: new Date(), changeFrequency: "weekly",  priority: 0.7 },

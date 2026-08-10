@@ -9,7 +9,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.c
 const BOOKS_PER_PAGE = 16;
 
 export const metadata: Metadata = {
-  title: "Books | Ritera Publishing — Discover Our Published Collection",
+  title: "Books — Discover Our Published Collection",
   description:
     "Explore the complete catalogue of books published by Ritera Publishing. Fiction, poetry, non-fiction, and more — authored by talented Indian writers.",
   openGraph: {
@@ -252,7 +252,10 @@ export default async function BooksPage({ searchParams }: PageProps) {
                         loading="lazy"
                       />
                     ) : (
-                      <img src="https://placehold.co/400x600" alt="Placeholder Image" className="absolute inset-0 w-full h-full object-cover" />
+                      <>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src="https://placehold.co/400x600" alt="Placeholder Image" className="absolute inset-0 w-full h-full object-cover" />
+                      </>
                     )}
                     {book.featured && (
                       <span className="absolute top-2 left-2 bg-gray-900 text-white text-xs font-semibold px-2 py-0.5 rounded-full">

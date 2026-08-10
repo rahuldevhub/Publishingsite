@@ -74,7 +74,7 @@ export default function EditLitspacePostPage() {
     }
 
     fetchData();
-  }, [id]);
+  }, [id, supabase]);
 
   function handleChange(field: string, value: string | boolean) {
     setForm((f) => f ? { ...f, [field]: value } : f);

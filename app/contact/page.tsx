@@ -11,7 +11,7 @@ const CONTACT_INFO = {
 } as const;
 
 export const metadata: Metadata = {
-  title: "Contact Us | Ritera Publishing",
+  title: "Contact Us",
   description:
     "Get in touch with Ritera Publishing. We're here to answer your questions about self-publishing, packages, royalties, and more.",
   alternates: { canonical: `${SITE_URL}/contact` },
@@ -19,6 +19,11 @@ export const metadata: Metadata = {
     title: "Contact Ritera Publishing",
     description: "Reach our team via email, phone, or WhatsApp. We respond within 24 hours.",
     url: `${SITE_URL}/contact`,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Ritera Publishing",
+    description: "Reach our team via email, phone, or WhatsApp. We respond within 24 hours.",
   },
 };
 

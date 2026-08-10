@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 export const metadata: Metadata = {
-  title: "LitSpace | Community Writing Platform — Ritera Publishing",
+  title: "LitSpace — Community Writing Platform",
   description:
     "LitSpace is Ritera Publishing's curated literary community where poets, fiction writers, and storytellers submit creative work for review and publication. Readers can discover new Indian voices and authors receive direct feedback through likes and comments.",
   openGraph: {
@@ -114,7 +114,7 @@ export default async function LitspacePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <main className="bg-white pt-16">
+      <main className="bg-white pt-[86px]">
       <LitspacePixelPageView />
       {/* ── Submit Banner ── */}
       <div className="bg-gray-900 text-white">

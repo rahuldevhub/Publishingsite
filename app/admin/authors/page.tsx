@@ -67,11 +67,14 @@ export default async function AuthorsPage() {
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
                         {author.image_url ? (
-                          <img
-                            src={author.image_url}
-                            alt={author.name}
-                            className="w-8 h-8 rounded-full object-cover shrink-0"
-                          />
+                          <>
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={author.image_url}
+                              alt={author.name}
+                              className="w-8 h-8 rounded-full object-cover shrink-0"
+                            />
+                          </>
                         ) : (
                           <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center shrink-0">
                             <span className="text-xs font-medium text-gray-500">

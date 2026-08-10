@@ -26,7 +26,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!cs) return { title: "Case Study Not Found" };
 
   const title = cs.meta_title || `${cs.title} | Ritera Publishing`;
-  const description = cs.meta_description || "";
+  const description =
+    cs.meta_description ||
+    `Read how ${cs.author_name} successfully self-published their book with Ritera Publishing.`;
   const url = `${SITE_URL}/case-studies/${slug}`;
 
   return {
@@ -42,6 +44,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description,
       url,
       type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: cs.meta_title || cs.title,
+      description,
     },
   };
 }
@@ -192,6 +199,32 @@ export default async function CaseStudyPage({ params }: PageProps) {
             </section>
           )}
         </div>
+
+        {/* ── Journey CTA ── */}
+        <section className="bg-amber-50 border-t border-amber-100">
+          <div className="max-w-3xl mx-auto px-6 py-12 flex flex-col sm:flex-row items-center gap-6">
+            <div className="flex-1">
+              <p className="text-xs font-semibold tracking-widest text-amber-600 uppercase mb-1">Start Your Journey</p>
+              <h2 className="text-xl font-bold text-gray-900 mb-2">Inspired by this story?</h2>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Your book could be our next case study. Explore our{" "}
+                <Link href="/packages" className="text-amber-600 hover:text-amber-700 font-medium underline underline-offset-2">
+                  self-publishing packages
+                </Link>{" "}
+                or{" "}
+                <Link href="/books" className="text-amber-600 hover:text-amber-700 font-medium underline underline-offset-2">
+                  browse books we&apos;ve already published
+                </Link>.
+              </p>
+            </div>
+            <Link
+              href="/packages"
+              className="shrink-0 bg-gray-900 text-white font-semibold px-6 py-3 rounded-xl hover:bg-gray-700 transition-colors text-sm whitespace-nowrap"
+            >
+              View Packages →
+            </Link>
+          </div>
+        </section>
 
         {/* ── Related case studies ── */}
         {related && related.length > 0 && (

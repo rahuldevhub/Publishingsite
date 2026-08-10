@@ -45,13 +45,11 @@ export async function POST(request: NextRequest) {
   }
 
   // Send notification email to the post's author
-  console.log('Comment inserted, fetching post for:', litspace_post_id);
-  const { data: post, error: postError } = await supabase
+  const { data: post } = await supabase
     .from("litspace_posts")
     .select("writer_name, writer_email, title, slug")
     .eq("id", litspace_post_id)
     .single();
-  console.log('Post fetched for notification:', post, postError);
 
   if (post?.writer_email) {
     const transporter = nodemailer.createTransport({

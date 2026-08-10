@@ -1,6 +1,7 @@
-import { notFound } from "next/navigation";
 import ReviewerPageContent from "../components/ReviewerPageContent";
 import WelcomePopup from "../components/WelcomePopup";
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 const ALLOWED_SLUGS = [
   "shahithafareen",
@@ -19,10 +20,12 @@ type Props = { params: Promise<{ name: string }> };
 
 export async function generateMetadata({ params }: Props) {
   const { name } = await params;
-  if (!ALLOWED_SLUGS.includes(name)) return {};
+  if (!ALLOWED_SLUGS.includes(name)) return { robots: { index: false, follow: false } };
   const displayName = name.charAt(0).toUpperCase() + name.slice(1);
   return {
     title: `A note for ${displayName} — Ritera Publishing`,
+    robots: { index: false, follow: false },
+    alternates: { canonical: `${SITE_URL}/reviewer/${name}` },
   };
 }
 

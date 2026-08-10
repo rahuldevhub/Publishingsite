@@ -72,11 +72,14 @@ function SortableRow({ book }: { book: Book }) {
 
       <td className="px-6 py-3">
         {book.cover_image ? (
-          <img
-            src={book.cover_image}
-            alt={book.title}
-            className="w-10 h-14 object-cover rounded shadow-sm"
-          />
+          <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={book.cover_image}
+              alt={book.title}
+              className="w-10 h-14 object-cover rounded shadow-sm"
+            />
+          </>
         ) : (
           <div className="w-10 h-14 rounded bg-gray-100 border border-gray-200 flex items-center justify-center">
             <svg

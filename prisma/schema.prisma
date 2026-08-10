@@ -109,6 +109,7 @@ model Book {
   amazonLink       String?  @map("amazon_link")
   flipkartLink     String?  @map("flipkart_link")
   publisherLink    String?  @map("publisher_link")
+  ebookLink        String?  @map("ebook_link")
   publishedDate    DateTime @map("published_date")
   authorId         String   @map("author_id")
   featured         Boolean  @default(false)

@@ -2,24 +2,25 @@ import { Metadata } from "next";
 import Link from "next/link";
 import CustomBuilder from "./CustomBuilder";
 import PackagesComparisonTable from "./PackagesComparisonTable";
+import { PACKAGES_RESOURCES } from "@/lib/internal-links";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 export const metadata: Metadata = {
-  title: "Publishing Packages & Pricing | Ritera Publishing",
+  title: "Publishing Packages & Pricing",
   description:
     "Starting ₹11,999 for Indian authors. International pricing available in USD. All packages include 100% royalties, professional editing, cover design, and global distribution.",
   openGraph: {
     title: "Self-Publishing Packages | Ritera Publishing",
     description:
-      "Professional self-publishing packages from ₹8,999. 100% royalties, expert editing, cover design, and distribution support.",
+      "Publishing packages starting ₹11,999. 100% royalties, expert editing, cover design, and global distribution support.",
     url: `${SITE_URL}/packages`,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Publishing Packages | Ritera Publishing",
-    description: "6 self-publishing packages from ₹8,999 to ₹1,19,999. 100% royalties.",
+    description: "Publishing packages starting ₹11,999. 100% royalties, professional editing, cover design, and global distribution.",
   },
   alternates: { canonical: `${SITE_URL}/packages` },
 };
@@ -188,7 +189,7 @@ export default function PackagesPage() {
                   </svg>
                 ),
                 title: "International Distribution",
-                body: "Your book wil be available on Amazon, Flipkart, and 40000+ global platforms — reaching readers across India and worldwide.",
+                body: "Your book will be available on Amazon, Flipkart, and 40000+ global platforms — reaching readers across India and worldwide.",
               },
               {
                 icon: (
@@ -207,6 +208,41 @@ export default function PackagesPage() {
                 <h3 className="font-bold text-gray-900 mb-2">{card.title}</h3>
                 <p className="text-sm text-gray-600 leading-relaxed">{card.body}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Publishing Resources ── */}
+      <section className="border-t border-gray-200">
+        <div className="max-w-6xl mx-auto px-6 py-16">
+          <div className="text-center mb-10">
+            <p className="text-xs font-semibold tracking-widest text-gray-500 uppercase mb-3">
+              Before You Decide
+            </p>
+            <h2 className="text-3xl font-bold text-gray-900">
+              Understand What Goes Into Your Book
+            </h2>
+            <p className="mt-3 text-gray-500 max-w-2xl mx-auto">
+              Every package covers these essentials. Read the guides to see exactly what each stage
+              involves before you choose.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {PACKAGES_RESOURCES.map((guide) => (
+              <Link
+                key={guide.slug}
+                href={`/blog/${guide.slug}`}
+                className="group flex flex-col rounded-2xl border border-gray-200 bg-white p-6 hover:border-gray-900 hover:shadow-sm transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400"
+              >
+                <h3 className="font-bold text-gray-900 leading-snug mb-2 group-hover:text-gray-700 transition-colors">
+                  {guide.title}
+                </h3>
+                <p className="text-sm text-gray-500 leading-relaxed flex-1">{guide.blurb}</p>
+                <span className="mt-4 text-sm font-semibold text-gray-900 group-hover:translate-x-0.5 transition-transform inline-block">
+                  Read the guide →
+                </span>
+              </Link>
             ))}
           </div>
         </div>
@@ -294,6 +330,35 @@ export default function PackagesPage() {
           >
             Contact Our Team →
           </Link>
+        </div>
+      </section>
+
+      {/* ── Social Proof Strip ── */}
+      <section className="bg-gray-50 border-t border-gray-200">
+        <div className="max-w-6xl mx-auto px-6 py-14 text-center">
+          <p className="text-xs font-semibold tracking-widest text-gray-500 uppercase mb-3">
+            See the Results
+          </p>
+          <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
+            Not sure what to expect? Let our authors show you.
+          </h2>
+          <p className="text-gray-500 text-base max-w-xl mx-auto mb-8">
+            Read real publishing journeys from authors across India — from first manuscript to global bookshelf.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href="/case-studies"
+              className="inline-flex items-center gap-2 bg-gray-900 text-white font-semibold px-6 py-3 rounded-xl hover:bg-gray-700 transition-colors text-sm"
+            >
+              Read Author Case Studies →
+            </Link>
+            <Link
+              href="/books"
+              className="inline-flex items-center gap-2 border border-gray-300 text-gray-700 font-semibold px-6 py-3 rounded-xl hover:border-gray-900 hover:text-gray-900 transition-colors text-sm"
+            >
+              Browse Published Books →
+            </Link>
+          </div>
         </div>
       </section>
 

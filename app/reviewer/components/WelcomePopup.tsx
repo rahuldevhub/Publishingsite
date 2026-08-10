@@ -74,7 +74,6 @@ export default function WelcomePopup() {
       // Popup was previously dismissed — show floating button instead
       const t = setTimeout(() => {
         setShowFloatingBtn(true);
-        console.log("[WelcomePopup] popup suppressed by localStorage → showFloatingBtn true");
       }, 1000);
       return () => clearTimeout(t);
     }
@@ -95,7 +94,6 @@ export default function WelcomePopup() {
       setIsVisible(false);
       localStorage.setItem(POPUP_KEY, "1");
       setShowFloatingBtn(true);
-      console.log("[WelcomePopup] showFloatingBtn → true");
     }, 380);
   }
 

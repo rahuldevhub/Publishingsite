@@ -6,11 +6,24 @@ const LAST_UPDATED = "March 2026";
 const CONTACT_EMAIL = "contact@riterapublishing.com";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Ritera Publishing",
+  title: "Privacy Policy",
   description:
     "Ritera Publishing's Privacy Policy — how we collect, use, and protect your personal information.",
   alternates: { canonical: `${SITE_URL}/privacy-policy` },
   robots: { index: true, follow: true },
+  openGraph: {
+    title: "Privacy Policy",
+    description:
+      "Ritera Publishing's Privacy Policy — how we collect, use, and protect your personal information.",
+    url: `${SITE_URL}/privacy-policy`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Privacy Policy",
+    description:
+      "Ritera Publishing's Privacy Policy — how we collect, use, and protect your personal information.",
+  },
 };
 
 const SECTIONS = [

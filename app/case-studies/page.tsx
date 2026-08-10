@@ -7,16 +7,22 @@ export const dynamic = "force-dynamic";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 export const metadata: Metadata = {
-  title: "Author Success Stories | Ritera Publishing Case Studies",
+  title: "Author Success Stories — Case Studies",
   description:
     "Read real stories of Indian authors who successfully self-published their books with Ritera. Learn about their journey and results.",
   keywords: "self publishing success stories India, author case studies, Ritera reviews, book publishing results",
   openGraph: {
-    title: "Author Success Stories | Ritera Publishing Case Studies",
+    title: "Author Success Stories — Case Studies",
     description:
       "Real stories of Indian authors who self-published successfully with Ritera Publishing.",
     url: `${SITE_URL}/case-studies`,
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Author Success Stories — Case Studies",
+    description:
+      "Real stories of Indian authors who self-published successfully with Ritera Publishing.",
   },
   alternates: { canonical: `${SITE_URL}/case-studies` },
 };
@@ -83,6 +89,39 @@ export default async function CaseStudiesPage() {
             ))}
           </div>
         )}
+      </section>
+
+      {/* ── Bottom CTA ── */}
+      <section className="bg-gray-900 text-white">
+        <div className="max-w-4xl mx-auto px-6 py-20 text-center">
+          <p className="text-xs font-semibold tracking-widest text-amber-400 uppercase mb-3">
+            Ready to Write Your Own Story?
+          </p>
+          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-5 leading-tight">
+            Every case study here started with a manuscript.
+          </h2>
+          <p className="text-gray-300 text-base lg:text-lg leading-relaxed max-w-2xl mx-auto mb-10">
+            Submit your manuscript today and our editorial team will respond within 12 days with a personalised{" "}
+            <Link href="/packages" className="text-amber-400 hover:text-amber-300 underline underline-offset-2">
+              self-publishing plan
+            </Link>{" "}
+            tailored to your book and goals.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <Link
+              href="/packages"
+              className="bg-amber-400 text-gray-900 font-bold px-8 py-3.5 rounded-xl hover:bg-amber-300 transition-colors"
+            >
+              View Publishing Packages →
+            </Link>
+            <Link
+              href="/contact"
+              className="border border-gray-600 text-white font-medium px-8 py-3.5 rounded-xl hover:border-white transition-colors"
+            >
+              Book a Free Consultation
+            </Link>
+          </div>
+        </div>
       </section>
     </main>
     </>

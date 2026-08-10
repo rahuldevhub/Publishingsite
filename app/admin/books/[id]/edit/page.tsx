@@ -9,6 +9,34 @@ import ImageUpload from "@/app/admin/components/ImageUpload";
 const inputClass =
   "w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent";
 
+const LANGUAGE_OPTIONS = [
+  "English",
+  "Tamil",
+  "Hindi",
+  "Malayalam",
+  "Telugu",
+  "Kannada",
+  "Marathi",
+  "Gujarati",
+  "Bengali",
+  "Punjabi",
+  "Urdu",
+  "Odia",
+  "Assamese",
+  "Sanskrit",
+  "Spanish",
+  "French",
+  "German",
+  "Italian",
+  "Portuguese",
+  "Russian",
+  "Chinese",
+  "Japanese",
+  "Korean",
+  "Arabic",
+  "Other",
+];
+
 type Author = { id: string; name: string };
 
 type BookForm = {
@@ -26,6 +54,7 @@ type BookForm = {
   amazon_link: string;
   flipkart_link: string;
   publisher_link: string;
+  ebook_link: string;
   purchase_link_international: string;
   purchase_link_pothi: string;
   purchase_link_library: string;
@@ -75,6 +104,7 @@ export default function EditBookPage() {
         amazon_link: book.amazon_link ?? "",
         flipkart_link: book.flipkart_link ?? "",
         publisher_link: book.publisher_link ?? "",
+        ebook_link: book.ebook_link ?? "",
         purchase_link_international: book.purchase_link_international ?? "",
         purchase_link_pothi: book.purchase_link_pothi ?? "",
         purchase_link_library: book.purchase_link_library ?? "",
@@ -88,7 +118,7 @@ export default function EditBookPage() {
     }
 
     fetchData();
-  }, [id]);
+  }, [id, supabase]);
 
   function handleChange(field: string, value: string | boolean | number) {
     setForm((f) => f ? { ...f, [field]: value } : f);
@@ -117,6 +147,7 @@ export default function EditBookPage() {
         amazon_link: form.amazon_link || null,
         flipkart_link: form.flipkart_link || null,
         publisher_link: form.publisher_link || null,
+        ebook_link: form.ebook_link || null,
         purchase_link_international: form.purchase_link_international || null,
         purchase_link_pothi: form.purchase_link_pothi || null,
         purchase_link_library: form.purchase_link_library || null,
@@ -263,6 +294,34 @@ export default function EditBookPage() {
               </div>
             </div>
 
+            {/* Book Language */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Book Language <span className="text-red-500">*</span></label>
+              <select
+                required
+                value={form.language}
+                onChange={(e) => handleChange("language", e.target.value)}
+                className={`${inputClass} bg-white`}
+              >
+                <option value="" disabled>Select book language...</option>
+                {LANGUAGE_OPTIONS.map((lang) => (
+                  <option key={lang} value={lang}>{lang}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* E-book Link */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">E-book Link</label>
+              <input
+                type="url"
+                value={form.ebook_link}
+                onChange={(e) => handleChange("ebook_link", e.target.value)}
+                className={inputClass}
+                placeholder="https://example.com/ebook"
+              />
+            </div>
+
             {/* Cover Image */}
             <ImageUpload
               label="Cover Image"
@@ -321,28 +380,8 @@ export default function EditBookPage() {
               </div>
             </div>
 
-            {/* Language + Page Count */}
+            {/* Page Count + ISBN */}
             <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Language <span className="text-red-500">*</span></label>
-                <select
-                  required
-                  value={form.language}
-                  onChange={(e) => handleChange("language", e.target.value)}
-                  className={`${inputClass} bg-white`}
-                >
-                  <option>English</option>
-                  <option>Hindi</option>
-                  <option>Tamil</option>
-                  <option>Telugu</option>
-                  <option>Bengali</option>
-                  <option>Marathi</option>
-                  <option>Gujarati</option>
-                  <option>Kannada</option>
-                  <option>Malayalam</option>
-                  <option>Punjabi</option>
-                </select>
-              </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">Page Count</label>
                 <input
@@ -352,17 +391,15 @@ export default function EditBookPage() {
                   className={inputClass}
                 />
               </div>
-            </div>
-
-            {/* ISBN */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">ISBN</label>
-              <input
-                type="text"
-                value={form.isbn}
-                onChange={(e) => handleChange("isbn", e.target.value)}
-                className={inputClass}
-              />
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">ISBN</label>
+                <input
+                  type="text"
+                  value={form.isbn}
+                  onChange={(e) => handleChange("isbn", e.target.value)}
+                  className={inputClass}
+                />
+              </div>
             </div>
 
             {/* Purchase Links */}

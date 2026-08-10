@@ -2,11 +2,11 @@
  * Image optimization script
  * Converts JPG/PNG to WebP (quality 80, max 1920px wide)
  * Re-compresses existing WebP files (quality 80)
- * Run: node scripts/optimize-images.js
+ * Run: node scripts/optimize-images.mjs
  */
-const sharp = require("sharp");
-const fs = require("fs");
-const path = require("path");
+import sharp from "sharp";
+import fs from "fs";
+import path from "path";
 
 const QUALITY = 80;
 const MAX_WIDTH = 1920;

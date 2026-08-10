@@ -7,7 +7,7 @@ import TestimonialCarousel from "./TestimonialCarousel";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 export const metadata: Metadata = {
-  title: "Submit Your Writing | LitSpace — Ritera Publishing",
+  title: "Submit Your Writing | LitSpace",
   description:
     "Share your poems, stories, and articles with the LitSpace community. Submit your work for review and get published on Ritera Publishing's creative writing platform.",
   openGraph: {

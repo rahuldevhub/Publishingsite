@@ -17,9 +17,15 @@ export default function LeadCapturePopup({ isOpen, onClose, pdfUrl, sourceSlug }
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
-  // Pre-fill from sessionStorage
-  useEffect(() => {
-    if (isOpen) {
+  // Pre-fill editable fields from sessionStorage each time the popup opens.
+  // Adjusting state during render on the isOpen transition (React's documented
+  // "storing information from previous renders" pattern) avoids a setState-in-
+  // effect. The branch only runs on the client interaction that opens the popup
+  // (isOpen starts false on the server), so it is SSR-safe with no mismatch.
+  const [prevOpen, setPrevOpen] = useState(isOpen);
+  if (isOpen !== prevOpen) {
+    setPrevOpen(isOpen);
+    if (isOpen && typeof window !== "undefined") {
       const saved = sessionStorage.getItem("lead_capture");
       if (saved) {
         try {
@@ -29,7 +35,7 @@ export default function LeadCapturePopup({ isOpen, onClose, pdfUrl, sourceSlug }
         } catch {}
       }
     }
-  }, [isOpen]);
+  }
 
   // Lock body scroll
   useEffect(() => {

@@ -75,7 +75,7 @@ export default function EditCareerPage() {
     }
 
     fetchCareer();
-  }, [id]);
+  }, [id, supabase]);
 
   function handleChange(field: string, value: string) {
     setForm((f) => f ? { ...f, [field]: value } : f);

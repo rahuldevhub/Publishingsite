@@ -6,11 +6,24 @@ const LAST_UPDATED = "March 2026";
 const CONTACT_EMAIL = "contact@riterapublishing.com";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Ritera Publishing",
+  title: "Terms of Service",
   description:
     "Ritera Publishing's Terms of Service — the rules and guidelines that govern use of our publishing services and website.",
   alternates: { canonical: `${SITE_URL}/terms-of-service` },
   robots: { index: true, follow: true },
+  openGraph: {
+    title: "Terms of Service",
+    description:
+      "Ritera Publishing's Terms of Service — the rules and guidelines that govern use of our publishing services and website.",
+    url: `${SITE_URL}/terms-of-service`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Terms of Service",
+    description:
+      "Ritera Publishing's Terms of Service — the rules and guidelines that govern use of our publishing services and website.",
+  },
 };
 
 const SECTIONS = [

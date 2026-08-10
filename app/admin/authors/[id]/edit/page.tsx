@@ -58,7 +58,7 @@ export default function EditAuthorPage() {
     }
 
     fetchAuthor();
-  }, [id]);
+  }, [id, supabase]);
 
   function handleChange(field: string, value: string) {
     setForm((f) => f ? { ...f, [field]: value } : f);

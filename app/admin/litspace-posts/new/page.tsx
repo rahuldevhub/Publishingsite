@@ -43,7 +43,7 @@ export default function NewLitspacePostPage() {
     supabase.from("litspace_categories").select("id, name").order("name").then(({ data }) => {
       if (data) setCategories(data);
     });
-  }, []);
+  }, [supabase]);
 
   function handleTitleChange(value: string) {
     setForm((f) => ({ ...f, title: value, slug: generateSlug(value) }));

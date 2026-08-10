@@ -1,3 +1,4 @@
+import type { ComponentProps } from "react";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { createServerClient } from "@/lib/supabase";
@@ -101,7 +102,9 @@ export default async function BooksPage({
             </Link>
           </div>
         ) : (
-          <BooksTable initialBooks={books as any} />
+          <BooksTable
+            initialBooks={books as unknown as ComponentProps<typeof BooksTable>["initialBooks"]}
+          />
         )}
       </main>
     </div>

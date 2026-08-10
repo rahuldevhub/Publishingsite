@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const description =
     job.meta_description ||
     job.short_description ||
-    `${job.job_type} position based in ${job.location}. Apply now at Ritera Publishing.`;
+    `Apply for the ${job.title} position at Ritera Publishing.`;
   const url = `${SITE_URL}/careers/${slug}`;
 
   return {

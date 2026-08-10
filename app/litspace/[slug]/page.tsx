@@ -32,11 +32,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!post) return { title: "Post Not Found" };
 
   const title = post.meta_title || post.title;
-  const description = post.meta_description || post.excerpt || `A post by ${post.writer_name} on LitSpace.`;
+  const description =
+    post.meta_description ||
+    post.excerpt ||
+    `Read "${post.title}" by ${post.writer_name} on LitSpace.`;
   const url = `${SITE_URL}/litspace/${slug}`;
 
   return {
-    title: `${title} | LitSpace — Ritera Publishing`,
+    title: `${title} | LitSpace`,
     description,
     openGraph: { title, description, url, type: "article" },
     twitter: { card: "summary", title, description },
@@ -167,7 +170,7 @@ export default async function LitspacePostPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      <main className="bg-white pt-16">
+      <main className="bg-white pt-[86px]">
         {/* ── Breadcrumbs ── */}
         <nav aria-label="Breadcrumb" className="bg-gray-50 border-b border-gray-200">
           <ol className="max-w-4xl mx-auto px-6 py-3 flex flex-wrap items-center gap-2 text-sm text-gray-600">

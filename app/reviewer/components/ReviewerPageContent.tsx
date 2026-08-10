@@ -125,37 +125,6 @@ const CONFETTI_PIECES = [
 
 const SUBTITLE = "If you are here, this page was meant only for you.";
 
-// ── Animated Counter ──────────────────────────────────────────────────────────
-function AnimatedCounter({ target, suffix }: { target: number; suffix: string }) {
-  const [count, setCount] = useState(0);
-  const ref     = useRef<HTMLSpanElement>(null);
-  const started = useRef(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting || started.current) return;
-        started.current = true;
-        const steps = 40;
-        const stepVal = target / steps;
-        let current = 0;
-        const iv = setInterval(() => {
-          current += stepVal;
-          if (current >= target) { setCount(target); clearInterval(iv); }
-          else setCount(Math.floor(current));
-        }, 1500 / steps);
-      },
-      { threshold: 0.3 }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [target]);
-
-  return <span ref={ref}>{count}{suffix}</span>;
-}
-
 // ── 3D Flip Benefit Card ──────────────────────────────────────────────────────
 function BenefitCard({
   icon, text, animDelay, isMobile,
@@ -350,36 +319,6 @@ function BenefitCard({
   );
 }
 
-// ── Dot divider ───────────────────────────────────────────────────────────────
-function DotDivider() {
-  return (
-    <div
-      data-animate="fade-up"
-      style={{
-        opacity: 0,
-        transform: "translateY(20px)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: "10px",
-        margin: "48px 0",
-      }}
-    >
-      {[0, 1, 2].map((i) => (
-        <div
-          key={i}
-          style={{
-            width: i === 1 ? "6px" : "4px",
-            height: i === 1 ? "6px" : "4px",
-            borderRadius: "50%",
-            backgroundColor: i === 1 ? GOLD : "rgba(181,135,58,0.35)",
-          }}
-        />
-      ))}
-    </div>
-  );
-}
-
 // ── Section card wrapper — slides in from specified direction ─────────────────
 function SectionCard({
   children,
@@ -544,7 +483,6 @@ export default function ReviewerPageContent({ displayName }: { displayName: stri
   // 4 — scroll listener: progress + parallax + para opacity + auroras
   useEffect(() => {
     const progress = progressRef.current;
-    console.log("[ReviewerPage] scroll listener attached");
 
     function onScroll() {
       const y    = window.scrollY;
@@ -575,7 +513,6 @@ export default function ReviewerPageContent({ displayName }: { displayName: stri
 
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // 5 — cursor-reactive auroras (desktop only)
@@ -592,7 +529,6 @@ export default function ReviewerPageContent({ displayName }: { displayName: stri
 
     container.addEventListener("mousemove", onMouseMove, { passive: true });
     return () => container.removeEventListener("mousemove", onMouseMove);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMobile]);
 
   // 6 — IntersectionObserver: fade-up + slide-in + luminous paragraphs

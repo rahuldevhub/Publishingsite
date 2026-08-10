@@ -7,11 +7,11 @@ export const dynamic = "force-dynamic";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 export const metadata: Metadata = {
-  title: "Careers at Ritera Publishing | Join Our Team",
+  title: "Careers — Join Our Team",
   description:
     "Join Ritera Publishing and help shape the future of self-publishing in India. Explore open roles in editorial, marketing, technology, and more.",
   openGraph: {
-    title: "Careers at Ritera Publishing | Join Our Team",
+    title: "Careers — Join Our Team",
     description:
       "Explore open roles at Ritera Publishing. We're looking for passionate people to help authors share their stories with the world.",
     url: `${SITE_URL}/careers`,

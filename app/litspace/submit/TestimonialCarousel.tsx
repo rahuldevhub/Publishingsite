@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 const testimonials = [
   {
@@ -35,26 +35,26 @@ export default function TestimonialCarousel() {
   const [visible, setVisible] = useState(true);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  function advance(to?: number) {
+  const advance = useCallback((to?: number) => {
     setVisible(false);
     setTimeout(() => {
       setActive((prev) => (to !== undefined ? to : (prev + 1) % testimonials.length));
       setVisible(true);
     }, 300);
-  }
+  }, []);
 
-  function startTimer() {
+  const startTimer = useCallback(() => {
     timerRef.current = setInterval(() => advance(), 3000);
-  }
+  }, [advance]);
 
-  function stopTimer() {
+  const stopTimer = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
-  }
+  }, []);
 
   useEffect(() => {
     startTimer();
     return stopTimer;
-  }, []);
+  }, [startTimer, stopTimer]);
 
   const t = testimonials[active];
 

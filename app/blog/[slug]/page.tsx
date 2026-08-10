@@ -3,7 +3,10 @@ import { notFound } from "next/navigation";
 import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
 import Image from "next/image";
+import type { ReactNode } from "react";
 import ReadingProgress from "@/app/components/ReadingProgress";
+import RelatedGuides from "@/app/components/RelatedGuides";
+import { CONTEXTUAL_RULES, MAX_CONTEXTUAL_LINKS } from "@/lib/internal-links";
 
 export const dynamic = "force-dynamic";
 
@@ -26,7 +29,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const { data: post } = await supabase
     .from("blog_posts")
-    .select("title, meta_title, meta_description, excerpt, featured_image, keywords, author:authors(name)")
+    .select("title, meta_title, meta_description, excerpt, content, featured_image, keywords, author:authors(name)")
     .eq("slug", slug)
     .eq("published", true)
     .single();
@@ -34,7 +37,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!post) return { title: "Post Not Found" };
 
   const title = post.meta_title || post.title;
-  const description = post.meta_description || post.excerpt || "";
+  const description =
+    post.meta_description ||
+    post.excerpt ||
+    post.content?.replace(/[#*`[\]()]/g, "").slice(0, 155).trim() ||
+    "";
   const url = `${SITE_URL}/blog/${slug}`;
   const image = post.featured_image;
   const authorName = (post.author as unknown as { name: string } | null)?.name ?? "Ritera Publishing";
@@ -102,18 +109,6 @@ export default async function BlogPostPage({ params }: PageProps) {
     instagram: string | null;
     twitter: string | null;
   } | null;
-
-  // Related posts (same category, exclude current)
-  const { data: relatedPosts } = category
-    ? await supabase
-        .from("blog_posts")
-        .select("id, title, slug, excerpt, featured_image, reading_time, created_at")
-        .eq("published", true)
-        .eq("category_id", category.id)
-        .neq("id", post.id)
-        .order("created_at", { ascending: false })
-        .limit(4)
-    : { data: [] };
 
   // Schema.org JSON-LD
   const jsonLd = {
@@ -265,7 +260,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         {/* ── Article Content ── */}
         <article className="max-w-3xl mx-auto px-6 pb-16">
           <div className="prose-content space-y-1">
-            {renderContent(post.content)}
+            {renderContent(post.content, slug)}
           </div>
 
           {/* ── FAQ Section ── */}
@@ -344,6 +339,49 @@ export default async function BlogPostPage({ params }: PageProps) {
               </a>
             </div>
           </div>
+
+          {/* ── Continue Exploring ── */}
+          <div className="mt-10 pt-8 border-t border-gray-200">
+            <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-4">Continue Exploring</p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <Link
+                href="/packages"
+                className="group flex items-center gap-3 p-4 rounded-xl border border-gray-200 hover:border-gray-900 hover:shadow-sm transition-all"
+              >
+                <span className="w-9 h-9 rounded-lg bg-amber-100 flex items-center justify-center shrink-0 text-amber-600 group-hover:bg-amber-200 transition-colors">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0118 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>
+                </span>
+                <div>
+                  <p className="text-xs text-gray-500">Get published</p>
+                  <p className="text-sm font-semibold text-gray-900">Self-publishing packages</p>
+                </div>
+              </Link>
+              <Link
+                href="/case-studies"
+                className="group flex items-center gap-3 p-4 rounded-xl border border-gray-200 hover:border-gray-900 hover:shadow-sm transition-all"
+              >
+                <span className="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center shrink-0 text-blue-600 group-hover:bg-blue-100 transition-colors">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75m-7.5 6h10.5a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z" /></svg>
+                </span>
+                <div>
+                  <p className="text-xs text-gray-500">Real stories</p>
+                  <p className="text-sm font-semibold text-gray-900">Author case studies</p>
+                </div>
+              </Link>
+              <Link
+                href="/books"
+                className="group flex items-center gap-3 p-4 rounded-xl border border-gray-200 hover:border-gray-900 hover:shadow-sm transition-all"
+              >
+                <span className="w-9 h-9 rounded-lg bg-green-50 flex items-center justify-center shrink-0 text-green-600 group-hover:bg-green-100 transition-colors">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                </span>
+                <div>
+                  <p className="text-xs text-gray-500">Our library</p>
+                  <p className="text-sm font-semibold text-gray-900">Browse published books</p>
+                </div>
+              </Link>
+            </div>
+          </div>
         </article>
 
         {/* ── Author Bio ── */}
@@ -392,67 +430,8 @@ export default async function BlogPostPage({ params }: PageProps) {
           </aside>
         )}
 
-        {/* ── Related Posts ── */}
-        {relatedPosts && relatedPosts.length > 0 && (
-          <section className="bg-gray-50 border-t border-gray-200">
-            <div className="max-w-6xl mx-auto px-6 py-16">
-              <div className="flex items-center justify-between mb-8">
-                <h2 className="text-2xl font-bold text-gray-900">Related Articles</h2>
-                <Link href="/blog" className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">
-                  View all posts →
-                </Link>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {(relatedPosts as unknown as Array<{
-                  id: string; title: string; slug: string;
-                  excerpt: string | null; featured_image: string | null;
-                  reading_time: number; created_at: string;
-                }>).map((related) => (
-                  <article key={related.id}
-                    className="group bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-                    <Link href={`/blog/${related.slug}`}
-                      className="block relative aspect-video bg-gray-100 overflow-hidden">
-                      {related.featured_image ? (
-                        <Image
-                          src={related.featured_image}
-                          alt={related.title}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
-                          sizes="(max-width: 768px) 100vw, 25vw"
-                          loading="lazy"
-                        />
-                      ) : (
-                        <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                          <span className="text-4xl">📖</span>
-                        </div>
-                      )}
-                    </Link>
-                    <div className="p-5">
-                      <Link href={`/blog/${related.slug}`}>
-                        <h3 className="font-bold text-gray-900 text-sm leading-snug line-clamp-2 group-hover:text-yellow-600 transition-colors mb-2">
-                          {related.title}
-                        </h3>
-                      </Link>
-                      {related.excerpt && (
-                        <p className="text-xs text-gray-500 line-clamp-2 mb-3">
-                          {related.excerpt}
-                        </p>
-                      )}
-                      <div className="flex items-center justify-between">
-                        <p className="text-xs text-gray-400">
-                          {formatDate(related.created_at)} · {related.reading_time} min read
-                        </p>
-                        <span className="text-xs font-semibold text-yellow-600 group-hover:translate-x-1 transition-transform inline-block">
-                          Read →
-                        </span>
-                      </div>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
+        {/* ── Related Guides (semantic, topic-based) ── */}
+        <RelatedGuides currentSlug={slug} />
       </main>
     </>
   );
@@ -460,7 +439,164 @@ export default async function BlogPostPage({ params }: PageProps) {
 
 // ── Content Renderer ─────────────────────────────────────────────────────────
 
-function renderContent(content: string) {
+// Shared styling for inline links (explicit markdown + contextual auto-links).
+const INLINE_LINK_CLS =
+  "font-medium text-amber-700 underline decoration-amber-300 decoration-1 underline-offset-2 hover:text-amber-800 hover:decoration-amber-500 transition-colors";
+
+// Matches **bold** and [anchor](href) so we can tokenise a line of prose.
+const EXPLICIT_TOKEN_RE = /(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g;
+const LINK_TOKEN_RE = /^\[([^\]]+)\]\(([^)]+)\)$/;
+
+type RenderCtx = {
+  selfUrl: string;            // `/blog/<slug>` — never link a post to itself
+  usedHrefs: Set<string>;     // one link per destination per post
+  budget: number;            // remaining contextual links for the post
+  rules: { href: string; re: RegExp }[];
+};
+
+function escapeRegExp(s: string) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+// Render a markdown link token as a Next.js <Link> (internal) or <a> (external).
+function renderLinkToken(anchor: string, href: string, key: string): ReactNode {
+  if (href.startsWith("/") || href.startsWith("#")) {
+    return (
+      <Link key={key} href={href} className={INLINE_LINK_CLS}>
+        {anchor}
+      </Link>
+    );
+  }
+  if (/^https?:\/\//i.test(href)) {
+    return (
+      <a key={key} href={href} target="_blank" rel="noopener noreferrer" className={INLINE_LINK_CLS}>
+        {anchor}
+      </a>
+    );
+  }
+  if (/^(mailto:|tel:)/i.test(href)) {
+    return (
+      <a key={key} href={href} className={INLINE_LINK_CLS}>
+        {anchor}
+      </a>
+    );
+  }
+  // Unsupported / unsafe scheme (e.g. javascript:) — render anchor text only.
+  return anchor;
+}
+
+// Parse **bold** and [text](href) only. Used for headings and list items.
+function renderMarkup(text: string, keyPrefix: string): ReactNode[] {
+  return text.split(EXPLICIT_TOKEN_RE).map((part, idx) => {
+    if (!part) return null;
+    const key = `${keyPrefix}-${idx}`;
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return (
+        <strong key={key} className="font-bold text-gray-900">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    const link = part.match(LINK_TOKEN_RE);
+    if (link) return renderLinkToken(link[1], link[2], key);
+    return <span key={key}>{part}</span>;
+  });
+}
+
+// Auto-link the first natural occurrence of configured phrases in plain prose.
+// Respects: no self-links, one link per destination per post, one link per
+// sentence, and a per-post budget. Article content is never mutated.
+function injectContextual(text: string, ctx: RenderCtx, keyPrefix: string): ReactNode[] {
+  if (ctx.budget <= 0 || !text.trim()) return [text];
+
+  const accepted: { start: number; end: number; href: string }[] = [];
+  const acceptedSentences: { s: number; e: number }[] = [];
+  const localHrefs = new Set<string>();
+
+  const sentenceSpan = (idx: number) => {
+    let s = idx;
+    while (s > 0 && !".!?\n".includes(text[s - 1])) s--;
+    let e = idx;
+    while (e < text.length && !".!?\n".includes(text[e])) e++;
+    return { s, e };
+  };
+
+  for (const rule of ctx.rules) {
+    if (accepted.length >= ctx.budget) break;
+    if (rule.href === ctx.selfUrl) continue;
+    if (ctx.usedHrefs.has(rule.href) || localHrefs.has(rule.href)) continue;
+
+    const m = rule.re.exec(text);
+    if (!m) continue;
+    const start = m.index;
+    const end = start + m[0].length;
+
+    // Skip overlaps with an already-accepted match.
+    if (accepted.some((a) => start < a.end && end > a.start)) continue;
+    // Enforce at most one link per sentence.
+    const span = sentenceSpan(start);
+    if (acceptedSentences.some((sp) => span.s < sp.e && span.e > sp.s)) continue;
+
+    accepted.push({ start, end, href: rule.href });
+    acceptedSentences.push(span);
+    localHrefs.add(rule.href);
+  }
+
+  if (accepted.length === 0) return [text];
+
+  accepted.sort((a, b) => a.start - b.start);
+  const nodes: ReactNode[] = [];
+  let cursor = 0;
+  accepted.forEach((a, k) => {
+    ctx.usedHrefs.add(a.href);
+    ctx.budget -= 1;
+    if (a.start > cursor) nodes.push(<span key={`${keyPrefix}-t${k}`}>{text.slice(cursor, a.start)}</span>);
+    nodes.push(
+      <Link key={`${keyPrefix}-l${k}`} href={a.href} className={INLINE_LINK_CLS}>
+        {text.slice(a.start, a.end)}
+      </Link>
+    );
+    cursor = a.end;
+  });
+  if (cursor < text.length) nodes.push(<span key={`${keyPrefix}-tend`}>{text.slice(cursor)}</span>);
+  return nodes;
+}
+
+// Prose: explicit markdown first, then contextual auto-linking on plain text.
+function renderProse(text: string, ctx: RenderCtx, keyPrefix: string): ReactNode[] {
+  const out: ReactNode[] = [];
+  text.split(EXPLICIT_TOKEN_RE).forEach((part, idx) => {
+    if (!part) return;
+    const key = `${keyPrefix}-${idx}`;
+    if (part.startsWith("**") && part.endsWith("**")) {
+      out.push(
+        <strong key={key} className="font-bold text-gray-900">
+          {part.slice(2, -2)}
+        </strong>
+      );
+      return;
+    }
+    const link = part.match(LINK_TOKEN_RE);
+    if (link) {
+      out.push(renderLinkToken(link[1], link[2], key));
+      return;
+    }
+    out.push(...injectContextual(part, ctx, key));
+  });
+  return out;
+}
+
+function renderContent(content: string, slug: string) {
+  const ctx: RenderCtx = {
+    selfUrl: `/blog/${slug}`,
+    usedHrefs: new Set<string>(),
+    budget: MAX_CONTEXTUAL_LINKS,
+    rules: CONTEXTUAL_RULES.map((r) => ({
+      href: `/blog/${r.slug}`,
+      re: new RegExp(`(?<![\\w-])(${escapeRegExp(r.phrase)})(?![\\w-])`, "i"),
+    })),
+  };
+
   const paragraphs = content.split(/\n\n+/);
   return paragraphs.map((para, i) => {
 
@@ -468,7 +604,7 @@ function renderContent(content: string) {
     if (para.startsWith("## ")) {
       return (
         <h2 key={i} className="text-2xl md:text-3xl font-bold text-gray-900 mt-14 mb-5 leading-snug border-l-4 border-yellow-400 pl-4">
-          {para.slice(3)}
+          {renderMarkup(para.slice(3), `h2-${i}`)}
         </h2>
       );
     }
@@ -477,7 +613,7 @@ function renderContent(content: string) {
     if (para.startsWith("### ")) {
       return (
         <h3 key={i} className="text-xl font-bold text-gray-800 mt-10 mb-4 leading-snug">
-          {para.slice(4)}
+          {renderMarkup(para.slice(4), `h3-${i}`)}
         </h3>
       );
     }
@@ -490,7 +626,7 @@ function renderContent(content: string) {
           {items.map((item, j) => (
             <li key={j} className="flex items-start gap-3 text-gray-700 text-lg leading-relaxed">
               <span className="mt-1.5 w-2 h-2 rounded-full bg-yellow-400 shrink-0" />
-              <span>{item.replace(/^- /, "")}</span>
+              <span>{renderMarkup(item.replace(/^- /, ""), `ul-${i}-${j}`)}</span>
             </li>
           ))}
         </ul>
@@ -507,7 +643,7 @@ function renderContent(content: string) {
               <span className="shrink-0 w-7 h-7 rounded-full bg-gray-900 text-white text-sm font-bold flex items-center justify-center mt-0.5">
                 {j + 1}
               </span>
-              <span>{item.replace(/^\d+\.\s/, "")}</span>
+              <span>{renderMarkup(item.replace(/^\d+\.\s/, ""), `ol-${i}-${j}`)}</span>
             </li>
           ))}
         </ol>
@@ -519,7 +655,7 @@ function renderContent(content: string) {
       return (
         <blockquote key={i} className="my-8 border-l-4 border-yellow-400 bg-yellow-50 rounded-r-xl px-6 py-5">
           <p className="text-gray-800 text-lg italic leading-relaxed">
-            {para.slice(2)}
+            {renderProse(para.slice(2), ctx, `bq-${i}`)}
           </p>
         </blockquote>
       );
@@ -533,29 +669,18 @@ function renderContent(content: string) {
         <div key={i} className="flex items-center gap-3 mt-12 mb-5">
           <span className="text-2xl">{emojiMatch[1]}</span>
           <h2 className="text-2xl font-bold text-gray-900 leading-snug">
-            {emojiMatch[2]}
+            {renderMarkup(emojiMatch[2], `emoji-${i}`)}
           </h2>
         </div>
       );
     }
-
-    // Handle inline bold within paragraphs
-    const renderInline = (text: string) => {
-      const parts = text.split(/(\*\*[^*]+\*\*)/g);
-      return parts.map((part, idx) => {
-        if (part.startsWith("**") && part.endsWith("**")) {
-          return <strong key={idx} className="font-bold text-gray-900">{part.slice(2, -2)}</strong>;
-        }
-        return part;
-      });
-    };
 
     // Default paragraph
     return (
       <p key={i} className="text-gray-700 leading-relaxed text-lg mb-6">
         {para.split("\n").map((line, j, arr) => (
           <span key={j}>
-            {renderInline(line)}
+            {renderProse(line, ctx, `p-${i}-${j}`)}
             {j < arr.length - 1 && <br />}
           </span>
         ))}

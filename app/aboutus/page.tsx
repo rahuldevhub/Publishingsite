@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import CounterStats from "./CounterStats";
+import { ABOUT_LINKS } from "@/lib/internal-links";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 export const metadata: Metadata = {
-  title: "About Us | Ritera Publishing — Your Story Matters",
+  title: "About Us — Your Story Matters",
   description:
-    "Ritera Publishing is a self-publishing company based in Tamil Nadu, India, founded to help Indian authors publish professionally without surrendering royalties. The team handles editing, design, formatting, and global distribution across 50+ countries.",
+    "Ritera Publishing helps Indian authors self-publish professionally — 100% royalties, expert editing, cover design, formatting, and global distribution to 50+ countries.",
   openGraph: {
     title: "About Ritera Publishing",
     description:
@@ -87,7 +88,20 @@ export default function AboutPage() {
                 RITERA Brings it to Life
               </p>
               <p className="mt-6 text-base lg:text-lg text-gray-400 leading-relaxed max-w-xl">
-               Publish with confidence through professional self publishing services. Reach readers globally across 160+ countries with full creative control and 100% royalties.
+                Publish with confidence through{" "}
+                <Link href="/packages" className="text-amber-400 hover:text-amber-300 font-medium underline underline-offset-2">
+                  professional self-publishing packages
+                </Link>. Reach readers globally across 160+ countries with full creative control and 100% royalties.
+              </p>
+              <p className="mt-4 text-sm text-gray-500 leading-relaxed max-w-xl">
+                New to publishing? Learn{" "}
+                <Link href={`/blog/${ABOUT_LINKS[0].slug}`} className="text-gray-300 hover:text-white underline underline-offset-2">
+                  {ABOUT_LINKS[0].anchor}
+                </Link>{" "}
+                or compare{" "}
+                <Link href={`/blog/${ABOUT_LINKS[1].slug}`} className="text-gray-300 hover:text-white underline underline-offset-2">
+                  {ABOUT_LINKS[1].anchor}
+                </Link>.
               </p>
               <a
                 href="#virtual-meet"
@@ -439,7 +453,7 @@ export default function AboutPage() {
 
               </p>
               <Link
-                href="/packages"
+                href="/litspace"
                 className="inline-block mt-8 px-6 py-3 bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-700 transition-colors text-sm"
               >
                 Publish for Free via LitSpace
@@ -587,16 +601,6 @@ export default function AboutPage() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {[
                 {
-                  question: "Shape the future?",
-                  cta: "Career Center",
-                  href: "/careers",
-                  icon: (
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
-                    </svg>
-                  ),
-                },
-                {
                   question: "Ready to publish?",
                   cta: "See Our Packages",
                   href: "/packages",
@@ -617,12 +621,22 @@ export default function AboutPage() {
                   ),
                 },
                 {
-                  question: "Stay connected?",
-                  cta: "Follow on Instagram",
-                  href: "https://instagram.com/riterapublishing",
+                  question: "See real results?",
+                  cta: "Author Case Studies",
+                  href: "/case-studies",
                   icon: (
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z" />
+                    </svg>
+                  ),
+                },
+                {
+                  question: "Browse our library?",
+                  cta: "Published Books",
+                  href: "/books",
+                  icon: (
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0118 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
                     </svg>
                   ),
                 },

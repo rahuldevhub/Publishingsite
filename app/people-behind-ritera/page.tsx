@@ -5,7 +5,7 @@ import CounterStats from "@/app/aboutus/CounterStats";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 export const metadata: Metadata = {
-  title: "People Behind Ritera | Ritera Publishing",
+  title: "People Behind Ritera",
   description:
     "Meet the passionate professionals turning author dreams into reality — reviewers, designers, editors, mentors, and expert teams behind every Ritera book.",
   openGraph: {
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "People Behind Ritera | Ritera Publishing",
+    title: "People Behind Ritera",
     description: "Meet the passionate professionals turning author dreams into reality.",
   },
   alternates: { canonical: `${SITE_URL}/people-behind-ritera` },
@@ -38,13 +38,6 @@ const pageSchema = {
 };
 
 const KEY_PEOPLE = [
-  {
-    name: "RJ Ananthi",
-    role: "Actress & Reviewer",
-    description:
-      "Renowned for insightful book reviews on 'The Book Show' YouTube channel. Her expertise and passion for literature makes her a respected voice in the literary community.",
-    initials: "RA",
-  },
   {
     name: "Shahitha Fareen M",
     role: "Reviewer & Writer",

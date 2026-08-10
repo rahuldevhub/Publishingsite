@@ -65,7 +65,7 @@ const FEATURES: { category: string; label: string; highlight?: boolean; values: 
   { category: "Marketing & Promotion", label: "Social Media Promotion",             values: [false, false, true, true, true ,true] },
   { category: "Marketing & Promotion", label: "Kindle Promotions",                  values: [false, false, true, true, true, true] },
 
-  { category: "Marketing & Promotion", label: "Author Branding Kit",                values: [false, false, "Basic", "Strandard", "Premium" ,"Exclusive"] },
+  { category: "Marketing & Promotion", label: "Author Branding Kit",                values: [false, false, "Basic", "Standard", "Premium" ,"Exclusive"] },
   { category: "Marketing & Promotion", label: "Author Awards",                      values: [false, false, false, true, true, true] },
   { category: "Marketing & Promotion", label: "Book Trailer",                       values: [false, false, true, true, true, true] },
   { category: "Marketing & Promotion", label: "Amazon Prime Placement",             values: [false, false, true, true, true, true] },
@@ -86,16 +86,33 @@ const FEATURES: { category: string; label: string; highlight?: boolean; values: 
 function renderVal(val: Val, popular: boolean) {
   if (val === true)
     return (
-      <svg className={`w-5 h-5 mx-auto ${popular ? "text-amber-600" : "text-green-500"}`} viewBox="0 0 20 20" fill="currentColor">
-        <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
-      </svg>
+      <>
+        <svg
+          className={`w-5 h-5 mx-auto ${popular ? "text-amber-600" : "text-green-500"}`}
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+        </svg>
+        <span className="sr-only">Included</span>
+      </>
     )
   if (val === false)
-    return <span className="text-gray-300 text-base select-none">—</span>
+    return (
+      <>
+        <span className="text-gray-300 text-base select-none" aria-hidden="true">—</span>
+        <span className="sr-only">Not Included</span>
+      </>
+    )
   if (val === "add-on")
     return (
-      <span className="inline-block bg-amber-100 text-amber-700 text-xs font-semibold px-2 py-0.5 rounded-full whitespace-nowrap">
-        Add-on
+      <span
+        className="inline-block bg-amber-100 text-amber-700 text-xs font-semibold px-2 py-0.5 rounded-full whitespace-nowrap"
+        aria-label="Available as Add-on"
+      >
+        <span aria-hidden="true">Add-on</span>
       </span>
     )
   return <span className="text-sm font-semibold text-gray-800">{val}</span>
@@ -132,12 +149,13 @@ export default function PackagesComparisonTable() {
             <thead>
               <tr>
                 {/* Corner cell */}
-                <th className="sticky left-0 top-0 z-30 bg-gray-50 border-b border-r border-gray-200 px-5 py-5 text-left text-xs font-bold text-gray-500 uppercase tracking-wide w-[200px] min-w-[200px]">
+                <th scope="col" className="sticky left-0 top-0 z-30 bg-gray-50 border-b border-r border-gray-200 px-5 py-5 text-left text-xs font-bold text-gray-500 uppercase tracking-wide w-[200px] min-w-[200px]">
                   Features
                 </th>
                 {PACKAGES.map((pkg, i) => (
                   <th
                     key={pkg.id}
+                    scope="col"
                     className={`sticky top-0 z-20 border-b border-gray-200 px-4 py-5 text-center min-w-[140px] ${
                       pkg.popular
                         ? "bg-amber-50 border-b-2 border-b-amber-400"
@@ -145,12 +163,18 @@ export default function PackagesComparisonTable() {
                     } ${i < PACKAGES.length - 1 ? "border-r border-gray-200" : ""}`}
                   >
                     {pkg.popular && (
-                      <span className="block bg-amber-500 text-white text-xs font-bold px-3 py-0.5 rounded-full mb-2 mx-auto w-fit">
-                        ★ Most Popular
+                      <span
+                        className="block bg-amber-500 text-white text-xs font-bold px-3 py-0.5 rounded-full mb-2 mx-auto w-fit"
+                        aria-label="Most Popular package"
+                      >
+                        <span aria-hidden="true">★ Most Popular</span>
                       </span>
                     )}
                     {pkg.badge && !pkg.popular && (
-                      <span className="block bg-gray-800 text-white text-xs font-bold px-3 py-0.5 rounded-full mb-2 mx-auto w-fit">
+                      <span
+                        className="block bg-gray-800 text-white text-xs font-bold px-3 py-0.5 rounded-full mb-2 mx-auto w-fit"
+                        aria-label={`${pkg.badge} package`}
+                      >
                         {pkg.badge}
                       </span>
                     )}
@@ -162,6 +186,7 @@ export default function PackagesComparisonTable() {
                     </div>
                     <Link
                       href="/contact"
+                      aria-label={`Get Started with ${pkg.name} Package`}
                       className={`mt-3 inline-block text-xs font-semibold px-4 py-1.5 rounded-full transition-colors ${
                         pkg.popular
                           ? "bg-amber-500 text-white hover:bg-amber-600"
@@ -180,12 +205,13 @@ export default function PackagesComparisonTable() {
                 <Fragment key={category}>
                   {/* Category separator */}
                   <tr>
-                    <td
+                    <th
+                      scope="colgroup"
                       colSpan={7}
-                      className="sticky left-0 bg-gray-100 border-y border-gray-200 px-5 py-2.5 text-xs font-bold text-gray-500 uppercase tracking-widest"
+                      className="sticky left-0 bg-gray-100 border-y border-gray-200 px-5 py-2.5 text-left text-xs font-bold text-gray-500 uppercase tracking-widest"
                     >
                       {category}
-                    </td>
+                    </th>
                   </tr>
 
                   {/* Feature rows */}
@@ -201,8 +227,9 @@ export default function PackagesComparisonTable() {
                       } hover:bg-blue-50/30 transition-colors`}
                     >
                       {/* Feature name — sticky left */}
-                      <td
-                        className={`sticky left-0 z-10 border-r border-gray-100 px-5 py-3.5 font-medium text-gray-700 ${
+                      <th
+                        scope="row"
+                        className={`sticky left-0 z-10 border-r border-gray-100 px-5 py-3.5 text-left font-medium text-gray-700 ${
                           feature.highlight
                             ? "bg-amber-50"
                             : rowIdx % 2 === 0
@@ -218,7 +245,7 @@ export default function PackagesComparisonTable() {
                             </span>
                           )}
                         </span>
-                      </td>
+                      </th>
 
                       {/* Package values */}
                       {feature.values.map((val, i) => (
@@ -240,9 +267,9 @@ export default function PackagesComparisonTable() {
 
               {/* Bottom CTA row */}
               <tr className="bg-gray-50 border-t-2 border-gray-200">
-                <td className="sticky left-0 bg-gray-50 px-5 py-5 text-sm font-bold text-gray-900">
+                <th scope="row" className="sticky left-0 bg-gray-50 px-5 py-5 text-left text-sm font-bold text-gray-900">
                   Total Investment
-                </td>
+                </th>
                 {PACKAGES.map((pkg, i) => (
                   <td
                     key={pkg.id}

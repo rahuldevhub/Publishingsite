@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
@@ -11,15 +11,20 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
+  weight: ["500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Ritera Publishing — Self-Publish with Confidence",
+  metadataBase: new URL("https://riterapublishing.com"),
+  title: {
+    default: "Self Publishing Company in India | Ritera Publishing",
+    template: "%s | Ritera Publishing",
+  },
   description:
-    "Ritera Publishing helps Indian authors self-publish professionally with 100% royalties, global distribution, and expert editorial support.",
+    "Ritera Publishing — India's trusted self-publishing company. Professional editing, cover design, ISBN registration, and Amazon distribution with 100% royalties for first-time and experienced authors.",
 };
 
 const websiteSchema = {
@@ -29,18 +34,10 @@ const websiteSchema = {
   name: "Ritera Publishing",
   url: "https://riterapublishing.com",
   description:
-    "Tamil Nadu-based self-publishing platform helping Indian authors publish professionally with 100% royalties and global distribution.",
+    "Tamil Nadu-based self-publishing company helping Indian authors publish professionally with 100% royalties, ISBN registration, and global distribution to 160+ countries.",
   publisher: {
     "@type": "Organization",
     "@id": "https://riterapublishing.com/#organization",
-  },
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: "https://riterapublishing.com/search?q={search_term_string}",
-    },
-    "query-input": "required name=search_term_string",
   },
 };
 
@@ -55,16 +52,35 @@ const orgSchema = {
     url: "https://riterapublishing.com/logo.png",
   },
   description:
-    "Tamil Nadu-based self-publishing platform offering end-to-end services including editing, cover design, formatting, ISBN registration, and global distribution. Authors retain 100% of their royalties.",
+    "Tamil Nadu-based self-publishing company offering end-to-end services including professional editing, cover design, formatting, ISBN registration, and global distribution across 160+ countries. Authors retain 100% of their royalties.",
+  telephone: "+919488854787",
+  email: "contact@riterapublishing.com",
   address: {
     "@type": "PostalAddress",
+    addressLocality: "Tamil Nadu",
     addressRegion: "Tamil Nadu",
     addressCountry: "IN",
   },
   areaServed: "IN",
+  priceRange: "₹₹",
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "09:00",
+    closes: "18:00",
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "120",
+    bestRating: "5",
+    worstRating: "1",
+  },
   sameAs: [
     "https://www.instagram.com/ritera_publishing",
     "https://www.linkedin.com/company/ritera-publishing",
+    "https://www.youtube.com/@RiteraPublishing",
+    "https://medium.com/@riterapublishing",
   ],
 };
 
@@ -75,7 +91,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${playfairDisplay.variable} antialiased`}>
         {/* Organization + LocalBusiness JSON-LD */}
         <script
           type="application/ld+json"

@@ -8,9 +8,9 @@ export const dynamic = "force-dynamic";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 export const metadata: Metadata = {
-  title: "Blog | Ritera Publishing — Insights, Tips & Publishing News",
+  title: "Blog — Insights, Tips & Publishing News",
   description:
-    "Ritera Publishing's blog covers self-publishing in India, manuscript editing tips, book cover design guidance, ISBN registration steps, and author success stories. Updated regularly to help Indian authors navigate every stage of the publishing process.",
+    "Expert self-publishing tips for Indian authors — manuscript editing, cover design, ISBN guidance, and author success stories from Ritera Publishing.",
   openGraph: {
     title: "Ritera Publishing Blog",
     description:
@@ -52,20 +52,32 @@ type Category = {
   slug: string;
 };
 
-export default async function BlogPage() {
+const POSTS_PER_PAGE = 12;
+
+type PageProps = { searchParams: Promise<{ page?: string }> };
+
+export default async function BlogPage({ searchParams }: PageProps) {
   const supabase = createServerClient();
-  const [{ data: categories }, { data: posts }, { data: publishedPosts }] = await Promise.all([
+  const { page: pageParam } = await searchParams;
+  const page = Math.max(1, Number(pageParam) || 1);
+  const from = (page - 1) * POSTS_PER_PAGE;
+  const to = from + POSTS_PER_PAGE - 1;
+
+  const [{ data: categories }, { data: posts, count }, { data: publishedPosts }] = await Promise.all([
     supabase.from("blog_categories").select("id, name, slug").order("name"),
     supabase
       .from("blog_posts")
       .select(
-        "id, title, slug, excerpt, featured_image, reading_time, created_at, category:blog_categories(id, name, slug), author:authors(name)"
+        "id, title, slug, excerpt, featured_image, reading_time, created_at, category:blog_categories(id, name, slug), author:authors(name)",
+        { count: "exact" }
       )
       .eq("published", true)
       .order("created_at", { ascending: false })
-      .limit(8),
+      .range(from, to),
     supabase.from("blog_posts").select("category_id").eq("published", true),
   ]);
+
+  const totalPages = Math.ceil((count ?? 0) / POSTS_PER_PAGE);
 
   // Count posts per category
   const countMap =
@@ -156,16 +168,63 @@ export default async function BlogPage() {
 
       {/* ── Latest Posts ── */}
       <section className="max-w-6xl mx-auto px-6 py-16">
-        <h2 className="text-2xl font-bold text-gray-900 mb-8">Latest Articles</h2>
+        <div className="flex items-baseline justify-between mb-8">
+          <h2 className="text-2xl font-bold text-gray-900">
+            {page > 1 ? `All Articles — Page ${page}` : "Latest Articles"}
+          </h2>
+          {typeof count === "number" && count > 0 && (
+            <p className="text-sm text-gray-400">{count} guides</p>
+          )}
+        </div>
 
         {typedPosts.length === 0 ? (
           <p className="text-gray-500 text-sm">No posts published yet.</p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {typedPosts.map((post) => (
-              <PostCard key={post.id} post={post} />
-            ))}
-          </div>
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {typedPosts.map((post) => (
+                <PostCard key={post.id} post={post} />
+              ))}
+            </div>
+
+            {/* ── Pagination ── */}
+            {totalPages > 1 && (
+              <nav aria-label="Pagination" className="mt-12 flex items-center justify-center gap-2">
+                {page > 1 && (
+                  <Link
+                    href={page - 1 === 1 ? "/blog" : `/blog?page=${page - 1}`}
+                    rel="prev"
+                    className="px-4 py-2 rounded-lg border border-gray-300 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+                  >
+                    ← Previous
+                  </Link>
+                )}
+                <div className="flex items-center gap-1">
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+                    <Link
+                      key={p}
+                      href={p === 1 ? "/blog" : `/blog?page=${p}`}
+                      aria-current={p === page ? "page" : undefined}
+                      className={`w-9 h-9 flex items-center justify-center rounded-lg text-sm font-medium transition-colors ${
+                        p === page ? "bg-gray-900 text-white" : "text-gray-600 hover:bg-gray-100"
+                      }`}
+                    >
+                      {p}
+                    </Link>
+                  ))}
+                </div>
+                {page < totalPages && (
+                  <Link
+                    href={`/blog?page=${page + 1}`}
+                    rel="next"
+                    className="px-4 py-2 rounded-lg border border-gray-300 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+                  >
+                    Next →
+                  </Link>
+                )}
+              </nav>
+            )}
+          </>
         )}
       </section>
     </main>
@@ -187,7 +246,10 @@ function PostCard({ post }: { post: Post }) {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
-          <img src="https://placehold.co/600x400" alt="Placeholder Image" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
+          <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="https://placehold.co/600x400" alt="Placeholder Image" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
+          </>
         )}
       </Link>
 

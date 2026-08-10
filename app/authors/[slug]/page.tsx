@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!data) return { title: "Author Not Found" };
 
-  const title = `${data.name} — Author Portfolio | Ritera Publishing`;
+  const title = `${data.name} – Author Portfolio | Ritera Publishing`;
   const description =
     data.bio?.slice(0, 155) ??
     `${data.name} is a published author with Ritera Publishing.`;
@@ -434,7 +434,10 @@ export default async function AuthorPortfolioPage({ params }: PageProps) {
                             loading={i < 4 ? "eager" : "lazy"}
                           />
                         ) : (
-                          <img src="https://placehold.co/400x600" alt="Placeholder Image" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
+                          <>
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src="https://placehold.co/400x600" alt="Placeholder Image" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
+                          </>
                         )}
 
                         {/* Genre badge */}

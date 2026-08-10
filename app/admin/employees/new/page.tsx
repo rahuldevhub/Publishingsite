@@ -48,7 +48,7 @@ export default function NewEmployeePage() {
       .eq("active", true)
       .order("name")
       .then(({ data }) => setManagers((data as Manager[]) ?? []));
-  }, []);
+  }, [supabase]);
 
   function handleNameChange(value: string) {
     setForm((f) => ({ ...f, name: value, slug: generateSlug(value) }));

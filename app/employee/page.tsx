@@ -3,11 +3,15 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
+
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Our Team | Ritera Publishing",
+  title: "Our Team",
   description: "Meet the dedicated team behind Ritera Publishing.",
+  robots: { index: false, follow: false },
+  alternates: { canonical: `${SITE_URL}/employee` },
 };
 
 type Employee = {

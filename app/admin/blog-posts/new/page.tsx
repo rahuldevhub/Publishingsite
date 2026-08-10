@@ -52,7 +52,7 @@ export default function NewBlogPostPage() {
       if (auths) setAuthors(auths);
     }
     fetchOptions();
-  }, []);
+  }, [supabase]);
 
   function handleTitleChange(value: string) {
     setForm((f) => ({ ...f, title: value, slug: generateSlug(value) }));

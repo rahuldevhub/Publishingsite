@@ -36,7 +36,6 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   const supabase = createServerClient();
   const { postId } = await request.json();
-  console.log('Post ID received:', postId);
   if (!postId) return NextResponse.json({ error: "Missing postId" }, { status: 400 });
 
   const ip = getIp(request);
@@ -60,16 +59,14 @@ export async function POST(request: NextRequest) {
     .eq("litspace_post_id", postId);
 
   const likeCount = count ?? 0;
-  console.log('Like count:', likeCount, 'Should email:', likeCount === 1 || likeCount % 5 === 0, 'existing:', existing);
 
   // Send email notification on new likes only (not unlikes), on 1st and every 5th
   if (!existing && (likeCount === 1 || likeCount % 5 === 0)) {
-    const { data: post, error: postError } = await supabase
+    const { data: post } = await supabase
       .from("litspace_posts")
       .select("writer_name, writer_email, title, slug")
       .eq("id", postId)
       .single();
-    console.log('Post fetched for notification:', post, postError);
 
     if (post?.writer_email) {
       const transporter = nodemailer.createTransport({

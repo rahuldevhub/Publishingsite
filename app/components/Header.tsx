@@ -12,7 +12,7 @@ const NAV_LINKS: { label: string; href: string; badge?: string }[] = [
   { label: "Books",         href: "/books" },
   { label: "Litspace",      href: "/litspace", badge: "Popular" },
   { label: "Case Studies",  href: "/case-studies" },
-  // { label: "Blog",     href: "/blog",     badge: "3" },
+  { label: "Guides",        href: "/blog" },
   // { label: "Careers",  href: "/careers" },
   // { label: "Contact",  href: "/contact" },
 ];
@@ -34,24 +34,29 @@ export default function Header() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => { setMenuOpen(false); }, [pathname]);
 
-  const textBase   = "text-gray-600";
   const textHover  = "hover:text-gray-900 hover:bg-gray-50";
-  const textActive = "text-gray-900 bg-gray-100";
+  // Regular links, the active link, and the Packages link (highest-conversion
+  // page — carries a touch more weight/darkness so it reads first, without
+  // shouting). Font weight is baked into each state so nothing relies on
+  // Tailwind utility ordering to resolve.
+  const textBase     = "text-gray-600 font-medium";
+  const textActive   = "text-gray-900 font-semibold bg-gray-900/[0.07] shadow-[inset_0_0_0_1px_rgba(17,24,39,0.05)]";
+  const textPackages = "text-gray-900 font-semibold";
 
   return (
     <>
       {/* ── Header bar ── */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 h-16 flex items-center gap-4">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 py-4 lg:py-5 flex items-center gap-4">
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 shrink-0 mr-2">
             <Image
               src="/logo.png"
               alt="Ritera Publishing Logo"
-              width={140}
-              height={40}
-              className="h-10 w-auto"
+              width={161}
+              height={46}
+              className="h-[50px] w-auto lg:h-[46px]"
               priority
             />
           </Link>
@@ -60,17 +65,19 @@ export default function Header() {
           <nav className="hidden lg:flex items-center gap-0.5 flex-1 justify-center">
             {NAV_LINKS.map(({ label, href, badge }) => {
               const isActive = pathname === href;
+              const isPackages = href === "/packages";
+              const stateCls = isActive
+                ? textActive
+                : `${isPackages ? textPackages : textBase} ${textHover}`;
               return (
                 <Link
                   key={href}
                   href={href}
-                  className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap ${
-                    isActive ? textActive : `${textBase} ${textHover}`
-                  }`}
+                  className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm transition-all duration-200 ease-out whitespace-nowrap focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 ${stateCls}`}
                 >
                   {label}
                   {badge && (
-                    <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-red-500 text-white leading-none">
+                    <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-amber-400/15 text-amber-600 border border-amber-400/30 leading-none">
                       {badge}
                     </span>
                   )}
@@ -85,7 +92,7 @@ export default function Header() {
               onClick={() => setMenuOpen((o) => !o)}
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
-              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg text-gray-700 hover:bg-gray-100 transition-colors"
+              className="lg:hidden w-11 h-11 flex items-center justify-center rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400"
             >
               {menuOpen ? (
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -142,7 +149,7 @@ export default function Header() {
                   <Link
                     key={href}
                     href={href}
-                    className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
+                    className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 ${
                       isActive
                         ? "bg-gray-900 text-white"
                         : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
@@ -163,13 +170,13 @@ export default function Header() {
             <div className="p-4 border-t border-gray-100 space-y-2">
               <Link
                 href="/packages"
-                className="flex items-center justify-center w-full py-3 bg-amber-400 text-gray-900 font-bold rounded-xl text-sm hover:bg-amber-300 transition-colors"
+                className="flex items-center justify-center w-full py-3 bg-amber-400 text-gray-900 font-bold rounded-xl text-sm hover:bg-amber-300 transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"
               >
                 Get Started →
               </Link>
               <Link
                 href="/contact"
-                className="flex items-center justify-center w-full py-3 border border-gray-200 text-gray-600 font-medium rounded-xl text-sm hover:border-gray-400 transition-colors"
+                className="flex items-center justify-center w-full py-3 border border-gray-200 text-gray-600 font-medium rounded-xl text-sm hover:border-gray-400 transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400"
               >
                 Contact Us
               </Link>
