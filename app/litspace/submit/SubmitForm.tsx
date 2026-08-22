@@ -116,17 +116,18 @@ export default function SubmitForm({ categories }: { categories: Category[] }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg px-4 py-3">
+        <div role="alert" className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg px-4 py-3">
           {error}
         </div>
       )}
 
       {/* Title */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1.5">
+        <label htmlFor="submit-title" className="block text-sm font-medium text-gray-700 mb-1.5">
           Title <span className="text-red-500">*</span>
         </label>
         <input
+          id="submit-title"
           type="text"
           required
           value={form.title}
@@ -138,8 +139,9 @@ export default function SubmitForm({ categories }: { categories: Category[] }) {
 
       {/* Category */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1.5">Category</label>
+        <label htmlFor="submit-category" className="block text-sm font-medium text-gray-700 mb-1.5">Category</label>
         <select
+          id="submit-category"
           value={form.category_id}
           onChange={(e) => handleChange("category_id", e.target.value)}
           className={`${inputClass} bg-white`}
@@ -156,10 +158,11 @@ export default function SubmitForm({ categories }: { categories: Category[] }) {
       {/* Writer Name + Email */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label htmlFor="submit-writer-name" className="block text-sm font-medium text-gray-700 mb-1.5">
             Your Name <span className="text-red-500">*</span>
           </label>
           <input
+            id="submit-writer-name"
             type="text"
             required
             value={form.writer_name}
@@ -169,27 +172,30 @@ export default function SubmitForm({ categories }: { categories: Category[] }) {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label htmlFor="submit-writer-email" className="block text-sm font-medium text-gray-700 mb-1.5">
             Email <span className="text-red-500">*</span>
           </label>
           <input
+            id="submit-writer-email"
             type="email"
             required
             value={form.writer_email}
             onChange={(e) => handleChange("writer_email", e.target.value)}
             placeholder="jane@example.com"
+            aria-describedby="submit-writer-email-hint"
             className={inputClass}
           />
-          <p className="mt-1 text-xs text-gray-500">We&apos;ll notify you when your piece is published.</p>
+          <p id="submit-writer-email-hint" className="mt-1 text-xs text-gray-500">We&apos;ll notify you when your piece is published.</p>
         </div>
       </div>
 
       {/* Content */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1.5">
+        <label htmlFor="submit-content" className="block text-sm font-medium text-gray-700 mb-1.5">
           Your Writing <span className="text-red-500">*</span>
         </label>
         <textarea
+          id="submit-content"
           required
           value={form.content}
           onChange={(e) => handleChange("content", e.target.value)}
@@ -201,11 +207,12 @@ export default function SubmitForm({ categories }: { categories: Category[] }) {
 
       {/* Excerpt */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1.5">
+        <label htmlFor="submit-excerpt" className="block text-sm font-medium text-gray-700 mb-1.5">
           Short Summary{" "}
           <span className="text-gray-400 font-normal">(optional — auto-generated if left blank)</span>
         </label>
         <textarea
+          id="submit-excerpt"
           value={form.excerpt}
           onChange={(e) => handleChange("excerpt", e.target.value)}
           rows={2}

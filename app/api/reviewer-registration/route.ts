@@ -34,6 +34,9 @@ export async function POST(request: NextRequest) {
   if (!name?.trim() || !email?.trim()) {
     return NextResponse.json({ error: "Name and email are required" }, { status: 400 });
   }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+    return NextResponse.json({ error: "Please enter a valid email address" }, { status: 400 });
+  }
 
   const safeName  = esc(name.trim());
   const safeEmail = esc(email.trim());

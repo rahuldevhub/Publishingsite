@@ -3,6 +3,16 @@ import nodemailer from "nodemailer";
 import { createServerClient } from "@/lib/supabase";
 import { checkRateLimit } from "@/lib/rate-limit";
 
+/** Escape HTML special characters to prevent HTML injection in email content. */
+function esc(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 export async function POST(request: NextRequest) {
   // Rate limit: 5 comments per 15 minutes per IP
   const ip =
@@ -52,6 +62,11 @@ export async function POST(request: NextRequest) {
     .single();
 
   if (post?.writer_email) {
+    const safeAuthorName = esc(author_name.trim());
+    const safeContent = esc(content.trim());
+    const safeTitle = esc(post.title);
+    const safeWriterName = esc(post.writer_name);
+
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 587,
@@ -87,17 +102,17 @@ export async function POST(request: NextRequest) {
   <div style="padding: 44px 48px 36px; background: #0d130d;">
 
     <p style="font-size: 18px; color: #f0ede6; margin: 0 0 16px;">
-      Hey <strong style="color: #4eca70;">${post.writer_name}</strong>,
+      Hey <strong style="color: #4eca70;">${safeWriterName}</strong>,
     </p>
 
     <p style="font-size: 15px; color: #b8c8b0; line-height: 1.9; margin: 0 0 28px;">
-      Your work <strong style="color: #f0ede6;">"${post.title}"</strong> on LitSpace just got a new comment. A real person stopped, read your words, and felt moved enough to respond. That's rare. That's yours.
+      Your work <strong style="color: #f0ede6;">"${safeTitle}"</strong> on LitSpace just got a new comment. A real person stopped, read your words, and felt moved enough to respond. That's rare. That's yours.
     </p>
 
     <!-- Comment Block -->
     <div style="background: #061a08; border: 1px solid #2d6a3066; border-left: 4px solid #4eca70; border-radius: 0 10px 10px 0; padding: 24px 28px; margin-bottom: 12px;">
-      <p style="font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #4eca70; font-weight: 800; margin: 0 0 12px; font-family: Arial, sans-serif;">${author_name.trim()} wrote</p>
-      <p style="font-size: 18px; color: #f0ede6; line-height: 1.7; margin: 0; font-style: italic;">"${content.trim()}"</p>
+      <p style="font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #4eca70; font-weight: 800; margin: 0 0 12px; font-family: Arial, sans-serif;">${safeAuthorName} wrote</p>
+      <p style="font-size: 18px; color: #f0ede6; line-height: 1.7; margin: 0; font-style: italic;">"${safeContent}"</p>
     </div>
 
     <p style="font-size: 13px; color: #3a5a3e; margin: 0 0 36px; font-family: Arial, sans-serif;">on LitSpace · Ritera Publishing</p>

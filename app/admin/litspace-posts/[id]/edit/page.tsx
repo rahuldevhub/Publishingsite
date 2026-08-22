@@ -222,8 +222,8 @@ export default function EditLitspacePostPage() {
             {/* Title + Slug */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Title <span className="text-red-500">*</span></label>
-                <input
+                <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1.5">Title <span className="text-red-500">*</span></label>
+                <input id="title"
                   type="text"
                   required
                   value={form.title}
@@ -232,8 +232,8 @@ export default function EditLitspacePostPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Slug <span className="text-red-500">*</span></label>
-                <input
+                <label htmlFor="slug" className="block text-sm font-medium text-gray-700 mb-1.5">Slug <span className="text-red-500">*</span></label>
+                <input id="slug"
                   type="text"
                   required
                   value={form.slug}
@@ -246,8 +246,8 @@ export default function EditLitspacePostPage() {
             {/* Writer Name + Email */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Writer Name <span className="text-red-500">*</span></label>
-                <input
+                <label htmlFor="writer_name" className="block text-sm font-medium text-gray-700 mb-1.5">Writer Name <span className="text-red-500">*</span></label>
+                <input id="writer_name"
                   type="text"
                   required
                   value={form.writer_name}
@@ -256,8 +256,8 @@ export default function EditLitspacePostPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Writer Email</label>
-                <input
+                <label htmlFor="writer_email" className="block text-sm font-medium text-gray-700 mb-1.5">Writer Email</label>
+                <input id="writer_email"
                   type="email"
                   value={form.writer_email}
                   onChange={(e) => handleChange("writer_email", e.target.value)}
@@ -269,8 +269,8 @@ export default function EditLitspacePostPage() {
 
             {/* Subtitle */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Subtitle</label>
-              <input
+              <label htmlFor="subtitle" className="block text-sm font-medium text-gray-700 mb-1.5">Subtitle</label>
+              <input id="subtitle"
                 type="text"
                 value={form.subtitle}
                 onChange={(e) => handleChange("subtitle", e.target.value)}
@@ -281,8 +281,8 @@ export default function EditLitspacePostPage() {
 
             {/* Author Bio */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Author Bio</label>
-              <textarea
+              <label htmlFor="author_bio" className="block text-sm font-medium text-gray-700 mb-1.5">Author Bio</label>
+              <textarea id="author_bio"
                 rows={3}
                 value={form.author_bio}
                 onChange={(e) => handleChange("author_bio", e.target.value)}
@@ -293,8 +293,8 @@ export default function EditLitspacePostPage() {
 
             {/* Category */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Category <span className="text-red-500">*</span></label>
-              <select
+              <label htmlFor="category_id" className="block text-sm font-medium text-gray-700 mb-1.5">Category <span className="text-red-500">*</span></label>
+              <select id="category_id"
                 required
                 value={form.category_id}
                 onChange={(e) => handleChange("category_id", e.target.value)}
@@ -309,8 +309,8 @@ export default function EditLitspacePostPage() {
 
             {/* Excerpt */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Excerpt</label>
-              <textarea
+              <label htmlFor="excerpt" className="block text-sm font-medium text-gray-700 mb-1.5">Excerpt</label>
+              <textarea id="excerpt"
                 rows={2}
                 value={form.excerpt}
                 onChange={(e) => handleChange("excerpt", e.target.value)}
@@ -320,8 +320,8 @@ export default function EditLitspacePostPage() {
 
             {/* Content */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Content <span className="text-red-500">*</span></label>
-              <textarea
+              <label htmlFor="content" className="block text-sm font-medium text-gray-700 mb-1.5">Content <span className="text-red-500">*</span></label>
+              <textarea id="content"
                 rows={14}
                 required
                 value={form.content}
@@ -332,8 +332,8 @@ export default function EditLitspacePostPage() {
 
             {/* Meta Title */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Meta Title</label>
-              <input
+              <label htmlFor="meta_title" className="block text-sm font-medium text-gray-700 mb-1.5">Meta Title</label>
+              <input id="meta_title"
                 type="text"
                 value={form.meta_title}
                 onChange={(e) => handleChange("meta_title", e.target.value)}
@@ -344,8 +344,8 @@ export default function EditLitspacePostPage() {
 
             {/* Meta Description */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Meta Description</label>
-              <textarea
+              <label htmlFor="meta_description" className="block text-sm font-medium text-gray-700 mb-1.5">Meta Description</label>
+              <textarea id="meta_description"
                 rows={2}
                 value={form.meta_description}
                 onChange={(e) => handleChange("meta_description", e.target.value)}

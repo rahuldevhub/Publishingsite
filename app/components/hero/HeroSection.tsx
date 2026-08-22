@@ -131,16 +131,16 @@ export default function HeroSection() {
               woman's eyeline in the photo — a static margin, so it doesn't
               fight the motion values framer-motion animates below. ── */}
         <motion.div {...motionProps} className="max-w-2xl lg:mt-6">
-          {/* Keyword-rich H1 — the primary SEO signal for self-publishing queries */}
-          <motion.h1
+          {/* Eyebrow badge — supporting context, not the page heading */}
+          <motion.p
             variants={reduceMotion ? undefined : item}
             className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 mb-5 lg:mb-6 backdrop-blur-sm"
           >
             <span className="h-2 w-2 rounded-full bg-amber-400 shrink-0" aria-hidden="true" />
             <span className="text-[13px] font-medium text-white/80">India&apos;s Favourite Self-Publishing Platform</span>
-          </motion.h1>
+          </motion.p>
 
-          {/* Visual display headline — decorative, not the H1 */}
+          {/* Visual display headline — the actual H1 (rendered inside RotatingHeadline) */}
           <motion.div
             variants={reduceMotion ? undefined : item}
             className="max-w-[88%] lg:max-w-none"

@@ -101,63 +101,63 @@ export default function NewCaseStudyPage() {
             {/* Title + Slug */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Title <span className="text-red-500">*</span></label>
-                <input type="text" required value={form.title} onChange={(e) => handleTitleChange(e.target.value)} className={inputClass} placeholder="How Priya Published Her Debut Novel" />
+                <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1.5">Title <span className="text-red-500">*</span></label>
+                <input id="title" type="text" required value={form.title} onChange={(e) => handleTitleChange(e.target.value)} className={inputClass} placeholder="How Priya Published Her Debut Novel" />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Slug <span className="text-red-500">*</span></label>
-                <input type="text" required value={form.slug} onChange={(e) => handleChange("slug", e.target.value)} className={inputClass} placeholder="how-priya-published-her-debut-novel" />
+                <label htmlFor="slug" className="block text-sm font-medium text-gray-700 mb-1.5">Slug <span className="text-red-500">*</span></label>
+                <input id="slug" type="text" required value={form.slug} onChange={(e) => handleChange("slug", e.target.value)} className={inputClass} placeholder="how-priya-published-her-debut-novel" />
               </div>
             </div>
 
             {/* Author Name */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Author Name <span className="text-red-500">*</span></label>
-              <input type="text" required value={form.author_name} onChange={(e) => handleChange("author_name", e.target.value)} className={inputClass} placeholder="Priya Sharma" />
+              <label htmlFor="author_name" className="block text-sm font-medium text-gray-700 mb-1.5">Author Name <span className="text-red-500">*</span></label>
+              <input id="author_name" type="text" required value={form.author_name} onChange={(e) => handleChange("author_name", e.target.value)} className={inputClass} placeholder="Priya Sharma" />
             </div>
 
             {/* Book Title */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Book Title <span className="text-red-500">*</span></label>
-              <input type="text" required value={form.book_title} onChange={(e) => handleChange("book_title", e.target.value)} className={inputClass} placeholder="My Publishing Journey" />
+              <label htmlFor="book_title" className="block text-sm font-medium text-gray-700 mb-1.5">Book Title <span className="text-red-500">*</span></label>
+              <input id="book_title" type="text" required value={form.book_title} onChange={(e) => handleChange("book_title", e.target.value)} className={inputClass} placeholder="My Publishing Journey" />
             </div>
 
             {/* Content */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Content</label>
-              <textarea rows={12} value={form.content} onChange={(e) => handleChange("content", e.target.value)} className={`${inputClass} resize-y`} placeholder="Write the case study content here. Use ## for subheadings." />
+              <label htmlFor="content" className="block text-sm font-medium text-gray-700 mb-1.5">Content</label>
+              <textarea id="content" rows={12} value={form.content} onChange={(e) => handleChange("content", e.target.value)} className={`${inputClass} resize-y`} placeholder="Write the case study content here. Use ## for subheadings." />
               <p className="mt-1 text-xs text-gray-400">Use ## Heading for subheadings. Separate paragraphs with a blank line.</p>
             </div>
 
             {/* PDF URL */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">PDF URL</label>
-              <input type="url" value={form.pdf_url} onChange={(e) => handleChange("pdf_url", e.target.value)} className={inputClass} placeholder="https://…/case-study.pdf" />
+              <label htmlFor="pdf_url" className="block text-sm font-medium text-gray-700 mb-1.5">PDF URL</label>
+              <input id="pdf_url" type="url" value={form.pdf_url} onChange={(e) => handleChange("pdf_url", e.target.value)} className={inputClass} placeholder="https://…/case-study.pdf" />
             </div>
 
             {/* Meta Title */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Meta Title</label>
-              <input type="text" value={form.meta_title} onChange={(e) => handleChange("meta_title", e.target.value)} className={inputClass} placeholder="SEO title (defaults to post title if empty)" />
+              <label htmlFor="meta_title" className="block text-sm font-medium text-gray-700 mb-1.5">Meta Title</label>
+              <input id="meta_title" type="text" value={form.meta_title} onChange={(e) => handleChange("meta_title", e.target.value)} className={inputClass} placeholder="SEO title (defaults to post title if empty)" />
             </div>
 
             {/* Meta Description */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Meta Description</label>
-              <textarea rows={2} value={form.meta_description} onChange={(e) => handleChange("meta_description", e.target.value)} className={`${inputClass} resize-none`} placeholder="SEO description…" />
+              <label htmlFor="meta_description" className="block text-sm font-medium text-gray-700 mb-1.5">Meta Description</label>
+              <textarea id="meta_description" rows={2} value={form.meta_description} onChange={(e) => handleChange("meta_description", e.target.value)} className={`${inputClass} resize-none`} placeholder="SEO description…" />
             </div>
 
             {/* SEO Keywords */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">SEO Keywords</label>
-              <input type="text" value={form.keywords} onChange={(e) => handleChange("keywords", e.target.value)} className={inputClass} placeholder="self publishing success India, author case study" />
+              <label htmlFor="keywords" className="block text-sm font-medium text-gray-700 mb-1.5">SEO Keywords</label>
+              <input id="keywords" type="text" value={form.keywords} onChange={(e) => handleChange("keywords", e.target.value)} className={inputClass} placeholder="self publishing success India, author case study" />
               <p className="mt-1 text-xs text-gray-400">Comma-separated</p>
             </div>
 
             {/* FAQ JSON */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">FAQ (JSON format)</label>
-              <textarea rows={4} value={form.faq_data} onChange={(e) => handleChange("faq_data", e.target.value)} className={`${inputClass} resize-y font-mono text-xs`} placeholder={`[{"question": "How long did it take?", "answer": "We published in 3 weeks."}]`} />
+              <label htmlFor="faq_data" className="block text-sm font-medium text-gray-700 mb-1.5">FAQ (JSON format)</label>
+              <textarea id="faq_data" rows={4} value={form.faq_data} onChange={(e) => handleChange("faq_data", e.target.value)} className={`${inputClass} resize-y font-mono text-xs`} placeholder={`[{"question": "How long did it take?", "answer": "We published in 3 weeks."}]`} />
               <p className="mt-1 text-xs text-gray-400">Must be valid JSON array.</p>
             </div>
 

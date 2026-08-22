@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
 type Props = {
   isOpen: boolean;
@@ -16,6 +16,9 @@ export default function LeadCapturePopup({ isOpen, onClose, pdfUrl, sourceSlug }
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const nameInputRef = useRef<HTMLInputElement>(null);
+  const lastFocusedRef = useRef<HTMLElement | null>(null);
 
   // Pre-fill editable fields from sessionStorage each time the popup opens.
   // Adjusting state during render on the isOpen transition (React's documented
@@ -47,16 +50,40 @@ export default function LeadCapturePopup({ isOpen, onClose, pdfUrl, sourceSlug }
     return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
-  // Close on Escape
+  // Close on Escape, trap Tab within the dialog
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
-    if (e.key === "Escape") onClose();
+    if (e.key === "Escape") {
+      onClose();
+      return;
+    }
+    if (e.key === "Tab" && dialogRef.current) {
+      const focusable = dialogRef.current.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
   }, [onClose]);
 
   useEffect(() => {
     if (isOpen) {
+      lastFocusedRef.current = document.activeElement as HTMLElement | null;
       document.addEventListener("keydown", handleKeyDown);
+      const t = setTimeout(() => nameInputRef.current?.focus(), 0);
+      return () => {
+        clearTimeout(t);
+        document.removeEventListener("keydown", handleKeyDown);
+      };
     }
-    return () => document.removeEventListener("keydown", handleKeyDown);
+    lastFocusedRef.current?.focus();
   }, [isOpen, handleKeyDown]);
 
   async function handleSubmit(e: React.FormEvent) {
@@ -128,6 +155,7 @@ export default function LeadCapturePopup({ isOpen, onClose, pdfUrl, sourceSlug }
 
       {/* Card */}
       <div
+        ref={dialogRef}
         className="relative w-full bg-gray-900 border border-gray-700 rounded-2xl shadow-2xl p-8"
         style={{ maxWidth: 480 }}
         onClick={(e) => e.stopPropagation()}
@@ -167,16 +195,18 @@ export default function LeadCapturePopup({ isOpen, onClose, pdfUrl, sourceSlug }
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
             {error && (
-              <div className="bg-red-500/10 border border-red-500/30 text-red-400 text-sm rounded-lg px-4 py-3">
+              <div role="alert" className="bg-red-500/10 border border-red-500/30 text-red-400 text-sm rounded-lg px-4 py-3">
                 {error}
               </div>
             )}
 
             <div>
-              <label className="block text-xs font-semibold text-gray-300 uppercase tracking-wide mb-1.5">
+              <label htmlFor="lead-name" className="block text-xs font-semibold text-gray-300 uppercase tracking-wide mb-1.5">
                 Full Name <span className="text-amber-400">*</span>
               </label>
               <input
+                id="lead-name"
+                ref={nameInputRef}
                 type="text"
                 required
                 value={name}
@@ -187,10 +217,11 @@ export default function LeadCapturePopup({ isOpen, onClose, pdfUrl, sourceSlug }
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-gray-300 uppercase tracking-wide mb-1.5">
+              <label htmlFor="lead-email" className="block text-xs font-semibold text-gray-300 uppercase tracking-wide mb-1.5">
                 Email Address <span className="text-amber-400">*</span>
               </label>
               <input
+                id="lead-email"
                 type="email"
                 required
                 value={email}
@@ -201,10 +232,11 @@ export default function LeadCapturePopup({ isOpen, onClose, pdfUrl, sourceSlug }
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-gray-300 uppercase tracking-wide mb-1.5">
-                Phone <span className="text-gray-600">(optional)</span>
+              <label htmlFor="lead-phone" className="block text-xs font-semibold text-gray-300 uppercase tracking-wide mb-1.5">
+                Phone <span className="text-gray-400">(optional)</span>
               </label>
               <input
+                id="lead-phone"
                 type="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
@@ -236,7 +268,7 @@ export default function LeadCapturePopup({ isOpen, onClose, pdfUrl, sourceSlug }
               )}
             </button>
 
-            <p className="text-center text-xs text-gray-600">
+            <p className="text-center text-xs text-gray-400">
               We respect your privacy. No spam, ever.
             </p>
           </form>

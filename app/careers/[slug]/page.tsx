@@ -2,10 +2,10 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -53,9 +53,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     .eq("slug", slug)
     .single();
 
-  if (!job) return { title: "Job Not Found" };
+  if (!job) notFound();
 
-  const title = job.meta_title || `${job.title} at Ritera Publishing`;
+  const pageTitle = job.meta_title || job.title;
+  const socialTitle = job.meta_title || `${job.title} at Ritera Publishing`;
   const description =
     job.meta_description ||
     job.short_description ||
@@ -63,10 +64,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const url = `${SITE_URL}/careers/${slug}`;
 
   return {
-    title: `${title} | Ritera Publishing Careers`,
+    title: `${pageTitle} | Ritera Publishing Careers`,
     description,
-    openGraph: { title, description, url, type: "website" },
-    twitter: { card: "summary", title, description },
+    openGraph: {
+      title: socialTitle,
+      description,
+      url,
+      type: "website",
+      images: [{ url: `${SITE_URL}/images/home/hero-library.webp`, width: 1200, height: 630, alt: "Ritera Publishing" }],
+    },
+    twitter: {
+      card: "summary",
+      title: socialTitle,
+      description,
+      images: [`${SITE_URL}/images/home/hero-library.webp`],
+    },
     alternates: { canonical: url },
   };
 }
@@ -101,7 +113,6 @@ export default async function CareerDetailPage({ params }: PageProps) {
     title: job.title,
     description: [job.description, job.responsibilities, job.requirements].join("\n\n"),
     datePosted: job.created_at.split("T")[0],
-    validThrough: undefined, // No expiry set
     employmentType: toSchemaEmploymentType(job.job_type),
     hiringOrganization: {
       "@type": "Organization",

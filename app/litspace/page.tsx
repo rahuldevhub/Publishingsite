@@ -2,10 +2,10 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { createServerClient } from "@/lib/supabase";
 import { LitspacePixelPageView, SubmitWorkButton } from "./LitspacePixelEvents";
+import { SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 export const metadata: Metadata = {
   title: "LitSpace — Community Writing Platform",
@@ -17,11 +17,13 @@ export const metadata: Metadata = {
       "A community platform for poets, writers, and storytellers. Discover and share creative writing on LitSpace by Ritera Publishing.",
     url: `${SITE_URL}/litspace`,
     type: "website",
+    images: [{ url: `${SITE_URL}/images/home/hero-library.webp`, width: 1200, height: 630, alt: "Ritera Publishing" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "LitSpace | Community Writing Platform",
     description: "Discover poems, stories, and articles from writers across India.",
+    images: [`${SITE_URL}/images/home/hero-library.webp`],
   },
   alternates: { canonical: `${SITE_URL}/litspace` },
 };
@@ -146,7 +148,7 @@ export default async function LitspacePage() {
           <p className="mt-3 text-sm text-gray-500 italic">
             {totalPosts} writers already published · Free to join
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             {typedCategories.slice(0, 5).map((cat) => (
               <Link
                 key={cat.id}

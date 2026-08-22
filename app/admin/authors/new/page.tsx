@@ -92,8 +92,9 @@ export default function NewAuthorPage() {
             {/* Name + Slug */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Name <span className="text-red-500">*</span></label>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1.5">Name <span className="text-red-500">*</span></label>
                 <input
+                  id="name"
                   type="text"
                   required
                   value={form.name}
@@ -103,8 +104,8 @@ export default function NewAuthorPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Slug <span className="text-red-500">*</span></label>
-                <input
+                <label htmlFor="slug" className="block text-sm font-medium text-gray-700 mb-1.5">Slug <span className="text-red-500">*</span></label>
+                <input id="slug"
                   type="text"
                   required
                   value={form.slug}
@@ -125,8 +126,8 @@ export default function NewAuthorPage() {
 
             {/* Bio */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Bio</label>
-              <textarea
+              <label htmlFor="bio" className="block text-sm font-medium text-gray-700 mb-1.5">Bio</label>
+              <textarea id="bio"
                 rows={5}
                 value={form.bio}
                 onChange={(e) => handleChange("bio", e.target.value)}
@@ -138,8 +139,8 @@ export default function NewAuthorPage() {
             {/* Instagram + Twitter + LinkedIn */}
             <div className="grid grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Instagram URL</label>
-                <input
+                <label htmlFor="instagram" className="block text-sm font-medium text-gray-700 mb-1.5">Instagram URL</label>
+                <input id="instagram"
                   type="url"
                   value={form.instagram}
                   onChange={(e) => handleChange("instagram", e.target.value)}
@@ -148,8 +149,8 @@ export default function NewAuthorPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Twitter / X URL</label>
-                <input
+                <label htmlFor="twitter" className="block text-sm font-medium text-gray-700 mb-1.5">Twitter / X URL</label>
+                <input id="twitter"
                   type="url"
                   value={form.twitter}
                   onChange={(e) => handleChange("twitter", e.target.value)}
@@ -158,8 +159,8 @@ export default function NewAuthorPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">LinkedIn URL</label>
-                <input
+                <label htmlFor="linkedin" className="block text-sm font-medium text-gray-700 mb-1.5">LinkedIn URL</label>
+                <input id="linkedin"
                   type="url"
                   value={form.linkedin}
                   onChange={(e) => handleChange("linkedin", e.target.value)}

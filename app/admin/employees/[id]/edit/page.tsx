@@ -194,8 +194,8 @@ export default function EditEmployeePage() {
             {/* Name + Slug */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Name <span className="text-red-500">*</span></label>
-                <input
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1.5">Name <span className="text-red-500">*</span></label>
+                <input id="name"
                   type="text"
                   required
                   value={form.name}
@@ -204,8 +204,8 @@ export default function EditEmployeePage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Slug <span className="text-red-500">*</span></label>
-                <input
+                <label htmlFor="slug" className="block text-sm font-medium text-gray-700 mb-1.5">Slug <span className="text-red-500">*</span></label>
+                <input id="slug"
                   type="text"
                   required
                   value={form.slug}
@@ -218,10 +218,11 @@ export default function EditEmployeePage() {
             {/* Employee ID + Reporting Manager */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                <label htmlFor="employee_id" className="block text-sm font-medium text-gray-700 mb-1.5">
                   Employee ID <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="employee_id"
                   type="text"
                   required
                   value={form.employee_id}
@@ -232,8 +233,8 @@ export default function EditEmployeePage() {
                 <p className="mt-1 text-xs text-gray-400">Uppercase letters and numbers only. Must be unique.</p>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Reporting Manager</label>
-                <select
+                <label htmlFor="reporting_manager_id" className="block text-sm font-medium text-gray-700 mb-1.5">Reporting Manager</label>
+                <select id="reporting_manager_id"
                   value={form.reporting_manager_id}
                   onChange={(e) => handleChange("reporting_manager_id", e.target.value)}
                   className="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent bg-white"
@@ -249,8 +250,8 @@ export default function EditEmployeePage() {
             {/* Role + Department */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Role <span className="text-red-500">*</span></label>
-                <input
+                <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-1.5">Role <span className="text-red-500">*</span></label>
+                <input id="role"
                   type="text"
                   required
                   value={form.role}
@@ -259,8 +260,8 @@ export default function EditEmployeePage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Department <span className="text-red-500">*</span></label>
-                <input
+                <label htmlFor="department" className="block text-sm font-medium text-gray-700 mb-1.5">Department <span className="text-red-500">*</span></label>
+                <input id="department"
                   type="text"
                   required
                   value={form.department}
@@ -272,8 +273,8 @@ export default function EditEmployeePage() {
 
             {/* Bio */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Bio</label>
-              <textarea
+              <label htmlFor="bio" className="block text-sm font-medium text-gray-700 mb-1.5">Bio</label>
+              <textarea id="bio"
                 rows={4}
                 value={form.bio}
                 onChange={(e) => handleChange("bio", e.target.value)}
@@ -291,8 +292,8 @@ export default function EditEmployeePage() {
               />
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">LinkedIn URL</label>
-                <input
+                <label htmlFor="linkedin" className="block text-sm font-medium text-gray-700 mb-1.5">LinkedIn URL</label>
+                <input id="linkedin"
                   type="url"
                   value={form.linkedin}
                   onChange={(e) => handleChange("linkedin", e.target.value)}
@@ -305,8 +306,8 @@ export default function EditEmployeePage() {
             {/* Employment Type + Joined Date */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Employment Type <span className="text-red-500">*</span></label>
-                <select
+                <label htmlFor="employment_type" className="block text-sm font-medium text-gray-700 mb-1.5">Employment Type <span className="text-red-500">*</span></label>
+                <select id="employment_type"
                   required
                   value={form.employment_type}
                   onChange={(e) => handleChange("employment_type", e.target.value)}
@@ -318,8 +319,8 @@ export default function EditEmployeePage() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Joined Date <span className="text-red-500">*</span></label>
-                <input
+                <label htmlFor="joined_date" className="block text-sm font-medium text-gray-700 mb-1.5">Joined Date <span className="text-red-500">*</span></label>
+                <input id="joined_date"
                   type="date"
                   required
                   value={form.joined_date}
@@ -332,8 +333,8 @@ export default function EditEmployeePage() {
             {/* End Date + Employment Status */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">End Date</label>
-                <input
+                <label htmlFor="end_date" className="block text-sm font-medium text-gray-700 mb-1.5">End Date</label>
+                <input id="end_date"
                   type="date"
                   value={form.end_date}
                   onChange={(e) => handleChange("end_date", e.target.value)}
@@ -342,8 +343,8 @@ export default function EditEmployeePage() {
                 <p className="mt-1 text-xs text-gray-400">Leave blank if currently employed.</p>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Employment Status <span className="text-red-500">*</span></label>
-                <select
+                <label htmlFor="employment_status" className="block text-sm font-medium text-gray-700 mb-1.5">Employment Status <span className="text-red-500">*</span></label>
+                <select id="employment_status"
                   required
                   value={form.employment_status}
                   onChange={(e) => handleChange("employment_status", e.target.value)}
@@ -363,8 +364,8 @@ export default function EditEmployeePage() {
             {/* Display Order + Active */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Display Order</label>
-                <input
+                <label htmlFor="display_order" className="block text-sm font-medium text-gray-700 mb-1.5">Display Order</label>
+                <input id="display_order"
                   type="number"
                   min={0}
                   value={form.display_order}

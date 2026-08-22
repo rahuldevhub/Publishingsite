@@ -65,6 +65,8 @@ export default function WelcomePopup() {
 
   const ctaRef = useRef<HTMLButtonElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const lastFocusedRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (
@@ -79,6 +81,7 @@ export default function WelcomePopup() {
     }
 
     const t = setTimeout(() => {
+      lastFocusedRef.current = document.activeElement as HTMLElement | null;
       setIsVisible(true);
       requestAnimationFrame(() => {
         requestAnimationFrame(() => setIsIn(true));
@@ -87,6 +90,25 @@ export default function WelcomePopup() {
 
     return () => clearTimeout(t);
   }, []);
+
+  // Move focus into the dialog on open, restore it on close.
+  useEffect(() => {
+    if (isVisible) {
+      closeBtnRef.current?.focus();
+    } else {
+      lastFocusedRef.current?.focus();
+    }
+  }, [isVisible]);
+
+  // Escape key closes the dialog.
+  useEffect(() => {
+    if (!isVisible) return;
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") dismissWithFloat();
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [isVisible]);
 
   function dismissWithFloat() {
     setIsIn(false);
@@ -239,10 +261,14 @@ export default function WelcomePopup() {
           {/* Card */}
           <div
             ref={cardRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Reviewer registration"
             onClick={(e) => e.stopPropagation()}
             onMouseMove={view === "welcome" ? onCardMouseMove : undefined}
             onMouseLeave={view === "welcome" ? onCardMouseLeave : undefined}
             style={{
+              position: "relative",
               background: "linear-gradient(160deg, #fffdf8 0%, #fdf3e3 100%)",
               border: "1px solid rgba(201,168,76,0.3)",
               borderRadius: "24px",
@@ -264,6 +290,26 @@ export default function WelcomePopup() {
               alignItems: "center",
             }}
           >
+            <button
+              ref={closeBtnRef}
+              onClick={dismissWithFloat}
+              aria-label="Close"
+              style={{
+                position: "absolute",
+                top: "16px",
+                right: "16px",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                fontSize: "1.25rem",
+                lineHeight: 1,
+                color: "#8a6a3a",
+                padding: "6px",
+              }}
+            >
+              ×
+            </button>
+
             {/* Content wrapper with fade transition */}
             <div
               style={{
@@ -413,12 +459,18 @@ export default function WelcomePopup() {
                     }}
                   >
                     <div>
+                      <label htmlFor="rv-name" style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0,0,0,0)" }}>
+                        Your name
+                      </label>
                       <input
+                        id="rv-name"
                         type="text"
                         placeholder="Your name"
                         value={formName}
                         onChange={(e) => setFormName(e.target.value)}
                         style={fieldStyle}
+                        aria-invalid={!!nameError}
+                        aria-describedby={nameError ? "rv-name-error" : undefined}
                         onFocus={(e) => {
                           e.currentTarget.style.outline =
                             "2px solid rgba(201,168,76,0.5)";
@@ -429,6 +481,7 @@ export default function WelcomePopup() {
                       />
                       {nameError && (
                         <p
+                          id="rv-name-error"
                           style={{
                             color: "red",
                             fontSize: "0.78rem",
@@ -442,12 +495,18 @@ export default function WelcomePopup() {
                     </div>
 
                     <div>
+                      <label htmlFor="rv-email" style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0,0,0,0)" }}>
+                        Your email address
+                      </label>
                       <input
+                        id="rv-email"
                         type="email"
                         placeholder="Your email address"
                         value={formEmail}
                         onChange={(e) => setFormEmail(e.target.value)}
                         style={fieldStyle}
+                        aria-invalid={!!emailError}
+                        aria-describedby={emailError ? "rv-email-error" : undefined}
                         onFocus={(e) => {
                           e.currentTarget.style.outline =
                             "2px solid rgba(201,168,76,0.5)";
@@ -458,6 +517,7 @@ export default function WelcomePopup() {
                       />
                       {emailError && (
                         <p
+                          id="rv-email-error"
                           style={{
                             color: "red",
                             fontSize: "0.78rem",
@@ -471,7 +531,11 @@ export default function WelcomePopup() {
                     </div>
 
                     <div>
+                      <label htmlFor="rv-phone" style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0,0,0,0)" }}>
+                        Your phone number (optional)
+                      </label>
                       <input
+                        id="rv-phone"
                         type="tel"
                         placeholder="Your phone number (optional)"
                         value={formPhone}
@@ -502,6 +566,7 @@ export default function WelcomePopup() {
 
                     {submitError && (
                       <p
+                        role="alert"
                         style={{
                           color: "red",
                           fontSize: "0.85rem",

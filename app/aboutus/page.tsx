@@ -3,8 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import CounterStats from "./CounterStats";
 import { ABOUT_LINKS } from "@/lib/internal-links";
+import { SITE_URL } from "@/lib/site";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 export const metadata: Metadata = {
   title: "About Us — Your Story Matters",
@@ -16,11 +16,13 @@ export const metadata: Metadata = {
       "From the spark of an idea to the weight of a finished book, we walk beside your words — guiding, shaping, and giving them the wings to take flight.",
     url: `${SITE_URL}/aboutus`,
     type: "website",
+    images: [{ url: `${SITE_URL}/images/home/hero-library.webp`, width: 1200, height: 630, alt: "Ritera Publishing" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "About Us | Ritera Publishing",
     description: "Helping Indian authors publish, earn, and reach readers worldwide.",
+    images: [`${SITE_URL}/images/home/hero-library.webp`],
   },
   alternates: { canonical: `${SITE_URL}/aboutus` },
 };
@@ -32,11 +34,7 @@ const aboutPageSchema = {
   url: `${SITE_URL}/aboutus`,
   description:
     "Ritera Publishing helps Indian authors self-publish with 100% royalties, global distribution, and expert editorial support.",
-  publisher: {
-    "@type": "Organization",
-    name: "Ritera Publishing",
-    url: SITE_URL,
-  },
+  publisher: { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
 };
 
 const breadcrumbSchema = {
@@ -119,11 +117,11 @@ export default function AboutPage() {
               </div>
               {/* Top-right image */}
               <div className="rounded-2xl overflow-hidden bg-gray-600 relative">
-                <Image src="/images/aboutus2.webp" alt="Book launch event" fill className="object-cover" loading="lazy" sizes="(max-width: 1024px) 50vw, 25vw" />
+                <Image src="/images/aboutus2.webp" alt="Book launch event" fill className="object-cover" priority sizes="(max-width: 1024px) 50vw, 25vw" />
               </div>
               {/* Bottom-right image */}
               <div className="rounded-2xl overflow-hidden bg-gray-700 relative">
-                <Image src="/images/aboutus1.webp" alt="Ritera team at work" fill className="object-cover" loading="lazy" sizes="(max-width: 1024px) 50vw, 25vw" />
+                <Image src="/images/aboutus1.webp" alt="Ritera team at work" fill className="object-cover" priority sizes="(max-width: 1024px) 50vw, 25vw" />
               </div>
             </div>
           </div>
@@ -469,13 +467,12 @@ export default function AboutPage() {
               ].map(({ i, src }) => (
                 <div
                   key={i}
-                  className={`rounded-xl overflow-hidden bg-gray-100 border border-gray-200 shadow-sm ${
+                  className={`relative rounded-xl overflow-hidden bg-gray-100 border border-gray-200 shadow-sm ${
                     i === 2 ? "mt-6" : i === 3 ? "mt-3" : ""
                   }`}
                   style={{ aspectRatio: "2/3" }}
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={src} alt="Published book cover" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+                  <Image src={src} alt="Published book cover" fill loading="lazy" className="object-cover" sizes="(max-width: 1024px) 33vw, 16vw" />
                 </div>
               ))}
             </div>

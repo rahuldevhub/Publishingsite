@@ -3,8 +3,8 @@ import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
 import SubmitForm from "./SubmitForm";
 import TestimonialCarousel from "./TestimonialCarousel";
+import { SITE_URL } from "@/lib/site";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 export const metadata: Metadata = {
   title: "Submit Your Writing | LitSpace",
@@ -15,8 +15,14 @@ export const metadata: Metadata = {
     description: "Share your poems, stories, and articles with the LitSpace community.",
     url: `${SITE_URL}/litspace/submit`,
     type: "website",
+    images: [{ url: `${SITE_URL}/images/home/hero-library.webp`, width: 1200, height: 630, alt: "Ritera Publishing" }],
   },
-  twitter: { card: "summary", title: "Submit to LitSpace", description: "Share your creative writing with the world." },
+  twitter: {
+    card: "summary",
+    title: "Submit to LitSpace",
+    description: "Share your creative writing with the world.",
+    images: [`${SITE_URL}/images/home/hero-library.webp`],
+  },
   alternates: { canonical: `${SITE_URL}/litspace/submit` },
 };
 

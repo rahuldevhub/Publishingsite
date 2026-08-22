@@ -8,13 +8,13 @@ import HomePricingSection from "@/app/components/HomePricingSection";
 import EditorialAboutSection from "@/app/components/EditorialAboutSection";
 import { SITE_STATS } from "@/lib/stats";
 import { HOMEPAGE_PILLARS } from "@/lib/internal-links";
+import { SITE_URL } from "@/lib/site";
 
 // Below-fold components — lazy-loaded to reduce initial JS bundle
 const BooksCarousel = dynamic(() => import("@/app/components/BooksCarousel"), { ssr: true });
 const FAQSection    = dynamic(() => import("@/app/components/FAQSection"), { ssr: true });
 const TestimonialsSection = dynamic(() => import("@/app/components/TestimonialsSection"), { ssr: true });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 export const metadata: Metadata = {
   title: "Self Publishing Company in India | Ritera Publishing",
@@ -105,7 +105,7 @@ const faqSchema = {
       name: "What are the best self publishing services in India for new authors?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The best self-publishing services in India offer professional manuscript editing, custom cover design, ISBN registration included in the package price, global distribution to Amazon and 40,000+ stores, and 100% royalties — not a revenue split. Ritera Publishing provides all of these with a 4.9/5 author rating across 120+ reviews, plus free consultation before you commit to any package.",
+        text: "The best self-publishing services in India offer professional manuscript editing, custom cover design, ISBN registration included in the package price, global distribution to Amazon and 40,000+ stores, and 100% royalties — not a revenue split. Ritera Publishing provides all of these, plus a free consultation before you commit to any package.",
       },
     },
     {
@@ -409,7 +409,7 @@ export default function HomePage() {
                   </Link>
                 ))}
               </div>
-              <p className="mt-3 pl-6 text-xs font-medium text-gray-400" aria-hidden="true">
+              <p className="mt-3 pl-6 text-xs font-medium text-gray-400">
                 Swipe to explore more guides →
               </p>
             </FadeIn>
@@ -470,7 +470,7 @@ export default function HomePage() {
                 <br />
                 Story to Life?
               </h2>
-              <p className="text-white/80 text-base lg:text-lg mb-10 max-w-xl mx-auto leading-relaxed">
+              <p className="text-white/95 text-base lg:text-lg mb-10 max-w-xl mx-auto leading-relaxed drop-shadow-sm">
                 Join {SITE_STATS.happyAuthors.display} authors who chose Ritera to self-publish professionally in India and share their stories with the world.
               </p>
 
@@ -493,7 +493,7 @@ export default function HomePage() {
                 </a>
               </div>
 
-              <p className="mt-8 text-white/60 text-xs">
+              <p className="mt-8 text-white/90 text-xs drop-shadow-sm">
                 Free consultation · No commitment · Response within 24 hours
               </p>
             </FadeIn>

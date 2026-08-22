@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { createServerClient } from "@/lib/supabase";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 function getIp(request: NextRequest): string {
   return (
@@ -8,6 +9,16 @@ function getIp(request: NextRequest): string {
     request.headers.get("x-real-ip") ??
     "unknown"
   );
+}
+
+/** Escape HTML special characters to prevent HTML injection in email content. */
+function esc(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
 export async function GET(request: NextRequest) {
@@ -34,11 +45,14 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
+  const ip = getIp(request);
+  if (!checkRateLimit(`like:${ip}`, 30)) {
+    return NextResponse.json({ error: "Too many requests. Try again later." }, { status: 429 });
+  }
+
   const supabase = createServerClient();
   const { postId } = await request.json();
   if (!postId) return NextResponse.json({ error: "Missing postId" }, { status: 400 });
-
-  const ip = getIp(request);
 
   const { data: existing } = await supabase
     .from("post_likes")
@@ -79,10 +93,13 @@ export async function POST(request: NextRequest) {
         },
       });
 
+      const safeTitle = esc(post.title);
+      const safeWriterName = esc(post.writer_name);
+
       const bodyParagraph =
         likeCount === 1
-          ? `Your work <strong style="color: #ffffff;">"${post.title}"</strong> just got its <strong style="color: #c9a84c;">first like</strong> on LitSpace. Someone out there read your words and felt something. That's what writing is for.`
-          : `<strong style="color: #c9a84c; font-size: 22px;">${likeCount} people</strong> have liked your work <strong style="color: #ffffff;">"${post.title}"</strong> on LitSpace. Your words are travelling further than you think.`;
+          ? `Your work <strong style="color: #ffffff;">"${safeTitle}"</strong> just got its <strong style="color: #c9a84c;">first like</strong> on LitSpace. Someone out there read your words and felt something. That's what writing is for.`
+          : `<strong style="color: #c9a84c; font-size: 22px;">${likeCount} people</strong> have liked your work <strong style="color: #ffffff;">"${safeTitle}"</strong> on LitSpace. Your words are travelling further than you think.`;
 
       const subject =
         likeCount === 1
@@ -108,7 +125,7 @@ export async function POST(request: NextRequest) {
   <!-- Body -->
   <div style="padding: 40px 48px 36px; background: #111111;">
     <p style="font-size: 17px; color: #e8e0d0; margin: 0 0 16px;">
-      Hey <strong style="color: #e8c96a;">${post.writer_name}</strong>,
+      Hey <strong style="color: #e8c96a;">${safeWriterName}</strong>,
     </p>
     <p style="font-size: 15px; color: #c8bfa8; line-height: 1.8; margin: 0 0 24px;">
       ${bodyParagraph}

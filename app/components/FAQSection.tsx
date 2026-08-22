@@ -21,7 +21,7 @@ const FAQS: { question: string; answer: ReactNode }[] = [
     question: "What are the best self publishing services in India for new authors?",
     answer: (
       <>
-        The best self-publishing services in India combine end-to-end support with transparent pricing and full author ownership. Look for a publisher that offers professional manuscript editing, custom cover design, ISBN registration included in the package price, global distribution to Amazon and 40,000+ stores, and 100% royalties — not a revenue split. Ritera Publishing provides all of these, plus dedicated publishing managers, multilingual distribution, and a 4.9/5 author rating across 120+ reviews. For first-time authors specifically, you also want a company that offers a{" "}
+        The best self-publishing services in India combine end-to-end support with transparent pricing and full author ownership. Look for a publisher that offers professional manuscript editing, custom cover design, ISBN registration included in the package price, global distribution to Amazon and 40,000+ stores, and 100% royalties — not a revenue split. Ritera Publishing provides all of these, plus dedicated publishing managers and multilingual distribution. For first-time authors specifically, you also want a company that offers a{" "}
         <Link href="/contact" className="text-amber-600 hover:text-amber-700 font-medium underline underline-offset-2">
           free publishing consultation
         </Link>{" "}
@@ -106,6 +106,7 @@ export default function FAQSection() {
                   onClick={() => toggle(i)}
                   className="w-full flex items-center justify-between gap-4 py-5 text-left group"
                   aria-expanded={isOpen}
+                  aria-controls={`faq-panel-${i}`}
                 >
                   <span className="text-base lg:text-lg font-semibold text-gray-900 group-hover:text-gray-700 transition-colors">
                     {faq.question}
@@ -122,6 +123,7 @@ export default function FAQSection() {
 
                 {/* Animated answer */}
                 <div
+                  id={`faq-panel-${i}`}
                   className="overflow-hidden transition-all duration-300 ease-in-out"
                   style={{ maxHeight: isOpen ? "600px" : "0px", opacity: isOpen ? 1 : 0 }}
                 >

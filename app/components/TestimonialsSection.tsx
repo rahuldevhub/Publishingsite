@@ -323,7 +323,7 @@ function AuthorStoryCard({ story }: { story: FeaturedStory }) {
 
       {/* Trust label — quiet reassurance beneath the rating */}
       <p className="mt-3.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-amber-400/70">
-        Verified Author
+        Ritera Author
       </p>
 
       {/* Primary pull-quote — the emotional hook */}
@@ -387,7 +387,7 @@ function AuthorStoryCardMobile({ story }: { story: FeaturedStory }) {
 
       {/* Trust label — quiet reassurance beneath the rating */}
       <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-amber-400/70">
-        Verified Author
+        Ritera Author
       </p>
 
       {/* Primary pull-quote — the emotional hook */}
@@ -768,7 +768,7 @@ export default function TestimonialsSection() {
               </div>
             ))}
           </div>
-          <p className="mt-3 pl-6 text-xs font-medium text-gray-500" aria-hidden="true">
+          <p className="mt-3 pl-6 text-xs font-medium text-gray-500">
             Swipe to read more stories →
           </p>
         </FadeIn>

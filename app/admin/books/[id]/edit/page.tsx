@@ -235,8 +235,8 @@ export default function EditBookPage() {
             {/* Title + Slug */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Title <span className="text-red-500">*</span></label>
-                <input
+                <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1.5">Title <span className="text-red-500">*</span></label>
+                <input id="title"
                   type="text"
                   required
                   value={form.title}
@@ -245,8 +245,8 @@ export default function EditBookPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Slug <span className="text-red-500">*</span></label>
-                <input
+                <label htmlFor="slug" className="block text-sm font-medium text-gray-700 mb-1.5">Slug <span className="text-red-500">*</span></label>
+                <input id="slug"
                   type="text"
                   required
                   value={form.slug}
@@ -258,8 +258,8 @@ export default function EditBookPage() {
 
             {/* Subtitle */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Subtitle</label>
-              <input
+              <label htmlFor="subtitle" className="block text-sm font-medium text-gray-700 mb-1.5">Subtitle</label>
+              <input id="subtitle"
                 type="text"
                 value={form.subtitle}
                 onChange={(e) => handleChange("subtitle", e.target.value)}
@@ -270,8 +270,8 @@ export default function EditBookPage() {
             {/* Author + Published Date */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Author <span className="text-red-500">*</span></label>
-                <select
+                <label htmlFor="author_id" className="block text-sm font-medium text-gray-700 mb-1.5">Author <span className="text-red-500">*</span></label>
+                <select id="author_id"
                   required
                   value={form.author_id}
                   onChange={(e) => handleChange("author_id", e.target.value)}
@@ -284,8 +284,8 @@ export default function EditBookPage() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Published Date</label>
-                <input
+                <label htmlFor="published_date" className="block text-sm font-medium text-gray-700 mb-1.5">Published Date</label>
+                <input id="published_date"
                   type="date"
                   value={form.published_date}
                   onChange={(e) => handleChange("published_date", e.target.value)}
@@ -296,8 +296,8 @@ export default function EditBookPage() {
 
             {/* Book Language */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Book Language <span className="text-red-500">*</span></label>
-              <select
+              <label htmlFor="language" className="block text-sm font-medium text-gray-700 mb-1.5">Book Language <span className="text-red-500">*</span></label>
+              <select id="language"
                 required
                 value={form.language}
                 onChange={(e) => handleChange("language", e.target.value)}
@@ -312,8 +312,8 @@ export default function EditBookPage() {
 
             {/* E-book Link */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">E-book Link</label>
-              <input
+              <label htmlFor="ebook_link" className="block text-sm font-medium text-gray-700 mb-1.5">E-book Link</label>
+              <input id="ebook_link"
                 type="url"
                 value={form.ebook_link}
                 onChange={(e) => handleChange("ebook_link", e.target.value)}
@@ -332,8 +332,8 @@ export default function EditBookPage() {
 
             {/* Short Description */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Short Description</label>
-              <textarea
+              <label htmlFor="short_description" className="block text-sm font-medium text-gray-700 mb-1.5">Short Description</label>
+              <textarea id="short_description"
                 rows={2}
                 value={form.short_description}
                 onChange={(e) => handleChange("short_description", e.target.value)}
@@ -343,8 +343,8 @@ export default function EditBookPage() {
 
             {/* Description */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Full Description</label>
-              <textarea
+              <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1.5">Full Description</label>
+              <textarea id="description"
                 rows={6}
                 value={form.description}
                 onChange={(e) => handleChange("description", e.target.value)}
@@ -355,8 +355,8 @@ export default function EditBookPage() {
             {/* Genre + Format */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Genre <span className="text-red-500">*</span></label>
-                <input
+                <label htmlFor="genre" className="block text-sm font-medium text-gray-700 mb-1.5">Genre <span className="text-red-500">*</span></label>
+                <input id="genre"
                   type="text"
                   required
                   value={form.genre}
@@ -365,8 +365,8 @@ export default function EditBookPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Format <span className="text-red-500">*</span></label>
-                <select
+                <label htmlFor="format" className="block text-sm font-medium text-gray-700 mb-1.5">Format <span className="text-red-500">*</span></label>
+                <select id="format"
                   required
                   value={form.format}
                   onChange={(e) => handleChange("format", e.target.value)}
@@ -383,8 +383,8 @@ export default function EditBookPage() {
             {/* Page Count + ISBN */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Page Count</label>
-                <input
+                <label htmlFor="page_count" className="block text-sm font-medium text-gray-700 mb-1.5">Page Count</label>
+                <input id="page_count"
                   type="number"
                   value={form.page_count}
                   onChange={(e) => handleChange("page_count", e.target.value)}
@@ -392,8 +392,8 @@ export default function EditBookPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">ISBN</label>
-                <input
+                <label htmlFor="isbn" className="block text-sm font-medium text-gray-700 mb-1.5">ISBN</label>
+                <input id="isbn"
                   type="text"
                   value={form.isbn}
                   onChange={(e) => handleChange("isbn", e.target.value)}
@@ -407,8 +407,8 @@ export default function EditBookPage() {
               <p className="text-sm font-medium text-gray-700">Purchase Links</p>
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-xs text-gray-500 mb-1.5">Amazon</label>
-                  <input
+                  <label htmlFor="amazon_link" className="block text-xs text-gray-500 mb-1.5">Amazon</label>
+                  <input id="amazon_link"
                     type="url"
                     value={form.amazon_link}
                     onChange={(e) => handleChange("amazon_link", e.target.value)}
@@ -417,8 +417,8 @@ export default function EditBookPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs text-gray-500 mb-1.5">Flipkart</label>
-                  <input
+                  <label htmlFor="flipkart_link" className="block text-xs text-gray-500 mb-1.5">Flipkart</label>
+                  <input id="flipkart_link"
                     type="url"
                     value={form.flipkart_link}
                     onChange={(e) => handleChange("flipkart_link", e.target.value)}
@@ -427,8 +427,8 @@ export default function EditBookPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs text-gray-500 mb-1.5">Publisher</label>
-                  <input
+                  <label htmlFor="publisher_link" className="block text-xs text-gray-500 mb-1.5">Publisher</label>
+                  <input id="publisher_link"
                     type="url"
                     value={form.publisher_link}
                     onChange={(e) => handleChange("publisher_link", e.target.value)}
@@ -437,8 +437,8 @@ export default function EditBookPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs text-gray-500 mb-1.5">International</label>
-                  <input
+                  <label htmlFor="purchase_link_international" className="block text-xs text-gray-500 mb-1.5">International</label>
+                  <input id="purchase_link_international"
                     type="url"
                     value={form.purchase_link_international}
                     onChange={(e) => handleChange("purchase_link_international", e.target.value)}
@@ -447,8 +447,8 @@ export default function EditBookPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs text-gray-500 mb-1.5">Pothi</label>
-                  <input
+                  <label htmlFor="purchase_link_pothi" className="block text-xs text-gray-500 mb-1.5">Pothi</label>
+                  <input id="purchase_link_pothi"
                     type="url"
                     value={form.purchase_link_pothi}
                     onChange={(e) => handleChange("purchase_link_pothi", e.target.value)}
@@ -457,8 +457,8 @@ export default function EditBookPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs text-gray-500 mb-1.5">Library</label>
-                  <input
+                  <label htmlFor="purchase_link_library" className="block text-xs text-gray-500 mb-1.5">Library</label>
+                  <input id="purchase_link_library"
                     type="url"
                     value={form.purchase_link_library}
                     onChange={(e) => handleChange("purchase_link_library", e.target.value)}

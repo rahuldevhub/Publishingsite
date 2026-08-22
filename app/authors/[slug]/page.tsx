@@ -5,10 +5,10 @@ import Link from "next/link";
 import Image from "next/image";
 import FadeIn from "../../components/FadeIn";
 import ShareButtons from "./ShareButtons";
+import { SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -52,13 +52,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     .eq("slug", slug)
     .single();
 
-  if (!data) return { title: "Author Not Found" };
+  if (!data) notFound();
 
   const title = `${data.name} – Author Portfolio | Ritera Publishing`;
   const description =
     data.bio?.slice(0, 155) ??
     `${data.name} is a published author with Ritera Publishing.`;
   const url = `${SITE_URL}/authors/${slug}`;
+  const ogImage = data.image_url || `${SITE_URL}/images/home/hero-library.webp`;
 
   return {
     title,
@@ -68,15 +69,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description,
       url,
       type: "profile",
-      ...(data.image_url && {
-        images: [{ url: data.image_url, width: 400, height: 400, alt: data.name }],
-      }),
+      images: [{ url: ogImage, width: data.image_url ? 400 : 1200, height: data.image_url ? 400 : 630, alt: data.name }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      ...(data.image_url && { images: [data.image_url] }),
+      images: [ogImage],
     },
     alternates: { canonical: url },
   };
@@ -129,6 +128,16 @@ export default async function AuthorPortfolioPage({ params }: PageProps) {
     ? author.bio.split(/(?<=[.!?])\s/)[0].replace(/[.!?]$/, "").trim()
     : null;
 
+  const authorSameAs = [
+    ...(author.instagram ? [`https://instagram.com/${author.instagram.replace("@", "")}`] : []),
+    ...(author.linkedin
+      ? [author.linkedin.startsWith("http") ? author.linkedin : `https://linkedin.com/in/${author.linkedin}`]
+      : []),
+    ...(author.twitter
+      ? [author.twitter.startsWith("http") ? author.twitter : `https://twitter.com/${author.twitter.replace("@", "")}`]
+      : []),
+  ];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -136,10 +145,8 @@ export default async function AuthorPortfolioPage({ params }: PageProps) {
     ...(author.bio && { description: author.bio }),
     ...(author.image_url && { image: author.image_url }),
     url: pageUrl,
-    worksFor: { "@type": "Organization", name: "Ritera Publishing", url: SITE_URL },
-    ...(author.instagram && {
-      sameAs: [`https://instagram.com/${author.instagram.replace("@", "")}`],
-    }),
+    worksFor: { "@type": "Organization", "@id": "https://riterapublishing.com/#organization" },
+    ...(authorSameAs.length > 0 && { sameAs: authorSameAs }),
   };
 
   const breadcrumbSchema = {
@@ -147,8 +154,7 @@ export default async function AuthorPortfolioPage({ params }: PageProps) {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
-      { "@type": "ListItem", position: 2, name: "Authors", item: "https://riterapublishing.com/authors" },
-      { "@type": "ListItem", position: 3, name: author.name, item: `https://riterapublishing.com/authors/${author.slug}` },
+      { "@type": "ListItem", position: 2, name: author.name, item: `https://riterapublishing.com/authors/${author.slug}` },
     ],
   };
 

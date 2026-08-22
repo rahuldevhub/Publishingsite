@@ -55,9 +55,11 @@ export default function ImageUpload({
     if (inputRef.current) inputRef.current.value = "";
   }
 
+  const inputId = `image-upload-${label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+
   return (
     <div className="space-y-2">
-      <label className="block text-sm font-medium text-gray-700">{label}</label>
+      <label htmlFor={inputId} className="block text-sm font-medium text-gray-700">{label}</label>
 
       {value ? (
         <div className="relative inline-block">
@@ -77,9 +79,11 @@ export default function ImageUpload({
           </button>
         </div>
       ) : (
-        <div
+        <button
+          type="button"
           onClick={() => inputRef.current?.click()}
-          className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-gray-400 hover:bg-gray-50 transition-colors"
+          disabled={uploading}
+          className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-gray-400 hover:bg-gray-50 transition-colors disabled:cursor-wait"
         >
           {uploading ? (
             <span className="text-sm text-gray-500">Uploading…</span>
@@ -92,11 +96,12 @@ export default function ImageUpload({
               <span className="text-xs text-gray-400 mt-0.5">PNG, JPG, WebP</span>
             </>
           )}
-        </div>
+        </button>
       )}
 
       <input
         ref={inputRef}
+        id={inputId}
         type="file"
         accept="image/*"
         onChange={handleFileChange}
@@ -104,7 +109,7 @@ export default function ImageUpload({
       />
 
       {uploadError && (
-        <p className="text-xs text-red-600">{uploadError}</p>
+        <p role="alert" className="text-xs text-red-600">{uploadError}</p>
       )}
     </div>
   );

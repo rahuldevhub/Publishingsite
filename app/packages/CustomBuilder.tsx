@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { getSupabaseBrowserClient } from "@/lib/supabase-browser";
 
 const inputClass =
   "w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent";
@@ -69,7 +68,6 @@ const SERVICE_GROUPS = [
 ];
 
 export default function CustomBuilder() {
-  const supabase = getSupabaseBrowserClient();
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [submitting, setSubmitting] = useState(false);
@@ -102,18 +100,26 @@ export default function CustomBuilder() {
     setError("");
     setSubmitting(true);
 
-    const { error: err } = await supabase.from("package_inquiries").insert({
-      name: form.name.trim(),
-      email: form.email.trim(),
-      phone: form.phone.trim(),
-      message: form.message.trim() || null,
-      selected_services: Array.from(selected),
-    });
-
-    // Show success regardless (table may not exist yet)
-    if (err) console.error("[CustomBuilder] Submit error:", err);
-    setSubmitted(true);
-    setSubmitting(false);
+    try {
+      const res = await fetch("/api/package-inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name.trim(),
+          email: form.email.trim(),
+          phone: form.phone.trim(),
+          message: form.message.trim() || null,
+          selected_services: Array.from(selected),
+        }),
+      });
+      if (!res.ok) throw new Error("Submit failed");
+      setSubmitted(true);
+    } catch (err) {
+      console.error("[CustomBuilder] Submit error:", err);
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   if (submitted) {

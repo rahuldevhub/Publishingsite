@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/site";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 const LAST_UPDATED = "March 2026";
 const CONTACT_EMAIL = "contact@riterapublishing.com";
 
@@ -17,12 +17,14 @@ export const metadata: Metadata = {
       "Ritera Publishing's Privacy Policy — how we collect, use, and protect your personal information.",
     url: `${SITE_URL}/privacy-policy`,
     type: "website",
+    images: [{ url: `${SITE_URL}/images/home/hero-library.webp`, width: 1200, height: 630, alt: "Ritera Publishing" }],
   },
   twitter: {
     card: "summary",
     title: "Privacy Policy",
     description:
       "Ritera Publishing's Privacy Policy — how we collect, use, and protect your personal information.",
+    images: [`${SITE_URL}/images/home/hero-library.webp`],
   },
 };
 

@@ -5,10 +5,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { guideForGenre } from "@/lib/internal-links";
 import FadeIn from "@/app/components/FadeIn";
+import { SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     .eq("slug", slug)
     .single();
 
-  if (!book) return { title: "Book Not Found" };
+  if (!book) notFound();
 
   const author = book.author as unknown as { name: string } | null;
   const title = book.subtitle ? `${book.title}: ${book.subtitle}` : book.title;
@@ -41,6 +41,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     book.description?.slice(0, 155) ||
     `${title} by ${author?.name ?? "Ritera Publishing"}. Available from Ritera Publishing.`;
   const url = `${SITE_URL}/books/${slug}`;
+  const ogImage = book.cover_image || `${SITE_URL}/images/home/hero-library.webp`;
 
   return {
     title,
@@ -50,15 +51,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description,
       url,
       type: "book",
-      ...(book.cover_image && {
-        images: [{ url: book.cover_image, width: 800, height: 1200, alt: title }],
-      }),
+      images: [{ url: ogImage, width: book.cover_image ? 800 : 1200, height: book.cover_image ? 1200 : 630, alt: title }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      ...(book.cover_image && { images: [book.cover_image] }),
+      images: [ogImage],
     },
     alternates: { canonical: url },
   };
@@ -111,11 +110,7 @@ export default async function BookDetailPage({ params }: PageProps) {
     author: author
       ? { "@type": "Person", name: author.name, url: `${SITE_URL}/authors/${author.slug}` }
       : { "@type": "Organization", name: "Ritera Publishing" },
-    publisher: {
-      "@type": "Organization",
-      name: "Ritera Publishing",
-      url: SITE_URL,
-    },
+    publisher: { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
     ...(book.amazon_link || book.flipkart_link || book.publisher_link
       ? {
           offers: {

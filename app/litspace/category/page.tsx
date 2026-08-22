@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/site";
@@ -17,7 +16,6 @@ function formatDate(dateStr: string) {
 }
 
 type PageProps = {
-  params: Promise<{ slug: string }>;
   searchParams: Promise<{ page?: string }>;
 };
 
@@ -34,56 +32,37 @@ type Post = {
 
 type Category = { id: string; name: string; slug: string };
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export const metadata: Metadata = {
+  title: "All Writeups | LitSpace — Ritera Publishing",
+  description:
+    "Browse every poem, short story, essay and article shared by the LitSpace community on Ritera Publishing.",
+  openGraph: {
+    title: "All Writeups | LitSpace — Ritera Publishing",
+    description:
+      "Browse every poem, short story, essay and article shared by the LitSpace community on Ritera Publishing.",
+    url: `${SITE_URL}/litspace/category`,
+    type: "website",
+    images: [{ url: `${SITE_URL}/images/home/hero-library.webp`, width: 1200, height: 630, alt: "Ritera Publishing" }],
+  },
+  twitter: {
+    card: "summary",
+    title: "All Writeups | LitSpace — Ritera Publishing",
+    images: [`${SITE_URL}/images/home/hero-library.webp`],
+  },
+  alternates: { canonical: `${SITE_URL}/litspace/category` },
+};
+
+export default async function LitspaceAllCategoriesPage({ searchParams }: PageProps) {
   const supabase = createServerClient();
-  const { slug } = await params;
-  const { data: category } = await supabase
-    .from("litspace_categories")
-    .select("name, slug")
-    .eq("slug", slug)
-    .single();
-
-  if (!category) notFound();
-
-  const title = `${category.name} | LitSpace — Ritera Publishing`;
-  const description = `Explore ${category.name.toLowerCase()} from the LitSpace community — original writing shared by independent writers on Ritera Publishing.`;
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      url: `${SITE_URL}/litspace/category/${slug}`,
-      type: "website",
-      images: [{ url: `${SITE_URL}/images/home/hero-library.webp`, width: 1200, height: 630, alt: "Ritera Publishing" }],
-    },
-    twitter: {
-      card: "summary",
-      title,
-      description,
-      images: [`${SITE_URL}/images/home/hero-library.webp`],
-    },
-    alternates: { canonical: `${SITE_URL}/litspace/category/${slug}` },
-  };
-}
-
-export default async function LitspaceCategoryPage({ params, searchParams }: PageProps) {
-  const supabase = createServerClient();
-  const { slug } = await params;
   const { page: pageParam } = await searchParams;
   const page = Math.max(1, Number(pageParam) || 1);
   const from = (page - 1) * POSTS_PER_PAGE;
   const to = from + POSTS_PER_PAGE - 1;
 
-  const [{ data: category }, { data: allCategories }, { data: allPostCategoryIds }] =
-    await Promise.all([
-      supabase.from("litspace_categories").select("id, name, slug").eq("slug", slug).single(),
-      supabase.from("litspace_categories").select("id, name, slug").order("name"),
-      supabase.from("litspace_posts").select("category_id").eq("approved", true),
-    ]);
-
-  if (!category) notFound();
+  const [{ data: allCategories }, { data: allPostCategoryIds }] = await Promise.all([
+    supabase.from("litspace_categories").select("id, name, slug").order("name"),
+    supabase.from("litspace_posts").select("category_id").eq("approved", true),
+  ]);
 
   const { data: posts, count } = await supabase
     .from("litspace_posts")
@@ -92,7 +71,6 @@ export default async function LitspaceCategoryPage({ params, searchParams }: Pag
       { count: "exact" }
     )
     .eq("approved", true)
-    .eq("category_id", category.id)
     .order("created_at", { ascending: false })
     .range(from, to);
 
@@ -117,7 +95,7 @@ export default async function LitspaceCategoryPage({ params, searchParams }: Pag
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
       { "@type": "ListItem", position: 2, name: "LitSpace", item: "https://riterapublishing.com/litspace" },
-      { "@type": "ListItem", position: 3, name: category.name, item: `https://riterapublishing.com/litspace/category/${slug}` },
+      { "@type": "ListItem", position: 3, name: "All Writeups", item: `${SITE_URL}/litspace/category` },
     ],
   };
 
@@ -136,17 +114,17 @@ export default async function LitspaceCategoryPage({ params, searchParams }: Pag
           <li aria-hidden="true" className="text-gray-400">/</li>
           <li><Link href="/litspace" className="hover:text-gray-900 transition-colors">LitSpace</Link></li>
           <li aria-hidden="true" className="text-gray-400">/</li>
-          <li className="text-gray-900 font-medium" aria-current="page">{category.name}</li>
+          <li className="text-gray-900 font-medium" aria-current="page">All Writeups</li>
         </ol>
       </nav>
 
-      {/* ── Category Header ── */}
+      {/* ── Header ── */}
       <header className="bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto px-6 py-16">
           <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-3">
             LitSpace · Category
           </p>
-          <h1 className="text-4xl font-bold text-white">{category.name}</h1>
+          <h1 className="text-4xl font-bold text-white">All Writeups</h1>
           <p className="mt-2 text-gray-400 text-sm">
             {count ?? 0} {count === 1 ? "writeup" : "writeups"}
           </p>
@@ -167,29 +145,21 @@ export default async function LitspaceCategoryPage({ params, searchParams }: Pag
                 <ul className="space-y-1">
                   <li>
                     <Link
-                      href="/litspace"
-                      className="flex items-center justify-between py-2 px-3 rounded-lg text-sm text-gray-700 hover:bg-white hover:text-gray-900 transition-colors group"
+                      href="/litspace/category"
+                      className="flex items-center justify-between py-2 px-3 rounded-lg text-sm bg-gray-900 text-white transition-colors group"
                     >
                       <span className="font-medium">All Writeups</span>
-                      <span className="text-xs text-gray-400 group-hover:text-gray-600">{totalPosts}</span>
+                      <span className="text-xs text-gray-300">{totalPosts}</span>
                     </Link>
                   </li>
                   {typedCategories.map((cat) => (
                     <li key={cat.id}>
                       <Link
                         href={`/litspace/category/${cat.slug}`}
-                        className={`flex items-center justify-between py-2 px-3 rounded-lg text-sm transition-colors group ${
-                          cat.slug === slug
-                            ? "bg-gray-900 text-white"
-                            : "text-gray-700 hover:bg-white hover:text-gray-900"
-                        }`}
+                        className="flex items-center justify-between py-2 px-3 rounded-lg text-sm text-gray-700 hover:bg-white hover:text-gray-900 transition-colors group"
                       >
                         <span>{cat.name}</span>
-                        <span
-                          className={`text-xs ${
-                            cat.slug === slug ? "text-gray-300" : "text-gray-400 group-hover:text-gray-600"
-                          }`}
-                        >
+                        <span className="text-xs text-gray-400 group-hover:text-gray-600">
                           {countMap[cat.id] ?? 0}
                         </span>
                       </Link>
@@ -217,9 +187,9 @@ export default async function LitspaceCategoryPage({ params, searchParams }: Pag
           <div className="lg:col-span-3">
             {typedPosts.length === 0 ? (
               <div className="text-center py-20 bg-gray-50 rounded-2xl border border-gray-200">
-                <p className="text-gray-500 text-sm mb-4">No posts in this category yet.</p>
+                <p className="text-gray-500 text-sm mb-4">No posts yet.</p>
                 <Link href="/litspace" className="text-sm font-medium text-gray-900 underline underline-offset-2">
-                  Browse all writeups
+                  Back to LitSpace
                 </Link>
               </div>
             ) : (
@@ -264,7 +234,7 @@ export default async function LitspaceCategoryPage({ params, searchParams }: Pag
                   <nav aria-label="Pagination" className="mt-12 flex items-center justify-center gap-2">
                     {page > 1 && (
                       <Link
-                        href={`/litspace/category/${slug}?page=${page - 1}`}
+                        href={`/litspace/category?page=${page - 1}`}
                         className="px-4 py-2 rounded-lg border border-gray-300 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
                       >
                         ← Previous
@@ -274,7 +244,7 @@ export default async function LitspaceCategoryPage({ params, searchParams }: Pag
                       {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
                         <Link
                           key={p}
-                          href={`/litspace/category/${slug}?page=${p}`}
+                          href={`/litspace/category?page=${p}`}
                           aria-current={p === page ? "page" : undefined}
                           className={`w-9 h-9 flex items-center justify-center rounded-lg text-sm font-medium transition-colors ${
                             p === page
@@ -288,7 +258,7 @@ export default async function LitspaceCategoryPage({ params, searchParams }: Pag
                     </div>
                     {page < totalPages && (
                       <Link
-                        href={`/litspace/category/${slug}?page=${page + 1}`}
+                        href={`/litspace/category?page=${page + 1}`}
                         className="px-4 py-2 rounded-lg border border-gray-300 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
                       >
                         Next →

@@ -7,10 +7,10 @@ import type { ReactNode } from "react";
 import ReadingProgress from "@/app/components/ReadingProgress";
 import RelatedGuides from "@/app/components/RelatedGuides";
 import { CONTEXTUAL_RULES, MAX_CONTEXTUAL_LINKS } from "@/lib/internal-links";
+import { SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 function formatDate(dateStr: string) {
   return new Intl.DateTimeFormat("en-IN", {
@@ -34,26 +34,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     .eq("published", true)
     .single();
 
-  if (!post) return { title: "Post Not Found" };
+  if (!post) notFound();
 
   const title = post.meta_title || post.title;
   const description =
     post.meta_description ||
     post.excerpt ||
     post.content?.replace(/[#*`[\]()]/g, "").slice(0, 155).trim() ||
-    "";
+    "Insights and guidance from the Ritera Publishing editorial team.";
   const url = `${SITE_URL}/blog/${slug}`;
   const image = post.featured_image;
   const authorName = (post.author as unknown as { name: string } | null)?.name ?? "Ritera Publishing";
 
-  const imageObj = image
-    ? [{
-        url: image.startsWith("http") ? image : `${SITE_URL}${image}`,
-        width: 1200,
-        height: 630,
-        alt: title,
-      }]
-    : undefined;
+  const ogImage = image
+    ? (image.startsWith("http") ? image : `${SITE_URL}${image}`)
+    : `${SITE_URL}/images/home/hero-library.webp`;
 
   return {
     title,
@@ -67,13 +62,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description,
       url,
       type: "article",
-      ...(imageObj && { images: imageObj }),
+      images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      ...(image && { images: [image] }),
+      images: [ogImage],
     },
     alternates: { canonical: url },
   };
@@ -116,18 +111,16 @@ export default async function BlogPostPage({ params }: PageProps) {
     "@type": "Article",
     headline: post.title,
     description: post.excerpt || "",
-    image: post.featured_image || undefined,
+    image: post.featured_image
+      ? (post.featured_image.startsWith("http") ? post.featured_image : `${SITE_URL}${post.featured_image}`)
+      : undefined,
     datePublished: post.created_at,
     dateModified: post.updated_at,
     mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/blog/${slug}` },
     author: author
       ? { "@type": "Person", name: author.name, url: `${SITE_URL}/authors/${author.slug}` }
       : { "@type": "Organization", name: "Ritera Publishing" },
-    publisher: {
-      "@type": "Organization",
-      name: "Ritera Publishing",
-      url: SITE_URL,
-    },
+    publisher: { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
   };
 
   const faqJsonLd = faqItems && faqItems.length > 0

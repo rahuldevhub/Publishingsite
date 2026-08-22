@@ -4,10 +4,10 @@ import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
 import LikeButton from "./LikeButton";
 import CommentForm from "./CommentForm";
+import { SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 function formatDate(dateStr: string) {
   return new Intl.DateTimeFormat("en-IN", {
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     .eq("approved", true)
     .single();
 
-  if (!post) return { title: "Post Not Found" };
+  if (!post) notFound();
 
   const title = post.meta_title || post.title;
   const description =
@@ -41,8 +41,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${title} | LitSpace`,
     description,
-    openGraph: { title, description, url, type: "article" },
-    twitter: { card: "summary", title, description },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "article",
+      images: [{ url: `${SITE_URL}/images/home/hero-library.webp`, width: 1200, height: 630, alt: "Ritera Publishing" }],
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description,
+      images: [`${SITE_URL}/images/home/hero-library.webp`],
+    },
     alternates: { canonical: url },
   };
 }
@@ -136,11 +147,7 @@ export default async function LitspacePostPage({ params }: PageProps) {
       "@type": "Person",
       name: post.writer_name,
     },
-    publisher: {
-      "@type": "Organization",
-      name: "Ritera Publishing",
-      url: SITE_URL,
-    },
+    publisher: { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
   };
 
   const postUrl = `${SITE_URL}/litspace/${slug}`;

@@ -111,8 +111,8 @@ export default function NewCareerPage() {
             {/* Title + Slug */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Job Title <span className="text-red-500">*</span></label>
-                <input
+                <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1.5">Job Title <span className="text-red-500">*</span></label>
+                <input id="title"
                   type="text"
                   required
                   value={form.title}
@@ -122,8 +122,8 @@ export default function NewCareerPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Slug <span className="text-red-500">*</span></label>
-                <input
+                <label htmlFor="slug" className="block text-sm font-medium text-gray-700 mb-1.5">Slug <span className="text-red-500">*</span></label>
+                <input id="slug"
                   type="text"
                   required
                   value={form.slug}
@@ -137,8 +137,8 @@ export default function NewCareerPage() {
             {/* Job Type + Experience Level */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Job Type <span className="text-red-500">*</span></label>
-                <select
+                <label htmlFor="job_type" className="block text-sm font-medium text-gray-700 mb-1.5">Job Type <span className="text-red-500">*</span></label>
+                <select id="job_type"
                   required
                   value={form.job_type}
                   onChange={(e) => handleChange("job_type", e.target.value)}
@@ -151,8 +151,8 @@ export default function NewCareerPage() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Experience Level <span className="text-red-500">*</span></label>
-                <select
+                <label htmlFor="experience_level" className="block text-sm font-medium text-gray-700 mb-1.5">Experience Level <span className="text-red-500">*</span></label>
+                <select id="experience_level"
                   required
                   value={form.experience_level}
                   onChange={(e) => handleChange("experience_level", e.target.value)}
@@ -169,8 +169,8 @@ export default function NewCareerPage() {
             {/* Location + Salary Range */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Location <span className="text-red-500">*</span></label>
-                <input
+                <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-1.5">Location <span className="text-red-500">*</span></label>
+                <input id="location"
                   type="text"
                   required
                   value={form.location}
@@ -180,8 +180,8 @@ export default function NewCareerPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Salary Range</label>
-                <input
+                <label htmlFor="salary_range" className="block text-sm font-medium text-gray-700 mb-1.5">Salary Range</label>
+                <input id="salary_range"
                   type="text"
                   value={form.salary_range}
                   onChange={(e) => handleChange("salary_range", e.target.value)}
@@ -194,8 +194,8 @@ export default function NewCareerPage() {
             {/* Application Email + Link */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Application Email <span className="text-red-500">*</span></label>
-                <input
+                <label htmlFor="application_email" className="block text-sm font-medium text-gray-700 mb-1.5">Application Email <span className="text-red-500">*</span></label>
+                <input id="application_email"
                   type="email"
                   required
                   value={form.application_email}
@@ -205,8 +205,8 @@ export default function NewCareerPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Application Link</label>
-                <input
+                <label htmlFor="application_link" className="block text-sm font-medium text-gray-700 mb-1.5">Application Link</label>
+                <input id="application_link"
                   type="url"
                   value={form.application_link}
                   onChange={(e) => handleChange("application_link", e.target.value)}
@@ -218,8 +218,8 @@ export default function NewCareerPage() {
 
             {/* Status */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Status <span className="text-red-500">*</span></label>
-              <select
+              <label htmlFor="status" className="block text-sm font-medium text-gray-700 mb-1.5">Status <span className="text-red-500">*</span></label>
+              <select id="status"
                 required
                 value={form.status}
                 onChange={(e) => handleChange("status", e.target.value)}
@@ -232,8 +232,8 @@ export default function NewCareerPage() {
 
             {/* Short Description */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Short Description</label>
-              <textarea
+              <label htmlFor="short_description" className="block text-sm font-medium text-gray-700 mb-1.5">Short Description</label>
+              <textarea id="short_description"
                 rows={2}
                 value={form.short_description}
                 onChange={(e) => handleChange("short_description", e.target.value)}
@@ -244,8 +244,8 @@ export default function NewCareerPage() {
 
             {/* Description */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Job Description <span className="text-red-500">*</span></label>
-              <textarea
+              <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1.5">Job Description <span className="text-red-500">*</span></label>
+              <textarea id="description"
                 rows={6}
                 required
                 value={form.description}
@@ -257,8 +257,8 @@ export default function NewCareerPage() {
 
             {/* Responsibilities */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Responsibilities <span className="text-red-500">*</span></label>
-              <textarea
+              <label htmlFor="responsibilities" className="block text-sm font-medium text-gray-700 mb-1.5">Responsibilities <span className="text-red-500">*</span></label>
+              <textarea id="responsibilities"
                 rows={6}
                 required
                 value={form.responsibilities}
@@ -270,8 +270,8 @@ export default function NewCareerPage() {
 
             {/* Requirements */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Requirements <span className="text-red-500">*</span></label>
-              <textarea
+              <label htmlFor="requirements" className="block text-sm font-medium text-gray-700 mb-1.5">Requirements <span className="text-red-500">*</span></label>
+              <textarea id="requirements"
                 rows={6}
                 required
                 value={form.requirements}
@@ -283,8 +283,8 @@ export default function NewCareerPage() {
 
             {/* Skills */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Skills <span className="text-red-500">*</span></label>
-              <textarea
+              <label htmlFor="skills" className="block text-sm font-medium text-gray-700 mb-1.5">Skills <span className="text-red-500">*</span></label>
+              <textarea id="skills"
                 rows={4}
                 required
                 value={form.skills}
@@ -296,8 +296,8 @@ export default function NewCareerPage() {
 
             {/* Meta Title */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Meta Title</label>
-              <input
+              <label htmlFor="meta_title" className="block text-sm font-medium text-gray-700 mb-1.5">Meta Title</label>
+              <input id="meta_title"
                 type="text"
                 value={form.meta_title}
                 onChange={(e) => handleChange("meta_title", e.target.value)}
@@ -308,8 +308,8 @@ export default function NewCareerPage() {
 
             {/* Meta Description */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Meta Description</label>
-              <textarea
+              <label htmlFor="meta_description" className="block text-sm font-medium text-gray-700 mb-1.5">Meta Description</label>
+              <textarea id="meta_description"
                 rows={2}
                 value={form.meta_description}
                 onChange={(e) => handleChange("meta_description", e.target.value)}

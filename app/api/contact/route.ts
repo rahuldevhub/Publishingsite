@@ -1,12 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@/lib/supabase";
+import { sendSubmissionNotification } from "@/lib/notifications";
+import { checkRateLimit } from "@/lib/rate-limit";
 
 export async function POST(req: NextRequest) {
   try {
+    const ip = req.headers.get("x-forwarded-for")?.split(",")[0].trim() ?? "unknown";
+    if (!checkRateLimit(`contact:${ip}`, 10)) {
+      return NextResponse.json({ error: "Too many submissions. Try again later." }, { status: 429 });
+    }
+
     const { name, email, phone, message } = await req.json();
 
     if (!name || !email || !message) {
       return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email).trim())) {
+      return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
     }
 
     const supabase = createServerClient();
@@ -21,6 +31,8 @@ export async function POST(req: NextRequest) {
   console.error("[contact API FULL ERROR]", error);
   return NextResponse.json({ error: error.message }, { status: 500 });
 }
+
+    await sendSubmissionNotification("CONTACT");
 
     return NextResponse.json({ success: true });
   } catch {

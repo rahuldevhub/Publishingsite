@@ -2,10 +2,10 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { createServerClient } from "@/lib/supabase";
+import { SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 export const metadata: Metadata = {
   title: "Blog — Insights, Tips & Publishing News",
@@ -17,11 +17,13 @@ export const metadata: Metadata = {
       "Expert insights on self-publishing, author tips, industry trends, and creative inspiration.",
     url: `${SITE_URL}/blog`,
     type: "website",
+    images: [{ url: `${SITE_URL}/images/home/hero-library.webp`, width: 1200, height: 630, alt: "Ritera Publishing" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Ritera Publishing Blog",
     description: "Expert insights on self-publishing, author tips, and industry trends.",
+    images: [`${SITE_URL}/images/home/hero-library.webp`],
   },
   alternates: { canonical: `${SITE_URL}/blog` },
 };

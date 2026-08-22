@@ -3,10 +3,10 @@ import { notFound } from "next/navigation";
 import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
 import Image from "next/image";
+import { SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 const POSTS_PER_PAGE = 12;
 
 function formatDate(dateStr: string) {
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     .eq("slug", slug)
     .single();
 
-  if (!category) return { title: "Category Not Found" };
+  if (!category) notFound();
 
   const title = `${category.name} | Ritera Publishing Blog`;
   const description = `Browse all articles about ${category.name} from the Ritera Publishing blog.`;
@@ -39,8 +39,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title,
     description,
-    openGraph: { title, description, url: `${SITE_URL}/blog/category/${slug}`, type: "website" },
-    twitter: { card: "summary", title, description },
+    openGraph: {
+      title,
+      description,
+      url: `${SITE_URL}/blog/category/${slug}`,
+      type: "website",
+      images: [{ url: `${SITE_URL}/images/home/hero-library.webp`, width: 1200, height: 630, alt: "Ritera Publishing" }],
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description,
+      images: [`${SITE_URL}/images/home/hero-library.webp`],
+    },
     alternates: { canonical: `${SITE_URL}/blog/category/${slug}` },
   };
 }

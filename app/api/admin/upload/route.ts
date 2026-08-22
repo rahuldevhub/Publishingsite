@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@/lib/supabase";
 import { getAdminSession, unauthorized } from "@/lib/admin-session";
 
+const ALLOWED_BUCKETS = ["images"];
+
 export async function POST(request: NextRequest) {
   if (!(await getAdminSession())) return unauthorized();
 
@@ -12,6 +14,10 @@ export async function POST(request: NextRequest) {
 
   if (!file) {
     return NextResponse.json({ error: "No file provided" }, { status: 400 });
+  }
+
+  if (!ALLOWED_BUCKETS.includes(bucket)) {
+    return NextResponse.json({ error: "Invalid storage bucket" }, { status: 400 });
   }
 
   const supabase = createServerClient();

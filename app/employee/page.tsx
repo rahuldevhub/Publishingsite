@@ -2,8 +2,8 @@ import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/site";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 export const dynamic = "force-dynamic";
 

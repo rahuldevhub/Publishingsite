@@ -86,9 +86,9 @@ export default function Footer() {
               India&apos;s trusted self-publishing company — professional editing, cover design,
               ISBN registration, and Amazon distribution. Authors keep 100% of their royalties.
             </p>
-            <address className="not-italic text-xs text-gray-600 leading-relaxed mb-6">
+            <address className="not-italic text-xs text-gray-400 leading-relaxed mb-6">
               Tamil Nadu, India<br />
-              <a href="tel:+919488854787" className="hover:text-gray-400 transition-colors">+91-94888-54787</a>
+              <a href="tel:+919488854787" className="hover:text-white transition-colors">+91-94888-54787</a>
             </address>
 
             {/* Social icons */}
@@ -229,10 +229,10 @@ export default function Footer() {
       {/* ── Bottom bar ── */}
       <div className="border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-gray-600">
+          <p className="text-xs text-gray-400">
             © {new Date().getFullYear()} Ritera Publishing. All rights reserved.
           </p>
-          <div className="flex items-center gap-5 text-xs text-gray-600">
+          <div className="flex items-center gap-5 text-xs text-gray-400">
             <Link href="/privacy-policy" className="hover:text-gray-300 transition-colors">
               Privacy Policy
             </Link>

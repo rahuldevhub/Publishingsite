@@ -155,9 +155,9 @@ const VARIANT_STYLES: Record<Variant, {
     divider: "bg-white/[0.06]",
     check: "text-amber-400",
     feature: "text-gray-300",
-    priceLabel: "text-gray-500",
+    priceLabel: "text-gray-400",
     price: "text-white",
-    priceNote: "text-gray-500",
+    priceNote: "text-gray-400",
     button: "bg-amber-400 text-gray-900 hover:bg-amber-300 hover:shadow-[0_10px_28px_rgba(201,145,45,0.45)]",
   },
 }

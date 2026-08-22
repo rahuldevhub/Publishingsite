@@ -135,8 +135,8 @@ export default function NewBlogPostPage() {
             {/* Title + Slug */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Title <span className="text-red-500">*</span></label>
-                <input
+                <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1.5">Title <span className="text-red-500">*</span></label>
+                <input id="title"
                   type="text"
                   required
                   value={form.title}
@@ -146,8 +146,8 @@ export default function NewBlogPostPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Slug <span className="text-red-500">*</span></label>
-                <input
+                <label htmlFor="slug" className="block text-sm font-medium text-gray-700 mb-1.5">Slug <span className="text-red-500">*</span></label>
+                <input id="slug"
                   type="text"
                   required
                   value={form.slug}
@@ -161,8 +161,8 @@ export default function NewBlogPostPage() {
             {/* Category + Author */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Category <span className="text-red-500">*</span></label>
-                <select
+                <label htmlFor="category_id" className="block text-sm font-medium text-gray-700 mb-1.5">Category <span className="text-red-500">*</span></label>
+                <select id="category_id"
                   required
                   value={form.category_id}
                   onChange={(e) => handleChange("category_id", e.target.value)}
@@ -175,8 +175,8 @@ export default function NewBlogPostPage() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Author <span className="text-red-500">*</span></label>
-                <select
+                <label htmlFor="author_id" className="block text-sm font-medium text-gray-700 mb-1.5">Author <span className="text-red-500">*</span></label>
+                <select id="author_id"
                   required
                   value={form.author_id}
                   onChange={(e) => handleChange("author_id", e.target.value)}
@@ -192,8 +192,8 @@ export default function NewBlogPostPage() {
 
             {/* Excerpt */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Excerpt</label>
-              <textarea
+              <label htmlFor="excerpt" className="block text-sm font-medium text-gray-700 mb-1.5">Excerpt</label>
+              <textarea id="excerpt"
                 rows={2}
                 value={form.excerpt}
                 onChange={(e) => handleChange("excerpt", e.target.value)}
@@ -204,8 +204,8 @@ export default function NewBlogPostPage() {
 
             {/* Content */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Content <span className="text-red-500">*</span></label>
-              <textarea
+              <label htmlFor="content" className="block text-sm font-medium text-gray-700 mb-1.5">Content <span className="text-red-500">*</span></label>
+              <textarea id="content"
                 rows={12}
                 required
                 value={form.content}
@@ -224,8 +224,8 @@ export default function NewBlogPostPage() {
                 folder="blog"
               />
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Reading Time (minutes) <span className="text-red-500">*</span></label>
-                <input
+                <label htmlFor="reading_time" className="block text-sm font-medium text-gray-700 mb-1.5">Reading Time (minutes) <span className="text-red-500">*</span></label>
+                <input id="reading_time"
                   type="number"
                   required
                   min={1}
@@ -238,8 +238,8 @@ export default function NewBlogPostPage() {
 
             {/* Meta Title */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Meta Title</label>
-              <input
+              <label htmlFor="meta_title" className="block text-sm font-medium text-gray-700 mb-1.5">Meta Title</label>
+              <input id="meta_title"
                 type="text"
                 value={form.meta_title}
                 onChange={(e) => handleChange("meta_title", e.target.value)}
@@ -250,8 +250,8 @@ export default function NewBlogPostPage() {
 
             {/* Meta Description */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Meta Description</label>
-              <textarea
+              <label htmlFor="meta_description" className="block text-sm font-medium text-gray-700 mb-1.5">Meta Description</label>
+              <textarea id="meta_description"
                 rows={2}
                 value={form.meta_description}
                 onChange={(e) => handleChange("meta_description", e.target.value)}
@@ -262,8 +262,8 @@ export default function NewBlogPostPage() {
 
             {/* SEO Keywords */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">SEO Keywords</label>
-              <input
+              <label htmlFor="keywords" className="block text-sm font-medium text-gray-700 mb-1.5">SEO Keywords</label>
+              <input id="keywords"
                 type="text"
                 value={form.keywords}
                 onChange={(e) => handleChange("keywords", e.target.value)}
@@ -275,8 +275,8 @@ export default function NewBlogPostPage() {
 
             {/* FAQ Data */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">FAQ (JSON format)</label>
-              <textarea
+              <label htmlFor="faq_data" className="block text-sm font-medium text-gray-700 mb-1.5">FAQ (JSON format)</label>
+              <textarea id="faq_data"
                 rows={5}
                 value={form.faq_data}
                 onChange={(e) => handleChange("faq_data", e.target.value)}

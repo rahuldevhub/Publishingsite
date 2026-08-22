@@ -3,8 +3,8 @@ import Link from "next/link";
 import CustomBuilder from "./CustomBuilder";
 import PackagesComparisonTable from "./PackagesComparisonTable";
 import { PACKAGES_RESOURCES } from "@/lib/internal-links";
+import { SITE_URL } from "@/lib/site";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 export const metadata: Metadata = {
   title: "Publishing Packages & Pricing",
@@ -16,11 +16,13 @@ export const metadata: Metadata = {
       "Publishing packages starting ₹11,999. 100% royalties, expert editing, cover design, and global distribution support.",
     url: `${SITE_URL}/packages`,
     type: "website",
+    images: [{ url: `${SITE_URL}/images/home/hero-library.webp`, width: 1200, height: 630, alt: "Ritera Publishing" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Publishing Packages | Ritera Publishing",
     description: "Publishing packages starting ₹11,999. 100% royalties, professional editing, cover design, and global distribution.",
+    images: [`${SITE_URL}/images/home/hero-library.webp`],
   },
   alternates: { canonical: `${SITE_URL}/packages` },
 };
@@ -97,6 +99,16 @@ const breadcrumbSchema = {
   ],
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQ_ITEMS.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
+
 export default function PackagesPage() {
   return (
     <>
@@ -109,6 +121,11 @@ export default function PackagesPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      {/* FAQPage JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <main className="bg-white">
 

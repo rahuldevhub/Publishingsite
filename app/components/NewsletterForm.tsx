@@ -1,10 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { getSupabaseBrowserClient } from "@/lib/supabase-browser";
 
 export default function NewsletterForm() {
-  const supabase = getSupabaseBrowserClient();
   const [email, setEmail]       = useState("");
   const [status, setStatus]     = useState<"idle" | "loading" | "done" | "error">("idle");
 
@@ -13,13 +11,18 @@ export default function NewsletterForm() {
     if (!email.trim()) return;
     setStatus("loading");
 
-    const { error } = await supabase
-      .from("newsletter_subscribers")
-      .insert({ email: email.trim().toLowerCase() });
-
-    // Show success regardless — table might not exist yet
-    if (error) console.error("[Newsletter] insert error:", error);
-    setStatus("done");
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim().toLowerCase() }),
+      });
+      if (!res.ok) throw new Error("Subscribe failed");
+      setStatus("done");
+    } catch (err) {
+      console.error("[Newsletter] subscribe error:", err);
+      setStatus("error");
+    }
   }
 
   if (status === "done") {
@@ -34,22 +37,31 @@ export default function NewsletterForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2">
-      <input
-        type="email"
-        required
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="your@email.com"
-        className="flex-1 min-w-0 px-3 py-2.5 rounded-lg bg-gray-800 border border-gray-700 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent"
-      />
-      <button
-        type="submit"
-        disabled={status === "loading"}
-        className="px-4 py-2.5 bg-amber-400 text-gray-900 font-semibold rounded-lg text-sm hover:bg-amber-300 transition-colors disabled:opacity-60 disabled:cursor-not-allowed shrink-0"
-      >
-        {status === "loading" ? "…" : "Subscribe"}
-      </button>
-    </form>
+    <div>
+      <form onSubmit={handleSubmit} className="flex gap-2">
+        <label htmlFor="newsletter-email" className="sr-only">
+          Email address
+        </label>
+        <input
+          id="newsletter-email"
+          type="email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="your@email.com"
+          className="flex-1 min-w-0 px-3 py-2.5 rounded-lg bg-gray-800 border border-gray-700 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent"
+        />
+        <button
+          type="submit"
+          disabled={status === "loading"}
+          className="px-4 py-2.5 bg-amber-400 text-gray-900 font-semibold rounded-lg text-sm hover:bg-amber-300 transition-colors disabled:opacity-60 disabled:cursor-not-allowed shrink-0"
+        >
+          {status === "loading" ? "…" : "Subscribe"}
+        </button>
+      </form>
+      {status === "error" && (
+        <p role="alert" className="mt-2 text-sm text-red-400">Something went wrong. Please try again.</p>
+      )}
+    </div>
   );
 }

@@ -63,7 +63,7 @@ export default function RotatingHeadline() {
   const sizerSet = phrases.length ? phrases : [fallback];
 
   return (
-    <div className="font-extrabold leading-[1.1] tracking-[-0.03em] text-[clamp(26px,7.4vw,30px)] sm:text-5xl lg:text-6xl" aria-hidden="true">
+    <h1 className="font-extrabold leading-[1.1] tracking-[-0.03em] text-[clamp(26px,7.4vw,30px)] sm:text-5xl lg:text-6xl">
       <span className="block text-white">{HEADLINE_STATIC}</span>
 
       {/* Rotating slot — every phrase is stacked in the same grid cell, so the
@@ -93,6 +93,6 @@ export default function RotatingHeadline() {
           </motion.span>
         </AnimatePresence>
       </span>
-    </div>
+    </h1>
   );
 }

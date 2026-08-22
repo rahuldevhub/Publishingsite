@@ -59,10 +59,11 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label htmlFor="contact-name" className="block text-sm font-medium text-gray-700 mb-1.5">
             Name <span className="text-red-500">*</span>
           </label>
           <input
+            id="contact-name"
             type="text"
             required
             value={form.name}
@@ -72,10 +73,11 @@ export default function ContactForm() {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label htmlFor="contact-phone" className="block text-sm font-medium text-gray-700 mb-1.5">
             Phone
           </label>
           <input
+            id="contact-phone"
             type="tel"
             value={form.phone}
             onChange={(e) => set("phone", e.target.value)}
@@ -86,10 +88,11 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1.5">
+        <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700 mb-1.5">
           Email <span className="text-red-500">*</span>
         </label>
         <input
+          id="contact-email"
           type="email"
           required
           value={form.email}
@@ -100,10 +103,11 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1.5">
+        <label htmlFor="contact-message" className="block text-sm font-medium text-gray-700 mb-1.5">
           Message <span className="text-red-500">*</span>
         </label>
         <textarea
+          id="contact-message"
           required
           rows={5}
           value={form.message}
@@ -113,7 +117,7 @@ export default function ContactForm() {
         />
       </div>
 
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && <p role="alert" className="text-sm text-red-600">{error}</p>}
 
       <button
         type="submit"

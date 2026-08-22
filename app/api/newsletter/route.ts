@@ -6,7 +6,7 @@ import { sendSubmissionNotification } from "@/lib/notifications";
 export async function POST(req: NextRequest) {
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0].trim() ?? "unknown";
 
-  if (!checkRateLimit(`lead-${ip}`, 10)) {
+  if (!checkRateLimit(`newsletter:${ip}`, 10)) {
     return NextResponse.json(
       { error: "Too many requests. Please try again later." },
       { status: 429 }
@@ -14,31 +14,27 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const { name, email, phone, source, source_slug } = await req.json();
+    const { email } = await req.json();
 
-    if (!name || !email) {
-      return NextResponse.json({ error: "Name and email are required." }, { status: 400 });
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!email || typeof email !== "string" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json({ error: "Invalid email format." }, { status: 400 });
     }
 
-    const sanitized = {
-      name: String(name).trim().slice(0, 100),
-      email: String(email).trim().toLowerCase().slice(0, 200),
-      phone: phone ? String(phone).trim().slice(0, 20) : null,
-      source: source || "case_study",
-      source_slug: source_slug || null,
-    };
-
     const supabase = createServerClient();
-    const { error } = await supabase.from("lead_captures").insert(sanitized);
+    const { error } = await supabase
+      .from("newsletter_subscribers")
+      .insert({ email: email.trim().toLowerCase().slice(0, 200) });
 
     if (error) {
-      return NextResponse.json({ error: "Failed to save. Please try again." }, { status: 500 });
+      // Already subscribed — treat as a soft success, don't re-notify.
+      if (error.code === "23505") {
+        return NextResponse.json({ success: true });
+      }
+      console.error("[newsletter API] Supabase insert error:", error);
+      return NextResponse.json({ error: "Failed to subscribe." }, { status: 500 });
     }
 
-    await sendSubmissionNotification("LEAD");
+    await sendSubmissionNotification("NEWSLETTER");
 
     return NextResponse.json({ success: true });
   } catch {

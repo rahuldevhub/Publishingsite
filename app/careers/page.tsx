@@ -1,10 +1,10 @@
 import { Metadata } from "next";
 import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 export const metadata: Metadata = {
   title: "Careers — Join Our Team",
@@ -16,11 +16,13 @@ export const metadata: Metadata = {
       "Explore open roles at Ritera Publishing. We're looking for passionate people to help authors share their stories with the world.",
     url: `${SITE_URL}/careers`,
     type: "website",
+    images: [{ url: `${SITE_URL}/images/home/hero-library.webp`, width: 1200, height: 630, alt: "Ritera Publishing" }],
   },
   twitter: {
     card: "summary",
     title: "Careers at Ritera Publishing",
     description: "Join our team and help shape the future of self-publishing in India.",
+    images: [`${SITE_URL}/images/home/hero-library.webp`],
   },
   alternates: { canonical: `${SITE_URL}/careers` },
 };

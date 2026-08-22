@@ -3,10 +3,10 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { createServerClient } from "@/lib/supabase";
 import DownloadButton from "@/app/components/DownloadButton";
+import { SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 type PageProps = { params: Promise<{ slug: string }> };
 type FaqItem = { question: string; answer: string };
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     .eq("published", true)
     .single();
 
-  if (!cs) return { title: "Case Study Not Found" };
+  if (!cs) notFound();
 
   const title = cs.meta_title || `${cs.title} | Ritera Publishing`;
   const description =
@@ -44,11 +44,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description,
       url,
       type: "article",
+      images: [{ url: `${SITE_URL}/images/home/hero-library.webp`, width: 1200, height: 630, alt: "Ritera Publishing" }],
     },
     twitter: {
       card: "summary_large_image",
       title: cs.meta_title || cs.title,
       description,
+      images: [`${SITE_URL}/images/home/hero-library.webp`],
     },
   };
 }
@@ -87,7 +89,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
     datePublished: cs.created_at,
     dateModified: cs.updated_at,
     author: { "@type": "Person", name: cs.author_name },
-    publisher: { "@type": "Organization", name: "Ritera Publishing", url: SITE_URL },
+    publisher: { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
     mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/case-studies/${slug}` },
   };
 

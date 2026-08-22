@@ -1,14 +1,18 @@
 import type { MetadataRoute } from "next";
 import { createServerClient } from "@/lib/supabase";
+import { SITE_URL as SITE } from "@/lib/site";
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
+// Force fresh data on every request — otherwise Next statically prerenders
+// this route and caches the Supabase fetches indefinitely, producing a
+// sitemap that goes stale across deploys instead of reflecting live content.
+export const dynamic = "force-dynamic";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const supabase = createServerClient();
 
-  const [books, authors, litspace, blog, careers, caseStudies] = await Promise.all([
-    supabase.from("books").select("slug, updated_at").eq("published", true),
-    supabase.from("authors").select("slug, updated_at"),
+  const [books, authors, litspace, blog, careers, caseStudies, blogCategories, litspaceCategories] = await Promise.all([
+    supabase.from("books").select("slug, updated_at"),
+    supabase.from("authors").select("slug, created_at"),
     supabase
       .from("litspace_posts")
       .select("slug, updated_at")
@@ -17,8 +21,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .from("blog_posts")
       .select("slug, updated_at")
       .eq("published", true),
-    supabase.from("careers").select("slug, updated_at").eq("active", true),
+    supabase.from("careers").select("slug, created_at").eq("status", "active"),
     supabase.from("case_studies").select("slug, updated_at").eq("published", true),
+    supabase.from("blog_categories").select("slug"),
+    supabase.from("litspace_categories").select("slug"),
   ]);
 
   const toDate = (v: string | null | undefined) =>
@@ -31,6 +37,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE}/books`,                        lastModified: new Date(), changeFrequency: "weekly",  priority: 0.9 },
     { url: `${SITE}/litspace`,                     lastModified: new Date(), changeFrequency: "daily",   priority: 0.8 },
     { url: `${SITE}/litspace/submit`,              lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
+    { url: `${SITE}/litspace/category`,            lastModified: new Date(), changeFrequency: "weekly",  priority: 0.5 },
     { url: `${SITE}/blog`,                         lastModified: new Date(), changeFrequency: "daily",   priority: 0.8 },
     { url: `${SITE}/case-studies`,                 lastModified: new Date(), changeFrequency: "weekly",  priority: 0.8 },
     { url: `${SITE}/careers`,                      lastModified: new Date(), changeFrequency: "weekly",  priority: 0.7 },
@@ -49,7 +56,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const authorRoutes: MetadataRoute.Sitemap = (authors.data ?? []).map((a) => ({
     url: `${SITE}/authors/${a.slug}`,
-    lastModified: toDate(a.updated_at),
+    lastModified: toDate(a.created_at),
     changeFrequency: "monthly",
     priority: 0.6,
   }));
@@ -70,7 +77,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const careerRoutes: MetadataRoute.Sitemap = (careers.data ?? []).map((c) => ({
     url: `${SITE}/careers/${c.slug}`,
-    lastModified: toDate(c.updated_at),
+    lastModified: toDate(c.created_at),
     changeFrequency: "weekly",
     priority: 0.5,
   }));
@@ -82,6 +89,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
+  const blogCategoryRoutes: MetadataRoute.Sitemap = (blogCategories.data ?? []).map((c) => ({
+    url: `${SITE}/blog/category/${c.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.4,
+  }));
+
+  const litspaceCategoryRoutes: MetadataRoute.Sitemap = (litspaceCategories.data ?? []).map((c) => ({
+    url: `${SITE}/litspace/category/${c.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.4,
+  }));
+
   return [
     ...staticRoutes,
     ...bookRoutes,
@@ -90,5 +111,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...blogRoutes,
     ...careerRoutes,
     ...caseStudyRoutes,
+    ...blogCategoryRoutes,
+    ...litspaceCategoryRoutes,
   ];
 }

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SITE_URL } from "@/lib/site";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 const CONTACT_INFO = {
   email: "contact@riterapublishing.com",
@@ -19,11 +19,13 @@ export const metadata: Metadata = {
     title: "Contact Ritera Publishing",
     description: "Reach our team via email, phone, or WhatsApp. We respond within 24 hours.",
     url: `${SITE_URL}/contact`,
+    images: [{ url: `${SITE_URL}/images/home/hero-library.webp`, width: 1200, height: 630, alt: "Ritera Publishing" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Contact Ritera Publishing",
     description: "Reach our team via email, phone, or WhatsApp. We respond within 24 hours.",
+    images: [`${SITE_URL}/images/home/hero-library.webp`],
   },
 };
 

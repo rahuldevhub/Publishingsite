@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -20,6 +20,9 @@ const NAV_LINKS: { label: string; href: string; badge?: string }[] = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname                = usePathname();
+  const hamburgerBtnRef = useRef<HTMLButtonElement>(null);
+  const drawerCloseBtnRef = useRef<HTMLButtonElement>(null);
+  const wasOpenRef = useRef(false);
 
   // Auto-hide on admin routes
   if (pathname.startsWith("/admin")) return null;
@@ -33,6 +36,24 @@ export default function Header() {
   // Close mobile menu on route change
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => { setMenuOpen(false); }, [pathname]);
+
+  // Escape closes the drawer; move focus in on open, return it on close.
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => {
+    if (menuOpen) {
+      wasOpenRef.current = true;
+      drawerCloseBtnRef.current?.focus();
+      function onKeyDown(e: KeyboardEvent) {
+        if (e.key === "Escape") setMenuOpen(false);
+      }
+      document.addEventListener("keydown", onKeyDown);
+      return () => document.removeEventListener("keydown", onKeyDown);
+    }
+    if (wasOpenRef.current) {
+      wasOpenRef.current = false;
+      hamburgerBtnRef.current?.focus();
+    }
+  }, [menuOpen]);
 
   const textHover  = "hover:text-gray-900 hover:bg-gray-50";
   // Regular links, the active link, and the Packages link (highest-conversion
@@ -89,9 +110,11 @@ export default function Header() {
           <div className="flex items-center gap-2 ml-auto shrink-0">
             {/* Hamburger */}
             <button
+              ref={hamburgerBtnRef}
               onClick={() => setMenuOpen((o) => !o)}
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
+              aria-controls="mobile-nav-drawer"
               className="lg:hidden w-11 h-11 flex items-center justify-center rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400"
             >
               {menuOpen ? (
@@ -110,7 +133,13 @@ export default function Header() {
 
       {/* ── Mobile drawer ── */}
       {menuOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden" aria-modal="true" role="dialog">
+        <div
+          id="mobile-nav-drawer"
+          className="fixed inset-0 z-50 lg:hidden"
+          aria-modal="true"
+          aria-label="Mobile navigation"
+          role="dialog"
+        >
           {/* Backdrop */}
           <div
             className="absolute inset-0 bg-black/50 backdrop-blur-sm"
@@ -131,6 +160,7 @@ export default function Header() {
                 />
               </Link>
               <button
+                ref={drawerCloseBtnRef}
                 onClick={() => setMenuOpen(false)}
                 aria-label="Close menu"
                 className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-900 rounded-lg hover:bg-gray-100 transition-colors"

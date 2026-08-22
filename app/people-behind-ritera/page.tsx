@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CounterStats from "@/app/aboutus/CounterStats";
+import { SITE_URL } from "@/lib/site";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://riterapublishing.com";
 
 export const metadata: Metadata = {
   title: "People Behind Ritera",
@@ -14,11 +14,13 @@ export const metadata: Metadata = {
       "Real people, real expertise. Discover the team of reviewers, designers, editors, and mentors who make every Ritera book exceptional.",
     url: `${SITE_URL}/people-behind-ritera`,
     type: "website",
+    images: [{ url: `${SITE_URL}/images/home/hero-library.webp`, width: 1200, height: 630, alt: "Ritera Publishing" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "People Behind Ritera",
     description: "Meet the passionate professionals turning author dreams into reality.",
+    images: [`${SITE_URL}/images/home/hero-library.webp`],
   },
   alternates: { canonical: `${SITE_URL}/people-behind-ritera` },
 };
@@ -30,11 +32,7 @@ const pageSchema = {
   url: `${SITE_URL}/people-behind-ritera`,
   description:
     "Meet the passionate professionals turning author dreams into reality at Ritera Publishing.",
-  publisher: {
-    "@type": "Organization",
-    name: "Ritera Publishing",
-    url: SITE_URL,
-  },
+  publisher: { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
 };
 
 const KEY_PEOPLE = [
