@@ -1,3 +1,4 @@
+import { PRICES } from "./pricing";
 /**
  * Single source of truth for all Ritera Publishing business metrics.
  * Import from here everywhere — never hardcode these values in components.
@@ -11,5 +12,5 @@ export const SITE_STATS = {
 } as const;
 
 export const ROYALTIES = "100%" as const;
-export const STARTING_PRICE_INR = "₹11,999" as const;
-export const STARTING_PRICE_USD = "$149" as const;
+export const STARTING_PRICE_INR = PRICES.essential.inr;
+export const STARTING_PRICE_USD = PRICES.essential.usd;

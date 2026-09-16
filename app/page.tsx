@@ -1,3 +1,4 @@
+import PricingSchema from "@/app/components/PricingSchema";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -113,7 +114,7 @@ const faqSchema = {
       name: "How much does it cost to publish a book in India?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ritera Publishing's self-publishing packages start at ₹11,999 (approx. $149 USD) for the First-Time Author package, which covers professional editing, cover design, ISBN registration, and Amazon distribution as a one-time payment with no hidden fees. The Global Author package is ₹32,999 and adds distribution across 160+ countries. The Marketing Focused package at ₹84,999 includes Amazon advertising and a dedicated marketing team. You keep 100% of your royalties on all sales.",
+        text: "Ritera Publishing's self-publishing packages start at ₹11,999 for the First-Time Author package, which covers professional editing, cover design, ISBN registration, and Amazon distribution as a one-time payment with no hidden fees. The Global Author package is ₹32,999 and adds distribution across 160+ countries. The Marketing Focused package at ₹84,999 includes Amazon advertising and a dedicated marketing team. You keep 100% of your royalties on all sales.",
       },
     },
     {
@@ -202,18 +203,9 @@ const serviceSchema = {
 export default function HomePage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
-      />
+      <PricingSchema schema={faqSchema} />
+      <PricingSchema schema={howToSchema} />
+      <PricingSchema schema={serviceSchema} />
       <main className="bg-white overflow-x-hidden">
 
         {/* ── 1. HERO ── */}

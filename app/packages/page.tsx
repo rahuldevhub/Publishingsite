@@ -1,3 +1,4 @@
+import { PRICES } from "@/lib/pricing";
 import { Metadata } from "next";
 import Link from "next/link";
 import CustomBuilder from "./CustomBuilder";
@@ -9,11 +10,11 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Publishing Packages & Pricing",
   description:
-    "Starting ₹11,999 for Indian authors. International pricing available in USD. All packages include 100% royalties, professional editing, cover design, and global distribution.",
+    `Starting ${PRICES.essential.inr} in India or ${PRICES.essential.usd} USD internationally. All packages include 100% royalties, professional editing, cover design, and global distribution.`,
   openGraph: {
     title: "Self-Publishing Packages | Ritera Publishing",
     description:
-      "Publishing packages starting ₹11,999. 100% royalties, expert editing, cover design, and global distribution support.",
+      `Publishing packages from ${PRICES.essential.inr} in India or ${PRICES.essential.usd} USD internationally. 100% royalties, editing, cover design, and global distribution.`,
     url: `${SITE_URL}/packages`,
     type: "website",
     images: [{ url: `${SITE_URL}/images/home/hero-library.webp`, width: 1200, height: 630, alt: "Ritera Publishing" }],
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Publishing Packages | Ritera Publishing",
-    description: "Publishing packages starting ₹11,999. 100% royalties, professional editing, cover design, and global distribution.",
+    description: `Publishing packages from ${PRICES.essential.inr} in India or ${PRICES.essential.usd} USD internationally. 100% royalties, editing, cover design, and global distribution.`,
     images: [`${SITE_URL}/images/home/hero-library.webp`],
   },
   alternates: { canonical: `${SITE_URL}/packages` },

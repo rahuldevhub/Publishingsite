@@ -6,14 +6,7 @@ import FadeIn from "@/app/components/FadeIn"
 import { useCurrency } from "@/hooks/useCurrency"
 import { useState, useRef, useEffect, useCallback } from "react"
 
-const PRICES = {
-  essential: { inr: "₹11,999", usd: "$149" },
-  standard:  { inr: "₹18,999", usd: "$229" },
-  advanced:  { inr: "₹32,999", usd: "$399" },
-  elite:     { inr: "₹54,999", usd: "$659" },
-  premium:   { inr: "₹84,999", usd: "$1,019" },
-  exclusive: { inr: "₹1,19,999", usd: "$1,449" },
-}
+import { PRICES } from "@/lib/pricing"
 
 type Variant = "ivory" | "navy"
 

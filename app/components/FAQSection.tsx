@@ -1,5 +1,6 @@
 "use client";
 
+import PackagePrice from "@/app/components/PackagePrice";
 import { useState } from "react";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -11,7 +12,7 @@ const FAQS: { question: string; answer: ReactNode }[] = [
       <>
         Publishing your first book in India is a straightforward four-step process with Ritera. You submit your manuscript, our editorial team reviews it and responds within 12 days with a personalised publishing plan. Next, you choose a{" "}
         <Link href="/packages" className="text-amber-600 hover:text-amber-700 font-medium underline underline-offset-2">
-          self-publishing package starting at ₹11,999
+          self-publishing package starting at <PackagePrice packageKey="essential" />
         </Link>{" "}
         — which includes professional editing, cover design, ISBN registration, and Amazon distribution. Our team handles formatting for both print and e-book, then distributes your title to Amazon, Flipkart, Apple Books, and 40,000+ stores worldwide. You retain full copyright and 100% of your royalties from the very first sale. No prior publishing experience is required — we guide you every step of the way.
       </>
@@ -33,7 +34,7 @@ const FAQS: { question: string; answer: ReactNode }[] = [
     question: "How much does it cost to publish a book in India?",
     answer: (
       <>
-        Self-publishing costs in India vary by the services included. Ritera Publishing&apos;s packages start at ₹11,999 (approx. $149 USD) for the First-Time Author package, which covers professional editing, cover design, ISBN registration, and Amazon distribution as a one-time payment with no hidden fees. The Global Author package at ₹32,999 adds international distribution across 160+ countries, while the Marketing Focused package at ₹84,999 includes Amazon advertising, social media promotion, and a dedicated marketing team. Every package comes with a free consultation, and you keep 100% of your royalties — no revenue sharing or recurring subscription. Compare the full details on our{" "}
+        Self-publishing costs in India vary by the services included. Ritera Publishing&apos;s packages start at <PackagePrice packageKey="essential" /> for the First-Time Author package, which covers professional editing, cover design, ISBN registration, and Amazon distribution as a one-time payment with no hidden fees. The Global Author package at <PackagePrice packageKey="advanced" /> adds international distribution across 160+ countries, while the Marketing Focused package at <PackagePrice packageKey="premium" /> includes Amazon advertising, social media promotion, and a dedicated marketing team. Every package comes with a free consultation, and you keep 100% of your royalties — no revenue sharing or recurring subscription. Compare the full details on our{" "}
         <Link href="/packages" className="text-amber-600 hover:text-amber-700 font-medium underline underline-offset-2">
           publishing packages page
         </Link>.

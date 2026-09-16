@@ -23,7 +23,7 @@ const contentSecurityPolicy = [
   `style-src 'self' 'unsafe-inline'`,
   `img-src 'self' data: blob: ${SUPABASE_ORIGIN} https://placehold.co https://www.facebook.com https://i.ytimg.com`,
   `font-src 'self' data:`,
-  `connect-src 'self' ${SUPABASE_ORIGIN} ${SUPABASE_WSS} https://www.facebook.com https://connect.facebook.net${isDev ? " ws: wss:" : ""}`,
+  `connect-src 'self' https://ipapi.co ${SUPABASE_ORIGIN} ${SUPABASE_WSS} https://www.facebook.com https://connect.facebook.net${isDev ? " ws: wss:" : ""}`,
   `frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://www.facebook.com`,
   `media-src 'self'`,
   `worker-src 'self' blob:`,

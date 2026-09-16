@@ -1,3 +1,5 @@
+import CurrencyProvider from "@/app/components/CurrencyProvider";
+import { getVisitorCurrency } from "@/lib/pricing-server";
 import type { Metadata } from "next";
 import { Geist, Playfair_Display } from "next/font/google";
 import "./globals.css";
@@ -78,11 +80,12 @@ const orgSchema = {
   ],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const initialCurrency = await getVisitorCurrency();
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${playfairDisplay.variable} antialiased`}>
@@ -125,10 +128,12 @@ export default function RootLayout({
             alt=""
           />
         </noscript>
+        <CurrencyProvider initialCurrency={initialCurrency}>
         <ProgressBarProvider />
         <Header />
         {children}
         <Footer />
+        </CurrencyProvider>
       </body>
     </html>
   );

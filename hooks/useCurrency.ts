@@ -1,26 +1,8 @@
-"use client"
-import { useState, useEffect } from "react"
+"use client";
+import { createContext, useContext } from "react";
+import type { Currency } from "@/lib/pricing";
 
-type Currency = "INR" | "USD"
-
+export const CurrencyContext = createContext<{ currency: Currency; loading: boolean }>({ currency: "INR", loading: false });
 export function useCurrency() {
-  const [currency, setCurrency] = useState<Currency>("INR")
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    fetch("https://ipapi.co/json/")
-      .then(res => res.json())
-      .then(data => {
-        if (data.country_code !== "IN") {
-          setCurrency("USD")
-        }
-      })
-      .catch(() => {
-        // Default to INR on error
-        setCurrency("INR")
-      })
-      .finally(() => setLoading(false))
-  }, [])
-
-  return { currency, loading }
+  return useContext(CurrencyContext);
 }
