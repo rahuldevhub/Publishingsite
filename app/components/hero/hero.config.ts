@@ -156,12 +156,9 @@ export const DISTRIBUTION_PLATFORMS: string[] = [
  * ──────────────────────────────────────────────────────────────────────── */
 
 export const HERO_CTA = {
-  /** Filled, high-intent action — kept exactly as before (the conversion page). */
-  primary: { label: "Publish Your Book", href: "/contact" },
-  /** Subtle outline, lower-commitment "explore" path. Anchors to the interactive
-   *  package builder so it lands somewhere distinct from the primary CTA. */
-  secondary: { label: "View Packages", href: "/packages#custom-builder" },
+  primary: { label: "Compare Publishing Packages", href: "/packages" },
+  secondary: { label: "See Author Results", href: "/case-studies" },
 } as const;
 
 /** One quiet reassurance line beneath the CTAs — no icons, minimal weight. */
-export const HERO_MICROCOPY = "Free publishing consultation · No hidden charges";
+export const HERO_MICROCOPY = "Clear package scope · Free consultation · You retain your copyright";

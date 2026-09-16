@@ -7,6 +7,7 @@ import HeroSection from "@/app/components/hero/HeroSection";
 import HeroStatsBand from "@/app/components/hero/HeroStatsBand";
 import HomePricingSection from "@/app/components/HomePricingSection";
 import EditorialAboutSection from "@/app/components/EditorialAboutSection";
+import HomepageEvidenceSection from "@/app/components/HomepageEvidenceSection";
 import { SITE_STATS } from "@/lib/stats";
 import { HOMEPAGE_PILLARS } from "@/lib/internal-links";
 import { SITE_URL } from "@/lib/site";
@@ -20,11 +21,11 @@ const TestimonialsSection = dynamic(() => import("@/app/components/TestimonialsS
 export const metadata: Metadata = {
   title: "Self Publishing Company in India | Ritera Publishing",
   description:
-    "Publish your book in India with Ritera Publishing — professional editing, cover design, ISBN registration, and Amazon distribution across 160+ countries. Keep 100% of your royalties.",
+    "Compare self-publishing packages in India for editing, cover design, ISBN support, print and eBook formatting, and distribution. Review real books, authors, and case studies before you publish.",
   openGraph: {
     title: "Self Publishing Company in India | Ritera Publishing",
     description:
-      "India's trusted self-publishing platform — 4,000+ books published, professional editing, ISBN registration, Amazon & global distribution, and 100% royalties for first-time and experienced authors.",
+      "Professional self-publishing in India with clear packages, real published books, named authors, and documented publishing case studies.",
     url: SITE_URL,
     type: "website",
     images: [
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Self Publishing Company in India | Ritera Publishing",
     description:
-      "4,000+ books published. Professional editing, ISBN & Amazon distribution. 100% royalties. Start your author journey today.",
+      "Compare publishing packages and inspect real books, author expertise, and case studies before starting your publishing journey.",
     images: [`${SITE_URL}/images/home/hero-library.webp`],
   },
   alternates: { canonical: SITE_URL },
@@ -216,6 +217,9 @@ export default function HomePage() {
 
         {/* ── 3. EDITORIAL ABOUT ── */}
         <EditorialAboutSection />
+
+        {/* ── VERIFIED EXPERIENCE, EXAMPLES & SOURCES ── */}
+        <HomepageEvidenceSection />
 
         {/* ── 7. BOOKS CAROUSEL ── */}
         <section className="bg-gradient-to-b from-white to-amber-50/30 border-t border-gray-100">

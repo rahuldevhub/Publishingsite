@@ -137,7 +137,7 @@ export default function HeroSection() {
             className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 mb-5 lg:mb-6 backdrop-blur-sm"
           >
             <span className="h-2 w-2 rounded-full bg-amber-400 shrink-0" aria-hidden="true" />
-            <span className="text-[13px] font-medium text-white/80">India&apos;s Favourite Self-Publishing Platform</span>
+            <span className="text-[13px] font-medium text-white/80">Self-Publishing Services for Indian Authors</span>
           </motion.p>
 
           {/* Visual display headline — the actual H1 (rendered inside RotatingHeadline) */}
@@ -153,9 +153,9 @@ export default function HeroSection() {
             variants={reduceMotion ? undefined : item}
             className="mt-5 max-w-[32ch] text-pretty text-lg leading-[1.6] tracking-[-0.005em] text-gray-300/85 lg:mt-7 lg:max-w-[450px]"
           >
-            Professional self-publishing in India from editing and cover
-            design to ISBN registration and global distribution, while you
-            keep {ROYALTIES} of your royalties.
+            Editing, cover design, ISBN support, print and eBook formatting,
+            and distribution in one clear publishing plan. You keep your
+            copyright and {ROYALTIES} of the royalties paid to you.
           </motion.p>
 
           {/* Primary (filled, focal action) — single high-intent CTA.
@@ -179,6 +179,12 @@ export default function HeroSection() {
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
+            </Link>
+            <Link
+              href={HERO_CTA.secondary.href}
+              className="inline-flex w-full items-center justify-center rounded-2xl border border-white/20 bg-white/5 px-8 py-[15px] text-[15px] font-semibold text-white transition-all duration-300 hover:border-white/40 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300 sm:w-auto lg:rounded-full lg:py-[18px]"
+            >
+              {HERO_CTA.secondary.label}
             </Link>
           </motion.div>
 
@@ -209,7 +215,9 @@ export default function HeroSection() {
                 clipRule="evenodd"
               />
             </svg>
-            Trusted by 100+ authors worldwide
+            <Link href="/case-studies" className="underline decoration-white/25 underline-offset-4 hover:text-white">
+              Read our documented publishing case studies →
+            </Link>
           </motion.p>
         </motion.div>
 
