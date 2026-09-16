@@ -13,17 +13,18 @@ const SUPABASE_WSS = "wss://pcahrnefcnrjdjqkrany.supabase.co";
 // inline element styles). 'unsafe-eval' and ws:/wss: are added only in dev for
 // React Fast Refresh / HMR. Every other directive is locked to the exact
 // origins the site actually loads from:
+//   • Google Analytics — tag script and event collection
 //   • Supabase          — data (connect) + Storage images (img)
 //   • connect.facebook.net / www.facebook.com — Meta Pixel script/beacon/pixel
 //   • placehold.co       — cover/thumbnail placeholders (img)
 //   • YouTube            — author/about interview embeds (frame)
 const contentSecurityPolicy = [
   `default-src 'self'`,
-  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://connect.facebook.net`,
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://connect.facebook.net https://www.googletagmanager.com`,
   `style-src 'self' 'unsafe-inline'`,
-  `img-src 'self' data: blob: ${SUPABASE_ORIGIN} https://placehold.co https://www.facebook.com https://i.ytimg.com`,
+  `img-src 'self' data: blob: ${SUPABASE_ORIGIN} https://placehold.co https://www.facebook.com https://i.ytimg.com https://*.google-analytics.com https://*.googletagmanager.com`,
   `font-src 'self' data:`,
-  `connect-src 'self' https://ipapi.co ${SUPABASE_ORIGIN} ${SUPABASE_WSS} https://www.facebook.com https://connect.facebook.net${isDev ? " ws: wss:" : ""}`,
+  `connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://ipapi.co ${SUPABASE_ORIGIN} ${SUPABASE_WSS} https://www.facebook.com https://connect.facebook.net${isDev ? " ws: wss:" : ""}`,
   `frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://www.facebook.com`,
   `media-src 'self'`,
   `worker-src 'self' blob:`,
