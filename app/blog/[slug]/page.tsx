@@ -362,15 +362,15 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </div>
               </Link>
               <Link
-                href="/books"
+                href="/"
                 className="group flex items-center gap-3 p-4 rounded-xl border border-gray-200 hover:border-gray-900 hover:shadow-sm transition-all"
               >
                 <span className="w-9 h-9 rounded-lg bg-green-50 flex items-center justify-center shrink-0 text-green-600 group-hover:bg-green-100 transition-colors">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
                 </span>
                 <div>
-                  <p className="text-xs text-gray-500">Our library</p>
-                  <p className="text-sm font-semibold text-gray-900">Browse published books</p>
+                  <p className="text-xs text-gray-500">Publishing partner</p>
+                  <p className="text-sm font-semibold text-gray-900">Visit Ritera Publishing</p>
                 </div>
               </Link>
             </div>

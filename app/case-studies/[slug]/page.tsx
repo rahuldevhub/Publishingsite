@@ -4,6 +4,7 @@ import Link from "next/link";
 import { createServerClient } from "@/lib/supabase";
 import DownloadButton from "@/app/components/DownloadButton";
 import { SITE_URL } from "@/lib/site";
+import { HOMEPAGE_PILLARS } from "@/lib/internal-links";
 
 export const dynamic = "force-dynamic";
 
@@ -225,6 +226,36 @@ export default async function CaseStudyPage({ params }: PageProps) {
             >
               View Packages →
             </Link>
+          </div>
+        </section>
+
+        {/* ── Publishing guides ── */}
+        <section className="bg-white border-t border-gray-200">
+          <div className="max-w-3xl mx-auto px-6 py-14">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-7">
+              <div>
+                <p className="text-xs font-semibold tracking-widest text-amber-600 uppercase mb-2">Author Resources</p>
+                <h2 className="text-2xl font-bold text-gray-900">Plan your publishing journey</h2>
+              </div>
+              <Link href="/blog" className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">
+                All publishing guides →
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {HOMEPAGE_PILLARS.map((guide) => (
+                <Link
+                  key={guide.slug}
+                  href={`/blog/${guide.slug}`}
+                  className="group rounded-xl border border-gray-200 p-5 hover:border-gray-900 hover:shadow-sm transition-all"
+                >
+                  <h3 className="font-bold text-gray-900 text-sm leading-snug group-hover:text-amber-700 transition-colors">
+                    {guide.title}
+                  </h3>
+                  <p className="mt-2 text-xs text-gray-500 leading-relaxed">{guide.blurb}</p>
+                  <span className="mt-4 inline-block text-xs font-semibold text-gray-900">Read guide →</span>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
 
