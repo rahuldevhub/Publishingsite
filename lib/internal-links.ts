@@ -35,8 +35,8 @@ export type Cluster =
 
 export const SLUG = {
   // Pillars
-  PROCESS: "how-to-publish-a-book-in-india-step-by-step-complete-2026-guide",
-  COST: "how-much-does-it-cost-to-publish-a-book-in-india-complete-cost-breakdown-2026",
+  PROCESS: "how-to-publish-a-book-in-india-step-by-step-guide-2026",
+  COST: "how-much-does-self-publishing-cost-in-india-complete-guide-for-first-time-authors",
   COMPANY: "best-self-publishing-company-in-india-complete-guide-for-first-time-authors",
   COMPANIES: "best-self-publishing-companies-in-india",
   COMPARE: "self-publishing-vs-traditional-publishing-in-india-2026-which-is-better-for-you",
@@ -55,7 +55,7 @@ export const SLUG = {
   MISTAKES: "7-publishing-mistakes-first-time-authors-in-india-must-avoid-2026",
   MANUSCRIPT: "how-to-structure-a-book-manuscript-for-publishing-a-complete-guide-for-authors",
 
-  SELF_COST: "how-much-does-self-publishing-cost-in-india-complete-guide-for-first-time-authors",
+  SELF_COST: "how-much-does-it-cost-to-publish-a-book-in-india-complete-cost-breakdown-2026",
   COST_ALT: "cost-of-publishing-a-book-in-india-2026-complete-breakdown-for-first-time-authors",
   NO_INVEST: "how-to-publish-a-book-without-investment",
 
@@ -289,27 +289,15 @@ export const GUIDES: Record<string, GuideMeta> = {
 
 export const CLUSTER_OF: Record<string, Cluster> = {
   [SLUG.PROCESS]: "process",
-  [SLUG.PROCESS_ALT]: "process",
-  [SLUG.SELF_STEP]: "process",
   [SLUG.NEVER_WRITTEN]: "process",
   [SLUG.TIMELINE]: "process",
 
   [SLUG.COST]: "cost",
-  [SLUG.COST_ALT]: "cost",
-  [SLUG.SELF_COST]: "cost",
   [SLUG.NO_INVEST]: "cost",
 
-  [SLUG.COMPANY]: "company",
-  [SLUG.FOR_AUTHORS]: "company",
-  [SLUG.HOW_CHOOSE]: "company",
-  [SLUG.BROAD_CHOOSE]: "company",
   [SLUG.SERVICES]: "company",
-  [SLUG.WHICH_BEST]: "company",
-  [SLUG.WHY_RITERA]: "company",
 
   [SLUG.COMPANIES]: "companies",
-  [SLUG.TOP_LOOK_FOR]: "companies",
-  [SLUG.HONEST_COMPARISON]: "companies",
   [SLUG.TOP_PUBLISHERS]: "companies",
   [SLUG.NOTION_PRESS]: "companies",
 
@@ -327,8 +315,6 @@ export const CLUSTER_OF: Record<string, Cluster> = {
 
   [SLUG.INTERNATIONAL]: "distribution",
 
-  [SLUG.FIRST_BOOK]: "journey",
-  [SLUG.FIRST_TIME_EVERYTHING]: "journey",
   [SLUG.FIRST_TIPS]: "journey",
   [SLUG.MISTAKES]: "journey",
   [SLUG.BUSY_PRO]: "journey",
@@ -351,17 +337,17 @@ export const CLUSTER_OF: Record<string, Cluster> = {
 const CLUSTER_PILLAR: Record<Cluster, string> = {
   process: SLUG.PROCESS,
   cost: SLUG.COST,
-  company: SLUG.COMPANY,
+  company: SLUG.COMPANIES,
   companies: SLUG.COMPANIES,
   compare: SLUG.COMPARE,
   isbn: SLUG.ISBN,
   editing: SLUG.EDITING,
   printing: SLUG.POD,
   distribution: SLUG.INTERNATIONAL,
-  journey: SLUG.FIRST_BOOK,
+  journey: SLUG.NEVER_WRITTEN,
   niche: SLUG.PROCESS,
-  regional: SLUG.COMPANY,
-  showcase: SLUG.COMPANY,
+  regional: SLUG.COMPANIES,
+  showcase: SLUG.COMPANIES,
 };
 
 /** A cross-cluster supporting guide that deepens each cluster. */
@@ -369,7 +355,7 @@ const CLUSTER_SUPPORTING: Record<Cluster, string> = {
   process: SLUG.TIMELINE,
   cost: SLUG.ISBN,
   company: SLUG.COMPARE,
-  companies: SLUG.COMPANY,
+  companies: SLUG.SERVICES,
   compare: SLUG.EARN,
   isbn: SLUG.COST,
   editing: SLUG.MANUSCRIPT,
@@ -475,7 +461,7 @@ export function getRelatedGuides(currentSlug: string): RelatedGuidesResult {
 
   // Guarantee at least 3 guide cards by borrowing well-known pillars.
   // Labelled as siblings so pillar pages don't repeat "Go deeper" three times.
-  const backfill = [SLUG.PROCESS, SLUG.COST, SLUG.COMPANY, SLUG.ISBN];
+  const backfill = [SLUG.PROCESS, SLUG.COST, SLUG.COMPANIES, SLUG.ISBN];
   for (const s of backfill) {
     if (guides.length >= 3) break;
     push(s, "sibling");
@@ -490,7 +476,7 @@ export function getRelatedGuides(currentSlug: string): RelatedGuidesResult {
 export const HOMEPAGE_PILLARS: GuideMeta[] = [
   GUIDES[SLUG.PROCESS],
   GUIDES[SLUG.COST],
-  GUIDES[SLUG.COMPANY],
+  GUIDES[SLUG.COMPANIES],
   GUIDES[SLUG.COMPARE],
 ];
 
@@ -498,7 +484,7 @@ export const HOMEPAGE_PILLARS: GuideMeta[] = [
 export const FOOTER_GUIDES: { label: string; href: string }[] = [
   { label: "How to Publish a Book in India", href: `/blog/${SLUG.PROCESS}` },
   { label: "Cost of Publishing a Book", href: `/blog/${SLUG.COST}` },
-  { label: "Best Self-Publishing Company", href: `/blog/${SLUG.COMPANY}` },
+  { label: "Best Self-Publishing Companies", href: `/blog/${SLUG.COMPANIES}` },
   { label: "ISBN Registration Guide", href: `/blog/${SLUG.ISBN}` },
   { label: "Book Editing Services", href: `/blog/${SLUG.EDITING}` },
 ];
@@ -508,13 +494,13 @@ export const PACKAGES_RESOURCES: GuideMeta[] = [
   GUIDES[SLUG.COST],
   GUIDES[SLUG.ISBN],
   GUIDES[SLUG.EDITING],
-  GUIDES[SLUG.FIRST_BOOK],
+  GUIDES[SLUG.NEVER_WRITTEN],
   GUIDES[SLUG.TIMELINE],
 ];
 
 /** About page — max 2 trust-building educational links. */
 export const ABOUT_LINKS: GuideMeta[] = [
-  GUIDES[SLUG.HOW_CHOOSE],
+  GUIDES[SLUG.COMPANIES],
   GUIDES[SLUG.COMPARE],
 ];
 
@@ -562,7 +548,7 @@ export const CONTEXTUAL_RULES: { phrase: string; slug: string }[] = [
   { phrase: "traditional publishing", slug: SLUG.COMPARE },
   { phrase: "how much authors earn", slug: SLUG.EARN },
   { phrase: "cost of publishing a book in India", slug: SLUG.COST },
-  { phrase: "self publishing cost", slug: SLUG.SELF_COST },
+  { phrase: "self publishing cost", slug: SLUG.COST },
   { phrase: "publishing costs", slug: SLUG.COST },
   { phrase: "book editing services", slug: SLUG.EDITING },
   { phrase: "manuscript editing", slug: SLUG.EDITING },
@@ -574,10 +560,10 @@ export const CONTEXTUAL_RULES: { phrase: string; slug: string }[] = [
   { phrase: "ebook publishing", slug: SLUG.EBOOK },
   { phrase: "sell books internationally", slug: SLUG.INTERNATIONAL },
   { phrase: "global distribution", slug: SLUG.INTERNATIONAL },
-  { phrase: "best self publishing company in India", slug: SLUG.COMPANY },
-  { phrase: "best self-publishing company in India", slug: SLUG.COMPANY },
+  { phrase: "best self publishing company in India", slug: SLUG.COMPANIES },
+  { phrase: "best self-publishing company in India", slug: SLUG.COMPANIES },
   { phrase: "how to publish a book in India", slug: SLUG.PROCESS },
-  { phrase: "publish your first book", slug: SLUG.FIRST_BOOK },
+  { phrase: "publish your first book", slug: SLUG.PROCESS },
 ];
 
 export const MAX_CONTEXTUAL_LINKS = 5;
