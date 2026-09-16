@@ -56,6 +56,39 @@ const nextConfig: NextConfig = {
   // Enable gzip/brotli compression
   compress: true,
 
+  async redirects() {
+    return [
+      // Keep one canonical hostname. The host condition preserves the full
+      // path and query string while consolidating www traffic on the URL used
+      // by metadata, structured data, and the sitemap.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.riterapublishing.com" }],
+        destination: "https://riterapublishing.com/:path*",
+        permanent: true,
+      },
+
+      // Legacy category routes reported as 404s in Google Search Console.
+      {
+        source: "/litspace-category/:slug*",
+        destination: "/litspace/category/:slug*",
+        permanent: true,
+      },
+      {
+        source: "/blog-category/:slug*",
+        destination: "/blog/category/:slug*",
+        permanent: true,
+      },
+
+      // Legacy LitSpace URLs reported by Search Console.
+      {
+        source: "/literayhub-short-stories",
+        destination: "/litspace/category/short-story",
+        permanent: true,
+      },
+    ];
+  },
+
   images: {
     remotePatterns: [
       {
