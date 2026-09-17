@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { EditorContent, useEditor, type Editor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import Underline from "@tiptap/extension-underline";
 import Highlight from "@tiptap/extension-highlight";
 import Link from "@tiptap/extension-link";
 import TextAlign from "@tiptap/extension-text-align";
@@ -187,7 +186,6 @@ export default function RichTextEditor({ id, value, onChange, placeholder = "Wri
         heading: { levels: [2, 3] },
         link: false,
       }),
-      Underline,
       Highlight.configure({ multicolor: false }),
       Link.configure({
         autolink: false,
