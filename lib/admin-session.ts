@@ -8,7 +8,24 @@ const MAX_AGE = 8 * 60 * 60; // 8 hours
 function getSecret(): Uint8Array {
   const secret = process.env.ADMIN_JWT_SECRET;
   if (!secret) throw new Error("ADMIN_JWT_SECRET is not set");
+  if (process.env.NODE_ENV === "production" && secret.length < 32) {
+    throw new Error("ADMIN_JWT_SECRET must be at least 32 characters");
+  }
   return new TextEncoder().encode(secret);
+}
+
+export async function verifyAdminToken(token: string): Promise<AdminSession | null> {
+  try {
+    const { payload } = await jwtVerify(token, getSecret(), {
+      issuer: "ritera-admin",
+      audience: "ritera-admin",
+    });
+    const { adminId, name } = payload as unknown as AdminSession;
+    if (!adminId) return null;
+    return { adminId, name: name ?? "Admin" };
+  } catch {
+    return null;
+  }
 }
 
 export interface AdminSession {
@@ -20,6 +37,8 @@ export interface AdminSession {
 export async function createSession(adminId: string, name: string): Promise<void> {
   const token = await new SignJWT({ adminId, name })
     .setProtectedHeader({ alg: "HS256" })
+    .setIssuer("ritera-admin")
+    .setAudience("ritera-admin")
     .setIssuedAt()
     .setExpirationTime("8h")
     .sign(getSecret());
@@ -39,17 +58,9 @@ export async function createSession(adminId: string, name: string): Promise<void
  * Returns null if the cookie is absent, expired, or tampered with.
  */
 export async function getAdminSession(): Promise<AdminSession | null> {
-  try {
-    const cookieStore = await cookies();
-    const token = cookieStore.get(COOKIE_NAME)?.value;
-    if (!token) return null;
-    const { payload } = await jwtVerify(token, getSecret());
-    const { adminId, name } = payload as unknown as AdminSession;
-    if (!adminId) return null;
-    return { adminId, name: name ?? "Admin" };
-  } catch {
-    return null; // expired or tampered
-  }
+  const cookieStore = await cookies();
+  const token = cookieStore.get(COOKIE_NAME)?.value;
+  return token ? verifyAdminToken(token) : null;
 }
 
 /** Deletes the session cookie. */

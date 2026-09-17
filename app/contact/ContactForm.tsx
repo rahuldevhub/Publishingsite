@@ -1,12 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import TurnstileWidget from "./TurnstileWidget";
 
 const inputClass =
   "w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent";
 
 export default function ContactForm() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [website, setWebsite] = useState("");
+  const [startedAt] = useState(() => Date.now());
+  const [turnstileToken, setTurnstileToken] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
   const [error, setError] = useState("");
@@ -20,22 +24,26 @@ export default function ContactForm() {
     setError("");
     setSubmitting(true);
 
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, website, startedAt, turnstileToken }),
+      });
+      const data = await res.json().catch(() => ({}));
 
-    const data = await res.json();
+      if (!res.ok) {
+        setError(data.error || "Something went wrong. Please try again.");
+        setSubmitting(false);
+        return;
+      }
 
-    if (!res.ok) {
-      setError(data.error || "Something went wrong. Please try again.");
+      setDone(true);
+    } catch {
+      setError("We couldn't send your message. Please check your connection and try again.");
+    } finally {
       setSubmitting(false);
-      return;
     }
-
-    setDone(true);
-    setSubmitting(false);
   }
 
   if (done) {
@@ -57,6 +65,18 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="absolute -left-[10000px] h-px w-px overflow-hidden" aria-hidden="true">
+        <label htmlFor="contact-website">Website</label>
+        <input
+          id="contact-website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={website}
+          onChange={(event) => setWebsite(event.target.value)}
+        />
+      </div>
       <div className="grid grid-cols-2 gap-3">
         <div>
           <label htmlFor="contact-name" className="block text-sm font-medium text-gray-700 mb-1.5">
@@ -117,11 +137,13 @@ export default function ContactForm() {
         />
       </div>
 
+      <TurnstileWidget onTokenChange={setTurnstileToken} />
+
       {error && <p role="alert" className="text-sm text-red-600">{error}</p>}
 
       <button
         type="submit"
-        disabled={submitting}
+        disabled={submitting || (!!process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && !turnstileToken)}
         className="w-full py-3.5 bg-gray-900 text-white font-semibold rounded-xl text-sm hover:bg-gray-700 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
       >
         {submitting ? "Sending…" : "Send Message →"}

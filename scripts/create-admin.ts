@@ -4,13 +4,21 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
-  const hashedPassword = await bcrypt.hash("admin123", 10);
+  const email = process.env.NEW_ADMIN_EMAIL?.trim();
+  const password = process.env.NEW_ADMIN_PASSWORD;
+  const name = process.env.NEW_ADMIN_NAME?.trim() || "Admin User";
+  if (!email || !password || password.length < 14) {
+    throw new Error(
+      "Set NEW_ADMIN_EMAIL and a NEW_ADMIN_PASSWORD of at least 14 characters before running this script.",
+    );
+  }
+  const hashedPassword = await bcrypt.hash(password, 12);
 
   const admin = await prisma.admin.create({
     data: {
-      email: "admin@riterapublishing.com",
+      email,
       password: hashedPassword,
-      name: "Admin User",
+      name,
       role: "admin",
     },
   });

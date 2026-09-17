@@ -1,6 +1,6 @@
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { createServerClient } from "@/lib/supabase";
+import { getAdminSession } from "@/lib/admin-session";
 import Link from "next/link";
 
 function formatDate(iso: string) {
@@ -17,11 +17,10 @@ function truncate(str: string, max: number) {
 }
 
 export default async function ContactEnquiriesPage() {
-  const supabase = createServerClient();
-  const cookieStore = await cookies();
-  if (!cookieStore.get("admin_session")) {
+  if (!(await getAdminSession())) {
     redirect("/admin/login");
   }
+  const supabase = createServerClient();
 
   await supabase
     .from("admin_section_views")
@@ -30,7 +29,7 @@ export default async function ContactEnquiriesPage() {
 
   const { data: enquiries, error } = await supabase
     .from("contact_enquiries")
-    .select("id, name, email, phone, message, created_at")
+    .select("id, name, email, phone, message, status, spam_reasons, created_at")
     .order("created_at", { ascending: false });
 
   return (
@@ -71,6 +70,7 @@ export default async function ContactEnquiriesPage() {
                   <th className="text-left px-6 py-3 font-medium text-gray-600">Email</th>
                   <th className="text-left px-6 py-3 font-medium text-gray-600">Phone</th>
                   <th className="text-left px-6 py-3 font-medium text-gray-600">Message</th>
+                  <th className="text-left px-6 py-3 font-medium text-gray-600">Status</th>
                   <th className="text-left px-6 py-3 font-medium text-gray-600">Date</th>
                 </tr>
               </thead>
@@ -82,6 +82,18 @@ export default async function ContactEnquiriesPage() {
                     <td className="px-6 py-4 text-gray-600">{row.phone ?? <span className="text-gray-400">—</span>}</td>
                     <td className="px-6 py-4 text-gray-600 max-w-xs">
                       <span title={row.message}>{truncate(row.message, 80)}</span>
+                    </td>
+                    <td className="px-6 py-4">
+                      <span
+                        title={row.spam_reasons?.join(", ") || undefined}
+                        className={`inline-flex rounded-full px-2 py-1 text-xs font-medium ${
+                          row.status === "suspected_spam"
+                            ? "bg-amber-100 text-amber-800"
+                            : "bg-green-100 text-green-800"
+                        }`}
+                      >
+                        {row.status === "suspected_spam" ? "Suspected spam" : "Legitimate"}
+                      </span>
                     </td>
                     <td className="px-6 py-4 text-gray-500 whitespace-nowrap">{formatDate(row.created_at)}</td>
                   </tr>

@@ -20,12 +20,12 @@ const SUPABASE_WSS = "wss://pcahrnefcnrjdjqkrany.supabase.co";
 //   • YouTube            — author/about interview embeds (frame)
 const contentSecurityPolicy = [
   `default-src 'self'`,
-  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://connect.facebook.net https://www.googletagmanager.com`,
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://challenges.cloudflare.com https://connect.facebook.net https://www.googletagmanager.com`,
   `style-src 'self' 'unsafe-inline'`,
   `img-src 'self' data: blob: ${SUPABASE_ORIGIN} https://placehold.co https://www.facebook.com https://i.ytimg.com https://*.google-analytics.com https://*.googletagmanager.com`,
   `font-src 'self' data:`,
   `connect-src 'self' https://analytics.google.com https://www.google.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://ipapi.co ${SUPABASE_ORIGIN} ${SUPABASE_WSS} https://www.facebook.com https://connect.facebook.net${isDev ? " ws: wss:" : ""}`,
-  `frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://www.facebook.com`,
+  `frame-src 'self' https://challenges.cloudflare.com https://www.youtube.com https://www.youtube-nocookie.com https://www.facebook.com`,
   `media-src 'self'`,
   `worker-src 'self' blob:`,
   `object-src 'none'`,

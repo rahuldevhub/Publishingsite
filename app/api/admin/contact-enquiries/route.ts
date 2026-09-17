@@ -7,8 +7,8 @@ export async function GET() {
   const supabase = createServerClient();
   const { data, error } = await supabase
     .from("contact_enquiries")
-    .select("id, name, email, phone, message, created_at")
+    .select("id, name, email, phone, message, status, spam_reasons, created_at")
     .order("created_at", { ascending: false });
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json({ data });
+  if (error) return NextResponse.json({ error: "Unable to load enquiries." }, { status: 500 });
+  return NextResponse.json({ data }, { headers: { "Cache-Control": "no-store" } });
 }

@@ -1,5 +1,5 @@
 import type { ComponentProps } from "react";
-import { cookies } from "next/headers";
+import { getAdminSession } from "@/lib/admin-session";
 import { redirect } from "next/navigation";
 import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
@@ -14,8 +14,7 @@ export default async function BooksPage({
   searchParams: Promise<{ genre?: string; featured?: string }>;
 }) {
   const supabase = createServerClient();
-  const cookieStore = await cookies();
-  if (!cookieStore.get("admin_session")) {
+  if (!(await getAdminSession())) {
     redirect("/admin/login");
   }
 
