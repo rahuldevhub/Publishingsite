@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@/lib/supabase";
 import { getAdminSession, unauthorized } from "@/lib/admin-session";
+import { blogContentToPlainText, prepareBlogContentForStorage } from "@/lib/blog-content";
 
 export async function GET(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   if (!(await getAdminSession())) return unauthorized();
@@ -15,8 +16,12 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
   if (!(await getAdminSession())) return unauthorized();
   const { id } = await params;
   const body = await request.json();
+  const content = prepareBlogContentForStorage(body.content);
+  if (!blogContentToPlainText(content).trim()) {
+    return NextResponse.json({ error: "Content is required." }, { status: 400 });
+  }
   const supabase = createServerClient();
-  const { error } = await supabase.from("blog_posts").update(body).eq("id", id);
+  const { error } = await supabase.from("blog_posts").update({ ...body, content }).eq("id", id);
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
   return NextResponse.json({ success: true });
 }

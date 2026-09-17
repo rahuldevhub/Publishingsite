@@ -5,6 +5,7 @@ import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
 import { getSupabaseBrowserClient } from "@/lib/supabase-browser";
 import ImageUpload from "@/app/admin/components/ImageUpload";
+import RichTextEditor from "@/app/admin/components/RichTextEditor";
 
 const inputClass =
   "w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent";
@@ -102,9 +103,16 @@ export default function EditBlogPostPage() {
       }
     }
 
-    const { error: updateError } = await supabase
-      .from("blog_posts")
-      .update({
+    if (!form.content.replace(/<[^>]*>/g, "").replace(/&nbsp;/g, " ").trim()) {
+      setError("Content is required.");
+      setSaving(false);
+      return;
+    }
+
+    const response = await fetch(`/api/admin/blog-posts/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
         title: form.title,
         slug: form.slug,
         excerpt: form.excerpt || null,
@@ -119,13 +127,14 @@ export default function EditBlogPostPage() {
         faq_data: parsedFaq,
         featured: form.featured,
         published: form.published,
-      })
-      .eq("id", id);
+      }),
+    });
 
     setSaving(false);
 
-    if (updateError) {
-      setError(updateError.message);
+    if (!response.ok) {
+      const result = await response.json().catch(() => ({ error: "Unable to update the post." }));
+      setError(result.error || "Unable to update the post.");
       return;
     }
 
@@ -267,12 +276,9 @@ export default function EditBlogPostPage() {
             {/* Content */}
             <div>
               <label htmlFor="content" className="block text-sm font-medium text-gray-700 mb-1.5">Content <span className="text-red-500">*</span></label>
-              <textarea id="content"
-                rows={12}
-                required
+              <RichTextEditor id="content"
                 value={form.content}
-                onChange={(e) => handleChange("content", e.target.value)}
-                className={`${inputClass} resize-y`}
+                onChange={(value) => handleChange("content", value)}
               />
             </div>
 

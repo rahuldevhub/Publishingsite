@@ -8,6 +8,8 @@ import ReadingProgress from "@/app/components/ReadingProgress";
 import RelatedGuides from "@/app/components/RelatedGuides";
 import { CONTEXTUAL_RULES, MAX_CONTEXTUAL_LINKS } from "@/lib/internal-links";
 import { SITE_URL } from "@/lib/site";
+import { blogContentToPlainText, sanitizeBlogContent } from "@/lib/blog-content";
+import { isRichTextHtml } from "@/lib/blog-content-format";
 
 export const dynamic = "force-dynamic";
 
@@ -40,7 +42,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const description =
     post.meta_description ||
     post.excerpt ||
-    post.content?.replace(/[#*`[\]()]/g, "").slice(0, 155).trim() ||
+    blogContentToPlainText(post.content ?? "").replace(/[#*`[\]()]/g, "").slice(0, 155).trim() ||
     "Insights and guidance from the Ritera Publishing editorial team.";
   const url = `${SITE_URL}/blog/${slug}`;
   const image = post.featured_image;
@@ -148,6 +150,9 @@ export default async function BlogPostPage({ params }: PageProps) {
   const postUrl = `${SITE_URL}/blog/${slug}`;
   const shareTitle = encodeURIComponent(post.title);
   const shareUrl = encodeURIComponent(postUrl);
+  const richTextContent = isRichTextHtml(post.content)
+    ? sanitizeBlogContent(post.content)
+    : null;
 
   return (
     <>
@@ -252,8 +257,12 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         {/* ── Article Content ── */}
         <article className="max-w-3xl mx-auto px-6 pb-16">
-          <div className="prose-content space-y-1">
-            {renderContent(post.content, slug)}
+          <div className="blog-article-content">
+            {richTextContent ? (
+              <div dangerouslySetInnerHTML={{ __html: richTextContent }} />
+            ) : (
+              renderContent(post.content, slug)
+            )}
           </div>
 
           {/* ── FAQ Section ── */}
