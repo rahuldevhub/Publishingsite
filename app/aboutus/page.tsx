@@ -299,7 +299,7 @@ export default function AboutPage() {
                 Plan Your Book’s Visibility
               </h2>
               <p className="text-gray-500 text-base lg:text-lg max-w-2xl mx-auto">
-                Illustrative campaign plans, not author case studies. Agree scope and budget before launch; marketing does not guarantee sales or a return on investment.
+                Hypothetical 30-day examples showing how a book campaign can be measured. These are not actual Ritera results, forecasts, or guaranteed outcomes.
               </p>
             </div>
 
@@ -309,40 +309,28 @@ export default function AboutPage() {
                   author: "First Book Launch",
                   challenge: "New author, unknown in market",
                   strategy: "Targeted Instagram + Amazon ads, book blogger outreach",
-                  metrics: [
-                    { icon: "reach", label: "Reach", value: "Track" },
-                    { icon: "clicks", label: "Clicks", value: "Track" },
-                    { icon: "sales", label: "Sales", value: "Track" },
-                    { icon: "roi", label: "ROI", value: "Track" },
-                  ],
-                  spend: "Agreed budget",
-                  revenue: "Measure results",
+                  reach: 18000,
+                  clicks: 360,
+                  orders: 12,
+                  budget: 6000,
                 },
                 {
                   author: "Business Book Visibility",
                   challenge: "Niche business book, limited audience",
                   strategy: "LinkedIn ads, entrepreneur communities, podcast features",
-                  metrics: [
-                    { icon: "reach", label: "Reach", value: "Track" },
-                    { icon: "clicks", label: "Clicks", value: "Track" },
-                    { icon: "sales", label: "Sales", value: "Track" },
-                    { icon: "roi", label: "ROI", value: "Track" },
-                  ],
-                  spend: "Agreed budget",
-                  revenue: "Measure results",
+                  reach: 9000,
+                  clicks: 150,
+                  orders: 6,
+                  budget: 8000,
                 },
                 {
                   author: "Poetry Reader Outreach",
                   challenge: "Poetry has smaller commercial market",
                   strategy: "Instagram reels, book clubs, influencer partnerships",
-                  metrics: [
-                    { icon: "reach", label: "Reach", value: "Track" },
-                    { icon: "clicks", label: "Clicks", value: "Track" },
-                    { icon: "sales", label: "Sales", value: "Track" },
-                    { icon: "roi", label: "ROI", value: "Track" },
-                  ],
-                  spend: "Agreed budget",
-                  revenue: "Measure results",
+                  reach: 7500,
+                  clicks: 120,
+                  orders: 3,
+                  budget: 4000,
                 },
               ].map((story) => (
                 <div
@@ -357,6 +345,7 @@ export default function AboutPage() {
                       </div>
                       <div>
                         <p className="font-bold text-white text-sm">{story.author}</p>
+                        <p className="mt-1 text-xs font-medium text-amber-300">Illustrative example</p>
                       </div>
                     </div>
                   </div>
@@ -384,39 +373,38 @@ export default function AboutPage() {
                     {/* Metric grid */}
                     <div>
                       <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">
-                        Measures to Review
+                        Example Metrics
                       </p>
                       <div className="grid grid-cols-2 gap-2">
-                        {story.metrics.map((m) => (
+                        {[
+                          { label: "Reach", value: story.reach.toLocaleString("en-IN") },
+                          { label: "Clicks", value: story.clicks.toLocaleString("en-IN") },
+                          { label: "Book Orders", value: story.orders.toLocaleString("en-IN") },
+                          { label: "Order Conversion", value: `${((story.orders / story.clicks) * 100).toFixed(1)}%` },
+                        ].map((m) => (
                           <div
                             key={m.label}
                             className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-3 border border-gray-100"
                           >
-                            <p className="text-xl font-black text-gray-900">{m.value}</p>
-                            <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wide mt-0.5">
+                            <p className="text-xl font-bold tabular-nums text-gray-900">{m.value}</p>
+                            <p className="mt-1 text-[11px] font-semibold uppercase tracking-wide text-gray-600">
                               {m.label}
                             </p>
                           </div>
                         ))}
                       </div>
+                      <p className="mt-3 text-xs leading-5 text-gray-500">Conversion = example orders ÷ clicks. Figures are invented for illustration.</p>
                     </div>
 
-                    {/* ROI bar */}
-                    <div className="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-100 rounded-xl px-4 py-3 flex items-center justify-between">
-                      <div className="text-center">
-                        <p className="text-xs text-gray-500 mb-0.5">Planning</p>
-                        <p className="font-bold text-gray-700 text-sm">{story.spend}</p>
+                    {/* Example assumptions, not a quote or achieved return. */}
+                    <div className="grid grid-cols-2 gap-3 rounded-xl border border-amber-100 bg-amber-50/50 px-4 py-3">
+                      <div>
+                        <p className="mb-1 text-xs text-gray-600">Example Budget</p>
+                        <p className="text-sm font-semibold tabular-nums text-gray-900">₹{story.budget.toLocaleString("en-IN")}</p>
                       </div>
-                      <div className="flex items-center gap-1 text-emerald-500">
-                        <div className="h-px w-8 bg-emerald-300" />
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                        </svg>
-                        <div className="h-px w-8 bg-emerald-300" />
-                      </div>
-                      <div className="text-center">
-                        <p className="text-xs text-gray-500 mb-0.5">Review</p>
-                        <p className="font-bold text-emerald-700 text-sm">{story.revenue}</p>
+                      <div className="border-l border-amber-200/60 pl-3">
+                        <p className="mb-1 text-xs text-gray-600">Example Duration</p>
+                        <p className="text-sm font-semibold text-gray-900">30 days</p>
                       </div>
                     </div>
                   </div>
