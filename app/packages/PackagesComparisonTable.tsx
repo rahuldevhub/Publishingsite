@@ -138,7 +138,9 @@ export default function PackagesComparisonTable() {
           <p className="mt-2 text-gray-500 text-sm">Scroll right on mobile to see all packages</p>
         </div>
 
-        <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
+        {/* Contain absolutely positioned screen-reader labels inside the
+            table scroller so offscreen columns cannot widen the page. */}
+        <div className="relative max-w-full overflow-x-auto rounded-2xl border border-gray-200 shadow-sm">
           <table className="w-full text-sm" style={{ minWidth: "900px" }}>
             <thead>
               <tr>
