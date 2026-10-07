@@ -76,7 +76,7 @@ type Book = {
 };
 
 const selectClass =
-  "px-3 py-2 rounded-lg border border-gray-200 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent";
+  "min-w-0 w-full max-w-full sm:w-auto px-3 py-2 rounded-lg border border-gray-200 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent";
 
 export default async function BooksPage({ searchParams }: PageProps) {
   const supabase = createServerClient();
@@ -90,6 +90,15 @@ export default async function BooksPage({ searchParams }: PageProps) {
   const genres = [...new Set((allBooks ?? []).map((b) => b.genre).filter(Boolean))].sort() as string[];
   const formats = [...new Set((allBooks ?? []).map((b) => b.format).filter(Boolean))].sort() as string[];
   const languages = [...new Set((allBooks ?? []).map((b) => b.language).filter(Boolean))].sort() as string[];
+  // Keep mobile shortcuts short and distinct while preserving exact filter values.
+  const seenGenres = new Set<string>();
+  const mobileGenres = genres.filter(g => {
+    const label = g.trim();
+    const key = label.toLowerCase().replace(/[\s-]+/g, "");
+    if (label.length > 32 || label.includes(">") || seenGenres.has(key)) return false;
+    seenGenres.add(key);
+    return true;
+  }).slice(0, 5);
 
   // Build filtered + sorted query
   let query = supabase
@@ -140,25 +149,40 @@ export default async function BooksPage({ searchParams }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }}
       />
-      <main className="bg-white">
+      <main className="bg-white pt-[82px] lg:pt-0">
       {/* ── Hero ── */}
       <section className="bg-gray-900 text-white">
-        <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
-          <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-4">
+        <div className="max-w-7xl mx-auto px-6 py-10 sm:py-20 lg:py-28">
+          <p className="text-[10px] sm:text-xs font-semibold tracking-[0.16em] text-amber-200 sm:text-gray-400 uppercase mb-3 sm:mb-4">
             Ritera Publishing
           </p>
-          <h1 className="text-4xl lg:text-6xl font-bold leading-tight max-w-3xl text-white">
+          <h1 className="text-[32px] sm:text-4xl lg:text-6xl font-bold leading-[1.15] sm:leading-tight tracking-tight sm:tracking-normal max-w-3xl text-white [text-wrap:balance] sm:[text-wrap:wrap]">
             Discover Our Published Books
           </h1>
-          <p className="mt-5 text-lg text-gray-300 max-w-2xl leading-relaxed">
+          <p className="mt-4 sm:mt-5 text-base sm:text-lg text-gray-300 max-w-2xl leading-relaxed">
             A curated collection of novels, stories, poems, and ideas from talented authors published through our self-publishing platform. Every book represents a journey discover what’s possible when you publish your book in India and beyond.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-6 border-t border-white/10 pt-5 sm:hidden">
+            <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-gray-400">Explore by genre</p>
+            <div className="grid grid-cols-3 gap-2">
+              {mobileGenres.map(g => (
+                <Link key={g} href={`/books?genre=${encodeURIComponent(g)}`}
+                  className="flex min-h-10 min-w-0 items-center justify-center rounded-xl border border-white/15 bg-white/5 px-2 py-2 text-center text-xs leading-4 text-gray-200 transition-colors hover:border-amber-300 hover:text-amber-200 focus-visible:outline-2 focus-visible:outline-amber-300">
+                  {g.trim()}
+                </Link>
+              ))}
+              <Link href="/books#book-filters"
+                className="flex min-h-10 min-w-0 items-center justify-center rounded-xl border border-amber-300/30 bg-amber-300/10 px-2 py-2 text-center text-xs leading-4 font-medium text-amber-200 focus-visible:outline-2 focus-visible:outline-amber-300">
+                All genres <span className="ml-1" aria-hidden="true">↓</span>
+              </Link>
+            </div>
+          </div>
+          <div className="mt-8 hidden flex-wrap gap-3 sm:flex">
             {genres.slice(0, 5).map((g) => (
               <Link
                 key={g}
                 href={`/books?genre=${encodeURIComponent(g)}`}
-                className="px-4 py-1.5 rounded-full border border-gray-600 text-sm text-gray-300 hover:border-white hover:text-white transition-colors"
+                className="min-w-0 max-w-full break-words px-4 py-1.5 rounded-full border border-gray-600 text-sm text-gray-300 hover:border-white hover:text-white transition-colors"
               >
                 {g}
               </Link>
@@ -168,11 +192,11 @@ export default async function BooksPage({ searchParams }: PageProps) {
       </section>
 
       {/* ── Filter + Sort Bar ── */}
-      <div className="sticky top-0 z-10 bg-white border-b border-gray-200 shadow-sm">
+      <div id="book-filters" className="sticky top-[82px] lg:top-[86px] scroll-mt-[82px] lg:scroll-mt-[86px] z-10 bg-white border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 py-3">
-          <form method="GET" className="flex flex-wrap items-center gap-3">
+          <form method="GET" className="grid grid-cols-2 items-center gap-3 sm:flex sm:flex-wrap">
             {/* Search */}
-            <div className="relative flex-1 min-w-[180px] max-w-xs">
+            <div className="relative col-span-2 min-w-0 w-full sm:flex-1 sm:min-w-[180px] sm:max-w-xs">
               <svg
                 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"
                 fill="none"
@@ -192,25 +216,25 @@ export default async function BooksPage({ searchParams }: PageProps) {
             </div>
 
             {genres.length > 1 && (
-              <select name="genre" defaultValue={genre ?? ""} className={selectClass}>
+              <select name="genre" aria-label="Genre" defaultValue={genre ?? ""} className={`col-span-2 ${selectClass}`}>
                 <option value="">All Genres</option>
                 {genres.map((g) => <option key={g} value={g}>{g}</option>)}
               </select>
             )}
             {formats.length > 1 && (
-              <select name="format" defaultValue={format ?? ""} className={selectClass}>
+              <select name="format" aria-label="Format" defaultValue={format ?? ""} className={selectClass}>
                 <option value="">All Formats</option>
                 {formats.map((f) => <option key={f} value={f}>{f}</option>)}
               </select>
             )}
             {languages.length > 1 && (
-              <select name="language" defaultValue={language ?? ""} className={selectClass}>
+              <select name="language" aria-label="Language" defaultValue={language ?? ""} className={selectClass}>
                 <option value="">All Languages</option>
                 {languages.map((l) => <option key={l} value={l}>{l}</option>)}
               </select>
             )}
 
-            <select name="sort" defaultValue={sort ?? "display"} className={selectClass}>
+            <select name="sort" aria-label="Sort books" defaultValue={sort ?? "display"} className={selectClass}>
               <option value="display">Featured Order</option>
               <option value="latest">Latest First</option>
               <option value="oldest">Oldest First</option>
@@ -237,7 +261,7 @@ export default async function BooksPage({ searchParams }: PageProps) {
       <div className="max-w-7xl mx-auto px-6 py-10">
         {/* Results count */}
         <div className="flex items-center justify-between mb-6">
-          <p className="text-sm text-gray-600">
+          <p className="min-w-0 break-words text-sm text-gray-600">
             {count ?? 0} {(count ?? 0) === 1 ? "book" : "books"}
             {q && <span> matching &ldquo;{q}&rdquo;</span>}
           </p>
@@ -259,7 +283,7 @@ export default async function BooksPage({ searchParams }: PageProps) {
             {typedBooks.map((book) => {
               const author = book.author as { name: string; slug: string } | null;
               return (
-                <article key={book.id} className="group flex flex-col">
+                <article key={book.id} className="group min-w-0 flex flex-col">
                   {/* Cover */}
                   <Link href={`/books/${book.slug}`} className="block relative aspect-[2/3] bg-gray-100 rounded-xl overflow-hidden mb-3 shadow-sm group-hover:shadow-md transition-shadow">
                     {book.cover_image ? (
@@ -287,23 +311,23 @@ export default async function BooksPage({ searchParams }: PageProps) {
                   </Link>
 
                   {/* Info */}
-                  <div className="flex flex-col flex-1">
-                    <span className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
+                  <div className="min-w-0 flex flex-col flex-1">
+                    <span className="break-words text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
                       {book.genre}
                     </span>
                     <Link href={`/books/${book.slug}`}>
-                      <h2 className="font-bold text-gray-900 text-sm leading-snug line-clamp-2 group-hover:text-gray-600 transition-colors mb-1">
+                      <h2 className="break-words font-bold text-gray-900 text-sm leading-snug line-clamp-2 group-hover:text-gray-600 transition-colors mb-1">
                         {book.title}
                       </h2>
                     </Link>
                     {author && (
-                      <p className="text-xs text-gray-500 mb-2">by {author.name}</p>
+                      <p className="break-words text-xs text-gray-500 mb-2">by {author.name}</p>
                     )}
-                    <div className="flex items-center gap-1.5 mb-3">
-                      <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">
+                    <div className="flex flex-wrap items-center gap-1.5 mb-3">
+                      <span className="max-w-full break-words text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">
                         {book.format}
                       </span>
-                      <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">
+                      <span className="max-w-full break-words text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">
                         {book.language}
                       </span>
                     </div>
@@ -322,7 +346,7 @@ export default async function BooksPage({ searchParams }: PageProps) {
 
         {/* ── Pagination ── */}
         {totalPages > 1 && (
-          <nav aria-label="Pagination" className="mt-12 flex items-center justify-center gap-2">
+          <nav aria-label="Pagination" className="mt-12 flex flex-wrap items-center justify-center gap-2">
             {page > 1 && (
               <Link
                 href={`/books?${new URLSearchParams({ ...(genre && { genre }), ...(format && { format }), ...(language && { language }), ...(sort && { sort }), ...(q && { q }), page: String(page - 1) })}`}
@@ -331,7 +355,7 @@ export default async function BooksPage({ searchParams }: PageProps) {
                 ← Previous
               </Link>
             )}
-            <div className="flex items-center gap-1">
+            <div className="flex flex-wrap items-center justify-center gap-1">
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
                 <Link
                   key={p}

@@ -216,7 +216,7 @@ export default function EditorialAboutSection() {
                   <div
                     key={f.title}
                     className="
-                      border border-gray-200 rounded-[20px]
+                      editorial-service-card border border-gray-200 rounded-[20px]
                       px-4 py-[14px] bg-white min-h-[68px] flex flex-col justify-center
                       transition-all duration-[250ms] ease-out
                       hover:-translate-y-0.5
@@ -227,18 +227,18 @@ export default function EditorialAboutSection() {
                     <p className="text-[12px] font-bold text-gray-900 mb-1 leading-snug">
                       {f.title}
                     </p>
-                    <p className="text-[11px] text-gray-400 leading-snug">{f.desc}</p>
+                    <p className="text-[11px] text-gray-500 sm:text-gray-400 leading-snug">{f.desc}</p>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* CTA — 32 px below feature cards */}
-            <div style={fu(340, { marginTop: "32px" })}>
+            <div className="flex justify-center sm:block" style={fu(340, { marginTop: "32px" })}>
               <Link
                 href="/packages"
                 className="
-                  group inline-flex items-center gap-3 px-8 bg-gray-900 text-white
+                  group inline-flex max-w-full items-center justify-center gap-3 px-5 sm:px-8 bg-gray-900 text-white
                   font-semibold rounded-xl text-sm
                   transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]
                   hover:bg-gray-800 hover:-translate-y-[2px]

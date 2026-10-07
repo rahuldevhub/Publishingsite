@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { getSupabaseBrowserClient } from "@/lib/supabase-browser";
 import Image from "next/image";
-import Link from "next/link";
+import ShelfBookLink from "./ShelfBookLink";
 
 export type ShelfBook = {
   id: string;
@@ -46,25 +46,17 @@ function BookCover({ item, onShelf }: { item: Item; onShelf: boolean }) {
   const isTransparent = !!book.cover_image && /\.png(\?|$)/i.test(book.cover_image);
 
   return (
-    <Link
-      href={`/books/${book.slug}`}
-      title={book.title}
+    <ShelfBookLink
+      book={book}
       className={onShelf ? "h-full shrink-0" : "shrink-0"}
     >
       <div className={onShelf ? "book-card group relative h-full" : "book-card group relative w-28"}>
-        {/* hover placard — shelf layout only, keeps the surface clutter-free by default */}
-        {onShelf && (
-          <div className="pointer-events-none absolute -top-2 left-1/2 z-20 -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-full bg-black/80 px-3 py-1 text-[11px] font-medium text-white opacity-0 shadow-lg backdrop-blur transition-all duration-200 group-hover:-translate-y-[calc(100%+6px)] group-hover:opacity-100">
-            {book.title}
-            {book.author && <span className="text-amber-200/80"> · {book.author.name}</span>}
-          </div>
-        )}
-
         {isTransparent ? (
           /* ── Transparent PNG — only the book is visible, grounded by layered drop-shadows ── */
           <div className={onShelf ? "relative flex h-full flex-col items-center" : "relative"}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
+              data-shelf-cover
               src={book.cover_image!}
               alt={book.title}
               loading="lazy"
@@ -96,6 +88,7 @@ function BookCover({ item, onShelf }: { item: Item; onShelf: boolean }) {
 
             {/* cover */}
             <div
+              data-shelf-cover
               className={
                 (onShelf
                   ? "relative h-full aspect-[2/3] "
@@ -147,7 +140,7 @@ function BookCover({ item, onShelf }: { item: Item; onShelf: boolean }) {
           </>
         )}
       </div>
-    </Link>
+    </ShelfBookLink>
   );
 }
 
@@ -267,17 +260,10 @@ function DesktopShelfBook({
   const calTopPct = tightShadow ? (TOP_ROW_CALIBRATION[book.slug]?.y ?? 0) * (h / 100) : 0;
 
   return (
-    <Link
-      href={`/books/${book.slug}`}
-      title={book.title}
+    <ShelfBookLink
+      book={book}
       className="group relative flex h-full shrink-0 items-end justify-center"
     >
-      {/* hover placard */}
-      <div className="pointer-events-none absolute -top-1 left-1/2 z-30 -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-full bg-black/80 px-3 py-1 text-[11px] font-medium text-white opacity-0 shadow-lg backdrop-blur transition-all duration-200 group-hover:-translate-y-[calc(100%+4px)] group-hover:opacity-100">
-        {book.title}
-        {book.author && <span className="text-amber-200/80"> · {book.author.name}</span>}
-      </div>
-
       {/* contact shadow — two layers: a soft ambient pool + a tight dark core right at
           the book's base, so it reads as physically resting on the plank, not hovering.
           Top row is `tightShadow`: narrower/crisper AND raised to z-20 so it sits IN FRONT
@@ -305,6 +291,7 @@ function DesktopShelfBook({
       {isTransparent ? (
         /* eslint-disable-next-line @next/next/no-img-element */
         <img
+          data-shelf-cover
           src={book.cover_image!}
           alt={book.title}
           loading="lazy"
@@ -323,6 +310,7 @@ function DesktopShelfBook({
       ) : (
         /* legacy opaque cover — kept grounded should a non-PNG ever slip through */
         <div
+          data-shelf-cover
           className="relative z-10 overflow-hidden rounded-[3px] object-bottom shadow-[0_2px_3px_rgba(0,0,0,0.4),0_14px_18px_-8px_rgba(0,0,0,0.6)] ring-1 ring-black/40 transition-transform duration-300 ease-out group-hover:-translate-y-2 group-hover:scale-[1.02]"
           style={{ height: `${h}%`, aspectRatio: "2 / 3", marginBottom: cal.dy ? `${cal.dy}px` : undefined }}
         >
@@ -335,7 +323,7 @@ function DesktopShelfBook({
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-amber-100/10 via-transparent to-black/25" />
         </div>
       )}
-    </Link>
+    </ShelfBookLink>
   );
 }
 
@@ -343,15 +331,10 @@ export default function BooksCarousel({ initialBooks }: { initialBooks?: ShelfBo
   const [books, setBooks] = useState<Book[]>(initialBooks ?? []);
   const [loading, setLoading] = useState(initialBooks === undefined);
 
-  // ── Mobile showcase state (curated 2×2 mini-shelf, autoplaying pages) ──
+  // ── Mobile showcase state (curated 2×2 mini-shelf, manually browsed pages) ──
   const [activeIndex, setActiveIndex] = useState(0);
-  const [shelfInView, setShelfInView] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
-  const shelfRef = useRef<HTMLDivElement>(null);
-  const activeRef = useRef(0);   // live page index for the autoplay timer
-  const dirRef = useRef(1);      // autoplay direction (ping-pongs at the ends)
-  const pausedRef = useRef(false); // true while a finger is on the slider
-  const inViewRef = useRef(false);
+
 
   useEffect(() => {
     if (initialBooks !== undefined) return;
@@ -384,61 +367,25 @@ export default function BooksCarousel({ initialBooks }: { initialBooks?: ShelfBo
   }
   const pageCount = pages.length;
 
-  // Reveal the mini-shelf once it scrolls into view (also gates autoplay).
-  useEffect(() => {
-    const el = shelfRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        inViewRef.current = entry.isIntersecting;
-        if (entry.isIntersecting) setShelfInView(true);
-      },
-      { rootMargin: "0px 0px -40px 0px" }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  // Autoplay — advance one slide every 5.5s, ping-ponging so it never jumps far.
-  // Paused while touched or off-screen, and disabled under reduced-motion.
-  useEffect(() => {
-    if (pageCount <= 1) return;
-    if (typeof window !== "undefined" &&
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    const id = setInterval(() => {
-      const el = trackRef.current;
-      if (!el || pausedRef.current || !inViewRef.current) return;
-      let next = activeRef.current + dirRef.current;
-      if (next >= pageCount) { dirRef.current = -1; next = activeRef.current - 1; }
-      else if (next < 0) { dirRef.current = 1; next = activeRef.current + 1; }
-      el.scrollTo({ left: next * el.clientWidth, behavior: "smooth" });
-    }, 5500);
-    return () => clearInterval(id);
-  }, [pageCount]);
-
   // Keep the page indicator synced to the swipe position.
   const handleTrackScroll = () => {
     const el = trackRef.current;
     if (!el || el.clientWidth === 0) return;
     const idx = Math.max(0, Math.min(pageCount - 1, Math.round(el.scrollLeft / el.clientWidth)));
-    activeRef.current = idx;
     setActiveIndex(idx);
   };
 
   const goToPage = (i: number) => {
     const el = trackRef.current;
     if (!el) return;
-    el.scrollTo({ left: i * el.clientWidth, behavior: "smooth" });
+    el.scrollTo({ left: i * el.clientWidth, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
   };
 
-  const pauseAutoplay = () => { pausedRef.current = true; };
-  const resumeAutoplay = () => { pausedRef.current = false; };
-
   return (
-    <div>
+    <div data-bookshelf-showcase>
       {/* ── Desktop / tablet — fixed two-tier shelf, books sit on the real shelf photo ── */}
       <div
+        data-shelf-cabinet
         className="relative hidden w-full overflow-hidden rounded-2xl shadow-2xl sm:block"
         style={{ aspectRatio: SHELF_ASPECT }}
       >
@@ -503,51 +450,45 @@ export default function BooksCarousel({ initialBooks }: { initialBooks?: ShelfBo
         </div>
       </div>
 
-      {/* ── Mobile — curated 2×2 mini-shelf, four books per slide, autoplaying ── */}
-      <div className="sm:hidden" ref={shelfRef}>
+      {/* ── Mobile — curated 2×2 mini-shelf, four books per shelf, swipe-controlled ── */}
+      <div className="sm:hidden">
         <div className="relative h-[440px] overflow-hidden rounded-2xl shadow-2xl">
-          {/* Real bookshelf photo — both planks visible, books rest on them */}
-          <Image
-            src={SHELF_IMAGE}
-            alt="Premium wooden bookshelf displaying Ritera's published books"
-            fill
-            priority={false}
-            className="object-cover"
-            style={{ objectPosition: "50% 50%" }}
-            sizes="100vw"
-          />
-          {/* gentle vignette for depth + warm top light, matching the shelf */}
-          <div
-            className="pointer-events-none absolute inset-0"
-            style={{
-              backgroundImage:
-                "radial-gradient(ellipse 96% 88% at 50% 45%, transparent 58%, rgba(0,0,0,0.4) 100%)",
-            }}
-          />
-
-          {/* Swipe track — each slide holds four books over the fixed shelf */}
+          {/* Swipe track — the artwork travels with its four books, keeping them grounded */}
           <div
             ref={trackRef}
             onScroll={handleTrackScroll}
-            onPointerDown={pauseAutoplay}
-            onPointerUp={resumeAutoplay}
-            onPointerCancel={resumeAutoplay}
-            onTouchStart={pauseAutoplay}
-            onTouchEnd={resumeAutoplay}
-            className="no-scrollbar absolute inset-0 flex snap-x snap-mandatory overflow-x-auto overflow-y-hidden scroll-smooth"
+            className="no-scrollbar absolute inset-0 flex snap-x snap-mandatory overflow-x-auto overflow-y-hidden motion-safe:scroll-smooth"
           >
             {pages.map((group, p) => (
-              <div key={p} className="relative h-full w-full shrink-0 snap-center">
+              <div key={p} data-shelf-cabinet className="relative h-full w-full shrink-0 snap-center overflow-hidden rounded-2xl">
+                {/* Real bookshelf photo — both planks visible, books rest on them */}
+                <Image
+                  src={SHELF_IMAGE}
+                  alt="Premium wooden bookshelf displaying Ritera's published books"
+                  fill
+                  priority={false}
+                  className="object-cover"
+                  style={{ objectPosition: "50% 50%" }}
+                  sizes="100vw"
+                />
+                {/* gentle vignette for depth + warm top light, matching the shelf */}
+                <div
+                  className="pointer-events-none absolute inset-0"
+                  style={{
+                    backgroundImage:
+                      "radial-gradient(ellipse 96% 88% at 50% 45%, transparent 58%, rgba(0,0,0,0.4) 100%)",
+                  }}
+                />
+
                 {/* top shelf — two books resting on the upper plank */}
                 <div
                   className="absolute inset-x-0 flex items-end justify-evenly px-[9%]"
                   style={{ bottom: "57%", height: "31%" }}
                 >
-                  {group.slice(0, 2).map((item, i) => (
+                  {group.slice(0, 2).map((item) => (
                     <div
                       key={item.id}
-                      className={`h-full ${shelfInView ? "animate-book-rise" : "opacity-0"}`}
-                      style={{ animationDelay: `${i * 80}ms` }}
+                      className="h-full"
                     >
                       <BookCover item={item} onShelf />
                     </div>
@@ -559,11 +500,10 @@ export default function BooksCarousel({ initialBooks }: { initialBooks?: ShelfBo
                   className="absolute inset-x-0 flex items-end justify-evenly px-[9%]"
                   style={{ bottom: "15%", height: "31%" }}
                 >
-                  {group.slice(2, 4).map((item, i) => (
+                  {group.slice(2, 4).map((item) => (
                     <div
                       key={item.id}
-                      className={`h-full ${shelfInView ? "animate-book-rise" : "opacity-0"}`}
-                      style={{ animationDelay: `${(i + 2) * 80}ms` }}
+                      className="h-full"
                     >
                       <BookCover item={item} onShelf />
                     </div>
@@ -576,20 +516,33 @@ export default function BooksCarousel({ initialBooks }: { initialBooks?: ShelfBo
 
         {/* Page indicator + swipe hint */}
         <div className="mt-5 flex flex-col items-center gap-3">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2" role="group" aria-label="Browse published shelves">
+            <button type="button" aria-label="Previous bookshelf" disabled={activeIndex === 0}
+              onClick={() => goToPage(activeIndex - 1)}
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-stone-200 bg-white text-gray-700 transition-colors hover:border-amber-400 focus-visible:outline-2 focus-visible:outline-amber-500 disabled:opacity-30">
+              <span aria-hidden="true">←</span>
+            </button>
             {pages.map((_, i) => (
               <button
                 key={i}
                 type="button"
                 aria-label={`Show books ${i * 4 + 1}–${i * 4 + 4}`}
+                aria-current={i === activeIndex ? "true" : undefined}
                 onClick={() => goToPage(i)}
-                className={`rounded-full transition-all duration-300 ease-out ${
+                className="flex h-11 w-7 items-center justify-center rounded-lg focus-visible:outline-2 focus-visible:outline-amber-500"
+              >
+                <span aria-hidden="true" className={`rounded-full transition-colors duration-200 ${
                   i === activeIndex
                     ? "h-2.5 w-2.5 bg-amber-500"
                     : "h-2 w-2 bg-gray-300"
-                }`}
-              />
+                }`} />
+              </button>
             ))}
+            <button type="button" aria-label="Next bookshelf" disabled={activeIndex === pageCount - 1}
+              onClick={() => goToPage(activeIndex + 1)}
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-stone-200 bg-white text-gray-700 transition-colors hover:border-amber-400 focus-visible:outline-2 focus-visible:outline-amber-500 disabled:opacity-30">
+              <span aria-hidden="true">→</span>
+            </button>
           </div>
           <p className="text-xs text-gray-400">Swipe to explore our published books</p>
         </div>

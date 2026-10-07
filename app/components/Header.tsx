@@ -67,19 +67,23 @@ export default function Header() {
   return (
     <>
       {/* ── Header bar ── */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 py-4 lg:py-5 flex items-center gap-4">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-[#fffdf8] shadow-[0_2px_14px_-8px_rgba(56,37,9,0.18)] lg:bg-white lg:shadow-md">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 py-4 lg:py-5 flex items-center gap-3 lg:gap-4">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 shrink-0 mr-2">
+          <Link href="/" className="flex items-center gap-2.5 shrink-0 lg:mr-2 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-400">
             <Image
               src="/logo.png"
               alt="Ritera Publishing Logo"
               width={161}
               height={46}
-              className="h-[50px] w-auto lg:h-[46px]"
+              className="h-[50px] w-auto mix-blend-multiply lg:h-[46px] lg:mix-blend-normal"
               priority
             />
+            <span className="flex flex-col lg:hidden">
+              <span className="font-[family-name:var(--font-playfair)] text-[17px] leading-5 font-semibold tracking-tight text-gray-900">Ritera Publishing</span>
+              <span className="mt-1 text-[10px] leading-3 tracking-[0.02em] text-stone-500">Your story starts here</span>
+            </span>
           </Link>
 
           {/* Desktop nav — center */}
@@ -115,7 +119,7 @@ export default function Header() {
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
               aria-controls="mobile-nav-drawer"
-              className="lg:hidden w-11 h-11 flex items-center justify-center rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400"
+              className="lg:hidden w-11 h-11 flex items-center justify-center rounded-xl border border-amber-900/10 bg-white/70 text-gray-700 hover:border-amber-400/60 hover:bg-amber-50 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400"
             >
               {menuOpen ? (
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
@@ -129,6 +133,7 @@ export default function Header() {
             </button>
           </div>
         </div>
+        <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-amber-200/30 via-amber-500/60 to-amber-200/30 lg:hidden" />
       </header>
 
       {/* ── Mobile drawer ── */}
