@@ -71,27 +71,52 @@ export default function AboutPage() {
             }}
           />
 
-          <div className="relative max-w-7xl mx-auto px-6 py-20 lg:py-28 grid lg:grid-cols-2 gap-12 items-center">
+          <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-6 pb-10 pt-[114px] sm:gap-10 sm:pb-14 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-8 lg:pb-20 lg:pt-[142px]">
             {/* Text */}
             <div>
-              <p className="text-xs font-semibold tracking-widest text-amber-400 uppercase mb-4">
+              <p className="mb-4 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-amber-400">
+                <span aria-hidden="true" className="h-px w-6 bg-amber-400/70" />
                 About Us
               </p>
-              <h1 className="text-4xl lg:text-6xl font-black leading-tight text-white">
+              <h1 className="max-w-xl text-[36px] font-bold leading-[1.12] tracking-tight text-white sm:text-5xl lg:text-6xl">
                 Your Story
                 <br />
                 <span className="text-amber-400">Matters.</span>
               </h1>
-              <p className="mt-3 text-xl lg:text-2xl font-light text-gray-300">
+              <p className="mt-4 text-lg font-medium leading-7 text-gray-200 sm:text-xl lg:text-2xl">
                 RITERA Brings it to Life
               </p>
-              <p className="mt-6 text-base lg:text-lg text-gray-400 leading-relaxed max-w-xl">
+              <p className="mt-5 max-w-xl text-[15px] leading-7 text-gray-300 sm:text-base lg:text-lg">
                 Ritera Publishing is a self-publishing service based in {COMPANY_FACTS.location}. We support editing, cover design, print and eBook production, distribution, and author marketing through{" "}
                 <Link href="/packages" className="text-amber-400 hover:text-amber-300 font-medium underline underline-offset-2">
                   professional self-publishing packages
                 </Link>. Explore distribution options across {COMPANY_FACTS.countries.display} countries. {COMPANY_FACTS.copyrightPolicy}
               </p>
-              <p className="mt-4 text-sm text-gray-500 leading-relaxed max-w-xl">
+              <a
+                href="#virtual-meet"
+                className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-amber-400 px-6 py-3 text-sm font-semibold text-gray-900 transition-colors hover:bg-amber-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-300"
+              >
+                Explore Our Community <span aria-hidden="true">↓</span>
+              </a>
+            </div>
+
+            {/* Image collage */}
+            <div className="grid h-[280px] min-w-0 grid-cols-2 grid-rows-2 gap-3 min-[400px]:h-[320px] sm:h-[380px] lg:h-[480px] lg:gap-4">
+              {/* Tall left image */}
+              <div className="row-span-2 rounded-2xl overflow-hidden bg-gray-700 relative">
+                <Image src="/images/aboutus3.webp" alt="Stacked books with a miniature ladder" fill className="object-cover" priority sizes="(max-width: 1024px) 50vw, 25vw" />
+              </div>
+              {/* Top-right image */}
+              <div className="rounded-2xl overflow-hidden bg-gray-600 relative">
+                <Image src="/images/aboutus2.webp" alt="A reader enjoying a book" fill className="object-cover" priority sizes="(max-width: 1024px) 50vw, 25vw" />
+              </div>
+              {/* Bottom-right image */}
+              <div className="rounded-2xl overflow-hidden bg-gray-700 relative">
+                <Image src="/images/aboutus1.webp" alt="Writing on a laptop beside a cup of tea" fill className="object-cover" priority sizes="(max-width: 1024px) 50vw, 25vw" />
+              </div>
+            </div>
+            <div className="border-t border-white/10 pt-5 lg:col-span-2">
+              <p className="text-sm leading-6 text-gray-300 [overflow-wrap:anywhere]">
                 New to publishing? Learn{" "}
                 <Link href={`/blog/${ABOUT_LINKS[0].slug}`} className="text-gray-300 hover:text-white underline underline-offset-2">
                   {ABOUT_LINKS[0].anchor}
@@ -101,28 +126,6 @@ export default function AboutPage() {
                   {ABOUT_LINKS[1].anchor}
                 </Link>. Meet the <Link href="/people-behind-ritera" className="text-gray-300 hover:text-white underline underline-offset-2">Ritera publishing team</Link> or contact us at <a href={`mailto:${COMPANY_FACTS.email}`} className="text-gray-300 hover:text-white underline underline-offset-2">{COMPANY_FACTS.email}</a>.
               </p>
-              <a
-                href="#virtual-meet"
-                className="inline-block mt-8 px-7 py-3.5 bg-amber-400 text-gray-900 font-semibold rounded-xl hover:bg-amber-300 transition-colors text-sm"
-              >
-                Learn More
-              </a>
-            </div>
-
-            {/* Image collage */}
-            <div className="grid grid-cols-2 gap-3 lg:gap-4 h-[420px] lg:h-[480px]">
-              {/* Tall left image */}
-              <div className="row-span-2 rounded-2xl overflow-hidden bg-gray-700 relative">
-                <Image src="/images/aboutus3.webp" alt="Author during a publishing event" fill className="object-cover" priority sizes="(max-width: 1024px) 50vw, 25vw" />
-              </div>
-              {/* Top-right image */}
-              <div className="rounded-2xl overflow-hidden bg-gray-600 relative">
-                <Image src="/images/aboutus2.webp" alt="Book launch event" fill className="object-cover" priority sizes="(max-width: 1024px) 50vw, 25vw" />
-              </div>
-              {/* Bottom-right image */}
-              <div className="rounded-2xl overflow-hidden bg-gray-700 relative">
-                <Image src="/images/aboutus1.webp" alt="Ritera team at work" fill className="object-cover" priority sizes="(max-width: 1024px) 50vw, 25vw" />
-              </div>
             </div>
           </div>
         </section>
@@ -141,7 +144,7 @@ export default function AboutPage() {
         </section>
 
         {/* ── 3. VIRTUAL MEET ── */}
-        <section id="virtual-meet" className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
+        <section id="virtual-meet" className="scroll-mt-28 max-w-7xl mx-auto px-6 py-20 lg:py-28">
           <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
             
             {/* Image */}
