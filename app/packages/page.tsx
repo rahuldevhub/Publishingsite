@@ -245,12 +245,13 @@ export default function PackagesPage() {
               involves before you choose.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <p className="mb-4 text-center text-xs text-gray-500 sm:hidden">Swipe to explore publishing guides →</p>
+          <div className="relative flex snap-x snap-mandatory gap-5 overflow-x-auto pb-3 sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 lg:grid-cols-3">
             {PACKAGES_RESOURCES.map((guide) => (
               <Link
                 key={guide.slug}
                 href={`/blog/${guide.slug}`}
-                className="group flex flex-col rounded-2xl border border-gray-200 bg-white p-6 hover:border-gray-900 hover:shadow-sm transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400"
+                className="group flex w-[85%] shrink-0 snap-start flex-col rounded-2xl border border-gray-200 bg-white p-6 hover:border-gray-900 hover:shadow-sm transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 sm:w-auto"
               >
                 <h3 className="font-bold text-gray-900 leading-snug mb-2 group-hover:text-gray-700 transition-colors">
                   {guide.title}
@@ -266,7 +267,7 @@ export default function PackagesPage() {
       </section>
 
       {/* ── Custom Package Builder ── */}
-      <section id="custom-builder" className="scroll-mt-8">
+      <section id="custom-builder" className="scroll-mt-24 sm:scroll-mt-8">
         <div className="max-w-6xl mx-auto px-6 py-16">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-bold text-gray-900">
