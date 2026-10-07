@@ -1,3 +1,6 @@
+import { archivePage, archiveCanonical } from "@/lib/seo";
+import { breadcrumbSchema as buildBreadcrumbSchema } from "@/lib/structured-data";
+import { serializeJsonLd } from "@/lib/structured-data";
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,7 +10,7 @@ import { SITE_URL } from "@/lib/site";
 export const dynamic = "force-dynamic";
 
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "Blog — Insights, Tips & Publishing News",
   description:
     "Expert self-publishing tips for Indian authors — manuscript editing, cover design, ISBN guidance, and author success stories from Ritera Publishing.",
@@ -27,6 +30,19 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/blog` },
 };
+
+export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
+  const query = await searchParams;
+  const page = archivePage(query.page);
+  const canonical = archiveCanonical("/blog", page);
+  return {
+    ...baseMetadata,
+    ...(page > 1 ? { title: `${baseMetadata.title} – Page ${page}` } : {}),
+    alternates: { canonical },
+    openGraph: { ...baseMetadata.openGraph, url: canonical },
+  };
+}
+
 
 function formatDate(dateStr: string) {
   return new Intl.DateTimeFormat("en-IN", {
@@ -61,7 +77,7 @@ type PageProps = { searchParams: Promise<{ page?: string }> };
 export default async function BlogPage({ searchParams }: PageProps) {
   const supabase = createServerClient();
   const { page: pageParam } = await searchParams;
-  const page = Math.max(1, Number(pageParam) || 1);
+  const page = archivePage(pageParam);
   const from = (page - 1) * POSTS_PER_PAGE;
   const to = from + POSTS_PER_PAGE - 1;
 
@@ -94,21 +110,17 @@ export default async function BlogPage({ searchParams }: PageProps) {
   const typedPosts = (posts ?? []) as unknown as Post[];
   const typedCategories = (categories ?? []) as Category[];
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
-      { "@type": "ListItem", position: 2, name: "Blog", item: "https://riterapublishing.com/blog" },
-    ],
-  };
+  const breadcrumbSchema = buildBreadcrumbSchema([
+      { name: "Home", item: "https://riterapublishing.com" },
+      { name: "Blog", item: "https://riterapublishing.com/blog" },
+  ]);
 
   return (
     <>
       {/* BreadcrumbList JSON-LD */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }}
       />
       <main>
       {/* ── Hero ── */}

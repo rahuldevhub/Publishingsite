@@ -1,3 +1,6 @@
+import { archivePage, archiveCanonical } from "@/lib/seo";
+import { breadcrumbSchema as buildBreadcrumbSchema } from "@/lib/structured-data";
+import { serializeJsonLd } from "@/lib/structured-data";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { createServerClient } from "@/lib/supabase";
@@ -22,9 +25,12 @@ type PageProps = {
   searchParams: Promise<{ page?: string }>;
 };
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
   const supabase = createServerClient();
   const { slug } = await params;
+  const query = await searchParams;
+  const page = archivePage(query.page);
+  const canonical = archiveCanonical(`/blog/category/${slug}`, page);
   const { data: category } = await supabase
     .from("blog_categories")
     .select("name, slug")
@@ -33,16 +39,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!category) notFound();
 
-  const title = `${category.name} | Ritera Publishing Blog`;
+  const title = `${category.name} – Publishing Guides`;
   const description = `Browse all articles about ${category.name} from the Ritera Publishing blog.`;
 
   return {
-    title,
+    title: page > 1 ? `${title} – Page ${page}` : title,
     description,
     openGraph: {
       title,
       description,
-      url: `${SITE_URL}/blog/category/${slug}`,
+      url: canonical,
       type: "website",
       images: [{ url: `${SITE_URL}/images/home/hero-library.webp`, width: 1200, height: 630, alt: "Ritera Publishing" }],
     },
@@ -52,7 +58,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description,
       images: [`${SITE_URL}/images/home/hero-library.webp`],
     },
-    alternates: { canonical: `${SITE_URL}/blog/category/${slug}` },
+    alternates: { canonical: canonical },
   };
 }
 
@@ -71,7 +77,7 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
   const supabase = createServerClient();
   const { slug } = await params;
   const { page: pageParam } = await searchParams;
-  const page = Math.max(1, Number(pageParam) || 1);
+  const page = archivePage(pageParam);
   const from = (page - 1) * POSTS_PER_PAGE;
   const to = from + POSTS_PER_PAGE - 1;
 
@@ -96,22 +102,18 @@ export default async function CategoryPage({ params, searchParams }: PageProps) 
   const typedPosts = (posts ?? []) as unknown as Post[];
   const totalPages = Math.ceil((count ?? 0) / POSTS_PER_PAGE);
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
-      { "@type": "ListItem", position: 2, name: "Blog", item: "https://riterapublishing.com/blog" },
-      { "@type": "ListItem", position: 3, name: category.name, item: `https://riterapublishing.com/blog/category/${slug}` },
-    ],
-  };
+  const breadcrumbSchema = buildBreadcrumbSchema([
+      { name: "Home", item: "https://riterapublishing.com" },
+      { name: "Blog", item: "https://riterapublishing.com/blog" },
+      { name: category.name, item: `https://riterapublishing.com/blog/category/${slug}` },
+  ]);
 
   return (
     <>
       {/* JSON-LD — BreadcrumbList */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }}
       />
       <main className="min-h-screen bg-white">
       {/* ── Breadcrumbs ── */}

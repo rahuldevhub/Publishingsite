@@ -1,3 +1,5 @@
+import { breadcrumbSchema as buildBreadcrumbSchema } from "@/lib/structured-data";
+import { serializeJsonLd } from "@/lib/structured-data";
 import { Metadata } from "next";
 import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
@@ -7,7 +9,7 @@ import { SITE_URL } from "@/lib/site";
 
 
 export const metadata: Metadata = {
-  title: "Submit Your Writing | LitSpace",
+  title: "Submit Your Writing – LitSpace",
   description:
     "Share your poems, stories, and articles with the LitSpace community. Submit your work for review and get published on Ritera Publishing's creative writing platform.",
   openGraph: {
@@ -26,15 +28,11 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE_URL}/litspace/submit` },
 };
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
-    { "@type": "ListItem", position: 2, name: "LitSpace", item: "https://riterapublishing.com/litspace" },
-    { "@type": "ListItem", position: 3, name: "Submit", item: "https://riterapublishing.com/litspace/submit" },
-  ],
-};
+const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: "Home", item: "https://riterapublishing.com" },
+    { name: "LitSpace", item: "https://riterapublishing.com/litspace" },
+    { name: "Submit", item: "https://riterapublishing.com/litspace/submit" },
+]);
 
 export default async function SubmitPage() {
   const supabase = createServerClient();
@@ -48,7 +46,7 @@ export default async function SubmitPage() {
       {/* JSON-LD — BreadcrumbList */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }}
       />
       <main className="bg-white">
       {/* ── Breadcrumbs ── */}

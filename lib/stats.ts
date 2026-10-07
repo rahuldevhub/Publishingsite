@@ -1,16 +1,9 @@
-import { PRICES } from "./pricing";
-/**
- * Single source of truth for all Ritera Publishing business metrics.
- * Import from here everywhere — never hardcode these values in components.
- */
+import { COMPANY_FACTS } from "./company-facts";
 export const SITE_STATS = {
-  booksPublished:     { num: 4000, display: "4,000+",  label: "Books Published" },
-  countries:          { num: 160,  display: "160+",    label: "Countries" },
-  happyAuthors:       { num: 500,  display: "500+",    label: "Happy Authors" },
-  storesWorldwide:    { num: 40000, display: "40,000+", label: "Stores Worldwide" },
-  avgKickoffDays:     { num: 12,   display: "12",      label: "Avg Kickoff Days" },
+  countries: COMPANY_FACTS.countries,
+  storesWorldwide: COMPANY_FACTS.stores,
+  happyAuthors: COMPANY_FACTS.publicClaimsPendingVerification.happyAuthors,
 } as const;
-
-export const ROYALTIES = "100%" as const;
-export const STARTING_PRICE_INR = PRICES.essential.inr;
-export const STARTING_PRICE_USD = PRICES.essential.usd;
+export const ROYALTIES = COMPANY_FACTS.royalties;
+export const STARTING_PRICE_INR = COMPANY_FACTS.startingPrice.inr;
+export const STARTING_PRICE_USD = COMPANY_FACTS.startingPrice.usd;

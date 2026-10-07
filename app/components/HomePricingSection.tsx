@@ -1,4 +1,5 @@
-"use client"
+"use client";
+import { COMPANY_FACTS } from "@/lib/company-facts";
 
 import Image from "next/image"
 import Link from "next/link"
@@ -36,12 +37,12 @@ const PACKAGES: {
       "Custom Cover Design",
       "ISBN Registration",
       "Amazon & Flipkart Distribution",
-      "100% Royalties",
+      `${COMPANY_FACTS.royalties} Royalties`,
     ],
   },
   {
     name: "Global Author",
-    subtitle: "International distribution across 160+ countries with premium production quality.",
+    subtitle: `International distribution across ${COMPANY_FACTS.countries.display} countries with premium production quality.`,
     priceKey: "advanced",
     highlight: true,
     variant: "navy",
@@ -52,10 +53,10 @@ const PACKAGES: {
     icon: "globe",
     features: [
       "Everything in First-Time Author",
-      "Global Distribution — 160+ Countries",
+      `Global Distribution — ${COMPANY_FACTS.countries.display} Countries`,
       "Apple Books, Barnes & Noble & More",
       "Author Interview",
-      "100% Royalties",
+      `${COMPANY_FACTS.royalties} Royalties`,
     ],
   },
   {

@@ -1,3 +1,6 @@
+import { archivePage, archiveCanonical } from "@/lib/seo";
+import { breadcrumbSchema as buildBreadcrumbSchema } from "@/lib/structured-data";
+import { serializeJsonLd } from "@/lib/structured-data";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { createServerClient } from "@/lib/supabase";
@@ -34,9 +37,12 @@ type Post = {
 
 type Category = { id: string; name: string; slug: string };
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
   const supabase = createServerClient();
   const { slug } = await params;
+  const query = await searchParams;
+  const page = archivePage(query.page);
+  const canonical = archiveCanonical(`/litspace/category/${slug}`, page);
   const { data: category } = await supabase
     .from("litspace_categories")
     .select("name, slug")
@@ -49,12 +55,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const description = `Explore ${category.name.toLowerCase()} from the LitSpace community — original writing shared by independent writers on Ritera Publishing.`;
 
   return {
-    title,
+    title: page > 1 ? `${title} – Page ${page}` : title,
     description,
     openGraph: {
       title,
       description,
-      url: `${SITE_URL}/litspace/category/${slug}`,
+      url: canonical,
       type: "website",
       images: [{ url: `${SITE_URL}/images/home/hero-library.webp`, width: 1200, height: 630, alt: "Ritera Publishing" }],
     },
@@ -64,7 +70,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description,
       images: [`${SITE_URL}/images/home/hero-library.webp`],
     },
-    alternates: { canonical: `${SITE_URL}/litspace/category/${slug}` },
+    alternates: { canonical: canonical },
   };
 }
 
@@ -72,7 +78,7 @@ export default async function LitspaceCategoryPage({ params, searchParams }: Pag
   const supabase = createServerClient();
   const { slug } = await params;
   const { page: pageParam } = await searchParams;
-  const page = Math.max(1, Number(pageParam) || 1);
+  const page = archivePage(pageParam);
   const from = (page - 1) * POSTS_PER_PAGE;
   const to = from + POSTS_PER_PAGE - 1;
 
@@ -111,22 +117,18 @@ export default async function LitspaceCategoryPage({ params, searchParams }: Pag
 
   const totalPosts = allPostCategoryIds?.length ?? 0;
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
-      { "@type": "ListItem", position: 2, name: "LitSpace", item: "https://riterapublishing.com/litspace" },
-      { "@type": "ListItem", position: 3, name: category.name, item: `https://riterapublishing.com/litspace/category/${slug}` },
-    ],
-  };
+  const breadcrumbSchema = buildBreadcrumbSchema([
+      { name: "Home", item: "https://riterapublishing.com" },
+      { name: "LitSpace", item: "https://riterapublishing.com/litspace" },
+      { name: category.name, item: `https://riterapublishing.com/litspace/category/${slug}` },
+  ]);
 
   return (
     <>
       {/* JSON-LD — BreadcrumbList */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }}
       />
       <main className="bg-white">
       {/* ── Breadcrumbs ── */}

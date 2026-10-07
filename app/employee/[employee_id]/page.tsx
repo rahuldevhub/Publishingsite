@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!emp) return { title: "Employee Not Found | Ritera Publishing" };
 
   return {
-    title: `${emp.name} (${emp.employee_id}) | Ritera Publishing`,
+    title: `${emp.name} (${emp.employee_id})`,
     description: emp.bio ?? `${emp.name} — ${emp.role} at Ritera Publishing.`,
     robots: { index: false, follow: false },
     openGraph: {

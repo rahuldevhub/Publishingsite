@@ -1,3 +1,5 @@
+import { breadcrumbSchema as buildBreadcrumbSchema } from "@/lib/structured-data";
+import { serializeJsonLd } from "@/lib/structured-data";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { createServerClient } from "@/lib/supabase";
@@ -99,6 +101,7 @@ export default async function BookDetailPage({ params }: PageProps) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Book",
+    "@id": `${SITE_URL}/books/${slug}#book`,
     name: book.title,
     ...(book.subtitle && { alternativeHeadline: book.subtitle }),
     description: book.short_description || book.description || undefined,
@@ -115,7 +118,6 @@ export default async function BookDetailPage({ params }: PageProps) {
       ? {
           offers: {
             "@type": "Offer",
-            availability: "https://schema.org/InStock",
             url: book.amazon_link || book.flipkart_link || book.publisher_link,
             priceCurrency: "INR",
           },
@@ -138,27 +140,24 @@ export default async function BookDetailPage({ params }: PageProps) {
 
   const guide = guideForGenre(book.genre);
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
-      { "@type": "ListItem", position: 2, name: "Books", item: "https://riterapublishing.com/books" },
-      { "@type": "ListItem", position: 3, name: book.title, item: `https://riterapublishing.com/books/${book.slug}` },
-    ],
-  };
+  const breadcrumbSchema = buildBreadcrumbSchema([
+      { name: "Home", item: "https://riterapublishing.com" },
+      { name: "Books", item: `${SITE_URL}/books` },
+      ...(book.genre ? [{ name: book.genre, item: `${SITE_URL}/books?genre=${encodeURIComponent(book.genre)}` }] : []),
+      { name: book.title, item: `https://riterapublishing.com/books/${book.slug}` },
+  ]);
 
   return (
     <>
       {/* JSON-LD */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
       {/* JSON-LD — BreadcrumbList */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }}
       />
 
       <main className="bg-white text-gray-900">

@@ -1,3 +1,4 @@
+import { COMPANY_FACTS } from "@/lib/company-facts";
 /**
  * Centralised internal-linking & topical-authority configuration.
  * ---------------------------------------------------------------
@@ -376,7 +377,7 @@ export interface CommercialLink {
 const PACKAGES_CTA: CommercialLink = {
   href: "/packages",
   title: "Self-Publishing Packages",
-  blurb: "Editing, cover design, ISBN & global distribution — you keep 100% of royalties.",
+  blurb: `Editing, cover design, ISBN & global distribution — you keep ${COMPANY_FACTS.royalties} of royalties.`,
 };
 
 const BOOKS_CTA: CommercialLink = {

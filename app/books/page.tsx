@@ -1,3 +1,6 @@
+import { archivePage, archiveCanonical } from "@/lib/seo";
+import { breadcrumbSchema as buildBreadcrumbSchema } from "@/lib/structured-data";
+import { serializeJsonLd } from "@/lib/structured-data";
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,7 +11,7 @@ export const dynamic = "force-dynamic";
 
 const BOOKS_PER_PAGE = 16;
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: "Books — Discover Our Published Collection",
   description:
     "Explore the complete catalogue of books published by Ritera Publishing. Fiction, poetry, non-fiction, and more — authored by talented Indian writers.",
@@ -27,6 +30,25 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: `${SITE_URL}/books` },
 };
+
+export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
+  const query = await searchParams;
+  const page = archivePage(query.page);
+  const filters = new URLSearchParams();
+  for (const key of ["genre", "format", "language", "q", "sort"] as const) {
+    if (query[key]) filters.set(key, query[key]);
+  }
+  if (page > 1) filters.set("page", String(page));
+  const canonical = filters.size ? `${SITE_URL}/books?${filters}` : archiveCanonical("/books", page);
+  return {
+    ...baseMetadata,
+    ...(page > 1 ? { title: `${baseMetadata.title} – Page ${page}` } : {}),
+    alternates: { canonical },
+    openGraph: { ...baseMetadata.openGraph, url: canonical },
+    ...((query.genre || query.format || query.language || query.q || query.sort) ? { robots: { index: false, follow: true } } : {}),
+  };
+}
+
 
 type PageProps = {
   searchParams: Promise<{
@@ -59,7 +81,7 @@ const selectClass =
 export default async function BooksPage({ searchParams }: PageProps) {
   const supabase = createServerClient();
   const { genre, format, language, sort, q, page: pageParam } = await searchParams;
-  const page = Math.max(1, Number(pageParam) || 1);
+  const page = archivePage(pageParam);
   const from = (page - 1) * BOOKS_PER_PAGE;
   const to = from + BOOKS_PER_PAGE - 1;
 
@@ -106,21 +128,17 @@ export default async function BooksPage({ searchParams }: PageProps) {
 
   const hasFilters = genre || format || language || q;
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
-      { "@type": "ListItem", position: 2, name: "Books", item: "https://riterapublishing.com/books" },
-    ],
-  };
+  const breadcrumbSchema = buildBreadcrumbSchema([
+      { name: "Home", item: "https://riterapublishing.com" },
+      { name: "Books", item: "https://riterapublishing.com/books" },
+  ]);
 
   return (
     <>
       {/* BreadcrumbList JSON-LD */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }}
       />
       <main className="bg-white">
       {/* ── Hero ── */}

@@ -1,3 +1,4 @@
+import { COMPANY_FACTS } from "@/lib/company-facts";
 /**
  * Hero configuration — single source of truth for all editable hero content.
  *
@@ -93,8 +94,8 @@ export const HEADLINE_ROTATE_MS = 5500;
 
 export const TRUST_INDICATORS: string[] = [
   "4.9/5 Author Rating",
-  "160+ Countries",
-  "100% Royalties",
+  `${COMPANY_FACTS.countries.display} Countries`,
+  `${COMPANY_FACTS.royalties} Royalties`,
 ];
 
 /* ────────────────────────────────────────────────────────────────────────
@@ -112,7 +113,7 @@ export const ACTIVITY_FEED: ActivityItem[] = [
   { icon: "💰", text: "Royalty payout processed", time: "51 min ago" },
   { icon: "📅", text: "Author consultation booked", time: "1 hr ago" },
   { icon: "🚀", text: "Book launched worldwide", time: "2 hrs ago" },
-  { icon: "🌍", text: "Distributed to 160+ countries", time: "3 hrs ago" },
+  { icon: "🌍", text: `Distributed to ${COMPANY_FACTS.countries.display} countries`, time: "3 hrs ago" },
   { icon: "⭐", text: "New 5-star author review", time: "Today" },
 ];
 
@@ -124,10 +125,10 @@ export type Stat = { value: string; label: string };
 
 export const HERO_STATS: Stat[] = [
   { value: "Tailored", label: "Publishing Timeline" },
-  { value: "160+", label: "Countries" },
-  { value: "4.9/5", label: "Author Rating" },
-  { value: "40,000+", label: "Stores Worldwide" },
-  { value: "100%", label: "Royalties" },
+  { value: `${COMPANY_FACTS.countries.display}`, label: "Countries" },
+  { value: COMPANY_FACTS.publicClaimsPendingVerification.rating, label: "Author Rating" },
+  { value: `${COMPANY_FACTS.stores.display}`, label: "Stores Worldwide" },
+  { value: `${COMPANY_FACTS.royalties}`, label: "Royalties" },
 ];
 
 export const RECENTLY_PUBLISHED = {

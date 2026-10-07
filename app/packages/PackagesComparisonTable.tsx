@@ -1,4 +1,5 @@
-"use client"
+"use client";
+import { COMPANY_FACTS } from "@/lib/company-facts";
 
 import { Fragment } from "react"
 import Link from "next/link"
@@ -22,7 +23,7 @@ const FEATURES: { category: string; label: string; highlight?: boolean; values: 
   { category: "Publishing Essentials", label: "Dedicated Publishing Manager",      values: [true, true, true, true, true, true] },
   { category: "Publishing Essentials", label: "ISBN Registration",                  values: [true, true, true, true, true, true] },
   { category: "Publishing Essentials", label: "Copyright Registration",             values: [true, true, true, true, true, true] },
-  { category: "Publishing Essentials", label: " Royalty",           values: ["100%", "100%", "100%", "100%", "100%", "100%"] },
+  { category: "Publishing Essentials", label: " Royalty",           values: [COMPANY_FACTS.royalties, COMPANY_FACTS.royalties, COMPANY_FACTS.royalties, COMPANY_FACTS.royalties, COMPANY_FACTS.royalties, COMPANY_FACTS.royalties] },
   { category: "Publishing Essentials", label: " Author Dashboard",          values: [true, true, true, true, true, true] },
   { category: "Publishing Essentials", label: "Indian Distribution",                values: [true, true, true, true, true, true] },
   { category: "Publishing Essentials", label: "International Distribution",         values: [false, false, true, true, true, true] },

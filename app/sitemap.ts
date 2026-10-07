@@ -1,3 +1,4 @@
+import { retiredBlogSlugs } from "@/lib/content-redirects";
 import type { MetadataRoute } from "next";
 import { createServerClient } from "@/lib/supabase";
 import { SITE_URL as SITE } from "@/lib/site";
@@ -28,16 +29,15 @@ function datedRoute(
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const supabase = createServerClient();
 
-  // Submit original, commercially useful pages that we want Google to
-  // prioritise. Thin archives, author profiles, vacancies and UGC stay
-  // accessible through the site but no longer consume sitemap crawl budget.
-  const [books, blog, caseStudies] = await Promise.all([
+  // Include canonical public entities and published editorial content.
+  const [books, blog, caseStudies, authors] = await Promise.all([
     supabase.from("books").select("slug, updated_at"),
     supabase
       .from("blog_posts")
       .select("slug, updated_at")
       .eq("published", true),
     supabase.from("case_studies").select("slug, updated_at").eq("published", true),
+    supabase.from("authors").select("slug"),
   ]);
 
   // Static pages deliberately omit lastModified: there is no trustworthy
@@ -59,12 +59,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .map((book) => datedRoute(`${SITE}/books/${book.slug}`, book.updated_at, 0.7));
 
   const blogRoutes: MetadataRoute.Sitemap = (blog.data ?? [])
-    .filter((post) => Boolean(post.slug))
+    .filter((post) => Boolean(post.slug) && !retiredBlogSlugs.has(post.slug))
     .map((post) => datedRoute(`${SITE}/blog/${post.slug}`, post.updated_at, 0.8));
 
   const caseStudyRoutes: MetadataRoute.Sitemap = (caseStudies.data ?? [])
     .filter((study) => Boolean(study.slug))
     .map((study) => datedRoute(`${SITE}/case-studies/${study.slug}`, study.updated_at, 0.8));
 
-  return [...staticRoutes, ...blogRoutes, ...caseStudyRoutes, ...bookRoutes];
+  // Do not silently publish a partial sitemap when the content source fails.
+  for (const result of [books, blog, caseStudies, authors]) {
+    if (result.error) throw new Error(`Sitemap query failed: ${result.error.message}`);
+  }
+  const authorRoutes: MetadataRoute.Sitemap = (authors.data ?? [])
+    .filter((author) => Boolean(author.slug))
+    .map((author) => ({ url: `${SITE}/authors/${author.slug}`, changeFrequency: "monthly", priority: 0.6 }));
+  return [...new Map([...staticRoutes, ...blogRoutes, ...caseStudyRoutes, ...bookRoutes, ...authorRoutes]
+    .map((route) => [route.url, route])).values()];
 }

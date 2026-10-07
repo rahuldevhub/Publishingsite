@@ -1,3 +1,5 @@
+import { breadcrumbSchema as buildBreadcrumbSchema } from "@/lib/structured-data";
+import { serializeJsonLd } from "@/lib/structured-data";
 import { Metadata } from "next";
 import { createServerClient } from "@/lib/supabase";
 import Link from "next/link";
@@ -89,22 +91,18 @@ export default async function LitspaceAllCategoriesPage({ searchParams }: PagePr
 
   const totalPosts = allPostCategoryIds?.length ?? 0;
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
-      { "@type": "ListItem", position: 2, name: "LitSpace", item: "https://riterapublishing.com/litspace" },
-      { "@type": "ListItem", position: 3, name: "All Writeups", item: `${SITE_URL}/litspace/category` },
-    ],
-  };
+  const breadcrumbSchema = buildBreadcrumbSchema([
+      { name: "Home", item: "https://riterapublishing.com" },
+      { name: "LitSpace", item: "https://riterapublishing.com/litspace" },
+      { name: "All Writeups", item: `${SITE_URL}/litspace/category` },
+  ]);
 
   return (
     <>
       {/* JSON-LD — BreadcrumbList */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }}
       />
       <main className="bg-white">
       {/* ── Breadcrumbs ── */}

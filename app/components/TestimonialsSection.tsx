@@ -1,4 +1,6 @@
 "use client";
+import { COMPANY_FACTS } from "@/lib/company-facts";
+
 
 import Image from "next/image";
 import Link from "next/link";
@@ -277,8 +279,8 @@ type TrustMetricData = { icon: string; value: string; label: string };
 
 const TRUST_METRICS: TrustMetricData[] = [
   { icon: "⭐", value: "4.9 / 5", label: "Google Rating" },
-  { icon: "👥", value: "120+", label: "Google Reviews" },
-  { icon: "🌍", value: "160+", label: "Countries Reached" },
+  { icon: "👥", value: COMPANY_FACTS.publicClaimsPendingVerification.googleReviews, label: "Google Reviews" },
+  { icon: "🌍", value: COMPANY_FACTS.countries.display, label: "Countries Reached" },
 ];
 
 const CloseIcon = (

@@ -1,3 +1,6 @@
+import { COMPANY_FACTS } from "@/lib/company-facts";
+import { breadcrumbSchema as buildBreadcrumbSchema } from "@/lib/structured-data";
+import { serializeJsonLd } from "@/lib/structured-data";
 import { PRICES } from "@/lib/pricing";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -10,11 +13,11 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Publishing Packages & Pricing",
   description:
-    `Starting ${PRICES.essential.inr} in India or ${PRICES.essential.usd} USD internationally. All packages include 100% royalties, professional editing, cover design, and global distribution.`,
+    `Starting ${PRICES.essential.inr} in India or ${PRICES.essential.usd} USD internationally. Compare editing, design, production, and distribution options by package.`,
   openGraph: {
     title: "Self-Publishing Packages | Ritera Publishing",
     description:
-      `Publishing packages from ${PRICES.essential.inr} in India or ${PRICES.essential.usd} USD internationally. 100% royalties, editing, cover design, and global distribution.`,
+      `Publishing packages from ${PRICES.essential.inr} in India or ${PRICES.essential.usd} USD internationally. Compare editing, design, and distribution options by package.`,
     url: `${SITE_URL}/packages`,
     type: "website",
     images: [{ url: `${SITE_URL}/images/home/hero-library.webp`, width: 1200, height: 630, alt: "Ritera Publishing" }],
@@ -22,7 +25,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Publishing Packages | Ritera Publishing",
-    description: `Publishing packages from ${PRICES.essential.inr} in India or ${PRICES.essential.usd} USD internationally. 100% royalties, editing, cover design, and global distribution.`,
+    description: `Publishing packages from ${PRICES.essential.inr} in India or ${PRICES.essential.usd} USD internationally. Compare editing, design, and distribution options by package.`,
     images: [`${SITE_URL}/images/home/hero-library.webp`],
   },
   alternates: { canonical: `${SITE_URL}/packages` },
@@ -50,7 +53,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "Does a publishing package include book printing and distribution?",
-    a: "Most packages include book printing and publishing in India, along with online distribution across major platforms.",
+    a: "Compare the included print copies, print-on-demand setup, and distribution channels in each package. Retailer and territory availability depends on the format and selected services.",
   },
   {
     q: "Will I get help with e-book publishing in a package?",
@@ -91,14 +94,10 @@ const serviceSchema = {
 
 // ── Page ─────────────────────────────────────────────────────────────────────
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
-    { "@type": "ListItem", position: 2, name: "Packages", item: "https://riterapublishing.com/packages" },
-  ],
-};
+const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: "Home", item: "https://riterapublishing.com" },
+    { name: "Packages", item: "https://riterapublishing.com/packages" },
+]);
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -116,17 +115,17 @@ export default function PackagesPage() {
       {/* Service JSON-LD */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(serviceSchema) }}
       />
       {/* BreadcrumbList JSON-LD */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }}
       />
       {/* FAQPage JSON-LD */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqSchema) }}
       />
       <main className="bg-white">
 
@@ -159,10 +158,10 @@ export default function PackagesPage() {
           {/* Stats */}
           <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-3xl mx-auto">
             {[
-              { stat: "24/7", label: "Expert Support" },
-              { stat: "100%", label: "Author Royalties" },
-              { stat: "160+", label: "Countries Reached" },
-              { stat: "4.9/5", label: "Author Satisfaction" },
+              { stat: COMPANY_FACTS.publicClaimsPendingVerification.supportAvailability, label: "Expert Support" },
+              { stat: COMPANY_FACTS.royalties, label: "Author Royalties" },
+              { stat: COMPANY_FACTS.countries.display, label: "Countries Reached" },
+              { stat: COMPANY_FACTS.publicClaimsPendingVerification.rating, label: "Author Satisfaction" },
             ].map((item) => (
               <div key={item.stat} className="text-center">
                 <div className="text-3xl font-bold text-white">{item.stat}</div>
@@ -197,8 +196,8 @@ export default function PackagesPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33" />
                   </svg>
                 ),
-                title: "100% Royalties to You",
-                body: "Every rupee your book earns is yours. No revenue sharing, no hidden cuts. You write it, you own it, you keep it all.",
+                title: `${COMPANY_FACTS.royalties} Royalties to You`,
+                body: COMPANY_FACTS.royaltyStatement,
               },
               {
                 icon: (
@@ -207,7 +206,7 @@ export default function PackagesPage() {
                   </svg>
                 ),
                 title: "International Distribution",
-                body: "Your book will be available on Amazon, Flipkart, and 40000+ global platforms — reaching readers across India and worldwide.",
+                body: COMPANY_FACTS.distributionDescription,
               },
               {
                 icon: (
@@ -298,7 +297,7 @@ export default function PackagesPage() {
               Customize Your Package
             </a>
             <a
-              href="tel:+919488854787"
+              href={`tel:${COMPANY_FACTS.telephone}`}
               className="flex items-center gap-2.5 border-2 border-white text-white font-bold px-8 py-3.5 rounded-xl hover:bg-white hover:text-gray-900 transition-colors"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">

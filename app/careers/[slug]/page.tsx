@@ -1,3 +1,5 @@
+import { breadcrumbSchema as buildBreadcrumbSchema } from "@/lib/structured-data";
+import { serializeJsonLd } from "@/lib/structured-data";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { createServerClient } from "@/lib/supabase";
@@ -64,7 +66,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const url = `${SITE_URL}/careers/${slug}`;
 
   return {
-    title: `${pageTitle} | Ritera Publishing Careers`,
+    title: `${pageTitle} – Careers`,
     description,
     openGraph: {
       title: socialTitle,
@@ -148,27 +150,23 @@ export default async function CareerDetailPage({ params }: PageProps) {
 
   const applyHref = job.application_link || `mailto:${job.application_email}?subject=Application for ${encodeURIComponent(job.title)}`;
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
-      { "@type": "ListItem", position: 2, name: "Careers", item: "https://riterapublishing.com/careers" },
-      { "@type": "ListItem", position: 3, name: job.title, item: `https://riterapublishing.com/careers/${slug}` },
-    ],
-  };
+  const breadcrumbSchema = buildBreadcrumbSchema([
+      { name: "Home", item: "https://riterapublishing.com" },
+      { name: "Careers", item: "https://riterapublishing.com/careers" },
+      { name: job.title, item: `https://riterapublishing.com/careers/${slug}` },
+  ]);
 
   return (
     <>
       {/* JSON-LD */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
       {/* JSON-LD — BreadcrumbList */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }}
       />
 
       <main className="bg-white">

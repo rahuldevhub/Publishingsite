@@ -1,3 +1,6 @@
+import { COMPANY_FACTS } from "@/lib/company-facts";
+import { breadcrumbSchema as buildBreadcrumbSchema } from "@/lib/structured-data";
+import { serializeJsonLd } from "@/lib/structured-data";
 import type { Metadata } from "next";
 import Link from "next/link";
 import CounterStats from "@/app/aboutus/CounterStats";
@@ -122,25 +125,21 @@ const TEAMS = [
   },
 ];
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
-    { "@type": "ListItem", position: 2, name: "People Behind Ritera", item: "https://riterapublishing.com/people-behind-ritera" },
-  ],
-};
+const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: "Home", item: "https://riterapublishing.com" },
+    { name: "People Behind Ritera", item: "https://riterapublishing.com/people-behind-ritera" },
+]);
 
 export default function PeopleBehindRiteraPage() {
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(pageSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }}
       />
 
       <main className="bg-white">
@@ -320,9 +319,9 @@ export default function PeopleBehindRiteraPage() {
             {/* Trust signals row */}
             <div className="flex flex-wrap items-center justify-center gap-6 mt-12 pt-10 border-t border-gray-100">
               {[
-                "500+ Books Published",
-                "100% Royalty Guarantee",
-                "24/7 Author Support",
+                "Published Author Portfolios",
+                `${COMPANY_FACTS.royalties} Royalty Retention`,
+                `${COMPANY_FACTS.publicClaimsPendingVerification.supportAvailability} Author Support`,
               ].map((t) => (
                 <div key={t} className="flex items-center gap-2 text-sm text-gray-500">
                   <svg className="w-4 h-4 text-amber-400 shrink-0" viewBox="0 0 20 20" fill="currentColor">

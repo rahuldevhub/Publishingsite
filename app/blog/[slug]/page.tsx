@@ -1,3 +1,7 @@
+import { articleSchema, genuineTimestamp } from "@/lib/structured-data";
+import { COMPANY_FACTS } from "@/lib/company-facts";
+import { breadcrumbSchema as buildBreadcrumbSchema } from "@/lib/structured-data";
+import { serializeJsonLd } from "@/lib/structured-data";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { createServerClient } from "@/lib/supabase";
@@ -38,7 +42,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!post) notFound();
 
-  const title = post.meta_title || post.title;
+  const title = (post.meta_title || post.title).replace(/\s*[|–—-]\s*Ritera Publishing$/i, "");
   const description =
     post.meta_description ||
     post.excerpt ||
@@ -108,22 +112,11 @@ export default async function BlogPostPage({ params }: PageProps) {
   } | null;
 
   // Schema.org JSON-LD
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: post.title,
-    description: post.excerpt || "",
-    image: post.featured_image
-      ? (post.featured_image.startsWith("http") ? post.featured_image : `${SITE_URL}${post.featured_image}`)
-      : undefined,
-    datePublished: post.created_at,
-    dateModified: post.updated_at,
-    mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/blog/${slug}` },
-    author: author
-      ? { "@type": "Person", name: author.name, url: `${SITE_URL}/authors/${author.slug}` }
-      : { "@type": "Organization", name: "Ritera Publishing" },
-    publisher: { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
-  };
+  const jsonLd = articleSchema({
+    headline: post.title, description: post.excerpt || blogContentToPlainText(post.content ?? "").slice(0, 155), url: `${SITE_URL}/blog/${slug}`,
+    image: post.featured_image, datePublished: post.created_at, dateModified: post.updated_at,
+    author: author,
+  });
 
   const faqJsonLd = faqItems && faqItems.length > 0
     ? {
@@ -137,15 +130,12 @@ export default async function BlogPostPage({ params }: PageProps) {
       }
     : null;
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
-      { "@type": "ListItem", position: 2, name: "Blog", item: "https://riterapublishing.com/blog" },
-      { "@type": "ListItem", position: 3, name: post.title, item: `https://riterapublishing.com/blog/${post.slug}` },
-    ],
-  };
+  const breadcrumbSchema = buildBreadcrumbSchema([
+      { name: "Home", item: "https://riterapublishing.com" },
+      { name: "Blog", item: `${SITE_URL}/blog` },
+      ...(category ? [{ name: category.name, item: `${SITE_URL}/blog/category/${category.slug}` }] : []),
+      { name: post.title, item: `https://riterapublishing.com/blog/${post.slug}` },
+  ]);
 
   const postUrl = `${SITE_URL}/blog/${slug}`;
   const shareTitle = encodeURIComponent(post.title);
@@ -160,19 +150,19 @@ export default async function BlogPostPage({ params }: PageProps) {
       {/* JSON-LD — Article */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
       {/* JSON-LD — FAQPage */}
       {faqJsonLd && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqJsonLd) }}
         />
       )}
       {/* JSON-LD — BreadcrumbList */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }}
       />
 
       <main className="bg-white text-gray-900">
@@ -234,7 +224,10 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <span className="font-medium text-gray-700">{author.name}</span>
               </span>
             )}
-            <span>{formatDate(post.created_at)}</span>
+            <time dateTime={genuineTimestamp(post.created_at)}>{formatDate(post.created_at)}</time>
+            {genuineTimestamp(post.updated_at) && new Date(post.updated_at).getTime() > new Date(post.created_at).getTime() && (
+              <span>Last updated <time dateTime={genuineTimestamp(post.updated_at)}>{formatDate(post.updated_at)}</time></span>
+            )}
             <span>{post.reading_time} min read</span>
           </div>
         </header>
@@ -290,7 +283,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             </h3>
             <p className="text-gray-300 text-base mb-6 max-w-md mx-auto">
               Ritera Publishing handles everything — editing, cover design,
-              ISBN, and global distribution. You keep 100% of your royalties.
+              ISBN, and global distribution. You keep {COMPANY_FACTS.royalties} of your royalties.
             </p>
             <a
               href="/packages"

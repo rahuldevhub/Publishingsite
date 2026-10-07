@@ -1,3 +1,7 @@
+import { COMPANY_FACTS } from "@/lib/company-facts";
+import { articleSchema, genuineTimestamp } from "@/lib/structured-data";
+import { breadcrumbSchema as buildBreadcrumbSchema } from "@/lib/structured-data";
+import { serializeJsonLd } from "@/lib/structured-data";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -26,7 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!cs) notFound();
 
-  const title = cs.meta_title || `${cs.title} | Ritera Publishing`;
+  const title = (cs.meta_title || cs.title).replace(/\s*[|–—-]\s*Ritera Publishing$/i, "");
   const description =
     cs.meta_description ||
     `Read how ${cs.author_name} successfully self-published their book with Ritera Publishing.`;
@@ -82,17 +86,19 @@ export default async function CaseStudyPage({ params }: PageProps) {
     .order("created_at", { ascending: false })
     .limit(3);
 
+  // Link only catalogue entities explicitly mentioned in this published account.
+  const { data: catalogue } = await supabase.from("books")
+    .select("title, slug, author:authors(name, slug)");
+  const mentionedBooks = (catalogue ?? []).filter((book) =>
+    book.title && cs.content?.toLocaleLowerCase().includes(book.title.toLocaleLowerCase()),
+  ).slice(0, 3);
+
   // JSON-LD
-  const articleLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: cs.title,
-    datePublished: cs.created_at,
-    dateModified: cs.updated_at,
-    author: { "@type": "Person", name: cs.author_name },
-    publisher: { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
-    mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/case-studies/${slug}` },
-  };
+  const articleLd = articleSchema({
+    headline: cs.title, description: cs.meta_description || `A publishing case study from ${COMPANY_FACTS.name}.`, url: `${SITE_URL}/case-studies/${slug}`,
+    image: null, datePublished: cs.created_at, dateModified: cs.updated_at,
+    author: { name: cs.author_name },
+  });
 
   const faqLd = faqItems && faqItems.length > 0
     ? {
@@ -106,26 +112,22 @@ export default async function CaseStudyPage({ params }: PageProps) {
       }
     : null;
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
-      { "@type": "ListItem", position: 2, name: "Case Studies", item: "https://riterapublishing.com/case-studies" },
-      { "@type": "ListItem", position: 3, name: cs.title, item: `https://riterapublishing.com/case-studies/${cs.slug}` },
-    ],
-  };
+  const breadcrumbSchema = buildBreadcrumbSchema([
+      { name: "Home", item: "https://riterapublishing.com" },
+      { name: "Case Studies", item: "https://riterapublishing.com/case-studies" },
+      { name: cs.title, item: `https://riterapublishing.com/case-studies/${cs.slug}` },
+  ]);
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
-      {faqLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleLd) }} />
+      {faqLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqLd) }} />}
       {/* JSON-LD — BreadcrumbList */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }} />
 
       <main className="bg-white text-gray-900">
         {/* ── Breadcrumb ── */}
-        <nav className="bg-gray-50 border-b border-gray-200">
+        <nav aria-label="Breadcrumb" className="bg-gray-50 border-b border-gray-200">
           <ol className="max-w-3xl mx-auto px-6 py-3 flex flex-wrap items-center gap-2 text-sm text-gray-500">
             <li><Link href="/" className="hover:text-gray-900 transition-colors">Home</Link></li>
             <li className="text-gray-300">/</li>
@@ -142,6 +144,9 @@ export default async function CaseStudyPage({ params }: PageProps) {
               {cs.title}
             </h1>
             <p className="text-base text-gray-500 font-medium mb-1">{cs.author_name}</p>
+            {genuineTimestamp(cs.updated_at) && (
+              <p className="text-sm text-gray-500">Last updated <time dateTime={genuineTimestamp(cs.updated_at)}>{new Intl.DateTimeFormat("en-IN", { dateStyle: "long", timeZone: "UTC" }).format(new Date(cs.updated_at))}</time></p>
+            )}
             {cs.book_title && (
               <p className="text-sm text-gray-400 italic mb-8">{cs.book_title}</p>
             )}
@@ -162,13 +167,25 @@ export default async function CaseStudyPage({ params }: PageProps) {
             <section className="mb-14">
               <div className="space-y-5">
                 {cs.content.split(/\n\n+/).map((para: string, i: number) => {
-                  if (para.startsWith("## ")) {
-                    return <h2 key={i} className="text-xl font-bold text-gray-900 mt-8 mb-2">{para.slice(3)}</h2>;
+                  if (/^##\s*/.test(para)) {
+                    return <h2 key={i} className="text-xl font-bold text-gray-900 mt-8 mb-2">{para.replace(/^##\s*/, "")}</h2>;
                   }
                   return <p key={i} className="text-gray-700 leading-relaxed text-lg">{para}</p>;
                 })}
               </div>
             </section>
+          )}
+
+          {mentionedBooks.length > 0 && (
+            <p className="text-sm text-gray-600 mb-8">
+              Explore the books discussed here: {mentionedBooks.map((book, index) => {
+                const author = book.author as unknown as { name: string; slug: string } | null;
+                return <span key={book.slug}>
+                  {index > 0 && "; "}<Link href={`/books/${book.slug}`} className="text-amber-600 underline underline-offset-2">{book.title}</Link>
+                  {author?.slug && <> by <Link href={`/authors/${author.slug}`} className="text-amber-600 underline underline-offset-2">{author.name}</Link></>}
+                </span>;
+              })}.
+            </p>
           )}
 
           {/* ── Bottom Download CTA ── */}

@@ -1,3 +1,6 @@
+import { COMPANY_FACTS } from "@/lib/company-facts";
+import { breadcrumbSchema as buildBreadcrumbSchema } from "@/lib/structured-data";
+import { serializeJsonLd } from "@/lib/structured-data";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { createServerClient } from "@/lib/supabase";
@@ -54,7 +57,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!data) notFound();
 
-  const title = `${data.name} – Author Portfolio | Ritera Publishing`;
+  const title = `${data.name} – Author Portfolio`;
   const description =
     data.bio?.slice(0, 155) ??
     `${data.name} is a published author with Ritera Publishing.`;
@@ -140,34 +143,30 @@ export default async function AuthorPortfolioPage({ params }: PageProps) {
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Person",
+    "@type": ["Ritera Exclusive", COMPANY_FACTS.name].includes(author.name) ? "Organization" : "Person",
+    "@id": `${pageUrl}#author`,
     name: author.name,
     ...(author.bio && { description: author.bio }),
     ...(author.image_url && { image: author.image_url }),
     url: pageUrl,
-    worksFor: { "@type": "Organization", "@id": "https://riterapublishing.com/#organization" },
     ...(authorSameAs.length > 0 && { sameAs: authorSameAs }),
   };
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
-      { "@type": "ListItem", position: 2, name: author.name, item: `https://riterapublishing.com/authors/${author.slug}` },
-    ],
-  };
+  const breadcrumbSchema = buildBreadcrumbSchema([
+      { name: "Home", item: "https://riterapublishing.com" },
+      { name: author.name, item: `https://riterapublishing.com/authors/${author.slug}` },
+  ]);
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
       {/* JSON-LD — BreadcrumbList */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }}
       />
 
       <main>
@@ -251,7 +250,7 @@ export default async function AuthorPortfolioPage({ params }: PageProps) {
                     <div className="w-px h-10 bg-gray-700 hidden sm:block" />
                   )}
                   <div className="text-center">
-                    <p className="text-3xl font-bold text-amber-400 leading-none mb-1">160+</p>
+                    <p className="text-3xl font-bold text-amber-400 leading-none mb-1">{COMPANY_FACTS.countries.display}</p>
                     <p className="text-gray-400 text-xs uppercase tracking-wide">Countries Reached</p>
                   </div>
                   {publishedYear && (
@@ -376,7 +375,7 @@ export default async function AuthorPortfolioPage({ params }: PageProps) {
                     )}
 
                     <div className="bg-amber-50 border border-amber-100 rounded-2xl p-6 text-center">
-                      <p className="text-5xl font-bold text-amber-700 leading-none mb-2">160+</p>
+                      <p className="text-5xl font-bold text-amber-700 leading-none mb-2">{COMPANY_FACTS.countries.display}</p>
                       <p className="text-xs text-amber-600 uppercase tracking-widest">Countries Reached</p>
                     </div>
 

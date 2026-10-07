@@ -5,7 +5,7 @@ import { getSupabaseBrowserClient } from "@/lib/supabase-browser";
 import Image from "next/image";
 import Link from "next/link";
 
-type Book = {
+export type ShelfBook = {
   id: string;
   title: string;
   slug: string;
@@ -13,6 +13,7 @@ type Book = {
   author: { name: string } | null;
 };
 
+type Book = ShelfBook;
 type Item = Book | { id: string; placeholder: true };
 
 const PLACEHOLDER_COUNT = 16;
@@ -338,9 +339,9 @@ function DesktopShelfBook({
   );
 }
 
-export default function BooksCarousel() {
-  const [books, setBooks] = useState<Book[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function BooksCarousel({ initialBooks }: { initialBooks?: ShelfBook[] }) {
+  const [books, setBooks] = useState<Book[]>(initialBooks ?? []);
+  const [loading, setLoading] = useState(initialBooks === undefined);
 
   // ── Mobile showcase state (curated 2×2 mini-shelf, autoplaying pages) ──
   const [activeIndex, setActiveIndex] = useState(0);
@@ -353,6 +354,7 @@ export default function BooksCarousel() {
   const inViewRef = useRef(false);
 
   useEffect(() => {
+    if (initialBooks !== undefined) return;
     const supabase = getSupabaseBrowserClient();
     supabase
       .from("books")
@@ -365,7 +367,7 @@ export default function BooksCarousel() {
         setBooks((data as unknown as Book[]) ?? []);
         setLoading(false);
       });
-  }, []);
+  }, [initialBooks]);
 
   const displayItems: Item[] =
     loading || books.length === 0

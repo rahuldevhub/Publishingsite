@@ -1,3 +1,5 @@
+import { breadcrumbSchema as buildBreadcrumbSchema } from "@/lib/structured-data";
+import { serializeJsonLd } from "@/lib/structured-data";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE_URL } from "@/lib/site";
@@ -66,14 +68,10 @@ const CONTACT_CHANNELS = [
   },
 ];
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
-    { "@type": "ListItem", position: 2, name: "Contact", item: "https://riterapublishing.com/contact" },
-  ],
-};
+const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: "Home", item: "https://riterapublishing.com" },
+    { name: "Contact", item: "https://riterapublishing.com/contact" },
+]);
 
 export default function ContactPage() {
   return (
@@ -81,7 +79,7 @@ export default function ContactPage() {
       {/* BreadcrumbList JSON-LD */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }}
       />
       <main className="bg-white">
       {/* Hero */}

@@ -1,3 +1,6 @@
+import { COMPANY_FACTS } from "@/lib/company-facts";
+import { breadcrumbSchema as buildBreadcrumbSchema } from "@/lib/structured-data";
+import { serializeJsonLd } from "@/lib/structured-data";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
@@ -9,11 +12,11 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "About Us — Your Story Matters",
   description:
-    "Ritera Publishing helps Indian authors self-publish professionally — 100% royalties, expert editing, cover design, formatting, and global distribution to 50+ countries.",
+    COMPANY_FACTS.description,
   openGraph: {
     title: "About Ritera Publishing",
     description:
-      "From the spark of an idea to the weight of a finished book, we walk beside your words — guiding, shaping, and giving them the wings to take flight.",
+      COMPANY_FACTS.description,
     url: `${SITE_URL}/aboutus`,
     type: "website",
     images: [{ url: `${SITE_URL}/images/home/hero-library.webp`, width: 1200, height: 630, alt: "Ritera Publishing" }],
@@ -21,7 +24,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "About Us | Ritera Publishing",
-    description: "Helping Indian authors publish, earn, and reach readers worldwide.",
+    description: COMPANY_FACTS.description,
     images: [`${SITE_URL}/images/home/hero-library.webp`],
   },
   alternates: { canonical: `${SITE_URL}/aboutus` },
@@ -33,29 +36,26 @@ const aboutPageSchema = {
   name: "About Ritera Publishing",
   url: `${SITE_URL}/aboutus`,
   description:
-    "Ritera Publishing helps Indian authors self-publish with 100% royalties, global distribution, and expert editorial support.",
-  publisher: { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
+    COMPANY_FACTS.description,
+  about: { "@id": `${SITE_URL}/#organization` },
+  publisher: { "@id": `${SITE_URL}/#organization` },
 };
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://riterapublishing.com" },
-    { "@type": "ListItem", position: 2, name: "About Us", item: "https://riterapublishing.com/aboutus" },
-  ],
-};
+const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: "Home", item: "https://riterapublishing.com" },
+    { name: "About Us", item: "https://riterapublishing.com/aboutus" },
+]);
 
 export default function AboutPage() {
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(aboutPageSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbSchema) }}
       />
 
       <main className="bg-white">
@@ -86,10 +86,10 @@ export default function AboutPage() {
                 RITERA Brings it to Life
               </p>
               <p className="mt-6 text-base lg:text-lg text-gray-400 leading-relaxed max-w-xl">
-                Publish with confidence through{" "}
+                Ritera Publishing is a self-publishing service based in {COMPANY_FACTS.location}. We support editing, cover design, print and eBook production, distribution, and author marketing through{" "}
                 <Link href="/packages" className="text-amber-400 hover:text-amber-300 font-medium underline underline-offset-2">
                   professional self-publishing packages
-                </Link>. Reach readers globally across 160+ countries with full creative control and 100% royalties.
+                </Link>. Explore distribution options across {COMPANY_FACTS.countries.display} countries. {COMPANY_FACTS.copyrightPolicy}
               </p>
               <p className="mt-4 text-sm text-gray-500 leading-relaxed max-w-xl">
                 New to publishing? Learn{" "}
@@ -99,7 +99,7 @@ export default function AboutPage() {
                 or compare{" "}
                 <Link href={`/blog/${ABOUT_LINKS[1].slug}`} className="text-gray-300 hover:text-white underline underline-offset-2">
                   {ABOUT_LINKS[1].anchor}
-                </Link>.
+                </Link>. Meet the <Link href="/people-behind-ritera" className="text-gray-300 hover:text-white underline underline-offset-2">Ritera publishing team</Link> or contact us at <a href={`mailto:${COMPANY_FACTS.email}`} className="text-gray-300 hover:text-white underline underline-offset-2">{COMPANY_FACTS.email}</a>.
               </p>
               <a
                 href="#virtual-meet"
@@ -197,18 +197,18 @@ export default function AboutPage() {
               {[
                 {
                   num: "01",
-                  title: "Fastest Publishing",
-                  desc: "As one of the best self-publishing companies in India, we take your manuscript from submission to global bookshelves in just 30 days. Formatting, book cover design, ISBN registration — we handle it all so you can stay focused on writing",
+                  title: "Publishing Support",
+                  desc: COMPANY_FACTS.publishingTimeline,
                 },
                 {
                   num: "02",
                   title: "Global Distribution",
-                  desc: "Our author publishing services in India come with worldwide reach — Amazon, Flipkart, and 160+ countries through our international distribution network. Self-publishing a book in India has never reached this far.",
+                  desc: COMPANY_FACTS.distributionDescription,
                 },
                 {
                   num: "03",
                   title: "Author Royalties",
-                  desc: "Unlike traditional book publishing companies in India, every rupee you earn stays with you. No hidden deductions, no middlemen, no surprises — just complete transparency from day one. That's the Ritera promise.",
+                  desc: COMPANY_FACTS.royaltyStatement,
                 },
               ].map((item) => (
                 <div
@@ -285,64 +285,61 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* ── 6. MARKETING SUCCESS STORIES ── */}
+        {/* ── 6. MARKETING PLANNING ── */}
         <section className="bg-gray-50 border-t border-b border-gray-200">
           <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
             <div className="text-center mb-12">
               <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-3">
-                Proven Results
+                Marketing Support
               </p>
               <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-                Results That Speak Volumes
+                Plan Your Book’s Visibility
               </h2>
               <p className="text-gray-500 text-base lg:text-lg max-w-2xl mx-auto">
-                We don&apos;t just publish books — we help them reach the right readers
+                Illustrative campaign plans, not author case studies. Agree scope and budget before launch; marketing does not guarantee sales or a return on investment.
               </p>
             </div>
 
             <div className="grid lg:grid-cols-3 gap-6">
               {[
                 {
-                  author: "Priya Sharma",
-                  book: "Echoes of Mumbai",
+                  author: "First Book Launch",
                   challenge: "New author, unknown in market",
                   strategy: "Targeted Instagram + Amazon ads, book blogger outreach",
                   metrics: [
-                    { icon: "reach", label: "Reach", value: "75K+" },
-                    { icon: "clicks", label: "Clicks", value: "3,200" },
-                    { icon: "sales", label: "Sales Increase", value: "150%" },
-                    { icon: "roi", label: "ROI", value: "2.5×" },
+                    { icon: "reach", label: "Reach", value: "Track" },
+                    { icon: "clicks", label: "Clicks", value: "Track" },
+                    { icon: "sales", label: "Sales", value: "Track" },
+                    { icon: "roi", label: "ROI", value: "Track" },
                   ],
-                  spend: "₹20K",
-                  revenue: "₹50K",
+                  spend: "Agreed budget",
+                  revenue: "Measure results",
                 },
                 {
-                  author: "Rahul Mehta",
-                  book: "The Startup Sutra",
+                  author: "Business Book Visibility",
                   challenge: "Niche business book, limited audience",
                   strategy: "LinkedIn ads, entrepreneur communities, podcast features",
                   metrics: [
-                    { icon: "reach", label: "Reach", value: "100K+" },
-                    { icon: "clicks", label: "Clicks", value: "5,000" },
-                    { icon: "sales", label: "Sales Boost", value: "200%" },
-                    { icon: "roi", label: "ROI", value: "3×" },
+                    { icon: "reach", label: "Reach", value: "Track" },
+                    { icon: "clicks", label: "Clicks", value: "Track" },
+                    { icon: "sales", label: "Sales", value: "Track" },
+                    { icon: "roi", label: "ROI", value: "Track" },
                   ],
-                  spend: "₹25K",
-                  revenue: "₹75K",
+                  spend: "Agreed budget",
+                  revenue: "Measure results",
                 },
                 {
-                  author: "Ananya Iyer",
-                  book: "Poetry of the Heart",
+                  author: "Poetry Reader Outreach",
                   challenge: "Poetry has smaller commercial market",
                   strategy: "Instagram reels, book clubs, influencer partnerships",
                   metrics: [
-                    { icon: "reach", label: "Reach", value: "60K+" },
-                    { icon: "clicks", label: "Clicks", value: "2,800" },
-                    { icon: "sales", label: "Sales Increase", value: "180%" },
-                    { icon: "roi", label: "ROI", value: "2.8×" },
+                    { icon: "reach", label: "Reach", value: "Track" },
+                    { icon: "clicks", label: "Clicks", value: "Track" },
+                    { icon: "sales", label: "Sales", value: "Track" },
+                    { icon: "roi", label: "ROI", value: "Track" },
                   ],
-                  spend: "₹15K",
-                  revenue: "₹42K",
+                  spend: "Agreed budget",
+                  revenue: "Measure results",
                 },
               ].map((story) => (
                 <div
@@ -357,7 +354,6 @@ export default function AboutPage() {
                       </div>
                       <div>
                         <p className="font-bold text-white text-sm">{story.author}</p>
-                        {/* <p className="text-xs text-gray-400 italic">&ldquo;{story.book}&rdquo;</p> */}
                       </div>
                     </div>
                   </div>
@@ -373,7 +369,7 @@ export default function AboutPage() {
                       </div>
                       <div>
                         <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">
-                          Our Strategy
+                          Possible Channels
                         </p>
                         <p className="text-sm text-gray-700">{story.strategy}</p>
                       </div>
@@ -385,7 +381,7 @@ export default function AboutPage() {
                     {/* Metric grid */}
                     <div>
                       <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">
-                        The Results
+                        Measures to Review
                       </p>
                       <div className="grid grid-cols-2 gap-2">
                         {story.metrics.map((m) => (
@@ -405,7 +401,7 @@ export default function AboutPage() {
                     {/* ROI bar */}
                     <div className="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-100 rounded-xl px-4 py-3 flex items-center justify-between">
                       <div className="text-center">
-                        <p className="text-xs text-gray-500 mb-0.5">Ad Spend</p>
+                        <p className="text-xs text-gray-500 mb-0.5">Planning</p>
                         <p className="font-bold text-gray-700 text-sm">{story.spend}</p>
                       </div>
                       <div className="flex items-center gap-1 text-emerald-500">
@@ -416,7 +412,7 @@ export default function AboutPage() {
                         <div className="h-px w-8 bg-emerald-300" />
                       </div>
                       <div className="text-center">
-                        <p className="text-xs text-gray-500 mb-0.5">Revenue</p>
+                        <p className="text-xs text-gray-500 mb-0.5">Review</p>
                         <p className="font-bold text-emerald-700 text-sm">{story.revenue}</p>
                       </div>
                     </div>
@@ -515,7 +511,7 @@ export default function AboutPage() {
                   <p>
                     Behind it all, our{" "}
                     <span className="text-white font-medium">Support &amp; Accounts Team</span>{" "}
-                    is available 24/7 — answering queries, processing royalty payments, and keeping you informed every step of the way.
+                    helps with answering queries, processing royalty payments, and keeping you informed every step of the way.
 
                   </p>
                 </div>

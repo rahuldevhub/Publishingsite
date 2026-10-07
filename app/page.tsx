@@ -1,3 +1,8 @@
+import { createServerClient } from "@/lib/supabase";
+import type { ShelfBook } from "@/app/components/BooksCarousel";
+import { HOME_FAQS } from "@/lib/home-faqs";
+import { PRICES } from "@/lib/pricing";
+import { COMPANY_FACTS } from "@/lib/company-facts";
 import PricingSchema from "@/app/components/PricingSchema";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
@@ -81,7 +86,7 @@ const JOURNEY_STEPS = [
   {
     num: "04",
     title: "Publish Worldwide",
-    desc: "Your book is published across leading bookstores worldwide while you retain 100% of your royalties.",
+    desc: COMPANY_FACTS.royaltyStatement,
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
@@ -93,56 +98,10 @@ const JOURNEY_STEPS = [
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "How can I publish my book in India as a first-time author?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Publishing your first book in India is a four-step process with Ritera. Submit your manuscript, our editorial team responds within 12 days with a personalised plan. Choose a package starting at ₹11,999 that includes editing, cover design, ISBN registration, and Amazon distribution. We handle formatting for print and e-book, then distribute to Amazon, Flipkart, Apple Books, and 40,000+ stores worldwide. You retain full copyright and 100% of your royalties from the first sale.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What are the best self publishing services in India for new authors?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "The best self-publishing services in India offer professional manuscript editing, custom cover design, ISBN registration included in the package price, global distribution to Amazon and 40,000+ stores, and 100% royalties — not a revenue split. Ritera Publishing provides all of these, plus a free consultation before you commit to any package.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How much does it cost to publish a book in India?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ritera Publishing's self-publishing packages start at ₹11,999 for the First-Time Author package, which covers professional editing, cover design, ISBN registration, and Amazon distribution as a one-time payment with no hidden fees. The Global Author package is ₹32,999 and adds distribution across 160+ countries. The Marketing Focused package at ₹84,999 includes Amazon advertising and a dedicated marketing team. You keep 100% of your royalties on all sales.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Do I need ISBN registration to publish my book in India?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes, an ISBN is essential for publishing and selling your book in India and globally. Every Ritera Publishing package includes ISBN registration at no extra cost. The ISBN enables your book to be listed on Amazon, Flipkart, Apple Books, and library catalogues worldwide, with accurate sales tracking and royalty accounting. Our team handles the entire registration process on your behalf.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Can I publish my book in India and sell it worldwide?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Ritera Publishing distributes your book to 40,000+ stores across 160+ countries, including Amazon India, Amazon US, Amazon UK, Apple Books, Barnes & Noble, Kobo, Flipkart, and Google Play Books. Both print-on-demand paperback and e-book formats are available. You retain full copyright and earn 100% of your royalties on every sale, whether in India or internationally.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Do I keep the rights to my book when I self-publish with Ritera?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes, you retain full copyright and all intellectual property rights to your book when you publish with Ritera. We are a service provider, not a publisher acquiring your rights. You can revise future editions, sell translation rights, license your work, and take it to any other platform — without our approval. You also earn 100% of your royalties with no revenue sharing.",
-      },
-    },
-  ],
+  mainEntity: HOME_FAQS.map((item) => ({
+    "@type": "Question", name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
 };
 
 const howToSchema = {
@@ -151,19 +110,18 @@ const howToSchema = {
   name: "How to Self-Publish a Book in India with Ritera Publishing",
   description:
     "A step-by-step guide to publishing your book in India through Ritera Publishing's professional self-publishing platform.",
-  totalTime: "PT30D",
   step: [
     {
       "@type": "HowToStep",
       position: 1,
       name: "Submit Your Manuscript",
-      text: "Share your manuscript and our editorial team responds within 12 days with a personalised publishing plan tailored to your goals.",
+      text: "Share your manuscript for review and a personalised publishing plan. " + COMPANY_FACTS.publishingTimeline,
     },
     {
       "@type": "HowToStep",
       position: 2,
       name: "Choose Your Publishing Package",
-      text: "Select a self-publishing package from ₹11,999. Every plan includes professional editing, cover design, ISBN registration, and Amazon distribution — one-time payment, no hidden fees.",
+      text: `Compare publishing packages from ${PRICES.essential.inr} and select the services appropriate for your manuscript, format, and distribution needs.`,
     },
     {
       "@type": "HowToStep",
@@ -175,7 +133,7 @@ const howToSchema = {
       "@type": "HowToStep",
       position: 4,
       name: "Publish & Distribute Globally",
-      text: "Your book goes live on Amazon, Apple Books, Flipkart, and 40,000+ stores across 160+ countries. You earn 100% of your royalties from day one.",
+      text: COMPANY_FACTS.distributionDescription,
     },
   ],
 };
@@ -191,17 +149,21 @@ const serviceSchema = {
   serviceType: "Book Publishing",
   areaServed: "IN",
   description:
-    "Complete self-publishing services in India including professional manuscript editing, cover design, ISBN registration, print and e-book formatting, and global distribution through Amazon, Flipkart, and 40,000+ stores. Authors retain 100% of their royalties.",
+    COMPANY_FACTS.description,
   offers: {
     "@type": "Offer",
     priceCurrency: "INR",
-    price: "11999",
+    price: String(COMPANY_FACTS.startingPrice.amount),
     description: "First-Time Author self-publishing package — editing, cover design, ISBN, Amazon distribution",
     availability: "https://schema.org/InStock",
   },
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  const { data: shelfBooks } = await createServerClient().from("books")
+    .select("id, title, slug, cover_image, author:authors(name)")
+    .order("display_order", { ascending: true })
+    .order("created_at", { ascending: false }).limit(16);
   return (
     <>
       <PricingSchema schema={faqSchema} />
@@ -242,7 +204,7 @@ export default function HomePage() {
             </FadeIn>
 
             <FadeIn delay={80}>
-              <BooksCarousel />
+              <BooksCarousel initialBooks={shelfBooks ? shelfBooks as unknown as ShelfBook[] : undefined} />
             </FadeIn>
 
             {/* Desktop / tablet footer */}
@@ -478,7 +440,7 @@ export default function HomePage() {
                   Get Started Today →
                 </Link>
                 <a
-                  href="https://wa.me/919488854787"
+                  href={COMPANY_FACTS.whatsapp}
                   className="inline-flex items-center gap-2 px-8 py-4 bg-white text-gray-900 font-bold rounded-xl hover:bg-gray-50 hover:-translate-y-0.5 transition-all duration-200 ease-out text-sm shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
                 >
                   <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 24 24">

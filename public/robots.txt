@@ -1,8 +1,12 @@
 User-agent: *
 Allow: /
+Disallow: /admin$
 Disallow: /admin/
+Disallow: /api$
 Disallow: /api/
+Disallow: /employee$
 Disallow: /employee/
+Disallow: /reviewer$
 Disallow: /reviewer/
 
 Sitemap: https://riterapublishing.com/sitemap.xml

@@ -1,16 +1,17 @@
 "use client";
 
+import { COMPANY_FACTS } from "@/lib/company-facts";
 import { useState, useEffect, useRef } from "react";
 
 const STATS = [
-  { value: null, display: "4.9/5", label: "Author Satisfaction" },
-  { value: 100, suffix: "%", label: "Author Royalties" },
-  { value: 160,  suffix: "+", label: "Countries Reached" },
-  { value: null, display: "24/7", label: "Expert Support" },
+  { value: null, display: COMPANY_FACTS.publicClaimsPendingVerification.rating, label: "Author Satisfaction" },
+  { value: COMPANY_FACTS.royaltyPercentage, suffix: "%", label: "Author Royalties" },
+  { value: COMPANY_FACTS.countries.num,  suffix: "+", label: "Countries Reached" },
+  { value: null, display: COMPANY_FACTS.publicClaimsPendingVerification.supportAvailability, label: "Expert Support" },
 ];
 
 function AnimatedCounter({ target, suffix }: { target: number; suffix: string }) {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(target);
   const [started, setStarted] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
 
@@ -43,7 +44,8 @@ function AnimatedCounter({ target, suffix }: { target: number; suffix: string })
 
   return (
     <span ref={ref}>
-      {count}{suffix}
+      <span aria-hidden="true">{count}{suffix}</span>
+      <span className="sr-only">{target}{suffix}</span>
     </span>
   );
 }

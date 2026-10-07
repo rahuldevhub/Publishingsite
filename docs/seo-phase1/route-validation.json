@@ -1,0 +1,631 @@
+{
+  "pages": [
+    {
+      "path": "/",
+      "status": 200,
+      "canonical": "https://riterapublishing.com",
+      "h1": "Professional Self-Publishingin India, From Manuscript to Market.",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "FAQPage",
+        "HowTo",
+        "Service"
+      ]
+    },
+    {
+      "path": "/aboutus",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/aboutus",
+      "h1": "Your StoryMatters.",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "AboutPage",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/packages",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/packages",
+      "h1": "Ritera's Packages \u2014 Crafted for Every Author",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Service",
+        "BreadcrumbList",
+        "FAQPage"
+      ]
+    },
+    {
+      "path": "/blog",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog",
+      "h1": "Stories, Insights & Publishing News",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog?page=2",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog?page=2",
+      "h1": "Stories, Insights & Publishing News",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/category/self-publishing",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/category/self-publishing",
+      "h1": "Self Publishing",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/books",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/books",
+      "h1": "Discover Our Published Books",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/books?page=2",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/books?page=2",
+      "h1": "Discover Our Published Books",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/books?genre=Leadership",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/books?genre=Leadership",
+      "h1": "Discover Our Published Books",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/case-studies",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/case-studies",
+      "h1": "Real Authors. Real Results.",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/contact",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/contact",
+      "h1": "Get in Touch",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/authors/abhijit-mishra",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/authors/abhijit-mishra",
+      "h1": "Abhijit Mishra",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Person",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/books/the-trust-architect",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/books/the-trust-architect",
+      "h1": "The Trust Architect",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Book",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/people-behind-ritera",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/people-behind-ritera",
+      "h1": "People BehindRitera",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "WebPage",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/litspace",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/litspace",
+      "h1": "Your writing deserves to be read.",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/careers",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/careers",
+      "h1": "Join Ritera Publishing",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/self-publishing-services-in-india-what-authors-should-expect-before-publishing",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/self-publishing-services-in-india-what-authors-should-expect-before-publishing",
+      "h1": "Self-Publishing Services in India: What Authors Should Expect Before Publishing",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/how-to-structure-a-book-manuscript-for-publishing-a-complete-guide-for-authors",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/how-to-structure-a-book-manuscript-for-publishing-a-complete-guide-for-authors",
+      "h1": "How to Structure a Book Manuscript for Publishing: A Complete Guide for Authors",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/e-book-publishing-in-india-how-to-publish-and-sell-your-book-digitally",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/e-book-publishing-in-india-how-to-publish-and-sell-your-book-digitally",
+      "h1": "E-Book Publishing in India: How to Publish and Sell Your Book Digitally",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/how-to-publish-a-children-s-book-in-india-a-simple-guide-for-authors",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/how-to-publish-a-children-s-book-in-india-a-simple-guide-for-authors",
+      "h1": "How to Publish a Children\u2019s Book in India: A Simple Guide for Authors",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/can-i-publish-my-poetry-book-in-india-successfully",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/can-i-publish-my-poetry-book-in-india-successfully",
+      "h1": "Can I Publish My Poetry Book in India Successfully?",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/jade-julep-an-international-poetry-anthology-published-for-free",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/jade-julep-an-international-poetry-anthology-published-for-free",
+      "h1": "Jade Julep: An International Poetry Anthology Published for Free",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/is-self-publishing-better-than-traditional-publishing-in-india",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/is-self-publishing-better-than-traditional-publishing-in-india",
+      "h1": "Should You Self-Publish? A Decision Guide for Indian Authors",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/the-trust-architect-a-must-read-leadership-book-for-the-digital-age",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/the-trust-architect-a-must-read-leadership-book-for-the-digital-age",
+      "h1": "The Trust Architect by Abhijit Mishra: A Leadership Book",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/how-to-publish-a-novel-in-india",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/how-to-publish-a-novel-in-india",
+      "h1": "How to publish a novel in India",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/how-to-publish-a-book-without-investment",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/how-to-publish-a-book-without-investment",
+      "h1": "how to publish a book without investment",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/first-time-author-tips-india",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/first-time-author-tips-india",
+      "h1": "First-Time Author Tips in India: Prepare Before Publishing",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/publishing-timeline-in-india",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/publishing-timeline-in-india",
+      "h1": "Publishing timeline in India",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/top-publishing-companies-in-india",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/top-publishing-companies-in-india",
+      "h1": "Publishing Options in India: Traditional, DIY and Service Providers",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/how-to-sell-books-internationally",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/how-to-sell-books-internationally",
+      "h1": "How to sell books internationally",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/book-editing-services-in-india-what-to-expect-and-how-much-it-costs",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/book-editing-services-in-india-what-to-expect-and-how-much-it-costs",
+      "h1": "Book Editing Services in India: What to Expect and How Much It Costs",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/print-on-demand-in-india",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/print-on-demand-in-india",
+      "h1": "Print on demand in India",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/ritera-vs-notion-press-which-is-better-for-first-time-authors",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/ritera-vs-notion-press-which-is-better-for-first-time-authors",
+      "h1": "Ritera vs Notion Press: Which Is Better for First-Time Authors?",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "FAQPage",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/how-to-publish-a-book-in-india-step-by-step-guide-2026",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/how-to-publish-a-book-in-india-step-by-step-guide-2026",
+      "h1": "How to Publish a Book in India: Step-by-Step Guide (2026)",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "FAQPage",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/how-to-choose-the-best-self-publishing-company-in-tamil-nadu",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/how-to-choose-the-best-self-publishing-company-in-tamil-nadu",
+      "h1": "How to Choose the Best Self-Publishing Company in Tamil Nadu",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "FAQPage",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/self-publishing-vs-traditional-publishing-in-india-2026-which-is-better-for-you",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/self-publishing-vs-traditional-publishing-in-india-2026-which-is-better-for-you",
+      "h1": "Self-Publishing vs Traditional Publishing in India: Compare the Models",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "FAQPage",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/7-publishing-mistakes-first-time-authors-in-india-must-avoid-2026",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/7-publishing-mistakes-first-time-authors-in-india-must-avoid-2026",
+      "h1": "7 Publishing Mistakes First-Time Authors in India Must Avoid (2026)",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "FAQPage",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/isbn-for-self-publishing-in-india-cost-process-and-how-to-get-it-2026-guide",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/isbn-for-self-publishing-in-india-cost-process-and-how-to-get-it-2026-guide",
+      "h1": "ISBN for Self-Publishing in India: Cost, Process, and How to Get It (2026 Guide)",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "FAQPage",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/how-much-do-authors-earn-in-india-self-publishing-vs-traditional-publishing-real-numbers",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/how-much-do-authors-earn-in-india-self-publishing-vs-traditional-publishing-real-numbers",
+      "h1": "How Much Do Authors Earn in India? Self-Publishing vs Traditional Publishing (Real Numbers)",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "FAQPage",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/why-most-business-authors-regret-their-first-publisher-and-how-to-fix-it-right",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/why-most-business-authors-regret-their-first-publisher-and-how-to-fix-it-right",
+      "h1": "Why Most Business Authors Regret Their First Publisher (And How to Fix It Right)",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "FAQPage",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/how-to-take-back-control-from-your-publisher-without-starting-over",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/how-to-take-back-control-from-your-publisher-without-starting-over",
+      "h1": "How to Take Back Control from Your Publisher (Without Starting Over)",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "FAQPage",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/how-busy-professionals-in-india-can-write-and-publish-a-book-without-quitting-their-job",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/how-busy-professionals-in-india-can-write-and-publish-a-book-without-quitting-their-job",
+      "h1": "How Busy Professionals in India Can Write and Publish a Book Without Quitting Their Job",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "FAQPage",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/how-to-publish-a-book-in-india-to-build-your-personal-brand-and-professional-reputation",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/how-to-publish-a-book-in-india-to-build-your-personal-brand-and-professional-reputation",
+      "h1": "How to Publish a Book in India to Build Your Personal Brand and Professional Reputation",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "FAQPage",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/how-to-publish-a-book-in-india-even-if-you-have-never-written-anything-before",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/how-to-publish-a-book-in-india-even-if-you-have-never-written-anything-before",
+      "h1": "How to Publish a Book in India Even If You Have Never Written Anything Before",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "FAQPage",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/how-much-does-self-publishing-cost-in-india-complete-guide-for-first-time-authors",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/how-much-does-self-publishing-cost-in-india-complete-guide-for-first-time-authors",
+      "h1": "How Much Does Self-Publishing Cost in India? Complete Guide for First-Time Authors",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "FAQPage",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/why-first-time-authors-struggle-with-book-marketing-and-how-to-avoid-common-mistakes",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/why-first-time-authors-struggle-with-book-marketing-and-how-to-avoid-common-mistakes",
+      "h1": "Why First Time Authors Struggle With Book Marketing and How to Avoid Common Mistakes",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "FAQPage",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/best-self-publishing-companies-in-india",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/best-self-publishing-companies-in-india",
+      "h1": "Best Self-Publishing Companies in India: How to Choose in 2026",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "FAQPage",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/blog/how-to-market-and-sell-a-self-published-book-a-practical-guide",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/blog/how-to-market-and-sell-a-self-published-book-a-practical-guide",
+      "h1": "How to Market and Sell a Self-Published Book: A Practical Guide",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "FAQPage",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/case-studies/from-idea-to-published-book-real-author-journeys-we-ve-helped-build",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/case-studies/from-idea-to-published-book-real-author-journeys-we-ve-helped-build",
+      "h1": "From Idea to Published Book: Real Author Journeys We\u2019ve Helped Build",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "FAQPage",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/case-studies/from-confused-manuscript-to-published-book-a-first-time-author-case-study-india",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/case-studies/from-confused-manuscript-to-published-book-a-first-time-author-case-study-india",
+      "h1": "From Confused Manuscript to Published Book: A First-Time Author Case Study (India)",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "FAQPage",
+        "BreadcrumbList"
+      ]
+    },
+    {
+      "path": "/case-studies/how-we-turned-manuscripts-into-published-books-real-author-success-stories",
+      "status": 200,
+      "canonical": "https://riterapublishing.com/case-studies/how-we-turned-manuscripts-into-published-books-real-author-success-stories",
+      "h1": "How We Turned Manuscripts into Published Books: Real Author Success Stories",
+      "schemaTypes": [
+        "Organization",
+        "WebSite",
+        "Article",
+        "FAQPage",
+        "BreadcrumbList"
+      ]
+    }
+  ],
+  "sitemapURLCount": 97,
+  "publicAuthors": 25,
+  "publishedGuides": 32,
+  "privateAPIUnauthenticatedStatus": 401
+}
