@@ -124,7 +124,9 @@ export default function HeroSection() {
             is dictated by this grid — so it grows to match automatically,
             revealing more of the bookshelf top/bottom via object-cover
             rather than stretching. */}
-      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-9 px-6 pb-12 pt-[104px] lg:min-h-[85vh] lg:grid-cols-[1.12fr_0.88fr] lg:gap-12 lg:pb-16 lg:pt-24">
+      {/* Reserve space for the stats card's 88px desktop overlap so the
+          final case-study link stays clear of the card at every height. */}
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-9 px-6 pb-12 pt-[104px] lg:min-h-[85vh] lg:grid-cols-[1.12fr_0.88fr] lg:gap-12 lg:pb-32 lg:pt-24">
         {/* ── LEFT: emotional storytelling ──
               lg:mt-6 nudges the whole block down ~24px within the
               vertically-centered row so it aligns better against the

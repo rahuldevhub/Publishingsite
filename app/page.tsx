@@ -180,9 +180,6 @@ export default async function HomePage() {
         {/* ── 3. EDITORIAL ABOUT ── */}
         <EditorialAboutSection />
 
-        {/* ── VERIFIED EXPERIENCE, EXAMPLES & SOURCES ── */}
-        <HomepageEvidenceSection />
-
         {/* ── 7. BOOKS CAROUSEL ── */}
         <section className="bg-gradient-to-b from-white to-amber-50/30 border-t border-gray-100">
           <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
@@ -412,6 +409,9 @@ export default async function HomePage() {
             </FadeIn>
           </div>
         </section>
+
+        {/* ── VERIFIED EXPERIENCE, EXAMPLES & SOURCES ── */}
+        <HomepageEvidenceSection />
 
         {/* ── FAQ ── */}
         <FAQSection />
