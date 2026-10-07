@@ -1,11 +1,10 @@
 "use client";
 import { COMPANY_FACTS } from "@/lib/company-facts";
 
-import Image from "next/image"
 import Link from "next/link"
 import FadeIn from "@/app/components/FadeIn"
 import { useCurrency } from "@/hooks/useCurrency"
-import { useState, useRef, useEffect, useCallback } from "react"
+import { useState, useRef, useCallback } from "react"
 
 import { PRICES } from "@/lib/pricing"
 
@@ -17,20 +16,15 @@ const PACKAGES: {
   priceKey: keyof typeof PRICES
   highlight: boolean
   variant: Variant
-  image: { src: string; alt: string }
   icon: "book" | "globe" | "rocket"
   features: string[]
 }[] = [
   {
     name: "First-Time Author",
-    subtitle: "Editing, ISBN, cover design & Amazon distribution, everything you need to launch.",
+    subtitle: "Everything you need to publish your first book.",
     priceKey: "essential",
     highlight: false,
     variant: "ivory",
-    image: {
-      src: "/images/packages/first-time-author-photo.webp",
-      alt: "A first-time author writing in a notebook at a sunlit desk with books and coffee",
-    },
     icon: "book",
     features: [
       "Professional Manuscript Formatting",
@@ -42,14 +36,10 @@ const PACKAGES: {
   },
   {
     name: "Global Author",
-    subtitle: `International distribution across ${COMPANY_FACTS.countries.display} countries with premium production quality.`,
+    subtitle: "Take your book to readers worldwide.",
     priceKey: "advanced",
     highlight: true,
     variant: "navy",
-    image: {
-      src: "/images/packages/global-author-photo.webp",
-      alt: "A golden globe beside a laptop showing analytics on an elegant office desk at sunset",
-    },
     icon: "globe",
     features: [
       "Everything in First-Time Author",
@@ -61,14 +51,10 @@ const PACKAGES: {
   },
   {
     name: "Marketing Focused",
-    subtitle: "Maximum visibility with Amazon advertising, social media promotion & author branding.",
+    subtitle: "Promote your book and build your author presence.",
     priceKey: "premium",
     highlight: false,
     variant: "ivory",
-    image: {
-      src: "/images/packages/marketing-focused-photo.webp",
-      alt: "A publishing team reviewing marketing materials and analytics around a laptop",
-    },
     icon: "rocket",
     features: [
       "Everything in Global Author",
@@ -128,21 +114,21 @@ const VARIANT_STYLES: Record<Variant, {
 }> = {
   ivory: {
     card: "bg-gradient-to-b from-white to-[#FBFAF6] border border-black/[0.06] shadow-[0_10px_30px_rgba(17,24,39,0.05)] hover:shadow-[0_20px_44px_rgba(17,24,39,0.08)]",
-    iconWrap: "bg-white border-2 border-amber-300 shadow-[0_8px_22px_rgba(201,145,45,0.18)]",
+    iconWrap: "bg-amber-50 border border-amber-200/70",
     iconColor: "text-amber-600",
     title: "text-gray-900",
     subtitle: "text-gray-600",
     divider: "bg-black/[0.05]",
     check: "text-amber-500",
     feature: "text-gray-600",
-    priceLabel: "text-gray-400",
+    priceLabel: "text-gray-500",
     price: "text-gray-900",
-    priceNote: "text-gray-400",
+    priceNote: "text-gray-500",
     button: "border border-gray-300 text-gray-800 hover:border-gray-900 hover:bg-gray-900 hover:text-white hover:shadow-[0_8px_24px_rgba(17,24,39,0.16)]",
   },
   navy: {
-    card: "bg-[#0F172A] border-2 border-amber-400 shadow-[0_20px_50px_rgba(201,145,45,0.12)] hover:shadow-[0_28px_62px_rgba(201,145,45,0.14)]",
-    iconWrap: "bg-white border-2 border-amber-400 shadow-[0_8px_24px_rgba(201,145,45,0.28)]",
+    card: "bg-[#0F172A] border border-amber-300/60 shadow-[0_20px_50px_rgba(201,145,45,0.12)] hover:shadow-[0_28px_62px_rgba(201,145,45,0.14)]",
+    iconWrap: "bg-amber-300/10 border border-amber-300/25",
     iconColor: "text-amber-500",
     title: "text-white",
     subtitle: "text-gray-400",
@@ -156,185 +142,57 @@ const VARIANT_STYLES: Record<Variant, {
   },
 }
 
-// ── Mobile-only card ──────────────────────────────────────────────────────────
-// Rendered only inside the swipe carousel (< md). Keeps identical visual
-// design as JourneyCard but adapts spacing and adds expand/collapse features.
-
-function MobileJourneyCard({
-  pkg,
-  currency,
-  isActive,
-  expanded,
-  onToggleExpand,
-}: {
+// Both layouts share the same photograph-free card and package data.
+function PackageJourneyCard({ pkg, currency, mobile = false, isActive = false, expanded = false, onToggleExpand }: {
   pkg: (typeof PACKAGES)[number]
   currency: "INR" | "USD"
-  isActive: boolean
-  expanded: boolean
-  onToggleExpand: () => void
+  mobile?: boolean
+  isActive?: boolean
+  expanded?: boolean
+  onToggleExpand?: () => void
 }) {
   const s = VARIANT_STYLES[pkg.variant]
   const price = currency === "INR" ? PRICES[pkg.priceKey].inr : PRICES[pkg.priceKey].usd
-  const visibleFeatures = expanded ? pkg.features : pkg.features.slice(0, 4)
-  const hiddenCount = Math.max(0, pkg.features.length - 4)
+  const features = mobile && !expanded ? pkg.features.slice(0, 4) : pkg.features
+  const featuresId = `home-package-${pkg.priceKey}-${mobile ? "mobile" : "desktop"}`
 
   return (
-    <div
-      className={`relative flex flex-col rounded-[22px] overflow-hidden transition-all duration-300 ${EASE} ${s.card} ${
-        isActive
-          ? "scale-100 opacity-100 shadow-[0_24px_56px_rgba(17,24,39,0.13)]"
-          : "scale-[0.97] opacity-[0.92]"
-      }`}
-    >
-      {/* Hero image — 220px on mobile for premium photography */}
-      <div className="relative h-[220px] w-full overflow-hidden shrink-0">
-        <Image
-          src={pkg.image.src}
-          alt={pkg.image.alt}
-          fill
-          loading="lazy"
-          sizes="85vw"
-          className="object-cover object-center"
-        />
-        {pkg.highlight && (
-          <div className="absolute top-3 inset-x-0 flex justify-center z-30 pointer-events-none">
-            <span className="inline-flex items-center gap-1 px-3.5 py-1 rounded-full bg-amber-400 text-gray-950 text-[11px] font-bold tracking-[0.08em] uppercase shadow-[0_2px_10px_rgba(245,158,11,0.4)]">
-              Most Popular
-            </span>
+    <div data-home-package={pkg.priceKey}
+      className={`relative flex h-full min-w-0 flex-col overflow-hidden rounded-[22px] p-5 lg:p-7 ${s.card} ${mobile && isActive ? "shadow-[0_14px_32px_-12px_rgba(17,24,39,0.14)]" : ""}`}>
+      <div aria-hidden="true" className={`absolute inset-x-5 top-0 h-px bg-gradient-to-r from-transparent ${pkg.highlight ? "via-amber-300/80" : "via-amber-400/60"} to-transparent`} />
+      <div className="min-h-[164px] min-[375px]:min-h-[144px] lg:min-h-[180px] xl:min-h-[152px]">
+        <div className="flex min-h-10 items-center justify-between gap-2">
+          <div aria-hidden="true" className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${s.iconWrap} ${s.iconColor}`}>
+            {ICONS[pkg.icon]}
           </div>
-        )}
-      </div>
-
-      {/* Floating icon badge — sits on the image/content boundary */}
-      <div
-        className={`absolute left-6 z-20 flex h-16 w-16 items-center justify-center rounded-full ${s.iconWrap} ${s.iconColor}`}
-        style={{ top: 177 }}
-      >
-        {ICONS[pkg.icon]}
-      </div>
-
-      {/* Card body */}
-      <div className="flex flex-1 flex-col px-6 pb-5 pt-8">
-        {/* Title + subtitle */}
-        <h3 className={`font-display font-bold leading-[1.08] text-[24px] ${s.title}`}>
-          {pkg.name}
-        </h3>
-        <p className={`mt-1 text-sm leading-snug ${s.subtitle}`}>{pkg.subtitle}</p>
-
-        <div className={`my-3.5 h-px w-full ${s.divider}`} />
-
-        {/* Features — first 4 always visible */}
-        <ul className="space-y-2">
-          {visibleFeatures.map((f) => (
-            <li key={f} className="flex items-center gap-2.5">
-              <span className={s.check}>{CHECK}</span>
-              <span className={`text-[14px] leading-snug ${s.feature}`}>{f}</span>
-            </li>
-          ))}
-        </ul>
-
-        {/* Expand toggle — only shown when card has more than 4 features */}
-        {hiddenCount > 0 && (
-          <button
-            onClick={onToggleExpand}
-            className={`mt-2.5 text-left text-[13px] font-semibold transition-colors ${
-              pkg.variant === "navy" ? "text-amber-400" : "text-amber-600"
-            }`}
-          >
-            {expanded
-              ? "− Show less"
-              : `+ View all ${hiddenCount} more feature${hiddenCount !== 1 ? "s" : ""}`}
-          </button>
-        )}
-
-        {/* Price + CTA */}
-        <div className="mt-auto pt-4">
-          <p className={`text-[11px] font-medium tracking-widest uppercase ${s.priceLabel}`}>
-            Starts at
-          </p>
-          <p className={`mt-0.5 text-[34px] font-black leading-none ${s.price}`}>{price}</p>
-          <p className={`mt-1.5 text-[11px] ${s.priceNote}`}>One-time payment • No hidden fees</p>
-
-          <Link
-            href="/packages"
-            className={`mt-3.5 flex h-12 w-full items-center justify-center gap-2 rounded-[14px] text-sm font-semibold transition-all duration-300 ${EASE} ${s.button}`}
-          >
-            View Package Details
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-            </svg>
-          </Link>
+          {pkg.highlight && <span className="rounded-full border border-amber-300/25 bg-amber-300/10 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-amber-200">Most Popular</span>}
         </div>
+        <h3 className={`mt-4 font-display text-[24px] lg:text-[28px] font-bold leading-tight ${s.title}`}>{pkg.name}</h3>
+        <p className={`mt-2 text-sm leading-5 ${s.subtitle}`}>{pkg.subtitle}</p>
       </div>
-    </div>
-  )
-}
-
-// ── Desktop card (unchanged) ──────────────────────────────────────────────────
-
-function JourneyCard({ pkg, currency }: { pkg: (typeof PACKAGES)[number]; currency: "INR" | "USD" }) {
-  const s = VARIANT_STYLES[pkg.variant]
-  const price = currency === "INR" ? PRICES[pkg.priceKey].inr : PRICES[pkg.priceKey].usd
-  const features = pkg.features.slice(0, 5)
-
-  return (
-    <div
-      className={`group relative flex h-full flex-col rounded-[22px] overflow-hidden transition-all duration-[350ms] ${EASE} hover:-translate-y-1.5 ${s.card} ${
-        pkg.highlight ? "z-10 lg:-mt-[12px] lg:scale-[1.02]" : ""
-      }`}
-    >
-      {/* Hero image — rounded top via card overflow */}
-      <div className="relative h-[180px] sm:h-[190px] lg:h-[208px] w-full overflow-hidden shrink-0">
-        <Image
-          src={pkg.image.src}
-          alt={pkg.image.alt}
-          fill
-          loading="lazy"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className={`object-cover object-center transition-transform duration-[350ms] ${EASE} group-hover:scale-[1.04]`}
-        />
-      </div>
-
-      {/* Floating icon — raised ~9px, aligned with left content */}
-      <div
-        className={`absolute left-7 top-[137px] sm:top-[147px] lg:top-[165px] z-20 flex h-16 w-16 items-center justify-center rounded-full transition-transform duration-[350ms] ${EASE} group-hover:rotate-[4deg] ${s.iconWrap} ${s.iconColor}`}
-      >
-        {ICONS[pkg.icon]}
-      </div>
-
-      {/* Content */}
-      <div className="flex flex-1 flex-col px-7 pb-6 pt-9">
-        <h3 className={`font-display font-bold leading-[1.08] text-[26px] sm:text-[30px] lg:text-[34px] ${s.title}`}>
-          {pkg.name}
-        </h3>
-        <p className={`mt-1.5 text-base leading-relaxed ${s.subtitle}`}>{pkg.subtitle}</p>
-
-        <div className={`my-4 h-px w-full ${s.divider}`} />
-
-        <ul className="space-y-2.5 pl-0.5">
-          {features.map((f) => (
-            <li key={f} className="flex items-center gap-2.5">
-              <span className={s.check}>{CHECK}</span>
-              <span className={`text-[15px] font-normal leading-snug ${s.feature}`}>{f}</span>
-            </li>
-          ))}
-        </ul>
-
-        <div className="mt-auto pt-5">
-          <p className={`text-[11px] font-medium tracking-widest uppercase ${s.priceLabel}`}>Starts at</p>
-          <p className={`mt-0.5 text-4xl lg:text-[40px] font-black leading-none ${s.price}`}>{price}</p>
-          <p className={`mt-2 text-[11px] ${s.priceNote}`}>One-time payment • No hidden fees</p>
-
-          <Link
-            href="/packages"
-            className={`mt-4 flex h-[50px] w-full items-center justify-center gap-2 rounded-[14px] text-sm font-semibold transition-all duration-300 ${EASE} hover:-translate-y-0.5 ${s.button}`}
-          >
-            View Package Details
-            <svg className={`w-4 h-4 transition-transform duration-300 ${EASE} group-hover:translate-x-1.5`} fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-            </svg>
-          </Link>
-        </div>
+      <div className={`mb-4 h-px w-full ${s.divider}`} />
+      <ul id={featuresId} className="space-y-3">
+        {features.map(feature => <li key={feature} className="flex items-start gap-2.5">
+          <span className={`mt-0.5 ${s.check}`}>{CHECK}</span>
+          <span className={`text-sm leading-5 ${s.feature}`}>{feature}</span>
+        </li>)}
+      </ul>
+      {mobile && pkg.features.length > 4 && <button type="button" onClick={onToggleExpand}
+        aria-expanded={expanded} aria-controls={featuresId}
+        className={`mt-1 flex min-h-11 items-center text-left text-xs font-semibold underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-amber-400 ${pkg.variant === "navy" ? "text-amber-300" : "text-amber-700"}`}>
+        {expanded ? "Show fewer features −" : `See all ${pkg.features.length} features +`}
+      </button>}
+      <div className="mt-auto pt-5">
+        <div className={`mb-4 h-px w-full ${s.divider}`} />
+        <p className={`text-[11px] font-medium tracking-[0.14em] uppercase ${s.priceLabel}`}>Starts at</p>
+        <p className={`mt-1 text-[34px] md:text-[38px] font-bold leading-none tracking-tight ${s.price}`}>{price}</p>
+        <p className={`mt-2 text-xs leading-5 ${s.priceNote}`}>One-time fee · GST as applicable</p>
+        <Link href="/packages" className={`mt-4 flex min-h-12 w-full items-center justify-center gap-2 rounded-xl px-2 py-3 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 ${s.button}`}>
+          View Package
+          <svg aria-hidden="true" className="h-4 w-4 shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </Link>
       </div>
     </div>
   )
@@ -349,48 +207,15 @@ export default function HomePricingSection() {
   const [activeIdx, setActiveIdx] = useState(0)
   const [expanded, setExpanded] = useState<boolean[]>(PACKAGES.map(() => false))
   const scrollRef = useRef<HTMLDivElement>(null)
-  const isHinting = useRef(false)
-  const hintDone = useRef(false)
-
-  // On first mount: scroll slightly right then return to hint at swiping.
-  // Uses a ref flag so it only fires once even in StrictMode double-invocation.
-  useEffect(() => {
-    if (hintDone.current) return
-    hintDone.current = true
-
-    const el = scrollRef.current
-    if (!el) return
-
-    const t1 = setTimeout(() => {
-      isHinting.current = true
-      el.scrollBy({ left: 36, behavior: "smooth" })
-    }, 900)
-
-    const t2 = setTimeout(() => {
-      el.scrollBy({ left: -36, behavior: "smooth" })
-    }, 1550)
-
-    const t3 = setTimeout(() => {
-      isHinting.current = false
-    }, 2300)
-
-    return () => {
-      clearTimeout(t1)
-      clearTimeout(t2)
-      clearTimeout(t3)
-    }
-  }, [])
-
-  // Derive the active card index from scroll position.
-  // Suppressed while the hint animation is running to avoid dot flicker.
+  // Track manual swiping; no automatic nudge or timed movement.
   const handleScroll = useCallback(() => {
-    if (isHinting.current || !scrollRef.current) return
-    const { scrollLeft, clientWidth } = scrollRef.current
-    // Content width = container width minus the symmetric 20px horizontal padding
-    const contentWidth = clientWidth - 40
-    // Each card is 85% of content width; stride = card + 16px gap
-    const stride = contentWidth * 0.85 + 16
-    const idx = Math.min(Math.round(scrollLeft / stride), PACKAGES.length - 1)
+    if (!scrollRef.current) return
+    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current
+    const card = scrollRef.current.firstElementChild as HTMLElement | null
+    if (!card) return
+    const stride = card.offsetWidth + 16
+    const atEnd = scrollLeft >= scrollWidth - clientWidth - 2
+    const idx = atEnd ? PACKAGES.length - 1 : Math.max(0, Math.min(Math.round(scrollLeft / stride), PACKAGES.length - 1))
     setActiveIdx(idx)
   }, [])
 
@@ -398,8 +223,10 @@ export default function HomePricingSection() {
   const scrollToCard = useCallback((i: number) => {
     const el = scrollRef.current
     if (!el) return
-    const stride = (el.clientWidth - 40) * 0.85 + 16
-    el.scrollTo({ left: i * stride, behavior: "smooth" })
+    const card = el.firstElementChild as HTMLElement | null
+    if (!card) return
+    const stride = card.offsetWidth + 16
+    el.scrollTo({ left: i * stride, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" })
     setActiveIdx(i)
   }, [])
 
@@ -430,12 +257,12 @@ export default function HomePricingSection() {
       </FadeIn>
 
       {/* ══════════════════════════════════════════════════════════
-          MOBILE CAROUSEL  (< 768px only)
+          MOBILE / TABLET CAROUSEL  (< 1024px)
           -mx-6 breaks out of the section's px-6 so the track
           fills the full viewport width; the track itself adds
           20px padding to keep cards 20px from each edge.
           ══════════════════════════════════════════════════════════ */}
-      <div className="md:hidden -mx-6">
+      <div className="lg:hidden -mx-6">
 
         {/* Scroll track */}
         <div
@@ -459,12 +286,13 @@ export default function HomePricingSection() {
               key={pkg.name}
               style={{
                 flexShrink: 0,
-                width: "85%",
+                width: "min(85%, 600px)",
                 scrollSnapAlign: "start",
                 scrollSnapStop: "always",
               }}
             >
-              <MobileJourneyCard
+              <PackageJourneyCard
+                mobile
                 pkg={pkg}
                 currency={currency}
                 isActive={i === activeIdx}
@@ -477,73 +305,81 @@ export default function HomePricingSection() {
 
         {/* Pagination dots */}
         <div
-          className="flex justify-center items-center gap-2 mt-3 mb-1"
-          role="tablist"
-          aria-label="Publishing packages"
+          className="mx-5 mt-3 flex items-center justify-between gap-3"
+          role="group"
+          aria-label="Choose a publishing package"
         >
-          {PACKAGES.map((_, i) => (
+          <button type="button" aria-label="Previous package" disabled={activeIdx === 0}
+            onClick={() => scrollToCard(activeIdx - 1)}
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-800 transition-colors hover:border-amber-400 disabled:cursor-default disabled:opacity-30 focus-visible:outline-2 focus-visible:outline-amber-500">
+            <span aria-hidden="true">←</span>
+          </button>
+          <div className="flex items-center gap-1">
+          {PACKAGES.map((pkg, i) => (
             <button
               key={i}
-              role="tab"
-              aria-selected={i === activeIdx}
-              aria-label={`Go to package ${i + 1} of ${PACKAGES.length}`}
+              aria-current={i === activeIdx ? "true" : undefined}
+              type="button"
+              aria-label={`Go to package ${i + 1} of ${PACKAGES.length}: ${pkg.name}`}
               onClick={() => scrollToCard(i)}
-              className={`rounded-full transition-all duration-300 ease-out ${
+              className="flex h-11 w-11 items-center justify-center rounded-lg focus-visible:outline-2 focus-visible:outline-amber-400"
+            >
+              <span aria-hidden="true" className={`rounded-full transition-colors duration-200 ${
                 i === activeIdx
                   ? "w-5 h-2 bg-amber-500"
                   : "w-2 h-2 bg-gray-300"
-              }`}
-            />
+              }`} />
+            </button>
           ))}
+          </div>
+          <button type="button" aria-label="Next package" disabled={activeIdx === PACKAGES.length - 1}
+            onClick={() => scrollToCard(activeIdx + 1)}
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-800 transition-colors hover:border-amber-400 disabled:cursor-default disabled:opacity-30 focus-visible:outline-2 focus-visible:outline-amber-500">
+            <span aria-hidden="true">→</span>
+          </button>
         </div>
+        <p className="mt-1 text-center text-xs leading-5 text-gray-500">Swipe or use the arrows to compare · {activeIdx + 1} of {PACKAGES.length}</p>
       </div>
 
       {/* ══════════════════════════════════════════════════════════
-          DESKTOP GRID  (≥ 768px — zero changes from original)
+          DESKTOP GRID  (≥ 1024px — matching photograph-free cards)
           ══════════════════════════════════════════════════════════ */}
-      <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7 items-stretch">
+      <div className="hidden lg:grid lg:grid-cols-3 gap-4 lg:gap-7 items-stretch">
         {PACKAGES.map((pkg, i) => (
-          <div key={pkg.name} className={`relative h-full ${pkg.highlight ? "pt-7 lg:pt-8" : ""}`}>
-            {pkg.highlight && (
-              <div className="absolute top-0 inset-x-0 flex justify-center z-30">
-                <span className="inline-flex items-center gap-1 px-3.5 py-1 rounded-full bg-amber-400 text-gray-950 text-[11px] font-bold tracking-[0.08em] uppercase shadow-[0_2px_10px_rgba(245,158,11,0.35)]">
-                  Most Popular
-                </span>
-              </div>
-            )}
+          <div key={pkg.name} className="relative h-full">
             <FadeIn delay={i * 80} className="h-full">
-              <JourneyCard pkg={pkg} currency={currency} />
+              <PackageJourneyCard pkg={pkg} currency={currency} />
             </FadeIn>
           </div>
         ))}
       </div>
 
-      {/* ── Consultation CTA — unchanged ── */}
+      {/* ── Consultation CTA ── */}
       <FadeIn delay={240}>
-        <div className="group/bar mt-9 min-h-[80px] rounded-2xl bg-amber-50/80 border border-amber-100 shadow-[0_10px_30px_rgba(17,24,39,0.04)] px-7 py-4 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-          <div className="flex items-center gap-4 text-center sm:text-left">
-            <div className="hidden sm:flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-full bg-white border border-amber-200 text-amber-600">
+        <div className="group/bar mt-6 lg:mt-8 rounded-2xl bg-[#FBFAF6] border border-amber-200/60 px-5 py-5 lg:px-7 flex flex-col lg:flex-row items-center gap-4 lg:gap-6">
+          <div className="flex items-center gap-4 text-center lg:text-left">
+            <div className="hidden lg:flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-full bg-white border border-amber-200 text-amber-600">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} className="w-5 h-5">
                 <rect x="3.5" y="5" width="17" height="15" rx="2.5" />
                 <path strokeLinecap="round" d="M3.5 9.5h17M8 3v3M16 3v3" />
               </svg>
             </div>
             <div>
-              <p className="text-[17px] font-bold text-gray-900 leading-snug">
-                Not sure which publishing journey is right for you?
+              <p className="text-base font-semibold text-gray-900 leading-snug">
+                Need help choosing your package?
               </p>
-              <p className="text-sm text-amber-600 mt-0.5">
-                Book a free consultation with our publishing experts.
+              <p className="text-sm leading-5 text-gray-600 mt-1">
+                Talk through your book and budget with our publishing team.
               </p>
             </div>
           </div>
 
           <Link
             href="/contact"
-            className={`w-full sm:w-auto sm:ml-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-[14px] bg-gray-900 text-white font-semibold text-sm hover:bg-black hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(17,24,39,0.20)] transition-all duration-300 ${EASE} shrink-0`}
+            className={`w-full lg:w-auto lg:ml-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-[14px] bg-gray-900 text-white font-semibold text-sm hover:bg-black motion-safe:hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(17,24,39,0.20)] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 shrink-0`}
           >
             Book Free Consultation
-            <svg className={`w-4 h-4 transition-transform duration-300 ${EASE} group-hover/bar:translate-x-1.5`} fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
+            <svg className={`w-4 h-4 transition-transform duration-300 ${EASE} motion-safe:group-hover/bar:translate-x-1`} fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
           </Link>
