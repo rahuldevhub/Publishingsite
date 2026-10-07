@@ -168,6 +168,9 @@ const nextConfig: NextConfig = {
   },
 
   images: {
+    // Serve originals directly so image availability does not depend on
+    // Vercel's image optimization allowance.
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -175,8 +178,6 @@ const nextConfig: NextConfig = {
         pathname: "/storage/v1/object/public/**",
       },
     ],
-    // Serve optimized WebP/AVIF automatically for Next.js <Image> components
-    formats: ["image/avif", "image/webp"],
   },
 
   async headers() {
