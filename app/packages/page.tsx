@@ -127,7 +127,7 @@ export default function PackagesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqSchema) }}
       />
-      <main className="bg-white">
+      <main className="flex flex-col bg-white">
 
       {/* ── Hero ── */}
       <section className="bg-gray-900 text-white">
@@ -176,7 +176,7 @@ export default function PackagesPage() {
       <PackagesComparisonTable />
 
       {/* ── Why Choose Ritera ── */}
-      <section className="bg-gray-50 border-t border-gray-200">
+      <section className="order-last bg-gray-50 border-t border-gray-200 sm:order-none">
         <div className="max-w-6xl mx-auto px-6 py-16">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-10">Why Choose Ritera?</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -310,7 +310,7 @@ export default function PackagesPage() {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="max-w-3xl mx-auto px-6 py-16">
+      <section className="w-full max-w-3xl mx-auto px-6 py-16">
         <h2 className="text-3xl font-bold text-gray-900 text-center mb-10">
           Frequently Asked Questions
         </h2>

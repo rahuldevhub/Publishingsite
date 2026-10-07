@@ -204,9 +204,11 @@ export default function PackagesComparisonTable() {
                     <th
                       scope="colgroup"
                       colSpan={7}
-                      className="sticky left-0 bg-gray-100 border-y border-gray-200 px-5 py-2.5 text-left text-xs font-bold text-gray-500 uppercase tracking-widest"
+                      className="bg-gray-100 border-y border-gray-200 text-left text-xs font-bold text-gray-500 uppercase tracking-widest"
                     >
-                      {category}
+                      <span className="sticky left-0 block w-max max-w-full px-5 py-2.5">
+                        {category}
+                      </span>
                     </th>
                   </tr>
 
