@@ -82,7 +82,7 @@ export default function EditorialAboutSection() {
 
           {/* ── Image ─────────────────────────────────────────────────────── */}
           <div
-            className="min-w-0 relative aspect-[4/3] lg:aspect-auto cursor-default"
+            className="min-w-0 relative aspect-square lg:aspect-auto cursor-default"
             onMouseEnter={() => setImgHovered(true)}
             onMouseLeave={() => setImgHovered(false)}
             style={{
@@ -94,7 +94,7 @@ export default function EditorialAboutSection() {
             }}
           >
             <div
-              className="absolute inset-0 overflow-hidden"
+              className="absolute inset-0 overflow-hidden bg-[#f3e7d6]"
               style={{
                 borderRadius: "26px",
                 boxShadow:
@@ -102,11 +102,11 @@ export default function EditorialAboutSection() {
               }}
             >
               <Image
-                src="/images/home/rakesh-sharma-silent-turning-author-hero.webp"
-                alt="Rakesh Sharma, author of The Silent Turning, published by Ritera Publishing"
+                src="/images/home/distinguished-voices-remarkable-leaders.png"
+                alt="Distinguished Voices: Remarkable names, remarkable stories, featuring Jawahar Surisetti, Rakesh Sharma, Abhijeett Desai, Lesten D’Souza, and Amit Banerjee"
                 fill
                 sizes="(min-width: 1024px) 58vw, 100vw"
-                className="object-cover object-[50%_14%] sm:object-[50%_28%]"
+                className="object-contain"
                 loading="lazy"
                 priority={false}
               />

@@ -16,7 +16,7 @@ const PACKAGES: {
   priceKey: keyof typeof PRICES
   highlight: boolean
   variant: Variant
-  icon: "book" | "globe" | "rocket"
+  icon: "book" | "globe" | "megaphone"
   features: string[]
 }[] = [
   {
@@ -55,7 +55,7 @@ const PACKAGES: {
     priceKey: "premium",
     highlight: false,
     variant: "ivory",
-    icon: "rocket",
+    icon: "megaphone",
     features: [
       "Everything in Global Author",
       "Amazon Advertising Campaign",
@@ -67,24 +67,31 @@ const PACKAGES: {
   },
 ]
 
-const ICONS: Record<"book" | "globe" | "rocket", React.ReactNode> = {
+const ICONS: Record<"book" | "globe" | "megaphone", React.ReactNode> = {
   book: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} className="w-6 h-6">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.5c-2-1.2-4.7-1.5-7-1v13c2.3-.5 5-.2 7 1 2-1.2 4.7-1.5 7-1v-13c-2.3-.5-5-.2-7 1z" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.5v13" />
+    <svg viewBox="0 0 48 48" fill="none" className="h-11 w-11" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M24 16c-5-3-11-3-17-1v23c6-2 12-2 17 1 5-3 11-3 17-1V24" fill="currentColor" fillOpacity={0.12} />
+      <path d="M24 17v22M12 22l6 1M12 28l6 1M30 31l5-1" />
+      <path d="m27 21 3-8L40 3l5 5-10 10-8 3Z" fill="currentColor" fillOpacity={0.25} />
+      <path d="m37 6 5 5M27 21l8-8" />
+      <path d="m10 5 1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3Z" fill="currentColor" stroke="none" />
     </svg>
   ),
   globe: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} className="w-6 h-6">
-      <circle cx="12" cy="12" r="8.5" />
-      <path strokeLinecap="round" d="M3.5 12h17M12 3.5c2.5 2.4 3.8 5.2 3.8 8.5s-1.3 6.1-3.8 8.5c-2.5-2.4-3.8-5.2-3.8-8.5S9.5 5.9 12 3.5z" />
+    <svg viewBox="0 0 48 48" fill="none" className="h-11 w-11" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="24" cy="24" r="15" fill="currentColor" fillOpacity={0.12} />
+      <ellipse cx="24" cy="24" rx="6.5" ry="15" />
+      <path d="M9 24h30M12 16h24M12 32h24" />
+      <path d="M8 29c-6 7-4 12 4 11 9-1 23-9 29-18 4-6 3-10-2-10" />
+      <path d="m36 5 1.5 4L42 10.5 37.5 12 36 16l-1.5-4-4.5-1.5L34.5 9 36 5Z" fill="currentColor" stroke="none" />
+      <circle cx="10" cy="39" r="2.5" fill="currentColor" stroke="none" />
     </svg>
   ),
-  rocket: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} className="w-6 h-6">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M14.5 3.5c2.5.8 4 3.4 4 6.5-2.6 0-4.8 1-6.5 2.7L9 15.7c-.5-2 0-4.2 1.7-6C12.3 8 13 5.8 14.5 3.5z" />
-      <circle cx="14" cy="9" r="1.3" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M8.8 14.2 5.5 15c-.3 1.6-.2 3 .3 4.2 1.2.5 2.6.6 4.2.3l.8-3.3M9.8 17.2l-2.4 2.4" />
+  megaphone: (
+    <svg viewBox="0 0 48 48" fill="none" className="h-11 w-11" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+      <path d="m19 19 17-9v27l-17-9H9a3 3 0 0 1-3-3v-3a3 3 0 0 1 3-3h10Z" fill="currentColor" fillOpacity={0.16} />
+      <path d="M19 19v9M11 28l4 13h7l-5-13M36 19a5 5 0 0 1 0 10M41 12l3-3M42 24h4M41 36l3 3" />
+      <path d="m16 3 1.3 3.7L21 8l-3.7 1.3L16 13l-1.3-3.7L11 8l3.7-1.3L16 3Z" fill="currentColor" stroke="none" />
     </svg>
   ),
 }
@@ -114,7 +121,7 @@ const VARIANT_STYLES: Record<Variant, {
 }> = {
   ivory: {
     card: "bg-gradient-to-b from-white to-[#FBFAF6] border border-black/[0.06] shadow-[0_10px_30px_rgba(17,24,39,0.05)] hover:shadow-[0_20px_44px_rgba(17,24,39,0.08)]",
-    iconWrap: "bg-amber-50 border border-amber-200/70",
+    iconWrap: "bg-gradient-to-br from-amber-50 via-amber-100 to-amber-200/80 border border-amber-200 shadow-[0_6px_18px_-6px_rgba(217,119,6,0.3),inset_0_1px_0_rgba(255,255,255,0.9)]",
     iconColor: "text-amber-600",
     title: "text-gray-900",
     subtitle: "text-gray-600",
@@ -128,8 +135,8 @@ const VARIANT_STYLES: Record<Variant, {
   },
   navy: {
     card: "bg-[#0F172A] border border-amber-300/60 shadow-[0_20px_50px_rgba(201,145,45,0.12)] hover:shadow-[0_28px_62px_rgba(201,145,45,0.14)]",
-    iconWrap: "bg-amber-300/10 border border-amber-300/25",
-    iconColor: "text-amber-500",
+    iconWrap: "bg-gradient-to-br from-amber-200/20 to-amber-500/10 border border-amber-300/40 shadow-[0_0_24px_-6px_rgba(251,191,36,0.25),inset_0_1px_0_rgba(255,255,255,0.12)]",
+    iconColor: "text-amber-300",
     title: "text-white",
     subtitle: "text-gray-400",
     divider: "bg-white/[0.06]",
@@ -158,11 +165,11 @@ function PackageJourneyCard({ pkg, currency, mobile = false, isActive = false, e
 
   return (
     <div data-home-package={pkg.priceKey}
-      className={`relative flex h-full min-w-0 flex-col overflow-hidden rounded-[22px] p-5 lg:p-7 ${s.card} ${mobile && isActive ? "shadow-[0_14px_32px_-12px_rgba(17,24,39,0.14)]" : ""}`}>
+      className={`group/package relative flex h-full min-w-0 flex-col overflow-hidden rounded-[22px] p-5 lg:p-7 ${s.card} ${mobile && isActive ? "shadow-[0_14px_32px_-12px_rgba(17,24,39,0.14)]" : ""}`}>
       <div aria-hidden="true" className={`absolute inset-x-5 top-0 h-px bg-gradient-to-r from-transparent ${pkg.highlight ? "via-amber-300/80" : "via-amber-400/60"} to-transparent`} />
-      <div className="min-h-[164px] min-[375px]:min-h-[144px] lg:min-h-[180px] xl:min-h-[152px]">
-        <div className="flex min-h-10 items-center justify-between gap-2">
-          <div aria-hidden="true" className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${s.iconWrap} ${s.iconColor}`}>
+      <div className="min-h-[164px] min-[375px]:min-h-[168px] lg:min-h-[204px] xl:min-h-[176px]">
+        <div className="flex min-h-16 items-center justify-between gap-2">
+          <div aria-hidden="true" className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-[20px] transition-transform duration-300 motion-safe:group-hover/package:-translate-y-1 motion-safe:group-hover/package:rotate-3 ${s.iconWrap} ${s.iconColor}`}>
             {ICONS[pkg.icon]}
           </div>
           {pkg.highlight && <span className="rounded-full border border-amber-300/25 bg-amber-300/10 px-2.5 py-1 text-[10px] font-semibold tracking-wide text-amber-200">Most Popular</span>}
