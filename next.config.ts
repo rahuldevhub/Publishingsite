@@ -36,6 +36,23 @@ const contentSecurityPolicy = [
   ...(isDev ? [] : ["upgrade-insecure-requests"]),
 ].join("; ");
 
+// This static form is hosted separately and has its own narrow resource policy.
+// Keep the main application's existing policy unchanged on every other route.
+const publishingPlanContentSecurityPolicy = [
+  "default-src 'self'",
+  "script-src 'self' https://challenges.cloudflare.com",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src 'self' https://fonts.gstatic.com",
+  "img-src 'self' data:",
+  "connect-src 'self' https://challenges.cloudflare.com",
+  "frame-src https://challenges.cloudflare.com",
+  "object-src 'none'",
+  "base-uri 'none'",
+  "form-action 'self'",
+  "frame-ancestors 'none'",
+  ...(isDev ? [] : ["upgrade-insecure-requests"]),
+].join("; ");
+
 const securityHeaders = [
   // Restrict where scripts, styles, images, frames, and connections may load from
   { key: "Content-Security-Policy", value: contentSecurityPolicy },
@@ -98,6 +115,24 @@ const nextConfig: NextConfig = {
     ];
   },
 
+  async rewrites() {
+    // Keep the public URL slashless, matching the site's existing Next.js
+    // normalization. The exact upstream URL includes a slash to avoid the
+    // static form project's slash redirect. All form assets use absolute paths.
+    // Array rewrites run after filesystem routes: the local signed forwarding
+    // handler at /publishing-plan/api/enquiry must resolve before this wildcard.
+    return [
+      {
+        source: "/publishing-plan",
+        destination: "https://ritera-publishing-plan.vercel.app/publishing-plan/",
+      },
+      {
+        source: "/publishing-plan/:path*",
+        destination: "https://ritera-publishing-plan.vercel.app/publishing-plan/:path*",
+      },
+    ];
+  },
+
   images: {
     // Serve originals directly so image availability does not depend on
     // Vercel's image optimization allowance.
@@ -118,6 +153,23 @@ const nextConfig: NextConfig = {
         source: "/(.*)",
         headers: securityHeaders,
       },
+      // Later matching values override the main CSP only for the form.
+      // Other security headers above remain in force.
+      {
+        source: "/publishing-plan/:path*",
+        headers: [
+          { key: "Content-Security-Policy", value: publishingPlanContentSecurityPolicy },
+          { key: "X-Frame-Options", value: "DENY" },
+        ],
+      },
+      {
+        source: "/publishing-plan/api/enquiry",
+        headers: [{ key: "Cache-Control", value: "no-store" }],
+      },
+      {
+        source: "/publishing-plan/config.js",
+        headers: [{ key: "Cache-Control", value: "no-store" }],
+      },
       // Long-lived cache for static images (content-hashed by filename after optimization)
       {
         source: "/images/:path*",
@@ -137,3 +189,4 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
