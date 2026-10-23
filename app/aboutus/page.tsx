@@ -246,8 +246,7 @@ export default function AboutPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { id: "JaPQPM4n0iE?si=NjmNWUlFxbMswV0E", author: "Abhijit Mishra", book: "The Trust Architect" },
-              { id: "JaPQPM4n0iE?si=NjmNWUlFxbMswV0E", author: "Aruna", book: "Akarkas" },
-              { id: "JaPQPM4n0iE?si=NjmNWUlFxbMswV0E", author: "Ritera Exclusive", book: "Litspace" },
+              { id: "reqbI2o2KF0", author: "Shahitha Fareen", book: "Jade Julep" },
             ].map((video, i) => (
               <div
                 key={i}
@@ -271,6 +270,22 @@ export default function AboutPage() {
                 </div>
               </div>
             ))}
+            <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
+              <div className="aspect-video flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-gray-900 to-gray-800 px-6 text-center">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-amber-400/30 bg-amber-400/10 text-amber-400">
+                  <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
+                    <rect x="3" y="5" width="13" height="14" rx="3" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m16 9 5-3v12l-5-3" />
+                  </svg>
+                </div>
+                <p className="text-lg font-bold text-white">Coming soon</p>
+                <p className="text-sm text-gray-300">Another author story is on its way.</p>
+              </div>
+              <div className="px-5 py-4">
+                <p className="font-bold text-gray-900 text-sm">More Author Stories</p>
+                <p className="text-xs text-gray-500 mt-0.5 italic">Stay tuned for our next interview</p>
+              </div>
+            </div>
           </div>
 
           <div className="text-center mt-10">
