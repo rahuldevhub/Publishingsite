@@ -333,7 +333,7 @@ export default function AboutPage() {
                   author: "Business Book Visibility",
                   challenge: "Niche business book, limited audience",
                   strategy: "LinkedIn ads, entrepreneur communities, podcast features",
-                  reach: 9000,
+                  reach: 8000,
                   clicks: 150,
                   orders: 6,
                   budget: 8000,
