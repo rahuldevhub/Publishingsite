@@ -47,7 +47,7 @@ const FEATURES: { category: string; label: string; highlight?: boolean; values: 
   { category: "Editing Services",    label: "Copy Editing",                          values: ["add-on", "add-on", "add-on", "add-on", "add-on", "add-on"] },
   { category: "Editing Services",    label: "Developmental Editing",                values: ["add-on", "add-on", "add-on", "add-on", "add-on", "add-on"] },
   { category: "Editing Services",    label: "Rewriting",                          values: ["add-on", "add-on", "add-on", "add-on", "add-on", "add-on"] },
-  { category: "Editing Services",    label: "Revision Rounds",                       values: ["1", "2", "3", "5", "Unlimited", "Unlimited"] },
+  { category: "Editing Services",    label: "Revision Rounds",                       values: [false, false, "1", "2", "Unlimited", "Unlimited"] },
 
 
 
@@ -126,7 +126,7 @@ export default function PackagesComparisonTable() {
   const grouped = groupFeatures(FEATURES)
 
   return (
-    <section id="packages" className="scroll-mt-8">
+    <section id="packages" className="scroll-mt-28">
       <div className="max-w-[1400px] mx-auto px-4 py-16">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold text-gray-900">

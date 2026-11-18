@@ -5,10 +5,20 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-const NAV_LINKS: { label: string; href: string; badge?: string }[] = [
+type NavLink = { label: string; href: string; badge?: string; sections?: { label: string; href: string }[] };
+
+const NAV_LINKS: NavLink[] = [
   { label: "Home",          href: "/" },
-  { label: "About",         href: "/aboutus" },
-  { label: "Packages",      href: "/packages", badge: "NEW" },
+  { label: "About", href: "/aboutus", sections: [
+    { label: "Our Community", href: "/aboutus#virtual-meet" },
+    { label: "Author Interviews", href: "/aboutus#author-interviews" },
+    { label: "Anthologies & LitSpace", href: "/aboutus#anthologies-litspace" },
+    { label: "Our Team", href: "/aboutus#our-team" },
+  ] },
+  { label: "Packages", href: "/packages", sections: [
+    { label: "Compare Packages", href: "/packages#packages" },
+    { label: "Build Your Own Package", href: "/packages#custom-builder" },
+  ] },
   { label: "Books",         href: "/books" },
   { label: "Litspace",      href: "/litspace", badge: "Popular" },
   { label: "Case Studies",  href: "/case-studies" },
@@ -16,6 +26,98 @@ const NAV_LINKS: { label: string; href: string; badge?: string }[] = [
   // { label: "Careers",  href: "/careers" },
   // { label: "Contact",  href: "/contact" },
 ];
+
+function NavigationItem({ item, active, mobile = false, onNavigate }: {
+  item: NavLink; active: boolean; mobile?: boolean; onNavigate?: () => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const panelId = `${mobile ? "mobile" : "desktop"}-${item.label.toLowerCase()}-sections`;
+
+  useEffect(() => {
+    if (!open) return;
+    function dismiss(event: PointerEvent) {
+      if (!containerRef.current?.contains(event.target as Node)) setOpen(false);
+    }
+    document.addEventListener("pointerdown", dismiss);
+    return () => document.removeEventListener("pointerdown", dismiss);
+  }, [open]);
+
+  function navigate() {
+    setOpen(false);
+    onNavigate?.();
+  }
+
+  const stateClass = active
+    ? mobile ? "bg-gray-900 text-white" : "bg-amber-50 text-gray-900 ring-1 ring-inset ring-amber-200/60"
+    : open ? "bg-stone-100/80 text-gray-900" : "text-gray-600 hover:bg-stone-100/70 hover:text-gray-900";
+
+  return (
+    <div
+      ref={containerRef}
+      className={mobile ? "" : "relative"}
+      onPointerEnter={(event) => {
+        if (!mobile && item.sections && event.pointerType === "mouse") setOpen(true);
+      }}
+      onPointerLeave={(event) => {
+        if (!mobile && event.pointerType === "mouse") setOpen(false);
+      }}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false);
+      }}
+      onKeyDown={(event) => {
+        if (event.key === "Escape" && open) {
+          event.stopPropagation();
+          setOpen(false);
+          toggleRef.current?.focus();
+        }
+      }}
+    >
+      <div className={`flex items-center rounded-xl text-sm font-medium transition-colors duration-200 ${stateClass}`}>
+        <Link
+          href={item.href}
+          aria-current={active ? "page" : undefined}
+          onClick={navigate}
+          className={`flex items-center gap-1.5 rounded-xl transition-colors whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 ${mobile ? "flex-1 px-4 py-3" : item.sections ? "py-2 pl-3 pr-1" : "px-3 py-2"}`}
+        >
+          {item.label}
+          {item.badge && <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-amber-400/15 text-amber-600 border border-amber-400/30 leading-none">{item.badge}</span>}
+        </Link>
+        {item.sections && (
+          <button
+            ref={toggleRef}
+            type="button"
+            aria-label={`${item.label} sections`}
+            aria-expanded={open}
+            aria-controls={panelId}
+            onClick={() => setOpen((value) => !value)}
+            className={`flex shrink-0 items-center justify-center rounded-lg transition-colors hover:bg-amber-400/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 ${mobile ? "mr-1 h-10 w-10" : "mr-1 h-8 w-6"}`}
+          >
+            <svg className={`h-3.5 w-3.5 opacity-70 transition-transform duration-200 ${open ? "rotate-180" : ""}`} aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="m5 7.5 5 5 5-5" />
+            </svg>
+          </button>
+        )}
+      </div>
+      {item.sections && (
+        <div
+          id={panelId}
+          hidden={!open}
+          className={mobile ? "ml-4 mt-1 border-l border-amber-200 pl-2 pb-2" : "absolute left-0 top-full z-10 w-64 pt-3"}
+        >
+          <div className={mobile ? "" : "rounded-2xl border border-stone-200/80 bg-[#fffdf8] p-2 shadow-[0_12px_36px_-12px_rgba(17,24,39,0.22)]"}>
+          {item.sections.map((section) => (
+            <Link key={section.href} href={section.href} onClick={navigate} className="block rounded-xl px-4 py-3 text-sm font-medium text-gray-600 transition-colors duration-200 hover:bg-amber-100/60 hover:text-gray-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400">
+              {section.label}
+            </Link>
+          ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -55,31 +157,25 @@ export default function Header() {
     }
   }, [menuOpen]);
 
-  const textHover  = "hover:text-gray-900 hover:bg-gray-50";
-  // Regular links, the active link, and the Packages link (highest-conversion
-  // page — carries a touch more weight/darkness so it reads first, without
-  // shouting). Font weight is baked into each state so nothing relies on
-  // Tailwind utility ordering to resolve.
-  const textBase     = "text-gray-600 font-medium";
-  const textActive   = "text-gray-900 font-semibold bg-gray-900/[0.07] shadow-[inset_0_0_0_1px_rgba(17,24,39,0.05)]";
-  const textPackages = "text-gray-900 font-semibold";
 
   return (
     <>
       {/* ── Header bar ── */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#fffdf8] shadow-[0_2px_14px_-8px_rgba(56,37,9,0.18)] lg:bg-white lg:shadow-md">
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 py-4 lg:py-5 flex items-center gap-3 lg:gap-4">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 py-3 lg:py-[5px] flex items-center gap-3 lg:gap-4">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 shrink-0 lg:mr-2 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-400">
-            <Image
-              src="/logo.png"
-              alt="Ritera Publishing Logo"
-              width={161}
-              height={46}
-              className="h-[50px] w-auto mix-blend-multiply lg:h-[46px] lg:mix-blend-normal"
-              priority
-            />
+          <Link href="/" className="group flex items-center gap-2.5 shrink-0 lg:mr-2 rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-400">
+            <span className="relative block h-[58px] w-[58px] shrink-0 overflow-hidden bg-white lg:h-[76px] lg:w-[76px]">
+              <Image
+                src="/logo.png"
+                alt="Ritera Publishing Logo"
+                width={400}
+                height={400}
+                className="absolute left-1/2 top-1/2 h-[76px] w-[76px] max-w-none -translate-x-1/2 -translate-y-1/2 lg:h-[96px] lg:w-[96px]"
+                priority
+              />
+            </span>
             <span className="flex flex-col lg:hidden">
               <span className="font-[family-name:var(--font-playfair)] text-[17px] leading-5 font-semibold tracking-tight text-gray-900">Ritera Publishing</span>
               <span className="mt-1 text-[10px] leading-3 tracking-[0.02em] text-stone-500">Your story starts here</span>
@@ -88,27 +184,9 @@ export default function Header() {
 
           {/* Desktop nav — center */}
           <nav className="hidden lg:flex items-center gap-0.5 flex-1 justify-center">
-            {NAV_LINKS.map(({ label, href, badge }) => {
-              const isActive = pathname === href;
-              const isPackages = href === "/packages";
-              const stateCls = isActive
-                ? textActive
-                : `${isPackages ? textPackages : textBase} ${textHover}`;
-              return (
-                <Link
-                  key={href}
-                  href={href}
-                  className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm transition-all duration-200 ease-out whitespace-nowrap focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 ${stateCls}`}
-                >
-                  {label}
-                  {badge && (
-                    <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-amber-400/15 text-amber-600 border border-amber-400/30 leading-none">
-                      {badge}
-                    </span>
-                  )}
-                </Link>
-              );
-            })}
+            {NAV_LINKS.map((item) => (
+              <NavigationItem key={item.href} item={item} active={pathname === item.href} />
+            ))}
           </nav>
 
           <div className="flex items-center gap-2 ml-auto shrink-0">
@@ -178,27 +256,9 @@ export default function Header() {
 
             {/* Nav links */}
             <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-1">
-              {NAV_LINKS.map(({ label, href, badge }) => {
-                const isActive = pathname === href;
-                return (
-                  <Link
-                    key={href}
-                    href={href}
-                    className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-colors duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 ${
-                      isActive
-                        ? "bg-gray-900 text-white"
-                        : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
-                    }`}
-                  >
-                    <span>{label}</span>
-                    {badge && (
-                      <span className="px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-red-500 text-white leading-none">
-                        {badge}
-                      </span>
-                    )}
-                  </Link>
-                );
-              })}
+              {NAV_LINKS.map((item) => (
+                <NavigationItem key={item.href} item={item} active={pathname === item.href} mobile onNavigate={() => setMenuOpen(false)} />
+              ))}
             </nav>
 
             {/* Drawer footer CTA */}

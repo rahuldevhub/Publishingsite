@@ -230,7 +230,7 @@ export default function AboutPage() {
         </section>
 
         {/* ── 5. AUTHOR INTERVIEWS ── */}
-        <section className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
+        <section id="author-interviews" className="scroll-mt-28 max-w-7xl mx-auto px-6 py-20 lg:py-28">
           <div className="text-center mb-12">
             <p className="text-xs font-semibold tracking-widest text-amber-500 uppercase mb-3">
               Author Stories
@@ -245,7 +245,7 @@ export default function AboutPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { id: "JaPQPM4n0iE?si=NjmNWUlFxbMswV0E", author: "Abhijit Mishra", book: "The Trust Architect" },
+              { id: "ZUYER9kl8Ho", author: "Abhijit Mishra", book: "When Trust Disappears" },
               { id: "reqbI2o2KF0", author: "Shahitha Fareen", book: "Jade Julep" },
             ].map((video, i) => (
               <div
@@ -430,7 +430,7 @@ export default function AboutPage() {
         </section>
 
         {/* ── 7. JADE JULEP ANTHOLOGIES ── */}
-        <section className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
+        <section id="anthologies-litspace" className="scroll-mt-28 max-w-7xl mx-auto px-6 py-20 lg:py-28">
           <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
             {/* Text (left) */}
             <div>
@@ -482,7 +482,7 @@ export default function AboutPage() {
         </section>
 
         {/* ── 8. OUR TEAM (dark) ── */}
-        <section className="bg-gray-900 text-white">
+        <section id="our-team" className="scroll-mt-28 bg-gray-900 text-white">
           <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
             <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-start">
               {/* Text */}

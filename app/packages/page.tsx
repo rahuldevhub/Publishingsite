@@ -267,7 +267,7 @@ export default function PackagesPage() {
       </section>
 
       {/* ── Custom Package Builder ── */}
-      <section id="custom-builder" className="scroll-mt-24 sm:scroll-mt-8">
+      <section id="custom-builder" className="scroll-mt-28">
         <div className="max-w-6xl mx-auto px-6 py-16">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-bold text-gray-900">
